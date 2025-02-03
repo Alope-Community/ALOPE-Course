@@ -1,3 +1,4 @@
+import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
 import { Head } from '@inertiajs/react';
 
@@ -78,6 +79,18 @@ export default function LandingPage() {
                     </div>
                 </div>
             </header>
+
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <FooterComponent />
         </>
     );
 }
