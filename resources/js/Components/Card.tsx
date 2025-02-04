@@ -1,6 +1,14 @@
-export default function CardComponent({ type }: { type: string }) {
+export default function CardComponent({
+    type,
+    addedClass = '',
+}: {
+    type: string;
+    addedClass?: string;
+}) {
     return type == 'article' ? (
-        <div className="mr-5 overflow-hidden rounded-md bg-gray-50 shadow">
+        <div
+            className={`overflow-hidden rounded-md bg-gray-50 shadow ${addedClass}`}
+        >
             <div className="relative h-[200px]">
                 <img
                     src="https://images.unsplash.com/photo-1737741276705-569ebd946f5b?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -72,7 +80,9 @@ export default function CardComponent({ type }: { type: string }) {
             </div>
         </div>
     ) : type == 'video' ? (
-        <div className="mr-5 overflow-hidden rounded-md bg-gray-50 shadow">
+        <div
+            className={`overflow-hidden rounded-md bg-gray-50 shadow ${addedClass}`}
+        >
             <div className="relative h-[200px]">
                 <img
                     src="https://images.unsplash.com/photo-1737741276705-569ebd946f5b?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"

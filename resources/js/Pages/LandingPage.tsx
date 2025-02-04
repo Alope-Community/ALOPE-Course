@@ -100,50 +100,52 @@ export default function LandingPage() {
                                 Video Tutorial Seputar Programming
                             </h2>
                         </div>
-                        <Glider
-                            draggable
-                            slidesToShow={4.5}
-                            slidesToScroll={1}
-                            // hasArrows
-                            dragVelocity={1.5}
-                            responsive={[
-                                {
-                                    breakpoint: 1536,
-                                    settings: { slidesToShow: 4.5 },
-                                }, // Desktop
-                                {
-                                    breakpoint: 1280,
-                                    settings: { slidesToShow: 4.2 },
-                                }, // Desktop
-                                {
-                                    breakpoint: 1024,
-                                    settings: { slidesToShow: 3.3 },
-                                }, // Desktop
-                                {
-                                    breakpoint: 768,
-                                    settings: { slidesToShow: 2.3 },
-                                }, // Tablet
-                                {
-                                    breakpoint: 375,
-                                    settings: { slidesToShow: 1.3 },
-                                }, // Mobile
-                                {
-                                    breakpoint: 100,
-                                    settings: { slidesToShow: 1.1 },
-                                }, // Mobile
-                            ]}
-                        >
-                            <CardComponent type="video" />
-                            <CardComponent type="video" />
-                            <CardComponent type="video" />
-                            <CardComponent type="video" />
-                            <CardComponent type="video" />
-                            <CardComponent type="video" />
-                            <CardComponent type="video" />
-                            <CardComponent type="video" />
-                            <CardComponent type="video" />
-                        </Glider>
-                        <div className="absolute -right-3 top-0 h-full w-24 bg-gradient-to-r from-gray-100/0 to-gray-100 md:w-36"></div>
+                        <div className="relative">
+                            <Glider
+                                draggable
+                                slidesToShow={4.5}
+                                slidesToScroll={1}
+                                // hasArrows
+                                dragVelocity={1.5}
+                                responsive={[
+                                    {
+                                        breakpoint: 1536,
+                                        settings: { slidesToShow: 4.5 },
+                                    }, // Desktop
+                                    {
+                                        breakpoint: 1280,
+                                        settings: { slidesToShow: 4.2 },
+                                    }, // Desktop
+                                    {
+                                        breakpoint: 1024,
+                                        settings: { slidesToShow: 3.3 },
+                                    }, // Desktop
+                                    {
+                                        breakpoint: 768,
+                                        settings: { slidesToShow: 2.3 },
+                                    }, // Tablet
+                                    {
+                                        breakpoint: 375,
+                                        settings: { slidesToShow: 1.3 },
+                                    }, // Mobile
+                                    {
+                                        breakpoint: 100,
+                                        settings: { slidesToShow: 1.1 },
+                                    }, // Mobile
+                                ]}
+                            >
+                                <CardComponent type="video" addedClass="mr-5" />
+                                <CardComponent type="video" addedClass="mr-5" />
+                                <CardComponent type="video" addedClass="mr-5" />
+                                <CardComponent type="video" addedClass="mr-5" />
+                                <CardComponent type="video" addedClass="mr-5" />
+                                <CardComponent type="video" addedClass="mr-5" />
+                                <CardComponent type="video" addedClass="mr-5" />
+                                <CardComponent type="video" addedClass="mr-5" />
+                                <CardComponent type="video" />
+                            </Glider>
+                            <div className="absolute right-0 top-0 h-full w-32 bg-gradient-to-r from-gray-100/0 to-white/90 md:w-36"></div>
+                        </div>
                     </div>
 
                     <div className="mb-10">
@@ -153,50 +155,76 @@ export default function LandingPage() {
                                 Temukan Artikel Menarik Seputar Programming
                             </h2>
                         </div>
-                        <Glider
-                            draggable
-                            slidesToShow={4.5}
-                            slidesToScroll={1}
-                            // hasArrows
-                            dragVelocity={1.5}
-                            responsive={[
-                                {
-                                    breakpoint: 1536,
-                                    settings: { slidesToShow: 4.5 },
-                                }, // Desktop
-                                {
-                                    breakpoint: 1280,
-                                    settings: { slidesToShow: 4.2 },
-                                }, // Desktop
-                                {
-                                    breakpoint: 1024,
-                                    settings: { slidesToShow: 3.3 },
-                                }, // Desktop
-                                {
-                                    breakpoint: 768,
-                                    settings: { slidesToShow: 2.3 },
-                                }, // Tablet
-                                {
-                                    breakpoint: 375,
-                                    settings: { slidesToShow: 1.3 },
-                                }, // Mobile
-                                {
-                                    breakpoint: 100,
-                                    settings: { slidesToShow: 1.1 },
-                                }, // Mobile
-                            ]}
-                        >
-                            <CardComponent type="article" />
-                            <CardComponent type="article" />
-                            <CardComponent type="article" />
-                            <CardComponent type="article" />
-                            <CardComponent type="article" />
-                            <CardComponent type="article" />
-                            <CardComponent type="article" />
-                            <CardComponent type="article" />
-                            <CardComponent type="article" />
-                        </Glider>
-                        <div className="absolute -right-3 top-0 h-full w-24 bg-gradient-to-r from-gray-100/0 to-gray-100 md:w-36"></div>
+                        <div className="relative">
+                            <Glider
+                                draggable
+                                slidesToShow={4.5}
+                                slidesToScroll={1}
+                                // hasArrows
+                                dragVelocity={1.5}
+                                responsive={[
+                                    {
+                                        breakpoint: 1536,
+                                        settings: { slidesToShow: 4.5 },
+                                    }, // Desktop
+                                    {
+                                        breakpoint: 1280,
+                                        settings: { slidesToShow: 4.2 },
+                                    }, // Desktop
+                                    {
+                                        breakpoint: 1024,
+                                        settings: { slidesToShow: 3.3 },
+                                    }, // Desktop
+                                    {
+                                        breakpoint: 768,
+                                        settings: { slidesToShow: 2.3 },
+                                    }, // Tablet
+                                    {
+                                        breakpoint: 375,
+                                        settings: { slidesToShow: 1.3 },
+                                    }, // Mobile
+                                    {
+                                        breakpoint: 100,
+                                        settings: { slidesToShow: 1.1 },
+                                    }, // Mobile
+                                ]}
+                            >
+                                <CardComponent
+                                    type="article"
+                                    addedClass="mr-5"
+                                />
+                                <CardComponent
+                                    type="article"
+                                    addedClass="mr-5"
+                                />
+                                <CardComponent
+                                    type="article"
+                                    addedClass="mr-5"
+                                />
+                                <CardComponent
+                                    type="article"
+                                    addedClass="mr-5"
+                                />
+                                <CardComponent
+                                    type="article"
+                                    addedClass="mr-5"
+                                />
+                                <CardComponent
+                                    type="article"
+                                    addedClass="mr-5"
+                                />
+                                <CardComponent
+                                    type="article"
+                                    addedClass="mr-5"
+                                />
+                                <CardComponent
+                                    type="article"
+                                    addedClass="mr-5"
+                                />
+                                <CardComponent type="article" />
+                            </Glider>
+                            <div className="absolute right-0 top-0 h-full w-24 bg-gradient-to-r from-gray-100/0 to-gray-100 md:w-36"></div>
+                        </div>
                     </div>
                 </div>
                 <img
