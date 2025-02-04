@@ -1,3 +1,4 @@
+import CardComponent from '@/Components/Card';
 import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
 import { Head } from '@inertiajs/react';
@@ -9,7 +10,7 @@ export default function LandingPage() {
 
             <NavbarComponent />
 
-            <header className="relative pt-16">
+            <header className="relative min-h-screen pt-16">
                 <img
                     src="/images/shapes/blueBlur.png"
                     alt=""
@@ -79,6 +80,19 @@ export default function LandingPage() {
                     </div>
                 </div>
             </header>
+
+            <section className="container mx-auto grid grid-cols-4 gap-10">
+                <div className="col-span-4">
+                    <h2 className="text-2xl font-semibold">
+                        <span className="text-gray-400">//</span> Temukan
+                        Artikel Menarik Seputar Programming
+                    </h2>
+                </div>
+                <CardComponent />
+                <CardComponent />
+                <CardComponent />
+                <CardComponent />
+            </section>
 
             <br />
             <br />
