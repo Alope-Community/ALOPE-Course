@@ -1,3 +1,4 @@
+import AccordionComponent from '@/Components/Accordion';
 import CardComponent from '@/Components/Card';
 import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
@@ -15,19 +16,22 @@ export default function LandingPage() {
 
             <header className="relative min-h-screen pt-16 xl:min-h-[800px]">
                 <img
-                    src="/images/shapes/blueBlur.png"
+                    src="/images/shapes/blueBlur1.svg"
                     alt=""
                     className="absolute left-0 top-0"
+                    loading="lazy"
                 />
                 <img
-                    src="/images/shapes/yellowBlur.png"
+                    src="/images/shapes/yellowBlur1.svg"
                     alt=""
                     className="absolute right-0 top-0"
+                    loading="lazy"
                 />
                 <img
-                    src="/images/shapes/purpleBlur.png"
+                    src="/images/shapes/purpleBlur1.svg"
                     alt=""
                     className="absolute -bottom-[400px] left-0"
+                    loading="lazy"
                 />
                 <div className="container relative z-10 mx-auto flex flex-col items-center justify-between px-3 md:px-10 lg:flex-row xl:px-0">
                     <div className="order-2 lg:order-1 lg:w-1/2">
@@ -61,19 +65,22 @@ export default function LandingPage() {
                     </div>
                     <div className="relative order-1 lg:order-2 lg:w-1/2">
                         <img
-                            src="/images/shapes/purpleText.png"
+                            src="/images/shapes/purpleText.svg"
                             alt=""
-                            className="absolute bottom-24 left-2 w-[120px] md:bottom-1/3 md:left-32 md:w-[170px] lg:hidden xl:left-14 xl:block xl:w-auto"
+                            className="absolute bottom-24 left-2 w-[120px] md:bottom-1/3 md:left-32 md:w-[170px] lg:hidden xl:left-24 xl:block xl:w-auto"
+                            loading="lazy"
                         />
                         <img
-                            src="/images/shapes/yellowText.png"
+                            src="/images/shapes/yellowText.svg"
                             alt=""
                             className="absolute right-3 top-24 w-[110px] md:right-32 md:top-24 md:w-[150px] lg:hidden xl:right-20 xl:top-40 xl:block xl:w-auto"
+                            loading="lazy"
                         />
                         <img
-                            src="/images/shapes/blueText.png"
+                            src="/images/shapes/blueText.svg"
                             alt=""
                             className="absolute bottom-[40%] right-4 w-[110px] md:bottom-28 md:right-36 md:w-[150px] lg:hidden xl:bottom-[40%] xl:right-32 xl:block xl:w-auto"
+                            loading="lazy"
                         />
                         <img
                             src="/images/header.png"
@@ -84,74 +91,146 @@ export default function LandingPage() {
                 </div>
             </header>
 
-            <section className="container relative mx-auto mb-20 gap-10 px-3 md:px-10 xl:px-0">
-                <div className="mb-5">
-                    <h2 className="text-xl font-semibold md:text-2xl">
-                        <span className="text-gray-400">//</span> Tonton Video
-                        Tutorial Seputar Programming
-                    </h2>
+            <section className="relative mb-20 gap-10 px-3 md:px-10 xl:px-0">
+                <div className="container mx-auto">
+                    <div className="mb-20">
+                        <div className="mb-5">
+                            <h2 className="text-xl font-semibold md:text-2xl">
+                                <span className="text-gray-400">//</span> Tonton
+                                Video Tutorial Seputar Programming
+                            </h2>
+                        </div>
+                        <Glider
+                            draggable
+                            slidesToShow={4.5}
+                            slidesToScroll={1}
+                            // hasArrows
+                            dragVelocity={1.5}
+                            responsive={[
+                                {
+                                    breakpoint: 1536,
+                                    settings: { slidesToShow: 4.5 },
+                                }, // Desktop
+                                {
+                                    breakpoint: 1280,
+                                    settings: { slidesToShow: 4.2 },
+                                }, // Desktop
+                                {
+                                    breakpoint: 1024,
+                                    settings: { slidesToShow: 3.3 },
+                                }, // Desktop
+                                {
+                                    breakpoint: 768,
+                                    settings: { slidesToShow: 2.3 },
+                                }, // Tablet
+                                {
+                                    breakpoint: 375,
+                                    settings: { slidesToShow: 1.3 },
+                                }, // Mobile
+                                {
+                                    breakpoint: 100,
+                                    settings: { slidesToShow: 1.1 },
+                                }, // Mobile
+                            ]}
+                        >
+                            <CardComponent type="video" />
+                            <CardComponent type="video" />
+                            <CardComponent type="video" />
+                            <CardComponent type="video" />
+                            <CardComponent type="video" />
+                            <CardComponent type="video" />
+                            <CardComponent type="video" />
+                            <CardComponent type="video" />
+                            <CardComponent type="video" />
+                        </Glider>
+                        <div className="absolute -right-3 top-0 h-full w-24 bg-gradient-to-r from-gray-100/0 to-gray-100 md:w-36"></div>
+                    </div>
+
+                    <div className="mb-10">
+                        <div className="mb-5">
+                            <h2 className="text-xl font-semibold md:text-2xl">
+                                <span className="text-gray-400">//</span>{' '}
+                                Temukan Artikel Menarik Seputar Programming
+                            </h2>
+                        </div>
+                        <Glider
+                            draggable
+                            slidesToShow={4.5}
+                            slidesToScroll={1}
+                            // hasArrows
+                            dragVelocity={1.5}
+                            responsive={[
+                                {
+                                    breakpoint: 1536,
+                                    settings: { slidesToShow: 4.5 },
+                                }, // Desktop
+                                {
+                                    breakpoint: 1280,
+                                    settings: { slidesToShow: 4.2 },
+                                }, // Desktop
+                                {
+                                    breakpoint: 1024,
+                                    settings: { slidesToShow: 3.3 },
+                                }, // Desktop
+                                {
+                                    breakpoint: 768,
+                                    settings: { slidesToShow: 2.3 },
+                                }, // Tablet
+                                {
+                                    breakpoint: 375,
+                                    settings: { slidesToShow: 1.3 },
+                                }, // Mobile
+                                {
+                                    breakpoint: 100,
+                                    settings: { slidesToShow: 1.1 },
+                                }, // Mobile
+                            ]}
+                        >
+                            <CardComponent type="article" />
+                            <CardComponent type="article" />
+                            <CardComponent type="article" />
+                            <CardComponent type="article" />
+                            <CardComponent type="article" />
+                            <CardComponent type="article" />
+                            <CardComponent type="article" />
+                            <CardComponent type="article" />
+                            <CardComponent type="article" />
+                        </Glider>
+                        <div className="absolute -right-3 top-0 h-full w-24 bg-gradient-to-r from-gray-100/0 to-gray-100 md:w-36"></div>
+                    </div>
                 </div>
-                <Glider
-                    draggable
-                    slidesToShow={4.5}
-                    slidesToScroll={1}
-                    // hasArrows
-                    dragVelocity={1.5}
-                    responsive={[
-                        { breakpoint: 1536, settings: { slidesToShow: 4.5 } }, // Desktop
-                        { breakpoint: 1280, settings: { slidesToShow: 4.2 } }, // Desktop
-                        { breakpoint: 1024, settings: { slidesToShow: 3.3 } }, // Desktop
-                        { breakpoint: 768, settings: { slidesToShow: 2.3 } }, // Tablet
-                        { breakpoint: 375, settings: { slidesToShow: 1.3 } }, // Mobile
-                        { breakpoint: 100, settings: { slidesToShow: 1.1 } }, // Mobile
-                    ]}
-                >
-                    <CardComponent type="video" />
-                    <CardComponent type="video" />
-                    <CardComponent type="video" />
-                    <CardComponent type="video" />
-                    <CardComponent type="video" />
-                    <CardComponent type="video" />
-                    <CardComponent type="video" />
-                    <CardComponent type="video" />
-                    <CardComponent type="video" />
-                </Glider>
-                <div className="absolute -right-3 top-0 h-full w-24 bg-gradient-to-r from-gray-100/0 to-gray-100 md:w-36"></div>
+                <img
+                    src="/images/shapes/blueBlur2.svg"
+                    className="absolute -bottom-96 right-0 -z-10"
+                    loading="lazy"
+                />
+                <img
+                    src="/images/shapes/yellowBlur2.svg"
+                    className="absolute -bottom-96 left-0 -z-10"
+                    loading="lazy"
+                />
             </section>
 
-            <section className="container relative mx-auto mb-20 gap-10 px-3 md:px-10 xl:px-0">
-                <div className="mb-5">
-                    <h2 className="text-xl font-semibold md:text-2xl">
-                        <span className="text-gray-400">//</span> Temukan
-                        Artikel Menarik Seputar Programming
-                    </h2>
+            <section className="relative px-3 md:px-10 xl:px-0">
+                <div className="container mx-auto flex flex-col items-center lg:flex-row">
+                    <div className="hidden flex-1 lg:block">
+                        <img
+                            src="/images/about.png"
+                            alt="About 3D"
+                            loading="eager"
+                        />
+                    </div>
+                    <div className="w-full lg:flex-1">
+                        <h3 className="mb-5 px-2 text-3xl font-bold">FAQs</h3>
+                        <AccordionComponent />
+                    </div>
                 </div>
-                <Glider
-                    draggable
-                    slidesToShow={4.5}
-                    slidesToScroll={1}
-                    // hasArrows
-                    dragVelocity={1.5}
-                    responsive={[
-                        { breakpoint: 1536, settings: { slidesToShow: 4.5 } }, // Desktop
-                        { breakpoint: 1280, settings: { slidesToShow: 4.2 } }, // Desktop
-                        { breakpoint: 1024, settings: { slidesToShow: 3.3 } }, // Desktop
-                        { breakpoint: 768, settings: { slidesToShow: 2.3 } }, // Tablet
-                        { breakpoint: 375, settings: { slidesToShow: 1.3 } }, // Mobile
-                        { breakpoint: 100, settings: { slidesToShow: 1.1 } }, // Mobile
-                    ]}
-                >
-                    <CardComponent type="article" />
-                    <CardComponent type="article" />
-                    <CardComponent type="article" />
-                    <CardComponent type="article" />
-                    <CardComponent type="article" />
-                    <CardComponent type="article" />
-                    <CardComponent type="article" />
-                    <CardComponent type="article" />
-                    <CardComponent type="article" />
-                </Glider>
-                <div className="absolute -right-3 top-0 h-full w-24 bg-gradient-to-r from-gray-100/0 to-gray-100 md:w-36"></div>
+
+                <img
+                    src="/images/shapes/purpleBlur2.svg"
+                    className="absolute -bottom-64 left-0 -z-10 md:-bottom-96"
+                    loading="lazy"
+                />
             </section>
 
             <FooterComponent />
