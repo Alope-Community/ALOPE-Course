@@ -21,9 +21,9 @@ class CourseSeeder extends Seeder
         }
 
         $courses = [
-            ['title' => 'Laravel for Beginners', 'description' => 'Belajar Laravel dari dasar.'],
-            ['title' => 'ReactJS Fundamentals', 'description' => 'Dasar-dasar ReactJS untuk pemula.'],
-            ['title' => 'Machine Learning with Python', 'description' => 'Pelajari ML dengan Python.'],
+            ['title' => 'HTML Dasar', 'description' => 'Belajar HTML dari dasar.'],
+            ['title' => 'CSS Dasar', 'description' => 'Dasar-dasar CSS untuk pemula.'],
+            ['title' => 'CSS Layouting', 'description' => 'Latihan Membuat Website Statis dengan HTML & CSS'],
         ];
 
         foreach ($courses as $course) {

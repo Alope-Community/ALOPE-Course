@@ -10,15 +10,13 @@ import 'glider-js/glider.min.css';
 import Glider from 'react-glider';
 
 export default function LandingPage({ videos }: { videos: Video[] }) {
-    console.log(videos);
-
     return (
         <>
             <Head title="Welcome" />
 
             <NavbarComponent />
 
-            <header className="relative min-h-screen pt-16 xl:min-h-[800px]">
+            <header className="relative min-h-[800px] pt-16">
                 <img
                     src="/images/shapes/blueBlur1.svg"
                     alt=""
@@ -139,12 +137,16 @@ export default function LandingPage({ videos }: { videos: Video[] }) {
                                 ]}
                             >
                                 {videos.map((video, index) => (
-                                    <VideoCardComponent
-                                        key={index}
-                                        title={video.title}
-                                        video_link={video.link}
-                                        course_name={video.course.title}
-                                    />
+                                    <div key={index}>
+                                        <VideoCardComponent
+                                            title={video.title}
+                                            video_link={video.link}
+                                            course_name={video.course.title}
+                                            total_video_course={
+                                                video.course.videos.length
+                                            }
+                                        />
+                                    </div>
                                 ))}
                             </Glider>
                             {/* <div className="absolute right-0 top-0 h-full w-32 bg-gradient-to-r from-gray-100/0 to-white/90 md:w-36"></div> */}

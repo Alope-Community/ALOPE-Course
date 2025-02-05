@@ -1,5 +1,6 @@
 import { Category } from './Category';
 import { Hashtag } from './Hashtag';
+import { Video } from './Video';
 
 export type Course = {
     id: string;
@@ -11,6 +12,7 @@ export type Course = {
     description: string;
 
     hashtags: Hashtag[];
+    videos: Video[];
     category: Category;
 
     created_at?: string;

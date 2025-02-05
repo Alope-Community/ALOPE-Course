@@ -2,10 +2,12 @@ export default function VideoCardComponent({
     title,
     video_link,
     course_name,
+    total_video_course,
 }: {
     title: string;
     video_link: string;
     course_name: string;
+    total_video_course: number;
 }) {
     return (
         <div className={`mr-5 overflow-hidden rounded-md bg-gray-50 shadow`}>
@@ -34,10 +36,16 @@ export default function VideoCardComponent({
                     </svg>
                 </span> */}
             </div>
-            <div className="rounded-b-md border border-t-0 border-[#2276f0] p-3">
-                <h4 className="font-semibold">{title}</h4>
-                <p className="mt-1 text-xs text-gray-800">{course_name}</p>
-
+            <div className="rounded-b-md border border-t-0 border-[#2276f0] px-3 pb-3 pt-2">
+                <small className="text-xs italic text-[#2276f0]">
+                    #web-programming
+                </small>
+                <h4 className="mt-2 font-semibold">{title}</h4>
+                <p className="mt-1 text-xs text-gray-800">
+                    <span className="font-medium">{course_name}</span>
+                    {' - '}
+                    {total_video_course} Total Videos
+                </p>
                 {/* <div className="mt-4 flex justify-between text-gray-700">
                     <div>
                         <span className="flex items-center gap-1 rounded bg-[#2276f0] px-2 py-1 text-xs text-white">

@@ -17,12 +17,7 @@ use Inertia\Inertia;
 // });
 
 Route::get('/', function () {
-    $videos = Video::with(["course.category", "course.hashtags"])->latest('created_at')->get();
-
-    // $videos = Video::with(['course.category', 'course.hashtags'])
-    //     ->latest('created_at')
-    //     ->select(['id', 'title', 'slug', 'link', 'course_id', 'created_at'])
-    //     ->get();
+    $videos = Video::with(["course.category", "course.hashtags", "course.videos"])->latest('created_at')->get();
 
     return Inertia::render('LandingPage', [
         "videos" => $videos
