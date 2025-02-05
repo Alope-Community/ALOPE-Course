@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Models\Course;
+use App\Models\Video;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -19,9 +20,13 @@ Route::get('/', function () {
     return Inertia::render('LandingPage');
 });
 
-Route::get('/test-api', function () {
-    $courses = Course::with("category")->with("hashtags")->get();
+Route::get('/test-api/courses', function () {
+    $courses = Course::with(["category", "hashtags", "videos"])->get();
     return response()->json($courses);
+});
+Route::get('/test-api/videos', function () {
+    $videos = Video::with(["course.category", "course.hashtags"])->get();
+    return response()->json($videos);
 });
 
 Route::get('/dashboard', function () {

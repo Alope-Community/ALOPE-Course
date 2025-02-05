@@ -24,7 +24,8 @@ class DatabaseSeeder extends Seeder
             HashtagSeeder::class,
             CategorySeeder::class,
             CourseSeeder::class,
-            CourseHashtagSeeder::class
+            CourseHashtagSeeder::class,
+            VideoSeeder::class
         ]);
     }
 }

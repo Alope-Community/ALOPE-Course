@@ -20,4 +20,8 @@ class Course extends Model
     public function hashtags(){
         return $this->belongsToMany(Hashtag::class);
     }
+    
+    public function videos(){
+        return $this->hasMany(Video::class);
+    }
 }
