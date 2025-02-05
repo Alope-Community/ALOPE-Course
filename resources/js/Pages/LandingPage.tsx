@@ -1,5 +1,6 @@
 import AccordionComponent from '@/Components/Accordion';
 import CardComponent from '@/Components/Card';
+import VideoCardComponent from '@/Components/Cards/Video';
 import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
 import { Video } from '@/models/Video';
@@ -138,10 +139,11 @@ export default function LandingPage({ videos }: { videos: Video[] }) {
                                 ]}
                             >
                                 {videos.map((video, index) => (
-                                    <CardComponent
+                                    <VideoCardComponent
                                         key={index}
-                                        type="video"
-                                        addedClass="mr-5"
+                                        title={video.title}
+                                        video_link={video.link}
+                                        course_name={video.course.title}
                                     />
                                 ))}
                             </Glider>

@@ -29,12 +29,12 @@ class VideoSeeder extends Seeder
             [
                 'title' => 'CSS for Beginner',
                 'description' => 'Dasar-dasar CSS untuk pemula.',
-                "link" => "https://www.youtube.com/watch?v=Qc0NjOvYZCE"
+                "link" => "https://www.youtube.com/embed/Qc0NjOvYZCE?si=yXMMGDkWoMWo4E1w"
             ],
             [
                 'title' => 'CSS Layouting',
                 'description' => 'Implementasi HTML dan CSS.',
-                "link" => "https://www.youtube.com/embed/1WF50180LOU?si=EFHJLGpBpvh5eSb1"
+                "link" => "https://www.youtube.com/embed/4R2xmmNdf8g?si=ZUVE0qGeHTiNx6Zv"
             ],
         ];
 
