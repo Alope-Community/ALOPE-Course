@@ -2,12 +2,15 @@ import AccordionComponent from '@/Components/Accordion';
 import CardComponent from '@/Components/Card';
 import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
+import { Video } from '@/models/Video';
 import { Head } from '@inertiajs/react';
 
 import 'glider-js/glider.min.css';
 import Glider from 'react-glider';
 
-export default function LandingPage() {
+export default function LandingPage({ videos }: { videos: Video[] }) {
+    console.log(videos);
+
     return (
         <>
             <Head title="Welcome" />
@@ -134,17 +137,15 @@ export default function LandingPage() {
                                     }, // Mobile
                                 ]}
                             >
-                                <CardComponent type="video" addedClass="mr-5" />
-                                <CardComponent type="video" addedClass="mr-5" />
-                                <CardComponent type="video" addedClass="mr-5" />
-                                <CardComponent type="video" addedClass="mr-5" />
-                                <CardComponent type="video" addedClass="mr-5" />
-                                <CardComponent type="video" addedClass="mr-5" />
-                                <CardComponent type="video" addedClass="mr-5" />
-                                <CardComponent type="video" addedClass="mr-5" />
-                                <CardComponent type="video" />
+                                {videos.map((video, index) => (
+                                    <CardComponent
+                                        key={index}
+                                        type="video"
+                                        addedClass="mr-5"
+                                    />
+                                ))}
                             </Glider>
-                            <div className="absolute right-0 top-0 h-full w-32 bg-gradient-to-r from-gray-100/0 to-white/90 md:w-36"></div>
+                            {/* <div className="absolute right-0 top-0 h-full w-32 bg-gradient-to-r from-gray-100/0 to-white/90 md:w-36"></div> */}
                         </div>
                     </div>
 

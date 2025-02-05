@@ -17,7 +17,16 @@ use Inertia\Inertia;
 // });
 
 Route::get('/', function () {
-    return Inertia::render('LandingPage');
+    $videos = Video::with(["course.category", "course.hashtags"])->latest('created_at')->get();
+
+    // $videos = Video::with(['course.category', 'course.hashtags'])
+    //     ->latest('created_at')
+    //     ->select(['id', 'title', 'slug', 'link', 'course_id', 'created_at'])
+    //     ->get();
+
+    return Inertia::render('LandingPage', [
+        "videos" => $videos
+    ]);
 });
 
 Route::get('/test-api/courses', function () {
