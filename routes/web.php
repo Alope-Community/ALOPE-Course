@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Models\Course;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -16,6 +17,11 @@ use Inertia\Inertia;
 
 Route::get('/', function () {
     return Inertia::render('LandingPage');
+});
+
+Route::get('/test-api', function () {
+    $courses = Course::with("category")->with("hashtags")->get();
+    return response()->json($courses);
 });
 
 Route::get('/dashboard', function () {

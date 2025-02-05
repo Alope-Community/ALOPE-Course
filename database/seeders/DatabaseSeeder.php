@@ -23,7 +23,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             HashtagSeeder::class,
             CategorySeeder::class,
-            CourseSeeder::class
+            CourseSeeder::class,
+            CourseHashtagSeeder::class
         ]);
     }
 }

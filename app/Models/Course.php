@@ -11,4 +11,13 @@ class Course extends Model
 
     public $incrementing = false; 
     protected $keyType = 'string'; 
+
+
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
+    
+    public function hashtags(){
+        return $this->belongsToMany(Hashtag::class);
+    }
 }
