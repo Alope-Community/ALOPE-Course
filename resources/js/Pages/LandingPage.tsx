@@ -194,7 +194,7 @@ export default function LandingPage({ videos }: { videos: Video[] }) {
                                     }, // Mobile
                                 ]}
                             >
-                                <CardComponent
+                                {/* <CardComponent
                                     type="article"
                                     addedClass="mr-5"
                                 />
@@ -225,10 +225,10 @@ export default function LandingPage({ videos }: { videos: Video[] }) {
                                 <CardComponent
                                     type="article"
                                     addedClass="mr-5"
-                                />
+                                /> */}
                                 <CardComponent type="article" />
                             </Glider>
-                            <div className="absolute right-0 top-0 h-full w-24 bg-gradient-to-r from-gray-100/0 to-gray-100 md:w-36"></div>
+                            {/* <div className="absolute right-0 top-0 h-full w-24 bg-gradient-to-r from-gray-100/0 to-gray-100 md:w-36"></div> */}
                         </div>
                     </div>
                 </div>

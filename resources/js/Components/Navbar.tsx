@@ -22,9 +22,13 @@ export default function NavbarComponent() {
                                 <Link
                                     href={link.href}
                                     className={`${
-                                        url === link.href
-                                            ? 'font-semibold text-[#2276f0]'
-                                            : ''
+                                        link.href === '/'
+                                            ? url === '/' // Hanya aktif jika benar-benar di "/"
+                                                ? 'font-semibold text-[#2276f0]'
+                                                : ''
+                                            : url.startsWith(link.href)
+                                              ? 'font-semibold text-[#2276f0]'
+                                              : ''
                                     }`}
                                 >
                                     {link.name}

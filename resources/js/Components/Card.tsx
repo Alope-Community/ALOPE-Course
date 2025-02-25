@@ -1,3 +1,5 @@
+import { Link } from '@inertiajs/react';
+
 export default function CardComponent({
     type,
     addedClass = '',
@@ -6,12 +8,13 @@ export default function CardComponent({
     addedClass?: string;
 }) {
     return type == 'article' ? (
-        <div
+        <Link
+            href="/articles/hello"
             className={`overflow-hidden rounded-md bg-gray-50 shadow ${addedClass}`}
         >
             <div className="relative h-[200px]">
                 <img
-                    src="https://images.unsplash.com/photo-1737741276705-569ebd946f5b?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    src="https://images.unsplash.com/photo-1505685296765-3a2736de412f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                     alt=""
                     className="h-full w-full object-cover"
                 />
@@ -33,15 +36,17 @@ export default function CardComponent({
                 </span>
             </div>
             <div className="rounded-b-md border border-t-0 border-[#2276f0] p-3">
-                <h4 className="font-semibold">Title Article</h4>
-                <p className="text-sm text-gray-800">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Repellendus, incidunt....
+                <h4 className="font-semibold">
+                    CSS Pseudo Class untuk Membuat Website Lebih Interaktif
+                </h4>
+                <p className="mt-1 text-sm text-gray-800">
+                    CSS pseudo class adalah kata kunci yang ditambahkan ke
+                    selector CSS unt....
                 </p>
 
                 <div className="mt-4 flex justify-between text-gray-700">
                     <div>
-                        <small className="text-xs">2 jam yang lalu</small>
+                        <small className="text-xs">Pukul 18:00</small>
                     </div>
                     <div className="flex gap-3">
                         <span className="flex items-center gap-1 text-xs">
@@ -58,7 +63,7 @@ export default function CardComponent({
                                     clipRule="evenodd"
                                 />
                             </svg>
-                            2000
+                            ?
                         </span>
                         <span className="flex items-center gap-1 text-xs">
                             <svg
@@ -73,12 +78,12 @@ export default function CardComponent({
                                     clipRule="evenodd"
                                 />
                             </svg>
-                            10
+                            ?
                         </span>
                     </div>
                 </div>
             </div>
-        </div>
+        </Link>
     ) : type == 'video' ? (
         <div
             className={`overflow-hidden rounded-md bg-gray-50 shadow ${addedClass}`}
