@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Course;
 use App\Models\Video;
@@ -23,6 +24,8 @@ Route::get('/', function () {
         "videos" => $videos
     ]);
 });
+
+Route::resource('/articles', ArticleController::class);;
 
 Route::get('/test-api/courses', function () {
     $courses = Course::with(["category", "hashtags", "videos"])->get();

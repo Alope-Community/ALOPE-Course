@@ -1,4 +1,14 @@
+import { Link, usePage } from '@inertiajs/react';
+
 export default function NavbarComponent() {
+    const { url } = usePage();
+
+    const navLinks = [
+        { name: 'Home', href: '/' },
+        { name: 'Article', href: '/articles' },
+        { name: 'Video', href: '/videos' },
+    ];
+
     return (
         <nav className="fixed left-0 right-0 top-0 z-50 px-3 py-3 shadow backdrop-blur-lg md:px-10 md:py-5 xl:px-0">
             <div className="container mx-auto flex justify-between">
@@ -7,20 +17,20 @@ export default function NavbarComponent() {
                 </div>
                 <div>
                     <ul className="hidden gap-5 md:flex">
-                        <li>
-                            <a href="" className="font-semibold text-[#2276f0]">
-                                Home
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">Course</a>
-                        </li>
-                        <li>
-                            <a href="">FAQ</a>
-                        </li>
-                        <li>
-                            <a href="">Pricing</a>
-                        </li>
+                        {navLinks.map((link) => (
+                            <li key={link.href}>
+                                <Link
+                                    href={link.href}
+                                    className={`${
+                                        url === link.href
+                                            ? 'font-semibold text-[#2276f0]'
+                                            : ''
+                                    }`}
+                                >
+                                    {link.name}
+                                </Link>
+                            </li>
+                        ))}
                     </ul>
                     <button className="flex md:hidden">
                         <svg
