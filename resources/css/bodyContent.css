@@ -183,3 +183,12 @@
         padding: 5px;
     }
 }
+
+/* CSS untuk menyembunyikan line number */
+#body pre {
+    padding: 10px;
+    border-radius: 5px;
+}
+#body pre > div > span:first-child {
+    display: none;
+}

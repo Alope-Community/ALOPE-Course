@@ -4,7 +4,10 @@ import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
 import { Head } from '@inertiajs/react';
 
+import { Highlight, themes } from 'prism-react-renderer';
 import '../../../css/bodyContent.css';
+
+// const codeBlock = `selector:pseudo-class { property: value; }`;
 
 export default function ArticleShowPage() {
     return (
@@ -19,11 +22,16 @@ export default function ArticleShowPage() {
                     <main className="col-span-4 lg:col-span-3">
                         <header>
                             <h1 className="mb-5 text-xl font-bold sm:text-2xl xl:text-3xl">
-                                Lorem ipsum dolor sit amet consectetur
-                                adipisicing.
+                                CSS Pseudo Class untuk Membuat Website Lebih
+                                Interaktif
                             </h1>
-                            <p className="my-3 text-xs text-gray-700 sm:text-sm">
-                                alope.id/articles/slug - 24/02/2025, 16:43 WIB
+                            <p className="my-3 text-xs text-[#2276f0] sm:text-sm">
+                                <span className="italic underline">
+                                    alope.id/articles/css-pseudo-classuuntuk-membuat-website-lebih-interaktif
+                                </span>
+                                <span className="text-gray-700">
+                                    - 25/02/2025, 18:00 WIB
+                                </span>
                             </p>
                             <div className="mb-5 flex gap-2 sm:items-center">
                                 <div>
@@ -44,17 +52,17 @@ export default function ArticleShowPage() {
                                 </div>
                             </div>
                             <img
-                                src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                alt=""
+                                src="https://images.unsplash.com/photo-1505685296765-3a2736de412f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                alt="Cover Article"
                                 className="h-[300px] w-full rounded object-cover sm:h-[450px] xl:h-[600px]"
                             />
                         </header>
 
                         <section id="body" className="mt-10">
-                            <h1>
+                            {/* <h1>
                                 CSS Pseudo Class untuk Membuat Website Lebih
                                 Interaktif
-                            </h1>
+                            </h1> */}
 
                             <h2>Apa Itu CSS Pseudo Class?</h2>
                             <p>
@@ -97,12 +105,81 @@ export default function ArticleShowPage() {
                                 Pseudo class ditulis setelah selector utama
                                 dengan format berikut:
                             </p>
-                            {/* <code> selector:pseudo-class { property: value; } </code> */}
+
+                            <Highlight
+                                theme={themes.shadesOfPurple}
+                                code={`selector:pseudo-class { 
+    property: value; 
+}`}
+                                language="css"
+                            >
+                                {({
+                                    // className,
+                                    style,
+                                    tokens,
+                                    getLineProps,
+                                    getTokenProps,
+                                }) => (
+                                    <pre style={style}>
+                                        {tokens.map((line, i) => (
+                                            <div
+                                                key={i}
+                                                {...getLineProps({ line })}
+                                            >
+                                                <span>{i + 1}</span>
+                                                {line.map((token, key) => (
+                                                    <span
+                                                        key={key}
+                                                        {...getTokenProps({
+                                                            token,
+                                                        })}
+                                                    />
+                                                ))}
+                                            </div>
+                                        ))}
+                                    </pre>
+                                )}
+                            </Highlight>
                             <p>Contoh</p>
                             <p>
                                 Kode berikut akan mengubah warna tombol ketika
                                 pengguna mengarahkannya dengan kursor:
                             </p>
+                            <Highlight
+                                theme={themes.shadesOfPurple}
+                                code={`button:hover { 
+    background-color: blue; 
+    color: white; 
+}`}
+                                language="css"
+                            >
+                                {({
+                                    // className,
+                                    style,
+                                    tokens,
+                                    getLineProps,
+                                    getTokenProps,
+                                }) => (
+                                    <pre style={style}>
+                                        {tokens.map((line, i) => (
+                                            <div
+                                                key={i}
+                                                {...getLineProps({ line })}
+                                            >
+                                                <span>{i + 1}</span>
+                                                {line.map((token, key) => (
+                                                    <span
+                                                        key={key}
+                                                        {...getTokenProps({
+                                                            token,
+                                                        })}
+                                                    />
+                                                ))}
+                                            </div>
+                                        ))}
+                                    </pre>
+                                )}
+                            </Highlight>
                             {/* <code>button:hover { background-color: blue; color: white; } </code> */}
                             <p>
                                 Saat pengguna mengarahkan mouse ke tombol
@@ -160,11 +237,50 @@ export default function ArticleShowPage() {
                             </table>
 
                             <p>Contoh:</p>
+                            <Highlight
+                                theme={themes.shadesOfPurple}
+                                code={`input:focus { 
+    border: 2px solid blue; 
+} 
+a:visited { 
+    color: purple; 
+}
+button:active { 
+    background-color: red; 
+}`}
+                                language="css"
+                            >
+                                {({
+                                    // className,
+                                    style,
+                                    tokens,
+                                    getLineProps,
+                                    getTokenProps,
+                                }) => (
+                                    <pre style={style}>
+                                        {tokens.map((line, i) => (
+                                            <div
+                                                key={i}
+                                                {...getLineProps({ line })}
+                                            >
+                                                <span>{i + 1}</span>
+                                                {line.map((token, key) => (
+                                                    <span
+                                                        key={key}
+                                                        {...getTokenProps({
+                                                            token,
+                                                        })}
+                                                    />
+                                                ))}
+                                            </div>
+                                        ))}
+                                    </pre>
+                                )}
+                            </Highlight>
                             {/* <code>
-  input:focus { border: 2px solid blue; } a:visited { color: purple; }
-  button:active { background-color: red; }
-</code> */}
-
+                            input:focus { border: 2px solid blue; } a:visited { color: purple; }
+                            button:active { background-color: red; }
+                            </code> */}
                             <p>Penjelasan:</p>
                             <ul>
                                 <li>
@@ -226,11 +342,50 @@ export default function ArticleShowPage() {
                             </table>
 
                             <p>Contoh :</p>
+                            <Highlight
+                                theme={themes.shadesOfPurple}
+                                code={`p:first-child { 
+    font-weight: bold; 
+} 
+li:nth-child(odd) { 
+    background-color: lightgray; 
+} 
+li:nth-child(even) { 
+    background-color: white; 
+}`}
+                                language="css"
+                            >
+                                {({
+                                    // className,
+                                    style,
+                                    tokens,
+                                    getLineProps,
+                                    getTokenProps,
+                                }) => (
+                                    <pre style={style}>
+                                        {tokens.map((line, i) => (
+                                            <div
+                                                key={i}
+                                                {...getLineProps({ line })}
+                                            >
+                                                <span>{i + 1}</span>
+                                                {line.map((token, key) => (
+                                                    <span
+                                                        key={key}
+                                                        {...getTokenProps({
+                                                            token,
+                                                        })}
+                                                    />
+                                                ))}
+                                            </div>
+                                        ))}
+                                    </pre>
+                                )}
+                            </Highlight>
                             {/* <code>
-  p:first-child { font-weight: bold; } li:nth-child(odd) { background-color:
-  lightgray; } li:nth-child(even) { background-color: white; }
-</code> */}
-
+                            p:first-child { font-weight: bold; } li:nth-child(odd) { background-color:
+                            lightgray; } li:nth-child(even) { background-color: white; }
+                            </code> */}
                             <p>Penjelasan:</p>
                             <ul>
                                 <li>
@@ -295,6 +450,46 @@ export default function ArticleShowPage() {
                             </table>
 
                             <p>Contoh :</p>
+                            <Highlight
+                                theme={themes.shadesOfPurple}
+                                code={`input:required { 
+    border: 2px solid red; 
+} 
+input:valid { 
+    border: 2px solid green; 
+} 
+input:invalid { 
+    border: 2px solid orange; 
+}`}
+                                language="css"
+                            >
+                                {({
+                                    // className,
+                                    style,
+                                    tokens,
+                                    getLineProps,
+                                    getTokenProps,
+                                }) => (
+                                    <pre style={style}>
+                                        {tokens.map((line, i) => (
+                                            <div
+                                                key={i}
+                                                {...getLineProps({ line })}
+                                            >
+                                                <span>{i + 1}</span>
+                                                {line.map((token, key) => (
+                                                    <span
+                                                        key={key}
+                                                        {...getTokenProps({
+                                                            token,
+                                                        })}
+                                                    />
+                                                ))}
+                                            </div>
+                                        ))}
+                                    </pre>
+                                )}
+                            </Highlight>
                             {/* <code>
   input:required { border: 2px solid red; } input:valid { border: 2px solid
   green; } input:invalid { border: 2px solid orange; }

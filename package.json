@@ -37,6 +37,7 @@
     },
     "dependencies": {
         "glider-js": "^1.7.9",
+        "prism-react-renderer": "^2.4.1",
         "react-glider": "^4.0.2"
     }
 }
