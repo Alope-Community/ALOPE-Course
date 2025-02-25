@@ -36,7 +36,7 @@ class ArticleController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return Inertia::render('Article/Show');
     }
 
     /**

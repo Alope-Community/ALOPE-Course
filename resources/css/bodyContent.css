@@ -1,0 +1,185 @@
+/* Heading */
+#body h1 {
+    font-size: 2em;
+    font-weight: bold;
+    margin: 0.67em 0;
+}
+#body h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 0.83em 0;
+}
+#body h3 {
+    font-size: 1.17em;
+    font-weight: bold;
+    margin: 1em 0;
+}
+#body h4 {
+    font-size: 1em;
+    font-weight: bold;
+    margin: 1.33em 0;
+}
+
+/* Paragraph */
+#body p {
+    margin: 1em 0;
+}
+
+/* Horizontal Rule */
+#body hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+/* Lists */
+#body ul,
+#body ol {
+    padding-left: 40px;
+    margin: 1em 0;
+}
+#body ul {
+    list-style: disc;
+}
+#body ol {
+    list-style: decimal;
+}
+#body li {
+    margin-bottom: 0.5em;
+}
+
+/* Table */
+#body table {
+    border-collapse: collapse;
+    width: 100%;
+}
+#body th,
+#body td {
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+#body th {
+    font-weight: bold;
+    text-align: left;
+}
+
+/* Blockquote */
+#body blockquote {
+    margin: 1em 40px;
+    padding: 0.5em 10px;
+    border-left: 4px solid #ccc;
+    font-style: italic;
+}
+
+/* ========================== */
+/* RESPONSIVE STYLING */
+/* ========================== */
+
+@media (max-width: 1024px) {
+    /* Tablet */
+    #body h1 {
+        font-size: 1.75em;
+    }
+    #body h2 {
+        font-size: 1.4em;
+    }
+    #body h3 {
+        font-size: 1.1em;
+    }
+    #body h4 {
+        font-size: 0.95em;
+    }
+
+    #body blockquote {
+        margin: 1em 20px;
+        padding: 0.5em;
+        font-size: 0.9em;
+    }
+
+    #body table {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Mobile */
+    #body h1 {
+        font-size: 1.5em;
+    }
+    #body h2 {
+        font-size: 1.25em;
+    }
+    #body h3 {
+        font-size: 1em;
+    }
+    #body h4 {
+        font-size: 0.9em;
+    }
+
+    #body p {
+        margin: 0.75em 0;
+    }
+
+    #body ul,
+    #body ol {
+        padding-left: 20px;
+    }
+
+    #body blockquote {
+        margin: 0.5em 15px;
+        padding: 0.4em;
+        font-size: 0.85em;
+    }
+
+    #body table {
+        font-size: 0.85em;
+    }
+
+    #body th,
+    #body td {
+        padding: 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Small Mobile */
+    #body h1 {
+        font-size: 1.3em;
+    }
+    #body h2 {
+        font-size: 1.1em;
+    }
+    #body h3 {
+        font-size: 0.95em;
+    }
+    #body h4 {
+        font-size: 0.85em;
+    }
+
+    #body p {
+        margin: 0.5em 0;
+    }
+
+    #body ul,
+    #body ol {
+        padding-left: 20px;
+    }
+
+    #body blockquote {
+        margin: 0.5em 5px;
+        padding: 0.5em;
+        font-size: 0.8em;
+    }
+
+    #body table {
+        font-size: 0.8em;
+    }
+
+    #body th,
+    #body td {
+        padding: 5px;
+    }
+}
