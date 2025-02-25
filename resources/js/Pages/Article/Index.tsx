@@ -14,9 +14,22 @@ export default function ArticleIndexPage() {
 
             <NavbarComponent />
 
+            <img
+                src="/images/shapes/blueBlur1.svg"
+                alt=""
+                className="absolute -right-20 top-0"
+                loading="lazy"
+            />
+            <img
+                src="/images/shapes/purpleBlur1.svg"
+                alt=""
+                className="absolute -top-52 left-0"
+                loading="lazy"
+            />
+
             <main className="container mx-auto grid grid-cols-4 gap-8 px-3 pt-24 md:px-10 xl:gap-10 xl:px-0">
                 <section className="col-span-4 lg:col-span-3">
-                    <header>
+                    <header className="relative">
                         <img
                             src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                             alt=""
@@ -119,7 +132,7 @@ export default function ArticleIndexPage() {
                         <ArticleCardComponent type="3" />
                     </section>
                 </section>
-                <aside className="hidden lg:block">
+                <aside className="relative hidden lg:block">
                     <h3 className="mb-7 mt-4 font-bold sm:text-xl">
                         <span className="text-gray-500">// </span> Artikel
                         Terbaru
@@ -182,12 +195,13 @@ export default function ArticleIndexPage() {
 
                     {/*  */}
 
-                    <h3 className="my-7 text-xl font-bold">
-                        <span className="text-gray-500">// </span> Sorotan
-                    </h3>
-                    <ArticleCardComponent />
-                    <ArticleCardComponent />
-                    <ArticleCardComponent />
+                    <section className="sticky top-24">
+                        <h3 className="my-7 text-xl font-bold">
+                            <span className="text-gray-500">// </span> Sorotan
+                        </h3>
+                        <ArticleCardComponent />
+                        <ArticleCardComponent />
+                    </section>
                 </aside>
             </main>
 
