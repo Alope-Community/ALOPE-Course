@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -34,9 +35,14 @@ class ArticleController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $slug)
     {
-        return Inertia::render('Article/Show');
+
+        $article = Article::whereSlug($slug)->first();
+
+        return Inertia::render('Article/Show', [
+            "article" => $article
+        ]);
     }
 
     /**
