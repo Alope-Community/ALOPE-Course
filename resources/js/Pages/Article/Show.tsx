@@ -1,10 +1,11 @@
 import BannerHorizontalComponent from '@/Components/Banners/Horizontal';
-import ArticleCardComponent from '@/Components/Cards/Article';
+import ArticleCardComponent from '@/Components/Cards/Articles';
 import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
 import { Head, Link } from '@inertiajs/react';
 
 import { Article } from '@/models/Article';
+import formatDate from '@/tools/formatDate';
 import '../../../css/bodyContent.css';
 
 // const codeBlock = `selector:pseudo-class { property: value; }`;
@@ -30,7 +31,7 @@ export default function ArticleShowPage({ article }: { article: Article }) {
                                     alope.id/articles/css-pseudo-classuuntuk-membuat-website-lebih-interaktif
                                 </span>
                                 <span className="text-gray-700">
-                                    - 25/02/2025, 18:00 WIB
+                                    - {formatDate(article.created_at || '')}
                                 </span>
                             </p>
                             <div className="mb-5 flex gap-2 sm:items-center">
@@ -78,7 +79,7 @@ export default function ArticleShowPage({ article }: { article: Article }) {
                                 </p>
                                 <p>&#128900;</p>
                                 <p className="text-gray-500">
-                                    25 Februari Pukul 18:00
+                                    26 Februari Pukul 13:22
                                 </p>
                             </div>
                             <Link

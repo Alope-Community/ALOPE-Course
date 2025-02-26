@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Article;
 use App\Models\Course;
 use App\Models\Video;
 use Illuminate\Foundation\Application;
@@ -19,9 +20,11 @@ use Inertia\Inertia;
 
 Route::get('/', function () {
     $videos = Video::with(["course.category", "course.hashtags", "course.videos"])->latest('created_at')->get();
+    $articles = Article::latest('created_at')->get();
 
     return Inertia::render('LandingPage', [
-        "videos" => $videos
+        "videos" => $videos,
+        "articles" => $articles,
     ]);
 });
 
@@ -46,4 +49,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

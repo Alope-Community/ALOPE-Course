@@ -1,14 +1,22 @@
 import BadgeComponent from '@/Components/Badge';
 import BannerHorizontalComponent from '@/Components/Banners/Horizontal';
-import ArticleCardComponent from '@/Components/Cards/Article';
+import ArticleCardComponent from '@/Components/Cards/Articles';
+import HorizontalArticleCardComponent from '@/Components/Cards/HorizontalArticle';
+import SimpleArticleCardComponent from '@/Components/Cards/SimpleArticle';
 import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
+import { Article } from '@/models/Article';
+import formatDate from '@/tools/formatDate';
 import { Head, Link } from '@inertiajs/react';
 
 import 'glider-js/glider.min.css';
 import Glider from 'react-glider';
 
-export default function ArticleIndexPage() {
+export default function ArticleIndexPage({
+    articles,
+}: {
+    articles: Article[];
+}) {
     return (
         <>
             <Head title="Articles" />
@@ -103,9 +111,12 @@ export default function ArticleIndexPage() {
                     </header>
                     <BannerHorizontalComponent />
                     <section>
-                        <ArticleCardComponent type="3" />
-                        {/* <ArticleCardComponent type="3" />
-                        <ArticleCardComponent type="3" /> */}
+                        {articles.map((article, index) => (
+                            <HorizontalArticleCardComponent
+                                key={index}
+                                props={article}
+                            />
+                        ))}
                     </section>
                 </section>
                 <aside className="relative hidden lg:block">
@@ -113,22 +124,28 @@ export default function ArticleIndexPage() {
                         <span className="text-gray-500">// </span> Artikel
                         Terbaru
                     </h3>
-                    <div className="mb-5 pl-4 text-sm xl:text-base">
-                        <div className="flex gap-2 text-sm">
-                            <p className="font-semibold text-[#2276f0]">CSS</p>
-                            <p>&#128900;</p>
-                            <p className="text-gray-500">
-                                25 Februari Pukul 18:00
-                            </p>
-                        </div>
-                        <Link
-                            href="/articles/css-pseudo-classuuntuk-membuat-website-lebih-interaktif"
-                            className="relative mt-1 flex font-medium before:absolute before:-left-3.5 before:top-2 before:size-1.5 before:rounded-full before:bg-[#2276f0] before:content-[''] xl:before:size-2"
+                    {articles.map((article, index) => (
+                        <div
+                            key={index}
+                            className="mb-5 pl-4 text-sm xl:text-base"
                         >
-                            CSS Pseudo Class untuk Membuat Website Lebih
-                            Interaktif
-                        </Link>
-                    </div>
+                            <div className="flex gap-2 text-sm">
+                                <p className="font-semibold text-[#2276f0]">
+                                    CSS
+                                </p>
+                                <p>&#128900;</p>
+                                <p className="text-gray-500">
+                                    {formatDate(article.created_at || '')}
+                                </p>
+                            </div>
+                            <Link
+                                href={`/articles/${article.slug}`}
+                                className="relative mt-1 flex font-medium before:absolute before:-left-3.5 before:top-2 before:size-1.5 before:rounded-full before:bg-[#2276f0] before:content-[''] xl:before:size-2"
+                            >
+                                {article.title}
+                            </Link>
+                        </div>
+                    ))}
                     <div className="mb-5 pl-4 text-sm xl:text-base">
                         <div className="flex gap-2 text-sm">
                             <p className="font-semibold text-[#2276f0]">
@@ -148,8 +165,12 @@ export default function ArticleIndexPage() {
                         <h3 className="my-7 text-xl font-bold">
                             <span className="text-gray-500">// </span> Sorotan
                         </h3>
-                        <ArticleCardComponent />
-                        {/* <ArticleCardComponent /> */}
+                        {articles.map((article, index) => (
+                            <SimpleArticleCardComponent
+                                key={index}
+                                props={article}
+                            />
+                        ))}
                     </section>
                 </aside>
             </main>

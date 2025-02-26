@@ -1,15 +1,22 @@
 import AccordionComponent from '@/Components/Accordion';
-import CardComponent from '@/Components/Card';
+import ArticleCardComponent from '@/Components/Cards/Article';
 import VideoCardComponent from '@/Components/Cards/Video';
 import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
+import { Article } from '@/models/Article';
 import { Video } from '@/models/Video';
 import { Head, Link } from '@inertiajs/react';
 
 import 'glider-js/glider.min.css';
 import Glider from 'react-glider';
 
-export default function LandingPage({ videos }: { videos: Video[] }) {
+export default function LandingPage({
+    videos,
+    articles,
+}: {
+    videos: Video[];
+    articles: Article[];
+}) {
     return (
         <>
             <Head title="Welcome" />
@@ -200,39 +207,12 @@ export default function LandingPage({ videos }: { videos: Video[] }) {
                                     }, // Mobile
                                 ]}
                             >
-                                {/* <CardComponent
-                                    type="article"
-                                    addedClass="mr-5"
-                                />
-                                <CardComponent
-                                    type="article"
-                                    addedClass="mr-5"
-                                />
-                                <CardComponent
-                                    type="article"
-                                    addedClass="mr-5"
-                                />
-                                <CardComponent
-                                    type="article"
-                                    addedClass="mr-5"
-                                />
-                                <CardComponent
-                                    type="article"
-                                    addedClass="mr-5"
-                                />
-                                <CardComponent
-                                    type="article"
-                                    addedClass="mr-5"
-                                />
-                                <CardComponent
-                                    type="article"
-                                    addedClass="mr-5"
-                                />
-                                <CardComponent
-                                    type="article"
-                                    addedClass="mr-5"
-                                /> */}
-                                <CardComponent type="article" />
+                                {articles.map((article, index) => (
+                                    <ArticleCardComponent
+                                        key={index}
+                                        props={article}
+                                    />
+                                ))}
                             </Glider>
                             {/* <div className="absolute right-0 top-0 h-full w-24 bg-gradient-to-r from-gray-100/0 to-gray-100 md:w-36"></div> */}
                         </div>
