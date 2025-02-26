@@ -1,3 +1,9 @@
+import {
+    IconBrandDiscord,
+    IconBrandGithub,
+    IconBrandInstagram,
+} from 'justd-icons';
+
 export default function FooterComponent() {
     return (
         <footer className="container mx-auto mt-20 flex flex-wrap gap-10 px-3 py-14 text-center md:px-10 lg:flex-nowrap lg:gap-5 lg:text-left xl:px-0">
@@ -5,11 +11,28 @@ export default function FooterComponent() {
                 <p className="text-3xl font-bold">ALOPE</p>
                 <p>Tempat belajar koding yang menyenangkan!</p>
                 <div className="hidden lg:block">
-                    <img
+                    {/* <img
                         src="/images/contactList.png"
                         alt="contact-list"
                         className="mt-10"
-                    />
+                    /> */}
+                    <div className="mt-5 flex gap-4 text-gray-700">
+                        <a href="https://discord.gg/WV7wAdcp" target="_blank">
+                            <IconBrandDiscord className="size-7" />
+                        </a>
+                        <a
+                            href="https://www.instagram.com/alope.world/"
+                            target="_blank"
+                        >
+                            <IconBrandInstagram className="size-7" />
+                        </a>
+                        <a
+                            href="https://github.com/orgs/Alope-Community/dashboard"
+                            target="_blank"
+                        >
+                            <IconBrandGithub className="size-7" />
+                        </a>
+                    </div>
                     <p className="mt-5">&copy; 2025</p>
                 </div>
             </div>
@@ -120,11 +143,28 @@ export default function FooterComponent() {
                 </div>
             </div>
             <div className="order-4 mx-auto block lg:mx-0 lg:hidden">
-                <img
+                {/* <img
                     src="/images/contactList.png"
                     alt="contact-list"
                     className="mt-10"
-                />
+                /> */}
+                <div className="mt-5 flex gap-4 text-gray-700">
+                    <a href="https://discord.gg/WV7wAdcp" target="_blank">
+                        <IconBrandDiscord className="size-7" />
+                    </a>
+                    <a
+                        href="https://www.instagram.com/alope.world/"
+                        target="_blank"
+                    >
+                        <IconBrandInstagram className="size-7" />
+                    </a>
+                    <a
+                        href="https://github.com/orgs/Alope-Community/dashboard"
+                        target="_blank"
+                    >
+                        <IconBrandGithub className="size-7" />
+                    </a>
+                </div>
                 <p className="mt-5">&copy; 2025</p>
             </div>
         </footer>

@@ -9,7 +9,7 @@ export default function CardComponent({
 }) {
     return type == 'article' ? (
         <Link
-            href="/articles/hello"
+            href="/articles/css-pseudo-classuuntuk-membuat-website-lebih-interaktif"
             className={`overflow-hidden rounded-md bg-gray-50 shadow ${addedClass}`}
         >
             <div className="relative h-[200px]">
@@ -46,7 +46,9 @@ export default function CardComponent({
 
                 <div className="mt-4 flex justify-between text-gray-700">
                     <div>
-                        <small className="text-xs">Pukul 18:00</small>
+                        <small className="text-xs">
+                            25 Februari Pukul 18:00
+                        </small>
                     </div>
                     <div className="flex gap-3">
                         <span className="flex items-center gap-1 text-xs">

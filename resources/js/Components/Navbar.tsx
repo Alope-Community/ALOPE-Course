@@ -12,9 +12,9 @@ export default function NavbarComponent() {
     return (
         <nav className="fixed left-0 right-0 top-0 z-50 px-3 py-3 shadow backdrop-blur-lg md:px-10 md:py-5 xl:px-0">
             <div className="container mx-auto flex justify-between">
-                <div>
+                <Link href="/">
                     <p className="text-xl font-bold md:text-2xl">ALOPE</p>
-                </div>
+                </Link>
                 <div>
                     <ul className="hidden gap-5 md:flex">
                         {navLinks.map((link) => (

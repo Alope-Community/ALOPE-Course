@@ -4,7 +4,7 @@ import VideoCardComponent from '@/Components/Cards/Video';
 import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
 import { Video } from '@/models/Video';
-import { Head } from '@inertiajs/react';
+import { Head, Link } from '@inertiajs/react';
 
 import 'glider-js/glider.min.css';
 import Glider from 'react-glider';
@@ -51,18 +51,24 @@ export default function LandingPage({ videos }: { videos: Video[] }) {
                             secara efektif.
                         </p>
                         <div className="mt-2 flex justify-center gap-5 lg:justify-start xl:mt-14">
-                            <a
+                            {/* <a
                                 href=""
                                 className="rounded-full bg-[#2276f0] px-5 py-2 text-sm font-bold text-white shadow hover:shadow-[#2276f0] active:scale-95 md:px-8 md:py-2.5 md:text-base"
                             >
-                                Daftar Gratis
+                                Subscribe Gratis
                             </a>
-                            <a
-                                href=""
+                            <Link
+                                href="/articles"
                                 className="rounded-full bg-white px-5 py-2 text-sm font-bold text-[#2276f0] shadow hover:shadow-[#2276f0] active:scale-95 md:px-8 md:py-2.5 md:text-base"
                             >
                                 Explore
-                            </a>
+                            </Link> */}
+                            <Link
+                                href="/articles"
+                                className="rounded-full bg-[#2276f0] px-5 py-2 text-sm font-bold text-white shadow hover:shadow-[#2276f0] active:scale-95 md:px-8 md:py-2.5 md:text-base"
+                            >
+                                Explore Gratis
+                            </Link>
                         </div>
                     </div>
                     <div className="relative order-1 lg:order-2 lg:w-1/2">
@@ -248,7 +254,7 @@ export default function LandingPage({ videos }: { videos: Video[] }) {
                 <div className="container mx-auto flex flex-col items-center lg:flex-row">
                     <div className="hidden flex-1 lg:block">
                         <img
-                            src="/images/about.png"
+                            src="/images/about.svg"
                             alt="About 3D"
                             loading="eager"
                         />
