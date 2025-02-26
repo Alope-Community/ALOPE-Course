@@ -230,6 +230,37 @@ export default function LandingPage({
                 />
             </section>
 
+            <section className="container mx-auto my-20 px-3 md:px-10 xl:px-0">
+                <section className="relative flex items-center overflow-hidden rounded-2xl bg-gradient-to-r from-[#040924] to-gray-900 px-6 py-16 text-gray-100 after:absolute after:inset-0 after:z-10 after:bg-[#040924]/80 after:content-[''] md:px-10 lg:overflow-visible lg:after:hidden xl:px-14">
+                    <div className="relative z-20 flex-1 text-center md:text-left">
+                        <h3 className="mb-5 text-xl font-bold md:text-2xl xl:text-3xl">
+                            Gabung "Bootcamp Bersama PBK", Perkuat Fundamental
+                            Skill Web Programming
+                        </h3>
+                        <p className="mb-14 text-xs text-gray-200 md:text-sm xl:text-base">
+                            Belajar dari Dasar hingga Mahir! Bergabunglah dengan
+                            Bootcamp PBK untuk Memperkuat Fundamental Skill Web
+                            Programming dan Siapkan Diri Menjadi Developer
+                            Profesional!
+                        </p>
+
+                        <Link
+                            href="/articles"
+                            className="rounded-full bg-[#2276f0] px-5 py-2 text-sm font-bold text-white shadow hover:shadow-[#2276f0] active:scale-95 md:px-8 md:py-2.5 md:text-base"
+                        >
+                            Coming Soon
+                        </Link>
+                    </div>
+                    <div className="lg:flex-1">
+                        <img
+                            src="/images/rocket.svg"
+                            alt=""
+                            className="absolute right-0 top-0 z-[1] size-[400px] md:-top-12 lg:top-0 lg:size-[450px] xl:-top-14"
+                        />
+                    </div>
+                </section>
+            </section>
+
             <section className="relative px-3 md:px-10 xl:px-0">
                 <div className="container mx-auto flex flex-col items-center lg:flex-row">
                     <div className="hidden flex-1 lg:block">
