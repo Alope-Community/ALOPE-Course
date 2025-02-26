@@ -28,7 +28,7 @@ export default function ArticleShowPage({ article }: { article: Article }) {
                             </h1>
                             <p className="my-3 text-xs text-[#2276f0] sm:text-sm">
                                 <span className="italic underline">
-                                    alope.id/articles/css-pseudo-classuuntuk-membuat-website-lebih-interaktif
+                                    alope.id/articles/{article.slug}
                                 </span>
                                 <span className="text-gray-700">
                                     - {formatDate(article.created_at || '')}

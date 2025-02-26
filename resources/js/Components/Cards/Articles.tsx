@@ -9,7 +9,7 @@ export default function ArticlesCardComponent({
         <>
             {type == '1' ? (
                 <Link
-                    href="articles/css-pseudo-classuuntuk-membuat-website-lebih-interaktif"
+                    href="articles/css-pseudo-class-untuk-membuat-website-lebih-interaktif"
                     className="shadow"
                 >
                     <img
@@ -33,7 +33,7 @@ export default function ArticlesCardComponent({
                 </Link>
             ) : type == '2' ? (
                 <Link
-                    href="articles/css-pseudo-classuuntuk-membuat-website-lebih-interaktif"
+                    href="articles/css-pseudo-class-untuk-membuat-website-lebih-interaktif"
                     className="mr-4"
                 >
                     <img
@@ -59,7 +59,7 @@ export default function ArticlesCardComponent({
                 </Link>
             ) : (
                 <Link
-                    href="articles/css-pseudo-classuuntuk-membuat-website-lebih-interaktif"
+                    href="articles/css-pseudo-class-untuk-membuat-website-lebih-interaktif"
                     className="mb-7 flex flex-col items-center gap-6 sm:mb-5 sm:flex-row"
                 >
                     <img
