@@ -142,7 +142,7 @@ export default function FooterComponent() {
                     </button>
                 </div>
             </div>
-            <div className="order-4 mx-auto block lg:mx-0 lg:hidden">
+            <div className="order-4 mx-auto block w-full lg:mx-0 lg:hidden">
                 {/* <img
                     src="/images/contactList.png"
                     alt="contact-list"

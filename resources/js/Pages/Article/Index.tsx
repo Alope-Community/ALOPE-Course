@@ -25,14 +25,14 @@ export default function ArticleIndexPage({
 
             <img
                 src="/images/shapes/blueBlur1.svg"
-                alt=""
-                className="absolute -right-20 top-0"
+                alt="blueBlur"
+                className="absolute -right-20 top-0 hidden xl:block"
                 loading="lazy"
             />
             <img
                 src="/images/shapes/purpleBlur1.svg"
-                alt=""
-                className="absolute -top-52 left-0"
+                alt="purpleBlur"
+                className="absolute -top-52 left-0 hidden xl:block"
                 loading="lazy"
             />
 
