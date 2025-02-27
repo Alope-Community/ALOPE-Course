@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+div.glider-contain div.glider-track {
+    align-items: flex-start !important;
+}

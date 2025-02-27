@@ -9,19 +9,27 @@ class Course extends Model
 {
     use HasUuids;
 
-    public $incrementing = false; 
-    protected $keyType = 'string'; 
+    public $incrementing = false;
+    protected $keyType = 'string';
 
 
-    public function category(){
+    public function category()
+    {
         return $this->belongsTo(Category::class);
     }
-    
-    public function hashtags(){
+
+    public function hashtags()
+    {
         return $this->belongsToMany(Hashtag::class);
     }
-    
-    public function videos(){
+
+    public function videos()
+    {
         return $this->hasMany(Video::class);
+    }
+
+    public function article()
+    {
+        return $this->hasMany(Article::class);
     }
 }

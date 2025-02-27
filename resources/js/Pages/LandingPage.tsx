@@ -245,7 +245,7 @@ export default function LandingPage({
                         </p>
 
                         <Link
-                            href="/"
+                            href="/articles"
                             className="rounded-full bg-[#2276f0] px-5 py-2 text-sm font-bold text-white shadow hover:shadow-[#2276f0] active:scale-95 md:px-8 md:py-2.5 md:text-base"
                         >
                             Coming Soon
@@ -254,7 +254,7 @@ export default function LandingPage({
                     <div className="lg:flex-1">
                         <img
                             src="/images/rocket.svg"
-                            alt=""
+                            alt="rocket"
                             className="absolute right-0 top-0 z-[1] size-[400px] md:-top-12 lg:top-0 lg:size-[450px] xl:-top-14"
                         />
                     </div>

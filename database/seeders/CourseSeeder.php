@@ -14,13 +14,14 @@ class CourseSeeder extends Seeder
      */
     public function run(): void
     {
-        $category = Category::inRandomOrder()->first(); 
+        $category = Category::inRandomOrder()->first();
 
         if (!$category) {
             return;
         }
 
         $courses = [
+            ['title' => 'LWD PBK', 'description' => 'Belajar Web Programming dengan PBK'],
             ['title' => 'HTML Dasar', 'description' => 'Belajar HTML dari dasar.'],
             ['title' => 'CSS Dasar', 'description' => 'Dasar-dasar CSS untuk pemula.'],
             ['title' => 'CSS Layouting', 'description' => 'Latihan Membuat Website Statis dengan HTML & CSS'],

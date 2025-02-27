@@ -19,7 +19,9 @@ export default function HorizontalArticleCardComponent({
             />
             <div className="mb-5">
                 <div className="my-2 flex gap-2 text-xs xl:text-sm">
-                    <p className="font-semibold text-[#2276f0]">CSS</p>
+                    <p className="font-semibold text-[#2276f0]">
+                        {props.course.title}
+                    </p>
                     <p>&#128900;</p>
                     <p className="text-gray-500">
                         {formatDate(props.created_at || '')}

@@ -8,10 +8,10 @@ import { Article } from '@/models/Article';
 import formatDate from '@/tools/formatDate';
 import '../../../css/bodyContent.css';
 
-// const codeBlock = `selector:pseudo-class { property: value; }`;
+// const codeBlock = ` <a href="https://www.contoh.com">Kunjungi Situs Contoh</a>
+// <a href="#bagian-tertentu">Menuju Bagian Tertentu</a>`;
 
 export default function ArticleShowPage({ article }: { article: Article }) {
-    console.log(article);
     return (
         <>
             <Head title="Article" />
@@ -19,6 +19,37 @@ export default function ArticleShowPage({ article }: { article: Article }) {
             <NavbarComponent />
 
             <section className="container mx-auto px-3 pt-10 sm:pt-24 md:px-10 xl:px-0">
+                {/* <section id="body">
+                    <Highlight
+                        theme={themes.vsDark}
+                        code={codeBlock}
+                        language="css"
+                    >
+                        {({
+                            // className,
+                            style,
+                            tokens,
+                            getLineProps,
+                            getTokenProps,
+                        }) => (
+                            <pre style={style}>
+                                {tokens.map((line, i) => (
+                                    <div key={i} {...getLineProps({ line })}>
+                                        <span>{i + 1}</span>
+                                        {line.map((token, key) => (
+                                            <span
+                                                key={key}
+                                                {...getTokenProps({
+                                                    token,
+                                                })}
+                                            />
+                                        ))}
+                                    </div>
+                                ))}
+                            </pre>
+                        )}
+                    </Highlight>
+                </section> */}
                 <BannerHorizontalComponent />
                 <div className="grid grid-cols-4 gap-8 xl:gap-10">
                     <main className="col-span-4 lg:col-span-3">
