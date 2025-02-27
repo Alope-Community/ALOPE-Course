@@ -6,10 +6,10 @@ import { Head, Link } from '@inertiajs/react';
 
 import { Article } from '@/models/Article';
 import formatDate from '@/tools/formatDate';
+// import { Highlight, themes } from 'prism-react-renderer';
 import '../../../css/bodyContent.css';
 
-// const codeBlock = ` <a href="https://www.contoh.com">Kunjungi Situs Contoh</a>
-// <a href="#bagian-tertentu">Menuju Bagian Tertentu</a>`;
+// const codeBlock = `<p>Ini adalah sebuah paragraph. Teks di dalam elemen ini akan ditampilkan sebagai teks biasa.</p>`;
 
 export default function ArticleShowPage({ article }: { article: Article }) {
     return (
@@ -23,7 +23,7 @@ export default function ArticleShowPage({ article }: { article: Article }) {
                     <Highlight
                         theme={themes.vsDark}
                         code={codeBlock}
-                        language="css"
+                        language="html"
                     >
                         {({
                             // className,
