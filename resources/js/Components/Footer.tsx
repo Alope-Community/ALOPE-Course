@@ -148,7 +148,7 @@ export default function FooterComponent() {
                     alt="contact-list"
                     className="mt-10"
                 /> */}
-                <div className="mt-5 flex gap-4 text-gray-700">
+                <div className="mt-5 flex justify-center gap-4 text-gray-700">
                     <a href="https://discord.gg/WV7wAdcp" target="_blank">
                         <IconBrandDiscord className="size-7" />
                     </a>

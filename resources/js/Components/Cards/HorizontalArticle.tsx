@@ -15,22 +15,22 @@ export default function HorizontalArticleCardComponent({
             <img
                 src={props.cover}
                 alt="article cover"
-                className="h-[200px] w-full rounded object-cover sm:h-[240px] sm:w-[400px]"
+                className="h-[200px] w-full rounded object-cover sm:h-[240px] sm:min-w-[400px]"
             />
             <div className="mb-5">
                 <div className="my-2 flex gap-2 text-xs xl:text-sm">
-                    <p className="font-semibold text-[#2276f0]">
+                    <p className="text-xs font-semibold text-[#2276f0] md:text-sm">
                         {props.course.title}
                     </p>
                     <p>&#128900;</p>
-                    <p className="text-gray-500">
+                    <p className="text-xs text-gray-500 md:text-sm">
                         {formatDate(props.created_at || '')}
                     </p>
                 </div>
                 <h4 className="font-bold sm:text-xl xl:text-2xl">
                     {props.title}
                 </h4>
-                <p className="mt-3 text-xs text-gray-700 sm:text-sm xl:text-base">
+                <p className="mt-3 text-sm text-gray-700 xl:text-base">
                     {props.description}
                 </p>
             </div>

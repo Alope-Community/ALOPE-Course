@@ -41,20 +41,20 @@ export default function ArticleIndexPage({
                 <section className="col-span-4 lg:col-span-3">
                     <header className="relative">
                         <img
-                            src="/images/bootcamp.jpg"
+                            src="https://alope.id/images/banner.png"
                             alt=""
-                            className="h-[300px] w-full rounded object-cover object-center sm:h-[450px] xl:h-[600px]"
+                            className="h-[250px] w-full rounded object-cover object-center sm:h-[450px] xl:h-[600px]"
                         />
                         <div className="-mt-1 rounded-b border border-t-0 border-[#2276f0] p-5">
                             <div className="my-4 flex gap-3 xl:my-7">
                                 <BadgeComponent text="ALOPE x PBK" />
                                 <BadgeComponent text="Web Programming" />
-                                <BadgeComponent text="Coming Soon" />
+                                {/* <BadgeComponent text="Coming Soon" /> */}
                             </div>
                             <h3 className="text-xl font-bold sm:text-2xl xl:text-3xl">
                                 Bootcamp LWD Paguyuban Barudak Komputer
                             </h3>
-                            <p className="mt-3 text-xs text-gray-700 sm:text-sm xl:text-base">
+                            <p className="mt-3 text-sm text-gray-700 sm:text-sm xl:text-base">
                                 Modul ini dirancang untuk membantu kamu menjadi
                                 seorang Fullstack Web Developer dari nol dengan
                                 teknologi HTML, CSS, Bootstrap, PHP, Laravel,

@@ -86,7 +86,7 @@ export default function ArticleShowPage({ article }: { article: Article }) {
                             <img
                                 src={article.cover}
                                 alt="Cover Article"
-                                className="h-[300px] w-full rounded object-cover sm:h-[450px] xl:h-[600px]"
+                                className="h-[300px] w-full rounded object-cover object-[-40px] sm:h-[450px] xl:h-[600px]"
                             />
                         </header>
 
