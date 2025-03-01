@@ -51,9 +51,11 @@ class ArticleController extends Controller
     {
 
         $article = Article::whereSlug($slug)->first();
+        $articles = Article::with("course")->latest()->get();
 
         return Inertia::render('Article/Show', [
-            "article" => $article
+            "article" => $article,
+            "articles" => $articles,
         ]);
     }
 

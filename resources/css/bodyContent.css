@@ -25,6 +25,11 @@
     margin: 1em 0;
 }
 
+#body a {
+    color: #2276f0;
+    text-decoration: underline;
+}
+
 /* Horizontal Rule */
 #body hr {
     display: block;
