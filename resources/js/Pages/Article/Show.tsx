@@ -4,12 +4,12 @@ import NavbarComponent from '@/Components/Navbar';
 import { Head } from '@inertiajs/react';
 
 import { Article } from '@/models/Article';
-import formatDate from '@/tools/formatDate';
-// import { Highlight, themes } from 'prism-react-renderer';
 import SideArticlesSection from '@/Sections/SideArticles';
+import formatDate from '@/tools/formatDate';
+import { Highlight, themes } from 'prism-react-renderer';
 import '../../../css/bodyContent.css';
 
-// const codeBlock = `<p>Ini adalah sebuah paragraph. Teks di dalam elemen ini akan ditampilkan sebagai teks biasa.</p>`;
+const codeBlock = ``;
 
 export default function ArticleShowPage({
     article,
@@ -25,7 +25,7 @@ export default function ArticleShowPage({
             <NavbarComponent />
 
             <section className="container mx-auto px-3 pt-10 sm:pt-24 md:px-10 xl:px-0">
-                {/* <section id="body">
+                <section id="body">
                     <Highlight
                         theme={themes.vsDark}
                         code={codeBlock}
@@ -55,7 +55,7 @@ export default function ArticleShowPage({
                             </pre>
                         )}
                     </Highlight>
-                </section> */}
+                </section>
                 <BannerHorizontalComponent />
                 <div className="grid grid-cols-4 gap-8 xl:gap-10">
                     <main className="col-span-4 lg:col-span-3">
