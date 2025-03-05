@@ -8,22 +8,8 @@ export default function BannerHorizontalComponent() {
             />
             <div className="relative z-10 flex items-center gap-6">
                 <h3 className="text-center text-xl font-semibold sm:text-2xl xl:text-3xl">
-                    Tempatnya Belajar Koding
+                    ALOPE is Amazing!
                 </h3>
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="hidden size-3 sm:block sm:size-5 xl:size-8"
-                >
-                    <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="m8.25 4.5 7.5 7.5-7.5 7.5"
-                    />
-                </svg>
             </div>
         </div>
     );

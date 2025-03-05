@@ -1,12 +1,12 @@
-import BannerHorizontalComponent from '@/Components/Banners/Horizontal';
 import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
 import { Head } from '@inertiajs/react';
 
+import BreadcrumbComponent from '@/Components/Breadcrumb';
 import { Article } from '@/models/Article';
 import SideArticlesSection from '@/Sections/SideArticles';
 import formatDate from '@/tools/formatDate';
-import { Highlight, themes } from 'prism-react-renderer';
+import { IconCalendar } from 'justd-icons';
 import '../../../css/bodyContent.css';
 
 const codeBlock = ``;
@@ -24,8 +24,8 @@ export default function ArticleShowPage({
 
             <NavbarComponent />
 
-            <section className="container mx-auto px-3 pt-10 sm:pt-24 md:px-10 xl:px-0">
-                <section id="body">
+            <section className="container mx-auto px-3 md:px-10 xl:px-0">
+                {/* <section id="body">
                     <Highlight
                         theme={themes.vsDark}
                         code={codeBlock}
@@ -55,23 +55,36 @@ export default function ArticleShowPage({
                             </pre>
                         )}
                     </Highlight>
-                </section>
-                <BannerHorizontalComponent />
-                <div className="grid grid-cols-4 gap-8 xl:gap-10">
+                </section> */}
+                {/* <BannerHorizontalComponent /> */}
+
+                <BreadcrumbComponent
+                    links={[
+                        { title: 'Articles', url: '/articles' },
+                        {
+                            title: article.title,
+                            url: `/articles/${article.slug}`,
+                            active: true,
+                        },
+                    ]}
+                />
+
+                <div className="mt-10 grid grid-cols-4 gap-8 xl:gap-10">
                     <main className="col-span-4 lg:col-span-3">
                         <header>
-                            <h1 className="mb-5 text-xl font-bold sm:text-2xl xl:text-3xl">
+                            <h1 className="mb-2 text-xl font-bold sm:text-2xl xl:text-3xl">
                                 {article.title}
                             </h1>
-                            <p className="my-3 text-xs text-[#2276f0] sm:text-sm">
-                                <span className="italic underline">
+                            <p className="my-3 flex items-center gap-1 text-xs text-[#2276f0] sm:text-sm">
+                                {/* <span className="italic underline">
                                     alope.id/articles/{article.slug}
-                                </span>
+                                </span> */}
+                                <IconCalendar />
                                 <span className="text-gray-700">
-                                    - {formatDate(article.created_at || '')}
+                                    {formatDate(article.created_at || '')}
                                 </span>
                             </p>
-                            <div className="mb-5 flex gap-2 sm:items-center">
+                            <div className="my-7 flex gap-2 sm:items-center">
                                 <div>
                                     <img
                                         src="/images/ilham.jpg"

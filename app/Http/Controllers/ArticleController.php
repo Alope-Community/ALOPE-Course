@@ -11,7 +11,7 @@ class ArticleController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
 
         $articles = Article::with("course")->latest()->get();
