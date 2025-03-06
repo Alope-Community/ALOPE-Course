@@ -13,7 +13,7 @@ export default function NavbarComponent() {
 
     return (
         <>
-            <nav className="max-w-screen fixed left-0 right-0 top-0 z-50 px-3 py-3 shadow backdrop-blur-lg md:px-10 md:py-5 xl:px-7">
+            <nav className="max-w-screen fixed left-0 right-0 top-0 z-50 px-3 py-3 shadow backdrop-blur-lg md:px-10 md:py-5 xl:px-5 2xl:px-2">
                 <div className="container mx-auto flex items-center justify-between">
                     <Link href="/">
                         <p className="text-xl font-bold md:text-2xl">ALOPE</p>

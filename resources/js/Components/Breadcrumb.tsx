@@ -9,7 +9,7 @@ export default function BreadcrumbComponent({
     links: linkBreadcrumb[];
 }) {
     return (
-        <section className="container relative z-20 mx-auto mt-24 flex items-center justify-between rounded px-3 pt-3 md:px-10 xl:px-7">
+        <section className="container relative z-20 mx-auto mt-24 flex items-center justify-between rounded px-3 pt-3 md:px-10 xl:px-5 2xl:px-2">
             <div className="flex items-center gap-3">
                 <Link href="/">
                     <IconHome1 className="size-4 sm:size-5" />

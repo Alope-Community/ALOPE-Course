@@ -15,7 +15,7 @@ export default function HorizontalArticleCardComponent({
             <img
                 src={props.cover}
                 alt="article cover"
-                className="h-[200px] w-full rounded object-cover sm:h-[240px] sm:w-[400px] sm:min-w-[400px] sm:max-w-[400px]"
+                className="h-[200px] w-full rounded object-cover object-left sm:h-[240px] sm:w-[400px] sm:min-w-[400px] sm:max-w-[400px] lg:w-[300px] lg:min-w-[300px] lg:max-w-[300px] xl:w-[400px] xl:min-w-[400px] xl:max-w-[400px]"
             />
             <div className="mb-5">
                 <div className="my-2 flex gap-2 text-xs xl:text-sm">

@@ -35,7 +35,7 @@ export default function ArticleShowPage({
                 ]}
             />
 
-            <section className="container mx-auto px-3 md:px-10 xl:px-7">
+            <section className="container mx-auto px-3 md:px-10 xl:px-5 2xl:px-2">
                 {/* <section id="body" className="mt-20">
                     <Highlight
                         theme={themes.vsDark}

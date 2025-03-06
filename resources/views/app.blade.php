@@ -37,7 +37,7 @@
             }
         </style>
     </head>
-    <body class="font-sans antialiased bg-gray-100 max-w-screen overflow-x-hidden">
+    <body class="font-sans antialiased bg-gray-100 max-w-screen overflow-x-hidden relative">
         @inertia
     </body>
 </html>

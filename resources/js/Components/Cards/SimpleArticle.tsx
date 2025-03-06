@@ -9,8 +9,6 @@ export default function SimpleArticleCardComponent({
     props: Article;
     withoutBorder?: boolean;
 }) {
-    console.log(props.slug);
-
     return (
         <Link
             href={`/articles/${props.slug}`}
@@ -19,17 +17,17 @@ export default function SimpleArticleCardComponent({
             <img
                 src={props.cover}
                 alt="article cover"
-                className="h-[150px] w-full rounded object-cover object-left xl:h-[200px]"
+                className="h-[150px] w-full rounded object-cover object-left 2xl:h-[200px]"
             />
             <div
-                className={`-mt-1 rounded-b text-sm xl:text-base ${!withoutBorder ? 'border border-t-0 border-[#2276f0] p-4 xl:p-5' : 'px-1 py-2 xl:py-4'}`}
+                className={`-mt-1 rounded-b text-sm xl:text-base ${!withoutBorder ? 'border border-t-0 border-[#2276f0] p-4 2xl:p-5' : 'px-1 py-2 xl:py-4'}`}
             >
-                <div className="mb-2 flex flex-col gap-1 text-sm md:flex-row md:gap-2">
-                    <p className="text-xs font-semibold text-[#2276f0] md:text-sm">
+                <div className="mb-2 flex flex-col gap-1 text-sm xl:flex-row xl:gap-2">
+                    <p className="text-xs font-semibold text-[#2276f0] xl:text-sm">
                         {props.course.title}
                     </p>
-                    <p className="hidden md:block">&#128900;</p>
-                    <p className="text-xs text-gray-500 md:text-sm">
+                    <p className="hidden xl:block">&#128900;</p>
+                    <p className="text-xs text-gray-500 xl:text-sm">
                         {formatDate(props.created_at || '')}
                     </p>
                 </div>
