@@ -9,9 +9,11 @@ export default function SimpleArticleCardComponent({
     props: Article;
     withoutBorder?: boolean;
 }) {
+    console.log(props.slug);
+
     return (
         <Link
-            href={`articles/${props.slug}`}
+            href={`/articles/${props.slug}`}
             className={`${!withoutBorder && 'shadow'} mr-5`}
         >
             <img

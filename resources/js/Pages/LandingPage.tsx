@@ -42,14 +42,16 @@ export default function LandingPage({
                     className="absolute -bottom-[400px] left-0"
                     loading="lazy"
                 />
-                <div className="container relative z-10 mx-auto flex flex-col items-center justify-between px-3 md:px-10 lg:flex-row xl:px-0">
+                <div className="container relative z-10 mx-auto flex flex-col items-center justify-between px-3 md:px-10 lg:flex-row xl:px-7">
                     <div className="order-2 lg:order-1 lg:w-1/2">
-                        <h1 className="mb-4 text-center text-3xl font-semibold leading-snug md:text-4xl lg:text-left xl:text-6xl">
+                        <h1 className="mb-4 text-center text-3xl font-medium leading-snug md:text-4xl lg:text-left xl:text-6xl">
                             Upgrade <br className="hidden lg:block" />
-                            <span className="font-bold text-[#2276f0]">
-                                Skill Koding{' '}
+                            <span className="mt-3 block">
+                                <span className="font-bold text-[#2276f0]">
+                                    Skill Koding{' '}
+                                </span>
+                                disini!
                             </span>
-                            disini!
                         </h1>
                         <p className="mx-auto mb-6 mt-3 w-full text-center text-sm md:mx-0 md:mb-10 md:w-[90%] md:text-base lg:text-left xl:w-[85%] xl:text-xl">
                             Belajar coding dari nol hingga mahir dengan panduan
@@ -106,7 +108,7 @@ export default function LandingPage({
                 </div>
             </header>
 
-            <section className="relative mb-20 gap-10 px-3 md:px-10 xl:px-0">
+            <section className="relative mb-20 gap-10 px-3 md:px-10 xl:px-7">
                 <div className="container mx-auto">
                     <div className="mb-20">
                         <div className="mb-5">
@@ -230,7 +232,7 @@ export default function LandingPage({
                 />
             </section>
 
-            <section className="container mx-auto my-20 px-3 md:px-10 xl:px-0">
+            <section className="container mx-auto my-20 px-3 md:px-10 xl:px-7">
                 <section className="relative flex items-center overflow-hidden rounded-2xl bg-gradient-to-r from-[#040924] to-gray-900 px-6 py-16 text-gray-100 after:absolute after:inset-0 after:z-10 after:bg-[#040924]/80 after:content-[''] md:px-10 lg:overflow-visible lg:after:hidden xl:px-14">
                     <div className="relative z-20 flex-1 text-center md:text-left">
                         <h3 className="mb-5 text-xl font-bold md:text-2xl xl:text-3xl">
@@ -261,7 +263,7 @@ export default function LandingPage({
                 </section>
             </section>
 
-            <section className="relative px-3 md:px-10 xl:px-0">
+            <section className="relative px-3 md:px-10 xl:px-7">
                 <div className="container mx-auto flex flex-col items-center lg:flex-row">
                     <div className="hidden flex-1 lg:block">
                         <img

@@ -9,18 +9,20 @@ export default function BreadcrumbComponent({
     links: linkBreadcrumb[];
 }) {
     return (
-        <section className="container relative z-20 mx-auto mt-24 flex items-center justify-between rounded px-3 pt-3 md:px-10 xl:px-0">
+        <section className="container relative z-20 mx-auto mt-24 flex items-center justify-between rounded px-3 pt-3 md:px-10 xl:px-7">
             <div className="flex items-center gap-3">
                 <Link href="/">
-                    <IconHome1 className="size-5" />
+                    <IconHome1 className="size-4 sm:size-5" />
                 </Link>
 
                 {links.map((link) => (
                     <>
-                        <span className="text-gray-400">\</span>
+                        <span className="text-xs text-gray-400 sm:text-sm">
+                            \
+                        </span>
                         <Link
                             href={link.url}
-                            className={`font-medium ${link.active ? 'text-[#2c7cf1]' : 'text-gray-600'}`}
+                            className={`text-xs font-medium sm:text-sm ${link.active ? 'text-[#2c7cf1]' : 'text-gray-600'}`}
                         >
                             {link.title}
                         </Link>

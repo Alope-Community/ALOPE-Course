@@ -6,7 +6,7 @@ import {
 
 export default function FooterComponent() {
     return (
-        <footer className="container mx-auto mt-20 flex flex-wrap gap-10 px-3 py-14 text-center md:px-10 lg:flex-nowrap lg:gap-5 lg:text-left xl:px-0">
+        <footer className="container mx-auto mt-20 flex flex-wrap gap-10 px-3 py-14 text-center md:px-10 lg:flex-nowrap lg:gap-5 lg:text-left xl:px-7">
             <div className="order-1 w-full lg:w-1/4">
                 <p className="text-3xl font-bold">ALOPE</p>
                 <p>Tempat belajar koding yang menyenangkan!</p>

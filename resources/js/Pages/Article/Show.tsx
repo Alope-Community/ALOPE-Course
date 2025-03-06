@@ -9,7 +9,7 @@ import formatDate from '@/tools/formatDate';
 import { IconCalendar } from 'justd-icons';
 import '../../../css/bodyContent.css';
 
-const codeBlock = ``;
+const codeBlock = `<input type="text" placeholder="Masukkan nama">`;
 
 export default function ArticleShowPage({
     article,
@@ -24,8 +24,19 @@ export default function ArticleShowPage({
 
             <NavbarComponent />
 
-            <section className="container mx-auto px-3 md:px-10 xl:px-0">
-                {/* <section id="body">
+            <BreadcrumbComponent
+                links={[
+                    { title: 'Articles', url: '/articles' },
+                    {
+                        title: 'Article Detail',
+                        url: `/articles/${article.slug}`,
+                        active: true,
+                    },
+                ]}
+            />
+
+            <section className="container mx-auto px-3 md:px-10 xl:px-7">
+                {/* <section id="body" className="mt-20">
                     <Highlight
                         theme={themes.vsDark}
                         code={codeBlock}
@@ -57,17 +68,6 @@ export default function ArticleShowPage({
                     </Highlight>
                 </section> */}
                 {/* <BannerHorizontalComponent /> */}
-
-                <BreadcrumbComponent
-                    links={[
-                        { title: 'Articles', url: '/articles' },
-                        {
-                            title: article.title,
-                            url: `/articles/${article.slug}`,
-                            active: true,
-                        },
-                    ]}
-                />
 
                 <div className="mt-10 grid grid-cols-4 gap-8 xl:gap-10">
                     <main className="col-span-4 lg:col-span-3">
