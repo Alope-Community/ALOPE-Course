@@ -28,7 +28,11 @@ Route::get('/', function () {
     ]);
 });
 
-Route::resource('/articles', ArticleController::class);;
+Route::get('/coming-soon', function () {
+    return Inertia::render('Informational/ComingSoon');
+});
+
+Route::resource('/articles', ArticleController::class);
 
 Route::get('/test-api/courses', function () {
     $courses = Course::with(["category", "hashtags", "videos"])->get();

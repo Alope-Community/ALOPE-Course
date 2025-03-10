@@ -8,7 +8,7 @@ export default function NavbarComponent() {
     const navLinks = [
         { name: 'Home', href: '/' },
         { name: 'Article', href: '/articles' },
-        { name: 'Video', href: '/videos' },
+        { name: 'Video', href: '/coming-soon' },
     ];
 
     return (
