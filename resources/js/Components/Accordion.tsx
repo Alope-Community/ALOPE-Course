@@ -36,28 +36,33 @@ const AccordionComponent = () => {
         {
             title: 'Apa itu ALOPE?',
             content:
-                'ALOPE adalah platform kursus programming online yang menyediakan materi interaktif dan gratis bagi pemula maupun profesional. Kami bertujuan untuk membantu semua orang belajar coding dengan mudah.',
+                'ALOPE adalah sebuah komunitas programming yang memiliki visi untuk berbagi ilmu dan pengalaman seputar coding, dengan tujuan menciptakan lingkungan belajar yang inklusif dan mendukung bagi siapa saja yang ingin mengembangkan keterampilan di bidang pemrograman khususnya bagi pemula.',
         },
         {
             title: 'Apa keunggulan belajar di ALOPE?',
             content:
-                'ALOPE menawarkan kursus interaktif, proyek langsung, komunitas aktif, serta 80% materi gratis untuk memastikan setiap orang memiliki akses ke pendidikan berkualitas.',
+                'Keunggulan belajar di ALOPE adalah tersedianya berbagai artikel tutorial yang dilengkapi dengan video pembelajaran interaktif serta soal berbasis studi kasus untuk mengasah pemahaman secara langsung. Selain itu, ALOPE juga memiliki komunitas aktif di Discord, di mana para anggota dapat berdiskusi, berbagi ilmu, dan saling membantu dalam perjalanan belajar coding mereka.',
         },
         {
             title: 'Apa saja bahasa pemrograman yang diajarkan?',
             content:
-                'Kami menyediakan kursus untuk berbagai bahasa pemrograman seperti JavaScript, Python, Golang, serta framework populer seperti React dan Laravel.',
+                'Saat ini, ALOPE fokus mengajarkan web programming, termasuk HTML, CSS, JavaScript, serta framework seperti React dan Laravel. Namun, kami terbuka untuk berkembang ke bidang lain seperti IoT atau mobile development. Jika Anda memiliki keahlian di bidang tersebut dan tertarik untuk berbagi ilmu, kami mengundang Anda untuk bergabung sebagai mentor dan membantu lebih banyak orang belajar!',
         },
         {
-            title: 'Apakah ALOPE memiliki sertifikasi?',
+            title: 'Apakah saya perlu memiliki pengalaman sebelumnya untuk mulai belajar?',
             content:
-                'Ya, ALOPE memberikan sertifikasi resmi bagi peserta yang menyelesaikan kursus dan proyek akhir, yang dapat digunakan untuk melamar pekerjaan di industri teknologi.',
+                'Tidak perlu! Kami menyediakan materi yang dirancang untuk pemula dari nol, tetapi juga tersedia materi lanjutan bagi yang sudah memiliki pengalaman.',
         },
-        {
-            title: 'Bagaimana cara bergabung dengan ALOPE?',
-            content:
-                'Anda bisa bergabung dengan ALOPE dengan mendaftar di website resmi kami. Setelah mendaftar, Anda bisa langsung mengakses kursus gratis dan bergabung dengan komunitas kami.',
-        },
+        // {
+        //     title: 'Apakah ALOPE memiliki sertifikasi?',
+        //     content:
+        //         'Ya, ALOPE memberikan sertifikasi resmi bagi peserta yang menyelesaikan kursus dan proyek akhir, yang dapat digunakan untuk melamar pekerjaan di industri teknologi.',
+        // },
+        // {
+        //     title: 'Bagaimana cara bergabung dengan ALOPE?',
+        //     content:
+        //         'Anda bisa bergabung dengan ALOPE dengan mendaftar di website resmi kami. Setelah mendaftar, Anda bisa langsung mengakses kursus gratis dan bergabung dengan komunitas kami.',
+        // },
     ];
 
     const [activeIndex, setActiveIndex] = useState<number | null>(null);
