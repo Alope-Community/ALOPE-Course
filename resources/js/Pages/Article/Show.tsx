@@ -116,6 +116,12 @@ export default function ArticleShowPage({
                                 __html: article.body,
                             }}
                         ></section>
+
+                        <video
+                            src="/videos/pendahuluanHTML.mp4"
+                            controls
+                            className="w-full"
+                        ></video>
                     </main>
                     <SideArticlesSection articles={articles} />
                 </div>
