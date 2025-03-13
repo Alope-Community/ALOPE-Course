@@ -7,9 +7,42 @@ import { Article } from '@/models/Article';
 import SideArticlesSection from '@/Sections/SideArticles';
 import formatDate from '@/tools/formatDate';
 import { IconCalendar } from 'justd-icons';
+// import { Highlight, themes } from 'prism-react-renderer';
 import '../../../css/bodyContent.css';
 
-const codeBlock = `<input type="text" placeholder="Masukkan nama">`;
+// const codeBlock = `<form action="/submit" method="post">
+//     <label for="nama">Nama:</label><br>
+//     <input type="text" id="nama" name="nama"><br><br>
+
+//     <label for="email">Email:</label><br>
+//     <input type="email" id="email" name="email"><br><br>
+
+//     <label for="password">Password:</label><br>
+//     <input type="password" id="password" name="password"><br><br>
+
+//     <label for="gender">Jenis Kelamin:</label><br>
+//     <input type="radio" id="male" name="gender" value="Laki-laki">
+//     <label for="male">Laki-laki</label>
+//     <input type="radio" id="female" name="gender" value="Perempuan">
+//     <label for="female">Perempuan</label><br><br>
+
+//     <label for="hobby">Hobi:</label><br>
+//     <input type="checkbox" id="hobby1" name="hobby" value="Membaca">
+//     <label for="hobby1">Membaca</label>
+//     <input type="checkbox" id="hobby2" name="hobby" value="Olahraga">
+//     <label for="hobby2">Olahraga</label><br><br>
+
+//     <label for="birthdate">Tanggal Lahir:</label><br>
+//     <input type="date" id="birthdate" name="birthdate"><br><br>
+
+//     <label for="file">Upload Dokumen:</label><br>
+//     <input type="file" id="file" name="file"><br><br>
+
+//     <button type="submit">Kirim</button>
+//     <button type="reset">Reset</button>
+// </form>`;
+// const codeBlock = `<p class="paragraf-utama">Ini adalah paragraf utama.</p>
+// <div id="sidebar">Ini adalah sidebar.</div>`;
 
 export default function ArticleShowPage({
     article,
@@ -116,12 +149,6 @@ export default function ArticleShowPage({
                                 __html: article.body,
                             }}
                         ></section>
-
-                        <video
-                            src="/videos/pendahuluanHTML.mp4"
-                            controls
-                            className="w-full"
-                        ></video>
                     </main>
                     <SideArticlesSection articles={articles} />
                 </div>
