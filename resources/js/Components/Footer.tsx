@@ -174,18 +174,24 @@ export default function FooterComponent() {
                 <p>Tempat belajar koding yang menyenangkan!</p>
                 <div className="text-center">
                     <div className="mt-5 flex justify-center gap-4 text-gray-700">
-                        <a href="https://discord.gg/WV7wAdcp" target="_blank">
+                        <a
+                            href="https://discord.gg/WV7wAdcp"
+                            target="_blank"
+                            aria-label="Join our Discord community"
+                        >
                             <IconBrandDiscord className="size-7" />
                         </a>
                         <a
                             href="https://www.instagram.com/alope.world/"
                             target="_blank"
+                            aria-label="Follow our Instagram"
                         >
                             <IconBrandInstagram className="size-7" />
                         </a>
                         <a
                             href="https://github.com/orgs/Alope-Community/dashboard"
                             target="_blank"
+                            aria-label="See our Github community"
                         >
                             <IconBrandGithub className="size-7" />
                         </a>

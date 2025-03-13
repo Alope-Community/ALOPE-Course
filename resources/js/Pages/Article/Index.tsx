@@ -75,7 +75,7 @@ export default function ArticleIndexPage({
                             <header className="relative">
                                 <img
                                     src="https://alope.id/images/banner.png"
-                                    alt=""
+                                    alt="pbk x alope banner"
                                     className="h-[250px] w-full rounded object-cover object-center sm:h-[450px] xl:h-[600px]"
                                 />
                                 <div className="-mt-1 rounded-b border border-t-0 border-[#2276f0] p-5">

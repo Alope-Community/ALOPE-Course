@@ -5,19 +5,19 @@ export default function ComingSoonPage() {
         <main className="relative flex h-screen max-h-screen w-full items-center justify-center overflow-y-hidden">
             <img
                 src="/images/shapes/blueBlur1.svg"
-                alt=""
+                alt="blue blur"
                 className="absolute left-0 top-0"
                 loading="lazy"
             />
             <img
                 src="/images/shapes/yellowBlur1.svg"
-                alt=""
+                alt="yellow blur"
                 className="absolute right-0 top-0"
                 loading="lazy"
             />
             <img
                 src="/images/shapes/purpleBlur1.svg"
-                alt=""
+                alt="purple blur"
                 className="absolute -bottom-[400px] left-0"
                 loading="lazy"
             />

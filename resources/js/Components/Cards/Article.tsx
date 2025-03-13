@@ -14,6 +14,8 @@ export default function ArticleCardComponent({ props }: { props: Article }) {
                     src={props.cover}
                     alt="cover article"
                     className="h-full w-full object-cover"
+                    width={1280}
+                    height={720}
                 />
                 <span className="absolute bottom-2 left-2 rounded bg-gray-800/80 p-1">
                     <svg
@@ -33,7 +35,7 @@ export default function ArticleCardComponent({ props }: { props: Article }) {
                 </span>
             </div>
             <div className="rounded-b-md border border-t-0 border-[#2276f0] p-3">
-                <h4 className="font-semibold">{props.title}</h4>
+                <p className="font-semibold">{props.title}</p>
                 <p className="mt-1 text-sm text-gray-800">
                     {strLimit(props.description, 100)}
                 </p>

@@ -40,7 +40,7 @@ export default function VideoCardComponent({
                 <small className="text-xs italic text-[#2276f0]">
                     #web-programming
                 </small>
-                <h4 className="mt-2 font-semibold">{title}</h4>
+                <p className="mt-2 font-semibold">{title}</p>
                 <p className="mt-1 text-xs text-gray-800">
                     <span className="font-medium">{course_name}</span>
                     {' - '}

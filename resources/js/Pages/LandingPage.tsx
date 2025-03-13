@@ -1,6 +1,5 @@
 import AccordionComponent from '@/Components/Accordion';
 import ArticleCardComponent from '@/Components/Cards/Article';
-import VideoCardComponent from '@/Components/Cards/Video';
 import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
 import { Article } from '@/models/Article';
@@ -26,19 +25,19 @@ export default function LandingPage({
             <header className="relative min-h-[800px] pt-16">
                 <img
                     src="/images/shapes/blueBlur1.svg"
-                    alt=""
+                    alt="blue blur"
                     className="absolute left-0 top-0"
                     loading="lazy"
                 />
                 <img
                     src="/images/shapes/yellowBlur1.svg"
-                    alt=""
+                    alt="blue blur"
                     className="absolute right-0 top-0"
                     loading="lazy"
                 />
                 <img
                     src="/images/shapes/purpleBlur1.svg"
-                    alt=""
+                    alt="blue blur"
                     className="absolute -bottom-[400px] left-0"
                     loading="lazy"
                 />
@@ -83,26 +82,28 @@ export default function LandingPage({
                     <div className="relative order-1 lg:order-2 lg:w-1/2">
                         <img
                             src="/images/shapes/purpleText.svg"
-                            alt=""
+                            alt="purple text"
                             className="absolute bottom-24 left-2 w-[120px] md:bottom-1/3 md:left-32 md:w-[170px] lg:hidden xl:left-24 xl:block xl:w-auto"
                             loading="lazy"
                         />
                         <img
                             src="/images/shapes/yellowText.svg"
-                            alt=""
+                            alt="yellow text"
                             className="absolute right-3 top-24 w-[110px] md:right-32 md:top-24 md:w-[150px] lg:hidden xl:right-20 xl:top-40 xl:block xl:w-auto"
                             loading="lazy"
                         />
                         <img
                             src="/images/shapes/blueText.svg"
-                            alt=""
+                            alt="blue text"
                             className="absolute bottom-[40%] right-4 w-[110px] md:bottom-28 md:right-36 md:w-[150px] lg:hidden xl:bottom-[40%] xl:right-32 xl:block xl:w-auto"
                             loading="lazy"
                         />
                         <img
                             src="/images/header.png"
-                            alt=""
+                            alt="alope mascot"
                             className="mx-auto w-full md:w-[60%] lg:w-full"
+                            width={760}
+                            height={760}
                         />
                     </div>
                 </div>
@@ -110,7 +111,7 @@ export default function LandingPage({
 
             <section className="relative mb-20 gap-10 px-3 md:px-10 xl:px-5 2xl:px-2">
                 <div className="container mx-auto">
-                    <div className="mb-20">
+                    {/* <div className="mb-20">
                         <div className="mb-5">
                             <h2 className="text-xl font-semibold md:text-2xl">
                                 <span className="text-gray-400">//</span> Tonton
@@ -164,9 +165,8 @@ export default function LandingPage({
                                     </div>
                                 ))}
                             </Glider>
-                            {/* <div className="absolute right-0 top-0 h-full w-32 bg-gradient-to-r from-gray-100/0 to-white/90 md:w-36"></div> */}
                         </div>
-                    </div>
+                    </div> */}
 
                     <div className="mb-10">
                         <div className="mb-5">
@@ -224,11 +224,13 @@ export default function LandingPage({
                     src="/images/shapes/blueBlur2.svg"
                     className="absolute -bottom-96 right-0 -z-10"
                     loading="lazy"
+                    alt="blue blur"
                 />
                 <img
                     src="/images/shapes/yellowBlur2.svg"
                     className="absolute -bottom-96 left-0 -z-10"
                     loading="lazy"
+                    alt="yellow blur"
                 />
             </section>
 
@@ -282,6 +284,7 @@ export default function LandingPage({
                     src="/images/shapes/purpleBlur2.svg"
                     className="absolute -bottom-64 left-0 -z-10 md:-bottom-96"
                     loading="lazy"
+                    alt="purple blur"
                 />
             </section>
 

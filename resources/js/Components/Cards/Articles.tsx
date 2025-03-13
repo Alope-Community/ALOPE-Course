@@ -14,8 +14,10 @@ export default function ArticlesCardComponent({
                 >
                     <img
                         src="https://images.unsplash.com/photo-1505685296765-3a2736de412f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                        alt=""
+                        alt="card img"
                         className="h-[150px] w-full rounded object-cover xl:h-[200px]"
+                        width={1280}
+                        height={720}
                     />
                     <div className="-mt-1 mb-5 rounded-b border border-t-0 border-[#2276f0] p-4 text-sm xl:p-5 xl:text-base">
                         <div className="mb-2 flex gap-2 text-sm">
@@ -38,8 +40,10 @@ export default function ArticlesCardComponent({
                 >
                     <img
                         src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                        alt=""
+                        alt="card img"
                         className="h-[150px] w-full rounded object-cover sm:h-[170px]"
+                        width={1280}
+                        height={720}
                     />
                     <div className="mb-5">
                         <div className="my-2 flex gap-2 text-xs sm:text-sm">
@@ -64,8 +68,10 @@ export default function ArticlesCardComponent({
                 >
                     <img
                         src="https://images.unsplash.com/photo-1505685296765-3a2736de412f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                        alt=""
+                        alt="card img"
                         className="h-[200px] w-full rounded object-cover sm:h-[240px] sm:w-[400px]"
+                        width={1280}
+                        height={720}
                     />
                     <div className="mb-5">
                         <div className="my-2 flex gap-2 text-xs xl:text-sm">

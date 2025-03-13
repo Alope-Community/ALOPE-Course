@@ -18,6 +18,8 @@ export default function SimpleArticleCardComponent({
                 src={props.cover}
                 alt="article cover"
                 className="h-[150px] w-full rounded object-cover object-left 2xl:h-[200px]"
+                width={1280}
+                height={720}
             />
             <div
                 className={`-mt-1 rounded-b text-sm xl:text-base ${!withoutBorder ? 'border border-t-0 border-[#2276f0] p-4 2xl:p-5' : 'px-1 py-2 xl:py-4'}`}

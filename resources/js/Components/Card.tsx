@@ -15,7 +15,7 @@ export default function CardComponent({
             <div className="relative h-[200px]">
                 <img
                     src="https://images.unsplash.com/photo-1505685296765-3a2736de412f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    alt=""
+                    alt="card img"
                     className="h-full w-full object-cover"
                 />
                 <span className="absolute bottom-2 left-2 rounded bg-gray-800/80 p-1">
@@ -93,7 +93,7 @@ export default function CardComponent({
             <div className="relative h-[200px]">
                 <img
                     src="https://images.unsplash.com/photo-1737741276705-569ebd946f5b?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    alt=""
+                    alt="card img"
                     className="h-full w-full object-cover"
                 />
                 <span className="absolute bottom-2 left-2 rounded bg-gray-800/80 p-1">

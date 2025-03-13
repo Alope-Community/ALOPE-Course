@@ -3,13 +3,15 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="ALOPE adalah platform belajar coding online yang menyediakan 80% materi gratis, membantu mereka yang kurang beruntung untuk mengejar karier di bidang teknologi. Bergabunglah dengan komunitas yang berdedikasi untuk pengembangan logika dan algoritma.">
 
         <title inertia>{{ config('app.name', 'ALOPE COURSE') }}</title>
 
-        <!-- Fonts -->
+        {{-- FONT --}}
         <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" media="print" onload="this.media='all'">
+
 
         <!-- Scripts -->
         @routes
@@ -28,6 +30,9 @@
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
         <link rel="manifest" href="/site.webmanifest">
+
+        {{-- preload --}}
+        <link rel="preload" as="image" href="/images/header.png" type="image/png" />
 
         <style>
             * {
