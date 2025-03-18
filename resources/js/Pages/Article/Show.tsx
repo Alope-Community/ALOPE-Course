@@ -136,15 +136,16 @@ export default function ArticleShowPage({
                                 </div>
                             </div>
                             <img
-                                src={article.cover}
+                                // src={article.cover}
+                                src={'https://alope.id/images/thumbs/lwd2.png'}
                                 alt="Cover Article"
-                                className="h-[300px] w-full rounded object-cover object-[-40px] sm:h-[450px] xl:h-[600px]"
+                                className="max-h-[300px] w-full rounded object-contain sm:max-h-[450px] lg:object-cover xl:max-h-[600px]"
                             />
                         </header>
 
                         <section
                             id="body"
-                            className="mt-10"
+                            className="mt-5"
                             dangerouslySetInnerHTML={{
                                 __html: article.body,
                             }}

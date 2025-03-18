@@ -17,7 +17,7 @@ export default function SimpleArticleCardComponent({
             <img
                 src={props.cover}
                 alt="article cover"
-                className="h-[150px] w-full rounded object-cover object-left 2xl:h-[200px]"
+                className="max-h-[150px] w-full rounded 2xl:max-h-[200px]"
                 width={1280}
                 height={720}
             />

@@ -9,13 +9,13 @@ export default function ArticleCardComponent({ props }: { props: Article }) {
             href={`/articles/${props.slug}`}
             className={`mr-5 overflow-hidden rounded-md bg-gray-50 shadow`}
         >
-            <div className="relative h-[200px]">
+            <div className="relative">
                 <img
                     src={props.cover}
                     alt="cover article"
-                    className="h-full w-full object-cover"
+                    className="w-full"
                     width={1280}
-                    height={720}
+                    // height={720}
                 />
                 <span className="absolute bottom-2 left-2 rounded bg-gray-800/80 p-1">
                     <svg

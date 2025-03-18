@@ -10,12 +10,12 @@ export default function HorizontalArticleCardComponent({
     return (
         <Link
             href={`articles/${props.slug}`}
-            className="mb-7 flex flex-col items-center gap-6 sm:mb-5 sm:flex-row"
+            className="mb-7 flex flex-col items-center gap-5 sm:mb-5 sm:flex-row"
         >
             <img
                 src={props.cover}
                 alt="article cover"
-                className="h-[200px] w-full rounded object-cover object-left sm:h-[240px] sm:w-[400px] sm:min-w-[400px] sm:max-w-[400px] lg:w-[300px] lg:min-w-[300px] lg:max-w-[300px] xl:w-[400px] xl:min-w-[400px] xl:max-w-[400px]"
+                className="w-full rounded object-contain object-left sm:w-[400px] sm:min-w-[400px] sm:max-w-[400px] lg:w-[300px] lg:min-w-[300px] lg:max-w-[300px] xl:w-[400px] xl:min-w-[400px] xl:max-w-[400px]"
                 width={1280}
                 height={720}
             />
