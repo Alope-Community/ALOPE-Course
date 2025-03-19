@@ -15,7 +15,7 @@ export default function ArticleCardComponent({ props }: { props: Article }) {
                     alt="cover article"
                     className="w-full"
                     width={1280}
-                    // height={720}
+                    height={720}
                 />
                 <span className="absolute bottom-2 left-2 rounded bg-gray-800/80 p-1">
                     <svg

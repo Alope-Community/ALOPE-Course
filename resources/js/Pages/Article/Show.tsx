@@ -136,8 +136,8 @@ export default function ArticleShowPage({
                                 </div>
                             </div>
                             <img
-                                // src={article.cover}
-                                src={'https://alope.id/images/thumbs/lwd2.png'}
+                                src={article.cover}
+                                // src={'https://alope.id/images/thumbs/lwd2.png'}
                                 alt="Cover Article"
                                 className="max-h-[300px] w-full rounded object-contain sm:max-h-[450px] lg:object-cover xl:max-h-[600px]"
                             />
