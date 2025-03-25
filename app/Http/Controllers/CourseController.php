@@ -17,7 +17,7 @@ class CourseController extends Controller
 
         $courses = Course::with(['articles' => function ($query) {
             $query->latest();
-        }])->latest()->get();
+        }, 'hashtags'])->latest()->get();
 
         $articles = Article::with("course")->wherePublished(true)->latest()->get();
 

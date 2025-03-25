@@ -46,15 +46,18 @@ export default function CourseIndex({
                     {courses.map((course, index) => (
                         <div key={index} className="relative mb-6">
                             <img
-                                src="https://alope.id/images/banner.png"
-                                alt="pbk x alope banner"
+                                src={course.cover}
+                                alt={`Banner ${course.title}`}
                                 className="h-[250px] w-full rounded object-cover object-center sm:h-[450px] xl:h-[600px]"
                             />
                             <div className="-mt-1 rounded-b border border-t-0 border-[#2276f0] p-5">
                                 <div className="my-4 flex gap-3 xl:my-7">
-                                    <BadgeComponent text="ALOPE x PBK" />
-                                    <BadgeComponent text="Web Programming" />
-                                    {/* <BadgeComponent text="Coming Soon" /> */}
+                                    {course.hashtags.map((hashtag, index) => (
+                                        <BadgeComponent
+                                            key={index}
+                                            text={hashtag.name}
+                                        />
+                                    ))}
                                 </div>
                                 <h3 className="text-xl font-bold sm:text-2xl xl:text-3xl">
                                     {course.title}
