@@ -1,6 +1,7 @@
 import SimpleArticleCardComponent from '@/Components/Cards/SimpleArticle';
 import { Article } from '@/models/Article';
 import formatDate from '@/tools/formatDate';
+import strLimit from '@/tools/strLimit';
 import { Link } from '@inertiajs/react';
 
 export default function SideArticlesSection({
@@ -21,8 +22,11 @@ export default function SideArticlesSection({
                             className="mb-5 pl-4 text-sm xl:text-base"
                         >
                             <div className="flex gap-2 text-sm">
-                                <p className="font-semibold text-[#2276f0]">
-                                    CSS
+                                <p
+                                    className="font-semibold text-[#2276f0]"
+                                    title={article.course.title}
+                                >
+                                    {strLimit(article.course.title, 15)}
                                 </p>
                                 <p>&#128900;</p>
                                 <p className="text-gray-500">
