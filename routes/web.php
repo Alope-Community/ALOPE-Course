@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Article;
 use App\Models\Course;
@@ -33,6 +34,7 @@ Route::get('/coming-soon', function () {
 });
 
 Route::resource('/articles', ArticleController::class);
+Route::resource('/courses', CourseController::class);
 
 Route::get('/test-api/courses', function () {
     $courses = Course::with(["category", "hashtags", "videos"])->get();

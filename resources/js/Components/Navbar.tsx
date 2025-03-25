@@ -7,6 +7,7 @@ export default function NavbarComponent() {
 
     const navLinks = [
         { name: 'Home', href: '/' },
+        { name: 'Course', href: '/courses' },
         { name: 'Article', href: '/articles' },
         { name: 'Video', href: '/coming-soon' },
     ];
