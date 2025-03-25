@@ -3,6 +3,7 @@ import ArticleCardComponent from '@/Components/Cards/Article';
 import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
 import { Article } from '@/models/Article';
+import { Course } from '@/models/Course';
 import { Video } from '@/models/Video';
 import { Head, Link } from '@inertiajs/react';
 
@@ -10,9 +11,11 @@ import 'glider-js/glider.min.css';
 import Glider from 'react-glider';
 
 export default function LandingPage({
+    courses,
     videos,
     articles,
 }: {
+    courses: Course[];
     videos: Video[];
     articles: Article[];
 }) {
@@ -167,6 +170,84 @@ export default function LandingPage({
                             </Glider>
                         </div>
                     </div> */}
+
+                    <div className="mb-10">
+                        <div className="mb-5">
+                            <h2 className="text-xl font-semibold md:text-2xl">
+                                <span className="text-gray-400">//</span> Lihat
+                                Pelajaran-pelajaran untuk Upgrade Skill
+                            </h2>
+                        </div>
+                        <div className="relative">
+                            <Glider
+                                draggable
+                                slidesToShow={4.5}
+                                slidesToScroll={1}
+                                // hasArrows
+                                dragVelocity={1.5}
+                                responsive={[
+                                    {
+                                        breakpoint: 1536,
+                                        settings: { slidesToShow: 4.5 },
+                                    }, // Desktop
+                                    {
+                                        breakpoint: 1280,
+                                        settings: { slidesToShow: 3.6 },
+                                    }, // Desktop
+                                    {
+                                        breakpoint: 1024,
+                                        settings: { slidesToShow: 2.8 },
+                                    }, // Desktop
+                                    {
+                                        breakpoint: 768,
+                                        settings: { slidesToShow: 2.3 },
+                                    }, // Tablet
+                                    {
+                                        breakpoint: 375,
+                                        settings: { slidesToShow: 1.3 },
+                                    }, // Mobile
+                                    {
+                                        breakpoint: 100,
+                                        settings: { slidesToShow: 1.1 },
+                                    }, // Mobile
+                                ]}
+                            >
+                                {courses.map((course, index) => (
+                                    <Link
+                                        href="/courses"
+                                        key={index}
+                                        className={`mr-5 overflow-hidden rounded-md bg-gray-50 shadow`}
+                                    >
+                                        <img
+                                            src={course.cover}
+                                            alt="course cover"
+                                            className="max-h-[150px] w-full rounded 2xl:max-h-[200px]"
+                                            width={1280}
+                                            height={720}
+                                        />
+                                        <div className="rounded-b-md border border-t-0 border-[#2276f0] px-3 pb-3 pt-2">
+                                            <small className="text-xs italic text-[#2276f0]">
+                                                #web-programing
+                                            </small>
+                                            <p className="mt-2 font-semibold">
+                                                {course.title}
+                                            </p>
+                                            <div className="mt-1 flex items-center gap-2">
+                                                <p className="text-xs font-medium italic">
+                                                    On Going
+                                                </p>
+                                                <p className="text-xs">-</p>
+                                                <p className="mt-1 text-xs text-gray-800">
+                                                    {course.articles.length}{' '}
+                                                    Total Articles
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </Link>
+                                ))}
+                            </Glider>
+                        </div>
+                    </div>
 
                     <div className="mb-10">
                         <div className="mb-5">

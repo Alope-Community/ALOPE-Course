@@ -20,12 +20,14 @@ use Inertia\Inertia;
 // });
 
 Route::get('/', function () {
+    $courses = Course::with(["articles"])->latest()->get();
     $videos = Video::with(["course.category", "course.hashtags", "course.videos"])->latest('created_at')->get();
     $articles = Article::latest('created_at')->get();
 
     return Inertia::render('LandingPage', [
         "videos" => $videos,
         "articles" => $articles,
+        "courses" => $courses,
     ]);
 });
 
