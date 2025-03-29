@@ -46,9 +46,22 @@ class CourseController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $slug)
     {
-        //
+        $course = Course::with(['articles' => function ($query) {
+            $query->latest();
+        }, 'hashtags'])->whereSlug($slug)->first();
+
+        $courses = Course::with(['articles' => function ($query) {
+            $query->latest();
+        }, 'hashtags'])->where('slug', '!=', $slug)->latest()->get();
+
+        // $articles = Article::with("course")->wherePublished(true)->latest()->get();
+
+        return Inertia::render('Course/Show', [
+            "course" => $course,
+            "courses" => $courses,
+        ]);
     }
 
     /**

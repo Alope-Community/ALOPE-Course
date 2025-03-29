@@ -1,5 +1,6 @@
 import { Article } from '@/models/Article';
 import formatDate from '@/tools/formatDate';
+import strLimit from '@/tools/strLimit';
 import { Link } from '@inertiajs/react';
 
 export default function SimpleArticleCardComponent({
@@ -27,8 +28,11 @@ export default function SimpleArticleCardComponent({
                 <div className="mb-2 flex flex-col gap-1 text-sm xl:flex-row xl:gap-2">
                     {props.course ? (
                         <>
-                            <p className="text-xs font-semibold text-[#2276f0] xl:text-sm">
-                                {props.course.title}
+                            <p
+                                className="text-xs font-semibold text-[#2276f0] xl:text-sm"
+                                title={props.course.title}
+                            >
+                                {strLimit(props.course.title, 15)}
                             </p>
                             <p className="hidden xl:block">&#128900;</p>
                         </>

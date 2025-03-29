@@ -9,7 +9,7 @@ export default function HorizontalArticleCardComponent({
 }) {
     return (
         <Link
-            href={`articles/${props.slug}`}
+            href={`/articles/${props.slug}`}
             className="mb-7 flex flex-col items-center gap-5 sm:mb-5 sm:flex-row"
         >
             <img
@@ -20,18 +20,29 @@ export default function HorizontalArticleCardComponent({
                 height={720}
             />
             <div className="mb-5">
-                <div className="my-2 flex gap-2 text-xs xl:text-sm">
-                    <p className="text-xs font-semibold text-[#2276f0] md:text-sm">
-                        {props.course.title}
-                    </p>
-                    <p>&#128900;</p>
-                    <p className="text-xs text-gray-500 md:text-sm">
-                        {formatDate(props.created_at || '')}
-                    </p>
-                </div>
+                {props.course ? (
+                    <div className="my-2 flex gap-2 text-xs xl:text-sm">
+                        <p className="text-xs font-semibold text-[#2276f0] md:text-sm">
+                            {props.course.title}
+                        </p>
+                        <p>&#128900;</p>
+                        <p className="text-xs text-gray-500 md:text-sm">
+                            {formatDate(props.created_at || '')}
+                        </p>
+                    </div>
+                ) : (
+                    ''
+                )}
                 <p className="font-bold sm:text-xl xl:text-2xl">
                     {props.title}
                 </p>
+                {!props.course ? (
+                    <p className="mt-2 text-xs text-gray-500 md:text-sm">
+                        {formatDate(props.created_at || '')}
+                    </p>
+                ) : (
+                    ''
+                )}
                 <p className="mt-3 text-sm text-gray-700 xl:text-base">
                     {props.description}
                 </p>

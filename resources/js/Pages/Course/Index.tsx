@@ -6,18 +6,16 @@ import NavbarComponent from '@/Components/Navbar';
 import { Article } from '@/models/Article';
 import { Course } from '@/models/Course';
 import SideArticlesSection from '@/Sections/SideArticles';
-import { Head } from '@inertiajs/react';
+import { Head, Link } from '@inertiajs/react';
 import Glider from 'react-glider';
 
-export default function CourseIndex({
+export default function CourseIndexPage({
     courses,
     articles,
 }: {
     courses: Course[];
     articles: Article[];
 }) {
-    console.log(courses);
-
     return (
         <>
             <Head title="Courses" />
@@ -50,7 +48,7 @@ export default function CourseIndex({
                                 alt={`Banner ${course.title}`}
                                 className="h-[250px] w-full rounded object-cover object-center sm:h-[450px] xl:h-[600px]"
                             />
-                            <div className="-mt-1 rounded-b border border-t-0 border-[#2276f0] p-5">
+                            <div className="-mt-1 overflow-hidden rounded-b border border-t-0 border-[#2276f0] p-5">
                                 <div className="my-4 flex gap-3 xl:my-7">
                                     {course.hashtags.map((hashtag, index) => (
                                         <BadgeComponent
@@ -59,12 +57,14 @@ export default function CourseIndex({
                                         />
                                     ))}
                                 </div>
-                                <h3 className="text-xl font-bold sm:text-2xl xl:text-3xl">
-                                    {course.title}
-                                </h3>
-                                <p className="mt-3 text-sm text-gray-700 sm:text-sm xl:text-base">
-                                    {course.description}
-                                </p>
+                                <Link href={`/courses/${course.slug}`}>
+                                    <h3 className="text-xl font-bold sm:text-2xl xl:text-3xl">
+                                        {course.title}
+                                    </h3>
+                                    <p className="mt-3 text-sm text-gray-700 sm:text-sm xl:text-base">
+                                        {course.description}
+                                    </p>
+                                </Link>
 
                                 <h3 className="mb-7 mt-6 font-bold sm:text-xl">
                                     <span className="text-gray-500">// </span>{' '}

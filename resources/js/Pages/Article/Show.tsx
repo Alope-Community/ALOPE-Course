@@ -8,9 +8,13 @@ import SideArticlesSection from '@/Sections/SideArticles';
 import formatDate from '@/tools/formatDate';
 import { IconCalendar } from 'justd-icons';
 // import { Highlight, themes } from 'prism-react-renderer';
+// import { Highlight, themes } from 'prism-react-renderer';
+import strLimit from '@/tools/strLimit';
 import '../../../css/bodyContent.css';
 
-// const codeBlock = `<div class="container">Ini adalah contoh elemen dengan width 80%.</div>`;
+// const codeBlock = `<div class="box">
+//   Contoh Box Model dengan Margin, Padding, dan Border
+// </div>`;
 
 export default function ArticleShowPage({
     article,
@@ -29,7 +33,7 @@ export default function ArticleShowPage({
                 links={[
                     { title: 'Articles', url: '/articles' },
                     {
-                        title: 'Article Detail',
+                        title: strLimit(article.title, 20),
                         url: `/articles/${article.slug}`,
                         active: true,
                     },

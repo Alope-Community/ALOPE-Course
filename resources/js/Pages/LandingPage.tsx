@@ -214,7 +214,7 @@ export default function LandingPage({
                             >
                                 {courses.map((course, index) => (
                                     <Link
-                                        href="/courses"
+                                        href={`/courses/${course.slug}`}
                                         key={index}
                                         className={`mr-5 overflow-hidden rounded-md bg-gray-50 shadow`}
                                     >
@@ -330,7 +330,7 @@ export default function LandingPage({
                         </p>
 
                         <Link
-                            href="/courses"
+                            href="/courses/lwd-pbk"
                             className="rounded-full bg-[#2276f0] px-5 py-2 text-sm font-bold text-white shadow hover:shadow-[#2276f0] active:scale-95 md:px-8 md:py-2.5 md:text-base"
                         >
                             Mulai Belajar
