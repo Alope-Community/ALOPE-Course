@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Read;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -49,6 +50,12 @@ class ArticleController extends Controller
 
         $article = Article::whereSlug($slug)->first();
         $articles = Article::with("course")->where('slug', '!=', $slug)->latest()->get();
+
+        Read::create([
+            "user_id" => 1,
+            "article_id" => $article->id,
+            "created_at" => now()
+        ]);
 
         return Inertia::render('Article/Show', [
             "article" => $article,

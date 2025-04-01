@@ -61,9 +61,9 @@ export default function ArticleCardComponent({ props }: { props: Article }) {
                                     clipRule="evenodd"
                                 />
                             </svg>
-                            ?
+                            {props.reads.length}
                         </span>
-                        <span className="flex items-center gap-1 text-xs">
+                        {/* <span className="flex items-center gap-1 text-xs">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 24 24"
@@ -77,7 +77,7 @@ export default function ArticleCardComponent({ props }: { props: Article }) {
                                 />
                             </svg>
                             ?
-                        </span>
+                        </span> */}
                     </div>
                 </div>
             </div>
