@@ -116,16 +116,18 @@ export default function LoginPage() {
     };
     return (
         <main className="flex">
-            <div className="flex flex-1 flex-col items-center justify-center">
+            <div className="flex min-h-screen flex-1 flex-col items-center justify-center px-5 lg:px-10">
                 {/* <div className="absolute top-20 text-center">
                     <h2 className="text-2xl font-semibold">Login</h2>
                 </div> */}
 
-                <form onSubmit={submit} className="w-2/3">
+                <form onSubmit={submit} className="w-full lg:w-2/3">
                     <div className="mb-16">
-                        <h2 className="text-4xl font-semibold">Login</h2>
+                        <h2 className="text-3xl font-semibold md:text-4xl">
+                            Login
+                        </h2>
                         <p className="mt-1 text-gray-800">
-                            lorem ipsum sit dolor amet.
+                            Alope is your learning partner.
                         </p>
                     </div>
                     <div className="mb-5">
@@ -182,7 +184,7 @@ export default function LoginPage() {
                     </p>
                 </div>
             </div>
-            <div className="min-h-screen flex-[1.5] bg-[url(https://images.unsplash.com/photo-1547082299-de196ea013d6?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)] bg-cover"></div>
+            <div className="hidden min-h-screen flex-1 bg-[url(https://images.unsplash.com/photo-1547082299-de196ea013d6?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)] bg-cover lg:block xl:flex-[1.5]"></div>
         </main>
     );
 }
