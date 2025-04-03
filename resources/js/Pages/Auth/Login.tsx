@@ -1,4 +1,5 @@
 import { Link, useForm } from '@inertiajs/react';
+import { IconLoader2 } from 'justd-icons';
 import { FormEventHandler } from 'react';
 
 // export default function Login({
@@ -104,13 +105,10 @@ export default function LoginPage() {
     const { data, setData, post, processing, errors, reset } = useForm({
         email: '',
         password: '',
-        remember: false,
     });
 
     const submit: FormEventHandler = (e) => {
         e.preventDefault();
-
-        console.log(data);
 
         post(route('login'), {
             onFinish: () => reset('password'),
@@ -140,6 +138,11 @@ export default function LoginPage() {
                             className="w-full rounded border border-gray-200"
                             onChange={(e) => setData('email', e.target.value)}
                         />
+                        {errors.email && (
+                            <p className="text-sm text-red-500">
+                                {errors.email}
+                            </p>
+                        )}
                     </div>
                     <div className="mb-5">
                         <label htmlFor="password" className="block">
@@ -153,9 +156,15 @@ export default function LoginPage() {
                                 setData('password', e.target.value)
                             }
                         />
+                        {errors.password && (
+                            <p className="text-sm text-red-500">
+                                {errors.password}
+                            </p>
+                        )}
                     </div>
                     <div>
-                        <button className="w-full rounded bg-[#2276f0] py-2 text-white hover:bg-[#2276f0]/80">
+                        <button className="flex w-full items-center justify-center gap-2 rounded bg-[#2276f0] py-2 text-white hover:bg-[#2276f0]/80">
+                            {processing && <IconLoader2 />}
                             Submit
                         </button>
                         <p className="mt-3 text-center text-sm text-gray-700">

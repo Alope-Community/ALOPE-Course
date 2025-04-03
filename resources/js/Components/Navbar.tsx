@@ -1,9 +1,15 @@
 import { Link, usePage } from '@inertiajs/react';
+import { IconCirclePersonFill, IconHamburger } from 'justd-icons';
 import { useState } from 'react';
 
 export default function NavbarComponent() {
-    const { url } = usePage();
+    const { url, props } = usePage();
+    const { auth } = props;
+
+    console.log(auth);
+
     const [isOpen, setIsOpen] = useState(false);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     const navLinks = [
         { name: 'Home', href: '/' },
@@ -24,30 +30,17 @@ export default function NavbarComponent() {
                             onClick={() => setIsOpen(!isOpen)}
                             className="flex"
                         >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                strokeWidth={1.5}
-                                stroke="currentColor"
-                                className="size-6"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                                />
-                            </svg>
+                            <IconHamburger />
                         </button>
                     </div>
-                    <ul className="hidden gap-5 md:flex">
+                    <ul className="hidden items-center gap-5 md:flex">
                         {navLinks.map((link) => (
                             <li key={link.href}>
                                 <Link
                                     href={link.href}
                                     className={`${
                                         link.href === '/'
-                                            ? url === '/' // Hanya aktif jika benar-benar di "/"
+                                            ? url === '/'
                                                 ? 'font-semibold text-[#2276f0]'
                                                 : ''
                                             : url.startsWith(link.href)
@@ -59,14 +52,55 @@ export default function NavbarComponent() {
                                 </Link>
                             </li>
                         ))}
-                        <li>
-                            <Link
-                                href="/login"
-                                className="rounded-full bg-[#2276f0] px-5 py-1.5 text-white hover:bg-[#2276f0]/80"
-                            >
-                                Login
-                            </Link>
-                        </li>
+                        <li className="mx-6 text-gray-700">|</li>
+                        {auth.user ? (
+                            <li className="relative">
+                                <button
+                                    onClick={() =>
+                                        setIsDropdownOpen(!isDropdownOpen)
+                                    }
+                                    className={`flex items-center gap-2 rounded-lg px-2 py-1 hover:bg-[#2276f0] hover:text-white ${isDropdownOpen && 'bg-[#2276f0] text-white'}`}
+                                >
+                                    <IconCirclePersonFill className="size-5" />
+                                    <span>{auth.user.name}</span>
+                                </button>
+
+                                {isDropdownOpen && (
+                                    <div className="absolute right-0 mt-2 w-48 rounded-lg bg-white py-2 shadow-lg">
+                                        {/* <Link
+                                            href="/dashboard"
+                                            className="block px-4 py-2 hover:bg-gray-100"
+                                        >
+                                            Dashboard
+                                        </Link>
+                                        <Link
+                                            href="/profile"
+                                            className="block px-4 py-2 hover:bg-gray-100"
+                                        >
+                                            Profile
+                                        </Link>
+                                        <hr className="my-2" /> */}
+                                        <Link
+                                            href="/logout"
+                                            method="post"
+                                            as="button"
+                                            className="block w-full px-4 py-2 text-left text-red-600 hover:bg-gray-100"
+                                        >
+                                            Logout
+                                        </Link>
+                                    </div>
+                                )}
+                            </li>
+                        ) : (
+                            <li>
+                                <Link
+                                    href="/login"
+                                    className="rounded-full bg-[#2276f0] px-5 py-1.5 text-white hover:bg-[#2276f0]/80"
+                                >
+                                    Login
+                                </Link>
+                            </li>
+                        )}
                     </ul>
                 </div>
             </nav>
@@ -103,9 +137,22 @@ export default function NavbarComponent() {
                             </Link>
                         </li>
                     ))}
-                    <li>
-                        <Link href="/login">Login</Link>
-                    </li>
+                    {auth.user ? (
+                        <li>
+                            <Link
+                                href="/logout"
+                                method="post"
+                                as="button"
+                                className="text-red-500"
+                            >
+                                Logout
+                            </Link>
+                        </li>
+                    ) : (
+                        <li>
+                            <Link href="/login">Login</Link>
+                        </li>
+                    )}
                 </ul>
             </aside>
 
@@ -114,6 +161,14 @@ export default function NavbarComponent() {
                 <div
                     className="fixed inset-0 z-30 bg-black bg-opacity-50 backdrop-blur md:hidden"
                     onClick={() => setIsOpen(false)}
+                ></div>
+            )}
+
+            {/* Add click outside handler for dropdown */}
+            {isDropdownOpen && (
+                <div
+                    className="fixed inset-0 z-40"
+                    onClick={() => setIsDropdownOpen(false)}
                 ></div>
             )}
         </>
