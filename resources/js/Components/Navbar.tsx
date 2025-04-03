@@ -59,6 +59,14 @@ export default function NavbarComponent() {
                                 </Link>
                             </li>
                         ))}
+                        <li>
+                            <Link
+                                href="/login"
+                                className="rounded-full bg-[#2276f0] px-5 py-1.5 text-white hover:bg-[#2276f0]/80"
+                            >
+                                Login
+                            </Link>
+                        </li>
                     </ul>
                 </div>
             </nav>
@@ -95,6 +103,9 @@ export default function NavbarComponent() {
                             </Link>
                         </li>
                     ))}
+                    <li>
+                        <Link href="/login">Login</Link>
+                    </li>
                 </ul>
             </aside>
 
