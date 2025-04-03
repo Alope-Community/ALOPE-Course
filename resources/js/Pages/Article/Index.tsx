@@ -51,7 +51,7 @@ export default function ArticleIndexPage({
             <img
                 src="/images/shapes/blueBlur2.svg"
                 alt="blueBlur"
-                className="absolute -right-20 top-0 hidden xl:block"
+                className="absolute right-0 top-0 hidden xl:block"
                 loading="lazy"
             />
             <img
