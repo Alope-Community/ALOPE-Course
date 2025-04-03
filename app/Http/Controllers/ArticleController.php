@@ -51,11 +51,26 @@ class ArticleController extends Controller
         $article = Article::whereSlug($slug)->first();
         $articles = Article::with("course")->where('slug', '!=', $slug)->latest()->get();
 
-        Read::create([
-            "user_id" => 1,
-            "article_id" => $article->id,
-            "created_at" => now()
-        ]);
+        if(auth()->user()) {
+            $existingRead = Read::where('user_id', auth()->user()->id)
+                ->where('article_id', $article->id)
+                ->whereDate('created_at', today())
+                ->first();
+
+            if (!$existingRead) {
+                Read::create([
+                    "user_id" => auth()->user()->id,
+                    "article_id" => $article->id,
+                    "created_at" => now()
+                ]);
+            }
+        } else{
+            Read::create([
+                "user_id" => 1,
+                "article_id" => $article->id,
+                "created_at" => now()
+            ]);
+        }
 
         return Inertia::render('Article/Show', [
             "article" => $article,
