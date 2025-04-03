@@ -112,6 +112,12 @@ export default function LoginPage() {
 
         post(route('login'), {
             onFinish: () => reset('password'),
+            preserveScroll: true,
+            preserveState: true,
+            replace: true,
+            onSuccess: () => {
+                window.location.href = '/';
+            },
         });
     };
     return (

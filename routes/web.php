@@ -29,7 +29,7 @@ Route::get('/', function () {
         "articles" => $articles,
         "courses" => $courses,
     ]);
-});
+})->name("home");
 
 Route::get('/coming-soon', function () {
     return Inertia::render('Informational/ComingSoon');
