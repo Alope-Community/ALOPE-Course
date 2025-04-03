@@ -1,12 +1,13 @@
-import { Link, usePage } from '@inertiajs/react';
+import { Link, useForm, usePage } from '@inertiajs/react';
 import { IconCirclePersonFill, IconHamburger } from 'justd-icons';
 import { useState } from 'react';
+import toast from 'react-hot-toast';
 
 export default function NavbarComponent() {
     const { url, props } = usePage();
     const { auth } = props;
 
-    console.log(auth);
+    const { post } = useForm();
 
     const [isOpen, setIsOpen] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -17,6 +18,38 @@ export default function NavbarComponent() {
         { name: 'Article', href: '/articles' },
         { name: 'Video', href: '/coming-soon' },
     ];
+
+    const handleLogout = () => {
+        toast((t) => (
+            <div className="flex flex-col gap-4">
+                <p>Apakah yakin ingin logout?</p>
+                <div className="flex justify-end gap-2">
+                    <button
+                        className="rounded bg-gray-200 px-3 py-1 text-sm"
+                        onClick={() => toast.dismiss(t.id)}
+                    >
+                        Batal
+                    </button>
+                    <button
+                        className="rounded bg-red-500 px-3 py-1 text-sm text-white"
+                        onClick={() => {
+                            post(route('logout'), {
+                                onSuccess: () => {
+                                    toast.success('Logged out successfully');
+                                },
+                                onError: () => {
+                                    toast.error('Failed to logout');
+                                },
+                            });
+                            toast.dismiss(t.id);
+                        }}
+                    >
+                        Logout
+                    </button>
+                </div>
+            </div>
+        ));
+    };
 
     return (
         <>
@@ -80,14 +113,12 @@ export default function NavbarComponent() {
                                             Profile
                                         </Link>
                                         <hr className="my-2" /> */}
-                                        <Link
-                                            href="/logout"
-                                            method="post"
-                                            as="button"
+                                        <button
                                             className="block w-full px-4 py-2 text-left text-red-600 hover:bg-gray-100"
+                                            onClick={() => handleLogout()}
                                         >
                                             Logout
-                                        </Link>
+                                        </button>
                                     </div>
                                 )}
                             </li>
@@ -139,14 +170,12 @@ export default function NavbarComponent() {
                     ))}
                     {auth.user ? (
                         <li>
-                            <Link
-                                href="/logout"
-                                method="post"
-                                as="button"
-                                className="text-red-500"
+                            <button
+                                className="text-red-600"
+                                onClick={() => handleLogout()}
                             >
                                 Logout
-                            </Link>
+                            </button>
                         </li>
                     ) : (
                         <li>

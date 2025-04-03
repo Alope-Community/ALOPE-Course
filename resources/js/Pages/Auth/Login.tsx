@@ -1,6 +1,7 @@
 import { Link, useForm } from '@inertiajs/react';
 import { IconLoader2 } from 'justd-icons';
 import { FormEventHandler } from 'react';
+import toast from 'react-hot-toast';
 
 // export default function Login({
 //     status,
@@ -116,7 +117,15 @@ export default function LoginPage() {
             preserveState: true,
             replace: true,
             onSuccess: () => {
-                window.location.href = '/';
+                toast.success('Login successful!');
+                // window.location.href = '/';
+            },
+            onError: (errors) => {
+                if (errors.email || errors.password) {
+                    toast.error('Invalid credentials');
+                } else {
+                    toast.error('Something went wrong');
+                }
             },
         });
     };

@@ -9,6 +9,7 @@ import { Head, Link } from '@inertiajs/react';
 
 import 'glider-js/glider.min.css';
 import Glider from 'react-glider';
+import { Toaster } from 'react-hot-toast';
 
 export default function LandingPage({
     courses,
@@ -22,6 +23,13 @@ export default function LandingPage({
     return (
         <>
             <Head title="Welcome" />
+
+            <Toaster
+                position="top-center"
+                toastOptions={{
+                    duration: 2000,
+                }}
+            />
 
             <NavbarComponent />
 
