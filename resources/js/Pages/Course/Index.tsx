@@ -6,6 +6,7 @@ import NavbarComponent from '@/Components/Navbar';
 import { Article } from '@/models/Article';
 import { Course } from '@/models/Course';
 import SideArticlesSection from '@/Sections/SideArticles';
+import formatDate from '@/tools/formatDate';
 import { Head, Link } from '@inertiajs/react';
 import Glider from 'react-glider';
 
@@ -16,6 +17,8 @@ export default function CourseIndexPage({
     courses: Course[];
     articles: Article[];
 }) {
+    console.log(courses);
+
     return (
         <>
             <Head title="Courses" />
@@ -123,6 +126,106 @@ export default function CourseIndexPage({
                                         </p>
                                     )}
                                 </Glider>
+
+                                {course.quizzes.length ? (
+                                    <>
+                                        <h3 className="mb-7 mt-6 font-bold sm:text-xl">
+                                            <span className="text-gray-500">
+                                                //{' '}
+                                            </span>{' '}
+                                            Quiz
+                                        </h3>
+                                        <Glider
+                                            draggable
+                                            slidesToShow={4.5}
+                                            slidesToScroll={1}
+                                            // hasArrows
+                                            dragVelocity={1.5}
+                                            responsive={[
+                                                {
+                                                    breakpoint: 1536,
+                                                    settings: {
+                                                        slidesToShow: 3.6,
+                                                    },
+                                                }, // Desktop
+                                                {
+                                                    breakpoint: 1280,
+                                                    settings: {
+                                                        slidesToShow: 3.3,
+                                                    },
+                                                }, // Desktop
+                                                {
+                                                    breakpoint: 1024,
+                                                    settings: {
+                                                        slidesToShow: 2.5,
+                                                    },
+                                                }, // Desktop
+                                                {
+                                                    breakpoint: 769,
+                                                    settings: {
+                                                        slidesToShow: 2.8,
+                                                    },
+                                                }, // Tablet
+                                                {
+                                                    breakpoint: 450,
+                                                    settings: {
+                                                        slidesToShow: 2.5,
+                                                    },
+                                                }, // Mobile
+                                                {
+                                                    breakpoint: 375,
+                                                    settings: {
+                                                        slidesToShow: 1.5,
+                                                    },
+                                                }, // Mobile
+                                                {
+                                                    breakpoint: 100,
+                                                    settings: {
+                                                        slidesToShow: 1.2,
+                                                    },
+                                                }, // Mobile
+                                            ]}
+                                        >
+                                            {course.quizzes.length ? (
+                                                course.quizzes.map(
+                                                    (quiz, index) => (
+                                                        <Link
+                                                            key={index}
+                                                            href={`/articles/${quiz.slug}`}
+                                                        >
+                                                            <img
+                                                                src={quiz.cover}
+                                                                alt="article cover"
+                                                                className="max-h-[150px] w-full rounded 2xl:max-h-[200px]"
+                                                                width={1280}
+                                                                height={720}
+                                                            />
+                                                            <div
+                                                                className={`-mt-1 rounded-b text-sm xl:text-base`}
+                                                            >
+                                                                <p className="mb-2 mt-3 text-xs text-gray-500 xl:text-sm">
+                                                                    {formatDate(
+                                                                        quiz.created_at ||
+                                                                            '',
+                                                                    )}
+                                                                </p>
+                                                                <p className="relative flex font-medium">
+                                                                    {quiz.title}
+                                                                </p>
+                                                            </div>
+                                                        </Link>
+                                                    ),
+                                                )
+                                            ) : (
+                                                <p className="italic text-gray-700">
+                                                    Belum ada artikel terkait
+                                                </p>
+                                            )}
+                                        </Glider>
+                                    </>
+                                ) : (
+                                    ''
+                                )}
                             </div>
                         </div>
                     ))}

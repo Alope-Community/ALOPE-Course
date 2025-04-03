@@ -15,9 +15,15 @@ class CourseController extends Controller
     public function index(Request $request)
     {
 
-        $courses = Course::with(['articles' => function ($query) {
-            $query->latest();
-        }, 'hashtags'])->latest()->get();
+        $courses = Course::with([
+            'articles' => function ($query) {
+                $query->latest();
+            }, 
+            'quizzes' => function ($query) {
+                $query->latest();
+            }, 
+            'hashtags'
+        ])->latest()->get();
 
         $articles = Article::with("course")->wherePublished(true)->latest()->get();
 

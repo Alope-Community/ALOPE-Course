@@ -1,6 +1,7 @@
 import { Article } from './Article';
 import { Category } from './Category';
 import { Hashtag } from './Hashtag';
+import { Quiz } from './Quiz';
 import { Video } from './Video';
 
 export type Course = {
@@ -16,6 +17,7 @@ export type Course = {
     articles: Article[];
     videos: Video[];
     category: Category;
+    quizzes: Quiz[];
 
     created_at?: string;
     updated_at?: string;
