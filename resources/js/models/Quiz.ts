@@ -6,6 +6,22 @@ export type Quiz = {
     course_id: string;
     description: string;
 
+    questions?: Question[];
+
+    created_at?: string;
+    updated_at?: string;
+};
+
+export type Question = {
+    id: string;
+    option1?: string;
+    option2?: string;
+    option3?: string;
+    option4?: string;
+    correct_answer?: string;
+    question: string;
+    quiz_id: string;
+
     created_at?: string;
     updated_at?: string;
 };

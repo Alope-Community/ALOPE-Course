@@ -191,7 +191,7 @@ export default function CourseIndexPage({
                                                     (quiz, index) => (
                                                         <Link
                                                             key={index}
-                                                            href={`/articles/${quiz.slug}`}
+                                                            href={`/quizzes/${quiz.slug}`}
                                                         >
                                                             <img
                                                                 src={quiz.cover}

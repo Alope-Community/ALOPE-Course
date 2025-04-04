@@ -13,8 +13,6 @@ export default function CourseShowPage({
     course: Course;
     courses: Course[];
 }) {
-    console.log(course);
-
     return (
         <>
             <Head title="Courses" />
