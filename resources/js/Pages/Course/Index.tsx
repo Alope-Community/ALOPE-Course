@@ -17,8 +17,6 @@ export default function CourseIndexPage({
     courses: Course[];
     articles: Article[];
 }) {
-    console.log(courses);
-
     return (
         <>
             <Head title="Courses" />

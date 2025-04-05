@@ -2,10 +2,23 @@ import BreadcrumbComponent from '@/Components/Breadcrumb';
 import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
 import { Quiz } from '@/models/Quiz';
-import { Head } from '@inertiajs/react';
+import { Head, useForm } from '@inertiajs/react';
+import { FormEvent } from 'react';
 
 export default function QuizShowPage({ quiz }: { quiz: Quiz }) {
-    console.log(quiz);
+    const { data, setData, post, processing, errors, reset } = useForm({
+        answers: [{}],
+    });
+
+    const submitAnswer = (e: FormEvent) => {
+        e.preventDefault();
+
+        post(route('answers.store'), {
+            onSuccess: () => {
+                reset();
+            },
+        });
+    };
 
     return (
         <>
@@ -39,7 +52,7 @@ export default function QuizShowPage({ quiz }: { quiz: Quiz }) {
 
             <main className="container relative z-20 mx-auto mt-5 grid grid-cols-4 gap-8 px-3 md:px-10 xl:gap-10 xl:px-5 2xl:px-2">
                 <div className="col-span-4 mt-5 lg:col-span-3">
-                    <form action="">
+                    <form action="" onSubmit={(e) => submitAnswer(e)}>
                         {quiz.questions?.length &&
                             quiz.questions.map((question, index) => (
                                 <div
@@ -58,6 +71,26 @@ export default function QuizShowPage({ quiz }: { quiz: Quiz }) {
                                                 type="radio"
                                                 name={`question${index}`}
                                                 id={`${index}A`}
+                                                value={question.option1}
+                                                onChange={(e) => {
+                                                    const newAnswers = [
+                                                        ...data.answers,
+                                                    ];
+
+                                                    const obj = {
+                                                        answer: e.target
+                                                            .value as string,
+                                                        question_id:
+                                                            question.id,
+                                                    };
+
+                                                    newAnswers[index] = obj;
+                                                    e.target.value;
+                                                    setData(
+                                                        'answers',
+                                                        newAnswers,
+                                                    );
+                                                }}
                                             />
                                             <label
                                                 htmlFor={`${index}A`}
@@ -71,6 +104,26 @@ export default function QuizShowPage({ quiz }: { quiz: Quiz }) {
                                                 type="radio"
                                                 name={`question${index}`}
                                                 id={`${index}B`}
+                                                value={question.option2}
+                                                onChange={(e) => {
+                                                    const newAnswers = [
+                                                        ...data.answers,
+                                                    ];
+
+                                                    const obj = {
+                                                        answer: e.target
+                                                            .value as string,
+                                                        question_id:
+                                                            question.id,
+                                                    };
+
+                                                    newAnswers[index] = obj;
+                                                    e.target.value;
+                                                    setData(
+                                                        'answers',
+                                                        newAnswers,
+                                                    );
+                                                }}
                                             />
                                             <label
                                                 htmlFor={`${index}B`}
@@ -84,6 +137,26 @@ export default function QuizShowPage({ quiz }: { quiz: Quiz }) {
                                                 type="radio"
                                                 name={`question${index}`}
                                                 id={`${index}C`}
+                                                value={question.option3}
+                                                onChange={(e) => {
+                                                    const newAnswers = [
+                                                        ...data.answers,
+                                                    ];
+
+                                                    const obj = {
+                                                        answer: e.target
+                                                            .value as string,
+                                                        question_id:
+                                                            question.id,
+                                                    };
+
+                                                    newAnswers[index] = obj;
+                                                    e.target.value;
+                                                    setData(
+                                                        'answers',
+                                                        newAnswers,
+                                                    );
+                                                }}
                                             />
                                             <label
                                                 htmlFor={`${index}C`}
@@ -97,6 +170,26 @@ export default function QuizShowPage({ quiz }: { quiz: Quiz }) {
                                                 type="radio"
                                                 name={`question${index}`}
                                                 id={`${index}D`}
+                                                value={question.option4}
+                                                onChange={(e) => {
+                                                    const newAnswers = [
+                                                        ...data.answers,
+                                                    ];
+
+                                                    const obj = {
+                                                        answer: e.target
+                                                            .value as string,
+                                                        question_id:
+                                                            question.id,
+                                                    };
+
+                                                    newAnswers[index] = obj;
+                                                    e.target.value;
+                                                    setData(
+                                                        'answers',
+                                                        newAnswers,
+                                                    );
+                                                }}
                                             />
                                             <label
                                                 htmlFor={`${index}D`}
