@@ -39,8 +39,11 @@ Route::get('/coming-soon', function () {
 
 Route::resource('/articles', ArticleController::class);
 Route::resource('/courses', CourseController::class);
-Route::resource('/quizzes', QuizController::class);
-Route::resource('/answers', AnswerController::class);
+
+Route::middleware('auth')->group(function () {
+    Route::resource('/quizzes', QuizController::class);
+    Route::resource('/answers', AnswerController::class);
+});
 
 Route::get('/test-api/courses', function () {
     $courses = Course::with(["category", "hashtags", "videos"])->get();

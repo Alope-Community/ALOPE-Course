@@ -2,8 +2,9 @@ import BreadcrumbComponent from '@/Components/Breadcrumb';
 import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
 import { Quiz } from '@/models/Quiz';
-import { Head, useForm } from '@inertiajs/react';
+import { Head, Link, useForm } from '@inertiajs/react';
 import { FormEvent } from 'react';
+import toast from 'react-hot-toast';
 
 export default function QuizShowPage({ quiz }: { quiz: Quiz }) {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -203,7 +204,39 @@ export default function QuizShowPage({ quiz }: { quiz: Quiz }) {
                             ))}
                         <div className="flex items-center justify-between gap-5">
                             <div className="flex items-center gap-2">
-                                <button className="rounded bg-gray-400 px-5 py-2 text-gray-200 hover:bg-gray-400/80">
+                                <button
+                                    type="button"
+                                    onClick={() => {
+                                        toast((t) => (
+                                            <div className="flex flex-col gap-4">
+                                                <p>
+                                                    Apakah yakin ingin keluar
+                                                    quiz?
+                                                </p>
+                                                <div className="flex justify-end gap-2">
+                                                    <button
+                                                        className="rounded bg-gray-200 px-3 py-1 text-sm"
+                                                        onClick={() =>
+                                                            toast.dismiss(t.id)
+                                                        }
+                                                    >
+                                                        Batal
+                                                    </button>
+                                                    <Link
+                                                        className="rounded bg-red-500 px-3 py-1 text-sm text-white"
+                                                        onClick={() => {
+                                                            toast.dismiss(t.id);
+                                                        }}
+                                                        href="/courses"
+                                                    >
+                                                        Yakin
+                                                    </Link>
+                                                </div>
+                                            </div>
+                                        ));
+                                    }}
+                                    className="rounded bg-gray-400 px-5 py-2 text-gray-200 hover:bg-gray-400/80"
+                                >
                                     Keluar
                                 </button>
                                 <button className="rounded bg-[#2c7cf1] px-5 py-2 text-white hover:bg-[#2c7cf1]/80">
