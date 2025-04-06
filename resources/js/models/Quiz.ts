@@ -25,3 +25,14 @@ export type Question = {
     created_at?: string;
     updated_at?: string;
 };
+
+export type Answer = {
+    id: string;
+    answer: string;
+    is_correct: boolean;
+    user_id: number;
+    question_id: string;
+
+    created_at?: string;
+    updated_at?: string;
+};

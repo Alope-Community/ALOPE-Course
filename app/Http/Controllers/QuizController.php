@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Quiz;
+use App\Models\Answer;
 use Inertia\Inertia;
 
 class QuizController extends Controller
@@ -38,9 +39,18 @@ class QuizController extends Controller
     public function show(string $slug)
     {
         $quiz= Quiz::with('questions')->whereSlug($slug)->first();
+        $answers = Answer::whereHas('question', function($query) use ($quiz) {
+            $query->where('quiz_id', $quiz->id);
+        })->where('user_id', auth()->user()->id)->get();
+        $done = false;
+        if(count($answers) == count($quiz->questions)) {
+            $done = true;
+        }
 
         return Inertia::render('Quiz/Show', [
             "quiz" => $quiz,
+            "answers" => $answers,
+            "done" => $done
         ]);
     }
 
