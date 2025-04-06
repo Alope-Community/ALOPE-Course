@@ -243,8 +243,8 @@ export default function QuizShowPage({
                                         </div>
                                     </div>
                                 ))}
-                            <div className="flex items-center justify-between gap-5">
-                                <div className="flex items-center gap-2">
+                            <div className="flex flex-col items-center justify-between gap-5 md:flex-row">
+                                <div className="order-2 flex items-center gap-2 md:order-1">
                                     <button
                                         type="button"
                                         onClick={() => {
@@ -289,9 +289,9 @@ export default function QuizShowPage({
                                         Submit
                                     </button>
                                 </div>
-                                <p className="flex items-center gap-1 text-gray-700">
+                                <p className="order-1 flex items-center gap-1 text-sm text-gray-700 md:order-2 md:text-base">
                                     <span className="block size-3 rounded-full bg-[#2c7cf1]"></span>
-                                    16 menit Waktu tersisa
+                                    Pastikan kamu menjawab dengan benar!
                                 </p>
                             </div>
                         </form>
