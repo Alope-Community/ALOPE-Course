@@ -20,10 +20,40 @@ class UserSeeder extends Seeder
                 "password" => bcrypt("password")
             ],
             [
-                "name" => "Ilham",
-                "email" => "ilham@gmail.com",
+                "name" => "Ilham Hafidz",
+                "email" => "ilham@alope.id",
                 "password" => bcrypt("password")
             ],
+            [
+                "name" => "Taufan Hidayatul Akbar",
+                "email" => "taufan@alope.id",
+                "password" => bcrypt("password")
+            ],
+            [
+                "name" => "Firdan Fauzan",
+                "email" => "firdan@alope.id",
+                "password" => bcrypt("password")
+            ],
+            [
+                "name" => "Fikry",
+                "email" => "fikry@alope.id",
+                "password" => bcrypt("password")
+            ],
+            [
+                "name" => "Billy Jonathan",
+                "email" => "billy@alope.id",
+                "password" => bcrypt("password")
+            ],
+            [
+                "name" => "Dikri Fauzan A",
+                "email" => "dikri@alope.id",
+                "password" => bcrypt("password")
+            ],
+            [
+                "name" => "Masnun Muhaemin",
+                "email" => "masnun@alope.id",
+                "password" => bcrypt("password")
+            ]
         ]);
     }
 }
