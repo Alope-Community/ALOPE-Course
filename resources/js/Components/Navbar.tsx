@@ -105,14 +105,14 @@ export default function NavbarComponent() {
                                             className="block px-4 py-2 hover:bg-gray-100"
                                         >
                                             Dashboard
-                                        </Link>
+                                        </Link> */}
                                         <Link
-                                            href="/profile"
+                                            href="/history"
                                             className="block px-4 py-2 hover:bg-gray-100"
                                         >
-                                            Profile
+                                            History
                                         </Link>
-                                        <hr className="my-2" /> */}
+                                        <hr className="my-2" />
                                         <button
                                             className="block w-full px-4 py-2 text-left text-red-600 hover:bg-gray-100"
                                             onClick={() => handleLogout()}

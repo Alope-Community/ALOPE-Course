@@ -4,7 +4,8 @@ import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
 import { Course } from '@/models/Course';
 import SideCoursesSection from '@/Sections/SideCourses';
-import { Head } from '@inertiajs/react';
+import { Head, Link } from '@inertiajs/react';
+import { useState } from 'react';
 
 export default function CourseShowPage({
     course,
@@ -13,6 +14,8 @@ export default function CourseShowPage({
     course: Course;
     courses: Course[];
 }) {
+    const [activeTab, setActiveTab] = useState('article');
+
     return (
         <>
             <Head title="Courses" />
@@ -57,19 +60,84 @@ export default function CourseShowPage({
                         </p>
                     </div>
 
-                    <section>
-                        <div className="mb-7 mt-16">
-                            <h2 className="text-xl font-semibold md:text-2xl">
-                                <span className="text-gray-400">//</span>{' '}
-                                Artikel Pelajaran
-                            </h2>
+                    <section className="mt-16">
+                        <div className="mb-10">
+                            <div className="flex gap-3">
+                                <button
+                                    onClick={() => setActiveTab('article')}
+                                    className={`rounded-md px-4 py-1.5 text-sm font-medium transition-all duration-200 md:px-6 md:py-2 md:text-base ${
+                                        activeTab === 'article'
+                                            ? 'border border-[#2276f0] bg-[#2276f0] text-white shadow-lg'
+                                            : 'border border-gray-300 bg-gray-200/90 text-gray-600'
+                                    }`}
+                                >
+                                    Artikel
+                                </button>
+                                <button
+                                    onClick={() => setActiveTab('quiz')}
+                                    className={`rounded-md px-4 py-1.5 text-sm font-medium transition-all duration-200 md:px-6 md:py-2 md:text-base ${
+                                        activeTab === 'quiz'
+                                            ? 'border border-[#2276f0] bg-[#2276f0] text-white shadow-lg'
+                                            : 'border border-gray-300 bg-gray-200/90 text-gray-600'
+                                    }`}
+                                >
+                                    Quiz
+                                </button>
+                            </div>
                         </div>
-                        {course.articles.map((article, index) => (
-                            <HorizontalArticleCardComponent
-                                key={index}
-                                props={article}
-                            />
-                        ))}
+                        {activeTab === 'article' && (
+                            <>
+                                <div className="mb-7 mt-7">
+                                    <h2 className="text-xl font-semibold md:text-2xl">
+                                        <span className="text-gray-400">
+                                            //
+                                        </span>{' '}
+                                        Artikel Pelajaran
+                                    </h2>
+                                </div>
+                                {course.articles.map((article, index) => (
+                                    <HorizontalArticleCardComponent
+                                        key={index}
+                                        props={article}
+                                    />
+                                ))}
+                            </>
+                        )}
+                        {activeTab === 'quiz' && (
+                            <>
+                                <div className="mb-7 mt-7">
+                                    <h2 className="text-xl font-semibold md:text-2xl">
+                                        <span className="text-gray-400">
+                                            //
+                                        </span>{' '}
+                                        Quiz
+                                    </h2>
+                                </div>
+                                {course.quizzes.map((quiz, index) => (
+                                    <Link
+                                        key={index}
+                                        href={`/quizzes/${quiz.slug}`}
+                                        className="mb-7 flex flex-col items-center gap-5 sm:mb-5 sm:flex-row"
+                                    >
+                                        <img
+                                            src={quiz.cover}
+                                            alt="article cover"
+                                            className="w-full rounded object-contain object-left sm:w-[400px] sm:min-w-[400px] sm:max-w-[400px] lg:w-[300px] lg:min-w-[300px] lg:max-w-[300px] xl:w-[400px] xl:min-w-[400px] xl:max-w-[400px]"
+                                            width={1280}
+                                            height={720}
+                                        />
+                                        <div className="mb-5">
+                                            <p className="font-bold sm:text-xl xl:text-2xl">
+                                                {quiz.title}
+                                            </p>
+                                            <p className="mt-3 text-sm text-gray-700 xl:text-base">
+                                                {quiz.description}
+                                            </p>
+                                        </div>
+                                    </Link>
+                                ))}
+                            </>
+                        )}
                     </section>
                 </div>
                 <SideCoursesSection courses={courses} />
