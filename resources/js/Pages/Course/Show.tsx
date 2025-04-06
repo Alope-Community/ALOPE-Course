@@ -1,10 +1,11 @@
 import BreadcrumbComponent from '@/Components/Breadcrumb';
 import HorizontalArticleCardComponent from '@/Components/Cards/HorizontalArticle';
+import HorizontalQuizCardComponent from '@/Components/Cards/HorizontalQuiz';
 import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
 import { Course } from '@/models/Course';
 import SideCoursesSection from '@/Sections/SideCourses';
-import { Head, Link } from '@inertiajs/react';
+import { Head } from '@inertiajs/react';
 import { useState } from 'react';
 
 export default function CourseShowPage({
@@ -114,27 +115,10 @@ export default function CourseShowPage({
                                     </h2>
                                 </div>
                                 {course.quizzes.map((quiz, index) => (
-                                    <Link
+                                    <HorizontalQuizCardComponent
                                         key={index}
-                                        href={`/quizzes/${quiz.slug}`}
-                                        className="mb-7 flex flex-col items-center gap-5 sm:mb-5 sm:flex-row"
-                                    >
-                                        <img
-                                            src={quiz.cover}
-                                            alt="article cover"
-                                            className="w-full rounded object-contain object-left sm:w-[400px] sm:min-w-[400px] sm:max-w-[400px] lg:w-[300px] lg:min-w-[300px] lg:max-w-[300px] xl:w-[400px] xl:min-w-[400px] xl:max-w-[400px]"
-                                            width={1280}
-                                            height={720}
-                                        />
-                                        <div className="mb-5">
-                                            <p className="font-bold sm:text-xl xl:text-2xl">
-                                                {quiz.title}
-                                            </p>
-                                            <p className="mt-3 text-sm text-gray-700 xl:text-base">
-                                                {quiz.description}
-                                            </p>
-                                        </div>
-                                    </Link>
+                                        props={quiz}
+                                    />
                                 ))}
                             </>
                         )}

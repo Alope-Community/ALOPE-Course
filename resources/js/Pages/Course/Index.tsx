@@ -1,12 +1,12 @@
 import BadgeComponent from '@/Components/Badge';
 import BreadcrumbComponent from '@/Components/Breadcrumb';
+import QuizCardComponent from '@/Components/Cards/Quiz';
 import SimpleArticleCardComponent from '@/Components/Cards/SimpleArticle';
 import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
 import { Article } from '@/models/Article';
 import { Course } from '@/models/Course';
 import SideArticlesSection from '@/Sections/SideArticles';
-import formatDate from '@/tools/formatDate';
 import { Head, Link } from '@inertiajs/react';
 import Glider from 'react-glider';
 
@@ -187,36 +187,15 @@ export default function CourseIndexPage({
                                             {course.quizzes.length ? (
                                                 course.quizzes.map(
                                                     (quiz, index) => (
-                                                        <Link
+                                                        <QuizCardComponent
                                                             key={index}
-                                                            href={`/quizzes/${quiz.slug}`}
-                                                        >
-                                                            <img
-                                                                src={quiz.cover}
-                                                                alt="article cover"
-                                                                className="max-h-[150px] w-full rounded 2xl:max-h-[200px]"
-                                                                width={1280}
-                                                                height={720}
-                                                            />
-                                                            <div
-                                                                className={`-mt-1 rounded-b text-sm xl:text-base`}
-                                                            >
-                                                                <p className="mb-2 mt-3 text-xs text-gray-500 xl:text-sm">
-                                                                    {formatDate(
-                                                                        quiz.created_at ||
-                                                                            '',
-                                                                    )}
-                                                                </p>
-                                                                <p className="relative flex font-medium">
-                                                                    {quiz.title}
-                                                                </p>
-                                                            </div>
-                                                        </Link>
+                                                            props={quiz}
+                                                        />
                                                     ),
                                                 )
                                             ) : (
                                                 <p className="italic text-gray-700">
-                                                    Belum ada artikel terkait
+                                                    Belum ada Quiz terkait
                                                 </p>
                                             )}
                                         </Glider>
