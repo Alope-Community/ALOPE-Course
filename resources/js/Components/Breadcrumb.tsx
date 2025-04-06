@@ -16,18 +16,17 @@ export default function BreadcrumbComponent({
                 </Link>
 
                 {links.map((link, index) => (
-                    <>
-                        <span className="text-xs text-gray-400 sm:text-sm">
+                    <div key={index} className="flex items-center">
+                        <span className="mr-3 text-xs text-gray-400 sm:text-sm">
                             \
                         </span>
                         <Link
-                            key={index}
                             href={link.url}
                             className={`text-xs font-medium sm:text-sm ${link.active ? 'text-[#2c7cf1]' : 'text-gray-600'}`}
                         >
                             {link.title}
                         </Link>
-                    </>
+                    </div>
                 ))}
             </div>
             {/* <div className="relative w-[500px]">

@@ -3,7 +3,7 @@ import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
 import { Answer, Quiz } from '@/models/Quiz';
 import { Head, Link, useForm } from '@inertiajs/react';
-import { IconCircleCheckFill } from 'justd-icons';
+import { IconCircleCheckFill, IconLoader2 } from 'justd-icons';
 import { FormEvent } from 'react';
 import toast from 'react-hot-toast';
 
@@ -16,8 +16,6 @@ export default function QuizShowPage({
     answers: Answer[];
     done: boolean;
 }) {
-    console.log(answers);
-
     const { data, setData, post, processing, errors, reset } = useForm({
         answers: [{}],
     });
@@ -25,11 +23,42 @@ export default function QuizShowPage({
     const submitAnswer = (e: FormEvent) => {
         e.preventDefault();
 
-        post(route('answers.store'), {
-            onSuccess: () => {
-                reset();
-            },
-        });
+        if (data.answers.length == quiz.questions?.length) {
+            toast((t) => (
+                <div className="flex flex-col gap-4">
+                    <p>Apakah yakin jawaban sudah benar?</p>
+                    <div className="flex justify-end gap-2">
+                        <button
+                            className="rounded bg-gray-200 px-3 py-1 text-sm"
+                            onClick={() => toast.dismiss(t.id)}
+                        >
+                            Batal
+                        </button>
+                        <button
+                            className="rounded bg-[#2c7cf1] px-3 py-1 text-sm text-white"
+                            onClick={() => {
+                                post(route('answers.store'), {
+                                    onSuccess: () => {
+                                        toast.success('Yeay, kamu berhasil!');
+                                        reset();
+                                    },
+                                    onError: () => {
+                                        toast.error(
+                                            'Sepertinya terjadi kesalahan, silahkan submit ulang!',
+                                        );
+                                    },
+                                });
+                                toast.dismiss(t.id);
+                            }}
+                        >
+                            Yakin
+                        </button>
+                    </div>
+                </div>
+            ));
+        } else {
+            toast.error('Jangan lupa jawab semua soal!');
+        }
     };
 
     return (
@@ -255,7 +284,8 @@ export default function QuizShowPage({
                                     >
                                         Keluar
                                     </button>
-                                    <button className="rounded bg-[#2c7cf1] px-5 py-2 text-white hover:bg-[#2c7cf1]/80">
+                                    <button className="inline-flex items-center gap-2 rounded bg-[#2c7cf1] px-5 py-2 text-white hover:bg-[#2c7cf1]/80">
+                                        {processing && <IconLoader2 />}
                                         Submit
                                     </button>
                                 </div>
