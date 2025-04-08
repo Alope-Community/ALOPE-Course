@@ -5,6 +5,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\AnswerController;
+use App\Http\Controllers\HistoryController;
 use App\Models\Article;
 use App\Models\Course;
 use App\Models\Video;
@@ -43,9 +44,9 @@ Route::resource('/courses', CourseController::class);
 Route::middleware('auth')->group(function () {
     Route::resource('/quizzes', QuizController::class);
     Route::resource('/answers', AnswerController::class);
-    
+
     // 
-    Route::resource('/answers', AnswerController::class);
+    Route::get('/profile/history', HistoryController::class);
 });
 
 Route::get('/test-api/courses', function () {

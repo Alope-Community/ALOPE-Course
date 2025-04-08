@@ -15,4 +15,9 @@ class Read extends Model
     {
         return null;
     }
+
+    public function article()
+    {
+        return $this->belongsTo(Article::class);
+    }
 }
