@@ -96,12 +96,18 @@ export default function CourseShowPage({
                                         Artikel Pelajaran
                                     </h2>
                                 </div>
-                                {course.articles.map((article, index) => (
-                                    <HorizontalArticleCardComponent
-                                        key={index}
-                                        props={article}
-                                    />
-                                ))}
+                                {course.articles.length ? (
+                                    course.articles.map((article, index) => (
+                                        <HorizontalArticleCardComponent
+                                            key={index}
+                                            props={article}
+                                        />
+                                    ))
+                                ) : (
+                                    <p className="italic text-gray-700">
+                                        Belum ada Artikel untuk materi ini!
+                                    </p>
+                                )}
                             </>
                         )}
                         {activeTab === 'quiz' && (
@@ -114,12 +120,18 @@ export default function CourseShowPage({
                                         Quiz
                                     </h2>
                                 </div>
-                                {course.quizzes.map((quiz, index) => (
-                                    <HorizontalQuizCardComponent
-                                        key={index}
-                                        props={quiz}
-                                    />
-                                ))}
+                                {course.quizzes.length ? (
+                                    course.quizzes.map((quiz, index) => (
+                                        <HorizontalQuizCardComponent
+                                            key={index}
+                                            props={quiz}
+                                        />
+                                    ))
+                                ) : (
+                                    <p className="italic text-gray-700">
+                                        Belum ada Quiz untuk materi ini!
+                                    </p>
+                                )}
                             </>
                         )}
                     </section>
