@@ -104,10 +104,10 @@ export default function QuizShowPage({
                                         <p className="font-bold">
                                             Soal No. {index + 1}
                                         </p>
-                                        <p className="mb-3 mt-5">
+                                        <p className="mb-5 mt-5 font-medium text-gray-800">
                                             {question.question}
                                         </p>
-                                        <div className="flex flex-wrap gap-5 md:gap-10">
+                                        <div className="flex flex-wrap gap-5 text-gray-600 md:gap-4">
                                             <div className="flex items-center gap-2">
                                                 <input
                                                     type="radio"
