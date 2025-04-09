@@ -169,14 +169,29 @@ export default function NavbarComponent() {
                         </li>
                     ))}
                     {auth.user ? (
-                        <li>
-                            <button
-                                className="text-red-600"
-                                onClick={() => handleLogout()}
-                            >
-                                Logout
-                            </button>
-                        </li>
+                        <>
+                            <li>
+                                <Link
+                                    href={'/profile/history'}
+                                    onClick={() => setIsOpen(false)}
+                                    className={`block py-2 text-lg ${
+                                        url.startsWith('/profile/history')
+                                            ? 'font-semibold text-[#2276f0]'
+                                            : ''
+                                    }`}
+                                >
+                                    History
+                                </Link>
+                            </li>
+                            <li>
+                                <button
+                                    className="text-red-600"
+                                    onClick={() => handleLogout()}
+                                >
+                                    Logout
+                                </button>
+                            </li>
+                        </>
                     ) : (
                         <li>
                             <Link href="/login">Login</Link>
