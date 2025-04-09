@@ -1,23 +1,13 @@
 import BreadcrumbComponent from '@/Components/Breadcrumb';
 import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
-import { Article } from '@/models/Article';
+import { History } from '@/models/History';
 import formatDate from '@/tools/formatDate';
 import { Head, Link } from '@inertiajs/react';
+import { IconBookOpenFill, IconPuzzleFill } from 'justd-icons';
 
-export default function HistoryPage({
-    reads,
-}: {
-    reads: [
-        {
-            article: Article;
-            reads: [
-                { user_id: number; article_id: string; created_at: string },
-            ];
-        },
-    ];
-}) {
-    console.log(reads);
+export default function HistoryPage({ histories }: { histories: History[] }) {
+    console.log(histories);
 
     return (
         <>
@@ -55,23 +45,50 @@ export default function HistoryPage({
                         <span className="text-gray-400">//</span> Riwayat
                         Aktifitas
                     </h2>
-                    <div className="relative mt-10 border-l border-gray-300 md:ml-4">
-                        {reads.length ? (
-                            reads.map((read, index) => (
+                    <div className="relative mt-10 border-l border-gray-400 md:ml-4">
+                        {histories.length ? (
+                            histories.map((history, index) => (
                                 <div key={index} className="mb-10 ml-6">
-                                    <div className="absolute -left-1.5 h-3 w-3 rounded-full border border-white bg-[#2276f0]"></div>
-                                    <time className="text-xs text-gray-500 md:text-sm">
-                                        {formatDate(read.reads[0].created_at)}
-                                    </time>
+                                    <div
+                                        className={`absolute -left-0 flex size-7 -translate-x-1/2 items-center justify-center rounded-full border border-white text-white ${history.history.type == 'article' ? 'bg-[#2276f0]' : 'bg-[#673ef0]'}`}
+                                    >
+                                        {history.history.type == 'article' ? (
+                                            <IconBookOpenFill className="size-3.5" />
+                                        ) : (
+                                            <IconPuzzleFill className="size-3.5" />
+                                        )}
+                                    </div>
+                                    <div className="flex items-center gap-2">
+                                        <p
+                                            className={`text-xs font-medium capitalize md:text-sm ${history.history.type == 'article' ? 'text-[#2276f0]' : 'text-[#673ef0]'}`}
+                                        >
+                                            {history.history.type}
+                                        </p>
+                                        <span className="text-gray-600">
+                                            &bull;
+                                        </span>
+                                        <time className="text-xs text-gray-500 md:text-sm">
+                                            {formatDate(
+                                                history.logs[0].created_at,
+                                            )}
+                                        </time>
+                                    </div>
                                     <Link
-                                        href={`/articles/${read.article.slug}`}
+                                        href={`${history.history.type == 'article' ? `/articles/${history.history.slug}` : `/quizzes/${history.history.slug}`}`}
                                         className="block font-medium text-gray-900 md:text-lg"
                                     >
-                                        {read.article.title}
+                                        {history.history.title}
                                     </Link>
-                                    <p className="text-xs text-gray-700 md:text-sm">
-                                        Membaca sebanyak {read.reads.length}x
-                                    </p>
+                                    {history.history.type == 'article' ? (
+                                        <p className="text-xs text-gray-700 md:text-sm">
+                                            Membaca sebanyak{' '}
+                                            {history.logs.length}x
+                                        </p>
+                                    ) : (
+                                        <p className="text-xs text-gray-700 md:text-sm">
+                                            Mendapatkan skor <b>100</b> poin
+                                        </p>
+                                    )}
                                 </div>
                             ))
                         ) : (
