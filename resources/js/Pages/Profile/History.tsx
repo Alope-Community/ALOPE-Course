@@ -3,12 +3,16 @@ import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
 import { History } from '@/models/History';
 import formatDate from '@/tools/formatDate';
-import { Head, Link } from '@inertiajs/react';
-import { IconBookOpenFill, IconPuzzleFill } from 'justd-icons';
+import { Head, Link, usePage } from '@inertiajs/react';
+import {
+    IconBookOpenFill,
+    IconCirclePersonFill,
+    IconPuzzleFill,
+} from 'justd-icons';
 
 export default function HistoryPage({ histories }: { histories: History[] }) {
-    console.log(histories);
-
+    const { props } = usePage();
+    const { auth } = props;
     return (
         <>
             <Head title="History" />
@@ -39,8 +43,8 @@ export default function HistoryPage({ histories }: { histories: History[] }) {
                 ]}
             />
 
-            <main className="container relative z-20 mx-auto mt-10 grid gap-8 px-3 md:px-10 lg:grid-cols-3 xl:grid-cols-2 xl:gap-10 xl:px-5 2xl:px-2">
-                <section className="rounded-lg bg-white/50 p-5 shadow backdrop-blur lg:col-span-2 xl:col-span-1">
+            <main className="container relative z-20 mx-auto mt-10 grid gap-5 px-3 md:px-10 lg:grid-cols-3 xl:grid-cols-2 xl:gap-10 xl:px-5 2xl:px-2">
+                <section className="order-2 rounded-lg bg-white/50 p-5 shadow backdrop-blur lg:order-1 lg:col-span-2 xl:col-span-1">
                     <h2 className="text-xl font-semibold md:text-2xl">
                         <span className="text-gray-400">//</span> Riwayat
                         Aktifitas
@@ -96,6 +100,27 @@ export default function HistoryPage({ histories }: { histories: History[] }) {
                                 Belum ada riwayat
                             </p>
                         )}
+                    </div>
+                </section>
+                <section className="relative order-1 lg:order-2">
+                    <div className="sticky top-24 rounded-lg bg-white/50 p-5 shadow backdrop-blur lg:col-span-2 xl:col-span-1">
+                        <h2 className="text-xl font-semibold md:text-2xl">
+                            <span className="text-gray-400">//</span> Profile
+                        </h2>
+                        <div className="mt-5 flex flex-col items-center gap-3 sm:flex-row">
+                            <div>
+                                <IconCirclePersonFill className="size-16" />
+                            </div>
+
+                            <div>
+                                <p className="font-medium md:text-xl">
+                                    {auth.user.name}
+                                </p>
+                                <p className="text-xs text-gray-500 md:text-sm">
+                                    {auth.user.email}
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </section>
             </main>
