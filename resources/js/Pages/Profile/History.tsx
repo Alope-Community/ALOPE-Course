@@ -1,24 +1,18 @@
 import BreadcrumbComponent from '@/Components/Breadcrumb';
 import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
-import { Article } from '@/models/Article';
+import { History } from '@/models/History';
 import formatDate from '@/tools/formatDate';
-import { Head, Link } from '@inertiajs/react';
+import { Head, Link, usePage } from '@inertiajs/react';
+import {
+    IconBookOpenFill,
+    IconCirclePersonFill,
+    IconPuzzleFill,
+} from 'justd-icons';
 
-export default function HistoryPage({
-    reads,
-}: {
-    reads: [
-        {
-            article: Article;
-            reads: [
-                { user_id: number; article_id: string; created_at: string },
-            ];
-        },
-    ];
-}) {
-    console.log(reads);
-
+export default function HistoryPage({ histories }: { histories: History[] }) {
+    const { props } = usePage();
+    const { auth } = props;
     return (
         <>
             <Head title="History" />
@@ -49,29 +43,56 @@ export default function HistoryPage({
                 ]}
             />
 
-            <main className="container relative z-20 mx-auto mt-10 grid gap-8 px-3 md:px-10 lg:grid-cols-3 xl:grid-cols-2 xl:gap-10 xl:px-5 2xl:px-2">
-                <section className="rounded-lg bg-white/50 p-5 shadow backdrop-blur lg:col-span-2 xl:col-span-1">
+            <main className="container relative z-20 mx-auto mt-10 grid gap-5 px-3 md:px-10 lg:grid-cols-3 xl:grid-cols-2 xl:gap-10 xl:px-5 2xl:px-2">
+                <section className="order-2 rounded-lg bg-white/50 p-5 shadow backdrop-blur lg:order-1 lg:col-span-2 xl:col-span-1">
                     <h2 className="text-xl font-semibold md:text-2xl">
                         <span className="text-gray-400">//</span> Riwayat
                         Aktifitas
                     </h2>
-                    <div className="relative mt-10 border-l border-gray-300 md:ml-4">
-                        {reads.length ? (
-                            reads.map((read, index) => (
+                    <div className="relative mt-10 border-l border-gray-400 md:ml-4">
+                        {histories.length ? (
+                            histories.map((history, index) => (
                                 <div key={index} className="mb-10 ml-6">
-                                    <div className="absolute -left-1.5 h-3 w-3 rounded-full border border-white bg-[#2276f0]"></div>
-                                    <time className="text-xs text-gray-500 md:text-sm">
-                                        {formatDate(read.reads[0].created_at)}
-                                    </time>
+                                    <div
+                                        className={`absolute -left-0 flex size-7 -translate-x-1/2 items-center justify-center rounded-full border border-white text-white ${history.history.type == 'article' ? 'bg-[#2276f0]' : 'bg-[#673ef0]'}`}
+                                    >
+                                        {history.history.type == 'article' ? (
+                                            <IconBookOpenFill className="size-3.5" />
+                                        ) : (
+                                            <IconPuzzleFill className="size-3.5" />
+                                        )}
+                                    </div>
+                                    <div className="flex items-center gap-2">
+                                        <p
+                                            className={`text-xs font-medium capitalize md:text-sm ${history.history.type == 'article' ? 'text-[#2276f0]' : 'text-[#673ef0]'}`}
+                                        >
+                                            {history.history.type}
+                                        </p>
+                                        <span className="text-gray-600">
+                                            &bull;
+                                        </span>
+                                        <time className="text-xs text-gray-500 md:text-sm">
+                                            {formatDate(
+                                                history.logs[0].created_at,
+                                            )}
+                                        </time>
+                                    </div>
                                     <Link
-                                        href={`/articles/${read.article.slug}`}
+                                        href={`${history.history.type == 'article' ? `/articles/${history.history.slug}` : `/quizzes/${history.history.slug}`}`}
                                         className="block font-medium text-gray-900 md:text-lg"
                                     >
-                                        {read.article.title}
+                                        {history.history.title}
                                     </Link>
-                                    <p className="text-xs text-gray-700 md:text-sm">
-                                        Membaca sebanyak {read.reads.length}x
-                                    </p>
+                                    {history.history.type == 'article' ? (
+                                        <p className="text-xs text-gray-700 md:text-sm">
+                                            Membaca sebanyak{' '}
+                                            {history.logs.length}x
+                                        </p>
+                                    ) : (
+                                        <p className="text-xs text-gray-700 md:text-sm">
+                                            Mendapatkan skor <b>100</b> poin
+                                        </p>
+                                    )}
                                 </div>
                             ))
                         ) : (
@@ -79,6 +100,27 @@ export default function HistoryPage({
                                 Belum ada riwayat
                             </p>
                         )}
+                    </div>
+                </section>
+                <section className="relative order-1 lg:order-2">
+                    <div className="sticky top-24 rounded-lg bg-white/50 p-5 shadow backdrop-blur lg:col-span-2 xl:col-span-1">
+                        <h2 className="text-xl font-semibold md:text-2xl">
+                            <span className="text-gray-400">//</span> Profile
+                        </h2>
+                        <div className="mt-5 flex flex-col items-center gap-3 sm:flex-row">
+                            <div>
+                                <IconCirclePersonFill className="size-16" />
+                            </div>
+
+                            <div>
+                                <p className="font-medium md:text-xl">
+                                    {auth.user.name}
+                                </p>
+                                <p className="text-xs text-gray-500 md:text-sm">
+                                    {auth.user.email}
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </section>
             </main>
