@@ -1,7 +1,7 @@
 import { Article } from './Article';
 import { Question } from './Quiz';
 
-type HistoryLog = {
+export type HistoryLog = {
     id: string;
     created_at: string;
     user_id: number;
@@ -10,7 +10,7 @@ type HistoryLog = {
     article?: Article;
     // quiz
     answer?: string;
-    is_correct?: boolean;
+    is_correct?: number;
     question?: Question;
     question_id?: string;
     udpated_at?: string;

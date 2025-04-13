@@ -2,6 +2,7 @@ import BreadcrumbComponent from '@/Components/Breadcrumb';
 import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
 import { History } from '@/models/History';
+import { calculateCorrectPercentage } from '@/tools/calculateQuizPoint';
 import { formatDate } from '@/tools/formatDate';
 import { Head, Link, usePage } from '@inertiajs/react';
 import {
@@ -13,6 +14,8 @@ import {
 export default function HistoryPage({ histories }: { histories: History[] }) {
     const { props } = usePage();
     const { auth } = props;
+
+    console.log(histories);
 
     return (
         <>
@@ -91,7 +94,13 @@ export default function HistoryPage({ histories }: { histories: History[] }) {
                                         </p>
                                     ) : (
                                         <p className="text-xs text-gray-700 md:text-sm">
-                                            Mendapatkan skor <b>100</b> poin
+                                            Mendapatkan skor{' '}
+                                            <b>
+                                                {calculateCorrectPercentage(
+                                                    history.logs,
+                                                )}
+                                            </b>{' '}
+                                            poin
                                         </p>
                                     )}
                                 </div>
