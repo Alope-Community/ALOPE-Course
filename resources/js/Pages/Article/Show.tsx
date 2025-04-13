@@ -5,10 +5,10 @@ import { Head } from '@inertiajs/react';
 import BreadcrumbComponent from '@/Components/Breadcrumb';
 import { Article } from '@/models/Article';
 import SideArticlesSection from '@/Sections/SideArticles';
-import formatDate from '@/tools/formatDate';
 import { IconCalendar } from 'justd-icons';
 // import { Highlight, themes } from 'prism-react-renderer';
 // import { Highlight, themes } from 'prism-react-renderer';
+import { formatDateWithTime } from '@/tools/formatDate';
 import strLimit from '@/tools/strLimit';
 import '../../../css/bodyContent.css';
 
@@ -86,7 +86,9 @@ export default function ArticleShowPage({
                                 </span> */}
                                 <IconCalendar />
                                 <span className="text-gray-700">
-                                    {formatDate(article.created_at || '')}
+                                    {formatDateWithTime(
+                                        article.created_at || '',
+                                    )}
                                 </span>
                             </p>
                             <div className="my-7 flex gap-2 sm:items-center">

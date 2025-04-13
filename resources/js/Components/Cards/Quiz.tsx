@@ -1,5 +1,5 @@
 import { Quiz } from '@/models/Quiz';
-import formatDate from '@/tools/formatDate';
+import { formatDateWithTime } from '@/tools/formatDate';
 import { Link } from '@inertiajs/react';
 
 export default function QuizCardComponent({ props }: { props: Quiz }) {
@@ -14,7 +14,7 @@ export default function QuizCardComponent({ props }: { props: Quiz }) {
             />
             <div className={`-mt-1 rounded-b text-sm xl:text-base`}>
                 <p className="mb-2 mt-3 text-xs text-gray-500 xl:text-sm">
-                    {formatDate(props.created_at || '')}
+                    {formatDateWithTime(props.created_at || '')}
                 </p>
                 <p className="relative flex font-medium">{props.title}</p>
             </div>

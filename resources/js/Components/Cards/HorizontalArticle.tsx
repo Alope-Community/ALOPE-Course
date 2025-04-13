@@ -1,5 +1,5 @@
 import { Article } from '@/models/Article';
-import formatDate from '@/tools/formatDate';
+import { formatDateWithTime } from '@/tools/formatDate';
 import { Link } from '@inertiajs/react';
 
 export default function HorizontalArticleCardComponent({
@@ -27,7 +27,7 @@ export default function HorizontalArticleCardComponent({
                         </p>
                         <p>&#128900;</p>
                         <p className="text-xs text-gray-500 md:text-sm">
-                            {formatDate(props.created_at || '')}
+                            {formatDateWithTime(props.created_at || '')}
                         </p>
                     </div>
                 ) : (
@@ -38,7 +38,7 @@ export default function HorizontalArticleCardComponent({
                 </p>
                 {!props.course ? (
                     <p className="mt-2 text-xs text-gray-500 md:text-sm">
-                        {formatDate(props.created_at || '')}
+                        {formatDateWithTime(props.created_at || '')}
                     </p>
                 ) : (
                     ''

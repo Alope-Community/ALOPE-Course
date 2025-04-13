@@ -1,5 +1,5 @@
 import { Article } from '@/models/Article';
-import formatDate from '@/tools/formatDate';
+import { formatDateWithTime } from '@/tools/formatDate';
 import strLimit from '@/tools/strLimit';
 import { Link } from '@inertiajs/react';
 
@@ -43,7 +43,7 @@ export default function ArticleCardComponent({ props }: { props: Article }) {
                 <div className="mt-4 flex justify-between text-gray-700">
                     <div>
                         <small className="text-xs">
-                            {formatDate(props.created_at || '')}
+                            {formatDateWithTime(props.created_at || '')}
                         </small>
                     </div>
                     <div className="flex gap-3">

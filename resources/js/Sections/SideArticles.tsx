@@ -1,6 +1,6 @@
 import SimpleArticleCardComponent from '@/Components/Cards/SimpleArticle';
 import { Article } from '@/models/Article';
-import formatDate from '@/tools/formatDate';
+import { formatDateWithTime } from '@/tools/formatDate';
 import strLimit from '@/tools/strLimit';
 import { Link } from '@inertiajs/react';
 
@@ -30,7 +30,9 @@ export default function SideArticlesSection({
                                 </p>
                                 <p>&#128900;</p>
                                 <p className="text-gray-500">
-                                    {formatDate(article.created_at || '')}
+                                    {formatDateWithTime(
+                                        article.created_at || '',
+                                    )}
                                 </p>
                             </div>
                             <Link

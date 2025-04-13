@@ -1,5 +1,5 @@
 import { Article } from '@/models/Article';
-import formatDate from '@/tools/formatDate';
+import { formatDateWithTime } from '@/tools/formatDate';
 import strLimit from '@/tools/strLimit';
 import { Link } from '@inertiajs/react';
 
@@ -40,7 +40,7 @@ export default function SimpleArticleCardComponent({
                         ''
                     )}
                     <p className="text-xs text-gray-500 xl:text-sm">
-                        {formatDate(props.created_at || '')}
+                        {formatDateWithTime(props.created_at || '')}
                     </p>
                 </div>
                 <p className="relative flex font-medium">{props.title}</p>

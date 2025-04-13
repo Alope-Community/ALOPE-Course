@@ -2,7 +2,7 @@ import BreadcrumbComponent from '@/Components/Breadcrumb';
 import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
 import { History } from '@/models/History';
-import formatDate from '@/tools/formatDate';
+import { formatDate } from '@/tools/formatDate';
 import { Head, Link, usePage } from '@inertiajs/react';
 import {
     IconBookOpenFill,
@@ -13,6 +13,7 @@ import {
 export default function HistoryPage({ histories }: { histories: History[] }) {
     const { props } = usePage();
     const { auth } = props;
+
     return (
         <>
             <Head title="History" />
@@ -22,7 +23,7 @@ export default function HistoryPage({ histories }: { histories: History[] }) {
             <img
                 src="/images/shapes/blueBlur2.svg"
                 alt="blueBlur"
-                className="absolute right-0 top-0 hidden xl:block"
+                className="absolute -top-72 right-0 hidden xl:block"
                 loading="lazy"
             />
             <img
