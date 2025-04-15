@@ -12,9 +12,7 @@ import { formatDateWithTime } from '@/tools/formatDate';
 import strLimit from '@/tools/strLimit';
 import '../../../css/bodyContent.css';
 
-// const codeBlock = `<div class="box">
-//   Contoh Box Model dengan Margin, Padding, dan Border
-// </div>`;
+// const codeBlock = `<button class="button">Klik Saya</button>`;
 
 export default function ArticleShowPage({
     article,

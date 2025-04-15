@@ -2,37 +2,29 @@
 
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CourseController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\HistoryController;
-use App\Models\Article;
+use App\Http\Controllers\LandingPageController;
 use App\Models\Course;
 use App\Models\Video;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
+
 // Route::get('/', function () {
-//     return Inertia::render('Welcome', [
-//         'canLogin' => Route::has('login'),
-//         'canRegister' => Route::has('register'),
-//         'laravelVersion' => Application::VERSION,
-//         'phpVersion' => PHP_VERSION,
+//     $courses = Course::with(["articles"])->latest()->get();
+//     $videos = Video::with(["course.category", "course.hashtags", "course.videos"])->latest('created_at')->get();
+//     $articles = Article::with("reads")->latest('created_at')->get();
+
+//     return Inertia::render('LandingPage', [
+//         "videos" => $videos,
+//         "articles" => $articles,
+//         "courses" => $courses,
 //     ]);
-// });
+// })->name("home");
 
-Route::get('/', function () {
-    $courses = Course::with(["articles"])->latest()->get();
-    $videos = Video::with(["course.category", "course.hashtags", "course.videos"])->latest('created_at')->get();
-    $articles = Article::with("reads")->latest('created_at')->get();
-
-    return Inertia::render('LandingPage', [
-        "videos" => $videos,
-        "articles" => $articles,
-        "courses" => $courses,
-    ]);
-})->name("home");
+Route::get('/', LandingPageController::class)->name("home");
 
 Route::get('/coming-soon', function () {
     return Inertia::render('Informational/ComingSoon');

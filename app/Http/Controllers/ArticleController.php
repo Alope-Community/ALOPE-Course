@@ -6,13 +6,14 @@ use App\Models\Article;
 use App\Models\Read;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index()
     {
 
         $articles = Article::with("course")->wherePublished(true)->latest()->get();
@@ -51,20 +52,20 @@ class ArticleController extends Controller
         $article = Article::whereSlug($slug)->first();
         $articles = Article::with("course")->where('slug', '!=', $slug)->latest()->get();
 
-        if(auth()->user()) {
-            $existingRead = Read::where('user_id', auth()->user()->id)
+        if (Auth::user()) {
+            $existingRead = Read::where('user_id', Auth::user()->id)
                 ->where('article_id', $article->id)
                 ->whereDate('created_at', today())
                 ->first();
 
             if (!$existingRead) {
                 Read::create([
-                    "user_id" => auth()->user()->id,
+                    "user_id" => Auth::user()->id,
                     "article_id" => $article->id,
                     "created_at" => now()
                 ]);
             }
-        } else{
+        } else {
             Read::create([
                 "user_id" => 1,
                 "article_id" => $article->id,

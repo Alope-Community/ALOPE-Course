@@ -1,7 +1,7 @@
 export function formatDateWithTime(timestamp: string) {
     const date = new Date(timestamp);
 
-    // Opsi nama bulan dalam bahasa Inggris
+    // Nama bulan dalam Bahasa Indonesia
     const monthNames = [
         'Januari',
         'Februari',
@@ -17,10 +17,10 @@ export function formatDateWithTime(timestamp: string) {
         'Desember',
     ];
 
-    const day = date.getUTCDate(); // Mengambil tanggal
-    const month = monthNames[date.getUTCMonth()]; // Mengambil nama bulan
-    const hours = date.getUTCHours().toString().padStart(2, '0'); // Format jam 2 digit
-    const minutes = date.getUTCMinutes().toString().padStart(2, '0'); // Format menit 2 digit
+    const day = date.getDate();
+    const month = monthNames[date.getMonth()];
+    const hours = date.getHours().toString().padStart(2, '0');
+    const minutes = date.getMinutes().toString().padStart(2, '0');
 
     return `${day} ${month} Pukul ${hours}:${minutes}`;
 }
@@ -43,9 +43,9 @@ export function formatDate(timestamp: string) {
         'Desember',
     ];
 
-    const day = date.getUTCDate();
-    const month = monthNames[date.getUTCMonth()];
-    const year = date.getUTCFullYear();
+    const day = date.getDate();
+    const month = monthNames[date.getMonth()];
+    const year = date.getFullYear();
 
     return `${day} ${month} ${year}`;
 }

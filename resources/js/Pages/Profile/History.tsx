@@ -3,7 +3,7 @@ import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
 import { History } from '@/models/History';
 import { calculateCorrectPercentage } from '@/tools/calculateQuizPoint';
-import { formatDate } from '@/tools/formatDate';
+import { formatDateWithTime } from '@/tools/formatDate';
 import { Head, Link, usePage } from '@inertiajs/react';
 import {
     IconBookOpenFill,
@@ -14,8 +14,6 @@ import {
 export default function HistoryPage({ histories }: { histories: History[] }) {
     const { props } = usePage();
     const { auth } = props;
-
-    console.log(histories);
 
     return (
         <>
@@ -76,7 +74,7 @@ export default function HistoryPage({ histories }: { histories: History[] }) {
                                             &bull;
                                         </span>
                                         <time className="text-xs text-gray-500 md:text-sm">
-                                            {formatDate(
+                                            {formatDateWithTime(
                                                 history.logs[0].created_at,
                                             )}
                                         </time>
