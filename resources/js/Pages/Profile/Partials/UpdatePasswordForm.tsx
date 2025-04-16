@@ -1,10 +1,11 @@
 import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
-import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import { Transition } from '@headlessui/react';
 import { useForm } from '@inertiajs/react';
+import { IconLoader2 } from 'justd-icons';
 import { FormEventHandler, useRef } from 'react';
+import toast from 'react-hot-toast';
 
 export default function UpdatePasswordForm({
     className = '',
@@ -33,8 +34,13 @@ export default function UpdatePasswordForm({
 
         put(route('password.update'), {
             preserveScroll: true,
-            onSuccess: () => reset(),
+            onSuccess: () => {
+                toast.success('Password Berhasil diubah!');
+                reset();
+            },
             onError: (errors) => {
+                toast.error('Terjadi Kesalahan!');
+
                 if (errors.password) {
                     reset('password', 'password_confirmation');
                     passwordInput.current?.focus();
@@ -50,22 +56,11 @@ export default function UpdatePasswordForm({
 
     return (
         <section className={className}>
-            <header>
-                <h2 className="text-lg font-medium text-gray-900">
-                    Update Password
-                </h2>
-
-                <p className="mt-1 text-sm text-gray-600">
-                    Ensure your account is using a long, random password to stay
-                    secure.
-                </p>
-            </header>
-
             <form onSubmit={updatePassword} className="mt-6 space-y-6">
                 <div>
                     <InputLabel
                         htmlFor="current_password"
-                        value="Current Password"
+                        value="Password Saat Ini"
                     />
 
                     <TextInput
@@ -76,7 +71,7 @@ export default function UpdatePasswordForm({
                             setData('current_password', e.target.value)
                         }
                         type="password"
-                        className="mt-1 block w-full"
+                        className="mt-1 block w-full bg-white/80"
                         autoComplete="current-password"
                     />
 
@@ -87,7 +82,7 @@ export default function UpdatePasswordForm({
                 </div>
 
                 <div>
-                    <InputLabel htmlFor="password" value="New Password" />
+                    <InputLabel htmlFor="password" value="Password Baru" />
 
                     <TextInput
                         id="password"
@@ -95,7 +90,7 @@ export default function UpdatePasswordForm({
                         value={data.password}
                         onChange={(e) => setData('password', e.target.value)}
                         type="password"
-                        className="mt-1 block w-full"
+                        className="mt-1 block w-full bg-white/80"
                         autoComplete="new-password"
                     />
 
@@ -105,7 +100,7 @@ export default function UpdatePasswordForm({
                 <div>
                     <InputLabel
                         htmlFor="password_confirmation"
-                        value="Confirm Password"
+                        value="Konfirmasi Password"
                     />
 
                     <TextInput
@@ -115,7 +110,7 @@ export default function UpdatePasswordForm({
                             setData('password_confirmation', e.target.value)
                         }
                         type="password"
-                        className="mt-1 block w-full"
+                        className="mt-1 block w-full bg-white/80"
                         autoComplete="new-password"
                     />
 
@@ -126,7 +121,21 @@ export default function UpdatePasswordForm({
                 </div>
 
                 <div className="flex items-center gap-4">
-                    <PrimaryButton disabled={processing}>Save</PrimaryButton>
+                    {/* <PrimaryButton disabled={processing}>Save</PrimaryButton> */}
+                    <button
+                        className="inline-flex items-center justify-center gap-1 rounded bg-[#2276f0] px-5 py-1.5 text-white hover:bg-[#2276f0]/70 disabled:cursor-not-allowed disabled:bg-[#2276f0]/80"
+                        disabled={
+                            processing ||
+                            !(
+                                data.current_password &&
+                                data.password &&
+                                data.password_confirmation
+                            )
+                        }
+                    >
+                        {processing ? <IconLoader2 /> : ''}
+                        Simpan
+                    </button>
 
                     <Transition
                         show={recentlySuccessful}
@@ -135,9 +144,7 @@ export default function UpdatePasswordForm({
                         leave="transition ease-in-out"
                         leaveTo="opacity-0"
                     >
-                        <p className="text-sm text-gray-600">
-                            Saved.
-                        </p>
+                        <p className="text-sm text-gray-600">Tersimpan.</p>
                     </Transition>
                 </div>
             </form>

@@ -6,8 +6,7 @@ use App\Http\Controllers\QuizController;
 use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\LandingPageController;
-use App\Models\Course;
-use App\Models\Video;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -37,17 +36,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('/quizzes', QuizController::class);
     Route::resource('/answers', AnswerController::class);
 
-    // 
-    Route::get('/profile/history', HistoryController::class);
-});
-
-Route::get('/test-api/courses', function () {
-    $courses = Course::with(["category", "hashtags", "videos"])->get();
-    return response()->json($courses);
-});
-Route::get('/test-api/videos', function () {
-    $videos = Video::with(["course.category", "course.hashtags"])->get();
-    return response()->json($videos);
+    // Profile
+    Route::get('/profile', HistoryController::class);
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 });
 
 Route::get('/dashboard', function () {
@@ -55,9 +46,10 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 // Route::middleware('auth')->group(function () {
-//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//     // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//     Route::get('/profile', HistoryController::class);
 //     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+//     // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 // });
 
 require __DIR__ . '/auth.php';

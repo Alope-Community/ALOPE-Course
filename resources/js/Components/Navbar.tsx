@@ -107,10 +107,10 @@ export default function NavbarComponent() {
                                             Dashboard
                                         </Link> */}
                                         <Link
-                                            href="/profile/history"
+                                            href="/profile"
                                             className="block px-4 py-2 hover:bg-gray-100"
                                         >
-                                            History
+                                            Profile
                                         </Link>
                                         {/* <hr className="my-2" /> */}
                                         <button
@@ -172,15 +172,15 @@ export default function NavbarComponent() {
                         <>
                             <li>
                                 <Link
-                                    href={'/profile/history'}
+                                    href={'/profile'}
                                     onClick={() => setIsOpen(false)}
                                     className={`block py-2 text-lg ${
-                                        url.startsWith('/profile/history')
+                                        url.startsWith('/profile')
                                             ? 'font-semibold text-[#2276f0]'
                                             : ''
                                     }`}
                                 >
-                                    History
+                                    Profile
                                 </Link>
                             </li>
                             <li>
