@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('articles', function (Blueprint $table) {
-            $table->boolean("published")->default(true)->after('course_id');
+            $table->uuid('writer_id')->nullable()->after('published');
+            $table->foreign("writer_id")->references("id")->on("writers")->onDelete("set null");
         });
     }
 
@@ -22,7 +23,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('articles', function (Blueprint $table) {
-            $table->dropColumn('published');
+            $table->dropForeign(['writer_id']);
+            $table->dropColumn('writer_id');
         });
     }
 };

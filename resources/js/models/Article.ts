@@ -1,4 +1,5 @@
 import { Course } from './Course';
+import { Writer } from './Writer';
 
 export type Article = {
     id: string;
@@ -12,6 +13,8 @@ export type Article = {
     course: Course;
 
     reads: ReadArticle[];
+
+    writer: Writer;
 
     created_at?: string;
     deleted_at?: null;

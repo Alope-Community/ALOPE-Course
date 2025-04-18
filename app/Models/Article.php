@@ -19,4 +19,9 @@ class Article extends Model
     {
         return $this->hasMany(Read::class);
     }
+
+    public function writer()
+    {
+        return $this->belongsTo(Writer::class);
+    }
 }

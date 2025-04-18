@@ -21,6 +21,7 @@ export default function ArticleShowPage({
     article: Article;
     articles: Article[];
 }) {
+    console.log(article);
     return (
         <>
             <Head title="Article" />
@@ -99,11 +100,11 @@ export default function ArticleShowPage({
                                 </div>
                                 <div className="flex flex-col sm:flex-row sm:gap-2">
                                     <p className="text-sm font-semibold text-[#2276f0] xl:text-base">
-                                        Ilham Hafidz
+                                        {article.writer.name}
                                     </p>
                                     <p className="hidden sm:block">&#128900;</p>
                                     <p className="text-sm text-gray-500 xl:text-base">
-                                        Mentor of ALOPE
+                                        {article.writer.as}
                                     </p>
                                 </div>
                             </div>

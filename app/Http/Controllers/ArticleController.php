@@ -49,7 +49,7 @@ class ArticleController extends Controller
     public function show(string $slug)
     {
 
-        $article = Article::whereSlug($slug)->first();
+        $article = Article::with("writer")->whereSlug($slug)->first();
         $articles = Article::with("course")->where('slug', '!=', $slug)->latest()->get();
 
         if (Auth::user()) {
