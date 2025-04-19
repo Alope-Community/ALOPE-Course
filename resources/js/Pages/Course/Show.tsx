@@ -6,6 +6,7 @@ import NavbarComponent from '@/Components/Navbar';
 import { Course } from '@/models/Course';
 import SideCoursesSection from '@/Sections/SideCourses';
 import { Head } from '@inertiajs/react';
+import { IconCircleInfoFill } from 'justd-icons';
 import { useState } from 'react';
 
 export default function CourseShowPage({
@@ -54,6 +55,17 @@ export default function CourseShowPage({
                         alt="cover course"
                         className="max-h-[800px] w-full rounded"
                     />
+
+                    {course.visibility == 'private' && (
+                        <div className="mt-6 flex items-center gap-2 rounded-md bg-gradient-to-r from-[#f0c322] to-[#f0c322]/50 px-5 py-4 text-gray-800">
+                            <IconCircleInfoFill className="size-5" />
+                            <p>
+                                Kamu harus bergabung kelas untuk membaca artikel
+                                ini
+                            </p>
+                        </div>
+                    )}
+
                     <div className="mt-5">
                         <h1 className="text-3xl font-bold">{course.title}</h1>
                         <p className="mt-4 text-gray-800">

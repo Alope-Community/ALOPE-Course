@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\Read;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
@@ -49,8 +50,16 @@ class ArticleController extends Controller
     public function show(string $slug)
     {
 
-        $article = Article::with("writer")->whereSlug($slug)->first();
+        $article = Article::with(["writer", "course.users"])->whereSlug($slug)->first();
         $articles = Article::with("course")->where('slug', '!=', $slug)->latest()->get();
+
+
+        if ($article->course->visibility == 'private') {
+            $user = User::with('courses')->find(Auth::id());
+            if (!$article->course->users->contains($user) || !Auth::check()) {
+                return redirect("/access-blocked");
+            }
+        }
 
         if (Auth::user()) {
             $existingRead = Read::where('user_id', Auth::user()->id)

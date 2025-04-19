@@ -29,6 +29,10 @@ Route::get('/coming-soon', function () {
     return Inertia::render('Informational/ComingSoon');
 });
 
+Route::get('/access-blocked', function () {
+    return Inertia::render('Informational/AccessBlocked');
+});
+
 Route::resource('/articles', ArticleController::class);
 Route::resource('/courses', CourseController::class);
 

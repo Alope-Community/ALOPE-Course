@@ -21,7 +21,6 @@ export default function ArticleShowPage({
     article: Article;
     articles: Article[];
 }) {
-    console.log(article);
     return (
         <>
             <Head title="Article" />
