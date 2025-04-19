@@ -93,7 +93,7 @@ export default function ArticleShowPage({
                             <div className="my-7 flex gap-2 sm:items-center">
                                 <div>
                                     <img
-                                        src="/images/ilham.jpg"
+                                        src={article.writer.profile}
                                         alt="ilham hafidz photo"
                                         className="size-11 rounded-full border shadow"
                                     />
