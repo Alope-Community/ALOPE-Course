@@ -60,8 +60,8 @@ export default function CourseShowPage({
                         <div className="mt-6 flex items-center gap-2 rounded-md bg-gradient-to-r from-[#f0c322] to-[#f0c322]/50 px-5 py-4 text-gray-800">
                             <IconCircleInfoFill className="size-5" />
                             <p>
-                                Kamu harus bergabung kelas untuk membaca artikel
-                                ini
+                                Kamu harus bergabung kelas untuk membaca
+                                mengikuti Kelas ini
                             </p>
                         </div>
                     )}
@@ -117,7 +117,7 @@ export default function CourseShowPage({
                                     ))
                                 ) : (
                                     <p className="italic text-gray-700">
-                                        Belum ada Artikel untuk materi ini!
+                                        Belum ada Artikel untuk kelas ini!
                                     </p>
                                 )}
                             </>
@@ -141,7 +141,7 @@ export default function CourseShowPage({
                                     ))
                                 ) : (
                                     <p className="italic text-gray-700">
-                                        Belum ada Quiz untuk materi ini!
+                                        Belum ada Quiz untuk kelas ini!
                                     </p>
                                 )}
                             </>

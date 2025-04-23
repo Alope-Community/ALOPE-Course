@@ -1,6 +1,7 @@
 import { Article } from '@/models/Article';
 import { formatDateWithTime } from '@/tools/formatDate';
 import { Link } from '@inertiajs/react';
+import { IconRocketFill } from 'justd-icons';
 
 export default function HorizontalArticleCardComponent({
     props,
@@ -22,9 +23,22 @@ export default function HorizontalArticleCardComponent({
             <div className="mb-5">
                 {props.course ? (
                     <div className="my-2 flex gap-2 text-xs xl:text-sm">
-                        <p className="text-xs font-semibold text-[#2276f0] md:text-sm">
-                            {props.course.title}
-                        </p>
+                        <Link
+                            href={`/courses/${props.course.slug}`}
+                            className="flex items-center gap-2"
+                        >
+                            {props.course.visibility == 'private' && (
+                                <span
+                                    title="Premium"
+                                    className="rounded bg-[#f0c322] p-0.5"
+                                >
+                                    <IconRocketFill className="size-3" />
+                                </span>
+                            )}
+                            <p className="text-xs font-semibold text-[#2276f0] md:text-sm">
+                                {props.course.title}
+                            </p>
+                        </Link>
                         <p>&#128900;</p>
                         <p className="text-xs text-gray-500 md:text-sm">
                             {formatDateWithTime(props.created_at || '')}

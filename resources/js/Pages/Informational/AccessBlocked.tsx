@@ -1,6 +1,8 @@
-import { Link } from '@inertiajs/react';
-
 export default function AccessBlockedPage() {
+    const handleBack = () => {
+        window.history.back();
+    };
+
     return (
         <main className="relative flex h-screen max-h-screen w-full items-center justify-center overflow-y-hidden">
             <img
@@ -30,12 +32,14 @@ export default function AccessBlockedPage() {
                     materi dan sertifikat kelas.
                 </p>
 
-                <Link
-                    href="/"
+                <button
+                    onClick={() => {
+                        handleBack();
+                    }}
                     className="relative mt-10 inline-block rounded-full bg-[#2276f0] px-5 py-2 text-sm font-bold text-white shadow hover:shadow-[#2276f0] active:scale-95 md:px-8 md:py-2.5 md:text-base"
                 >
-                    Kembali ke Beranda
-                </Link>
+                    Kembali
+                </button>
             </div>
         </main>
     );

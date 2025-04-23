@@ -39,10 +39,10 @@ export default function HistoryPage({ histories }: { histories: History[] }) {
                 links={[
                     {
                         title: 'Profile',
-                        url: '/profile/history',
-                        active: false,
+                        url: '/profile',
+                        active: true,
                     },
-                    { title: 'History', url: '/profile/history', active: true },
+                    // { title: 'History', url: '/profile/history', active: true },
                 ]}
             />
 

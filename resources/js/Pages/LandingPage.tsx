@@ -1,5 +1,6 @@
 import AccordionComponent from '@/Components/Accordion';
 import ArticleCardComponent from '@/Components/Cards/Article';
+import CourseCardComponent from '@/Components/Cards/CourseCard';
 import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
 import { Article } from '@/models/Article';
@@ -213,37 +214,10 @@ export default function LandingPage({
                                 ]}
                             >
                                 {courses.map((course, index) => (
-                                    <Link
-                                        href={`/courses/${course.slug}`}
+                                    <CourseCardComponent
                                         key={index}
-                                        className={`mr-5 overflow-hidden rounded-md bg-gray-50 shadow`}
-                                    >
-                                        <img
-                                            src={course.cover}
-                                            alt="course cover"
-                                            className="max-h-[150px] w-full rounded 2xl:max-h-[200px]"
-                                            width={1280}
-                                            height={720}
-                                        />
-                                        <div className="rounded-b-md border border-t-0 border-[#2276f0] px-3 pb-3 pt-2">
-                                            <small className="text-xs italic text-[#2276f0]">
-                                                #web-programing
-                                            </small>
-                                            <p className="mt-2 font-semibold">
-                                                {course.title}
-                                            </p>
-                                            <div className="mt-1 flex items-center gap-2">
-                                                <p className="text-xs font-medium italic">
-                                                    On Going
-                                                </p>
-                                                <p className="text-xs">-</p>
-                                                <p className="mt-1 text-xs text-gray-800">
-                                                    {course.articles.length}{' '}
-                                                    Total Articles
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </Link>
+                                        course={course}
+                                    />
                                 ))}
                             </Glider>
                         </div>
