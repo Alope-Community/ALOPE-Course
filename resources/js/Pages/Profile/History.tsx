@@ -1,6 +1,7 @@
 import BreadcrumbComponent from '@/Components/Breadcrumb';
 import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
+import { Course } from '@/models/Course';
 import { History } from '@/models/History';
 import { calculateCorrectPercentage } from '@/tools/calculateQuizPoint';
 import { formatDateWithTime } from '@/tools/formatDate';
@@ -9,12 +10,34 @@ import {
     IconBookOpenFill,
     IconCirclePersonFill,
     IconPuzzleFill,
+    IconRocketFill,
 } from 'justd-icons';
 import UpdatePasswordForm from './Partials/UpdatePasswordForm';
 
-export default function HistoryPage({ histories }: { histories: History[] }) {
+export default function HistoryPage({
+    histories,
+    courses,
+}: {
+    histories: History[];
+    courses: Course[];
+}) {
     const { props } = usePage();
     const { auth } = props;
+
+    const countMyHistory = (courseId: string) => {
+        let count = 0;
+        histories.forEach((history) => {
+            if (history.logs[0].article?.course_id == courseId) {
+                count++;
+            }
+        });
+
+        return count;
+    };
+
+    const counter = (a: number, b: number) => {
+        return a + b;
+    };
 
     return (
         <>
@@ -79,6 +102,90 @@ export default function HistoryPage({ histories }: { histories: History[] }) {
                     </div>
                 </section>
                 <section className="lg:col-span-2 xl:col-span-1">
+                    <div className="mb-5 rounded-lg bg-white/50 p-5 shadow backdrop-blur">
+                        <h2 className="text-xl font-semibold md:text-2xl">
+                            <span className="text-gray-400">//</span> Kelas yang
+                            Diikuti
+                        </h2>
+                        <div className="mt-10">
+                            {courses.length ? (
+                                courses.map((course, index) => (
+                                    <div
+                                        key={index}
+                                        className="mb-7 flex items-center gap-5 md:mb-4"
+                                    >
+                                        <div className="hidden md:block">
+                                            <img
+                                                src={course.cover}
+                                                alt="Cover Course"
+                                                className="rounded shadow md:max-h-[100px] md:max-w-[150px]"
+                                            />
+                                        </div>
+                                        <div className="w-full">
+                                            <div className="mb-2 flex items-end justify-between">
+                                                <div>
+                                                    <div className="inline-flex gap-2">
+                                                        <Link
+                                                            href={`/courses/${course.slug}`}
+                                                            className="font-bold"
+                                                        >
+                                                            {course.title}
+                                                        </Link>
+                                                        {course.visibility ==
+                                                            'private' && (
+                                                            <p>
+                                                                <span
+                                                                    title="Premium"
+                                                                    className="inline-flex rounded bg-[#f0c322] p-0.5"
+                                                                >
+                                                                    <IconRocketFill className="size-3" />
+                                                                </span>
+                                                            </p>
+                                                        )}
+                                                    </div>
+                                                    <div className="flex gap-2 text-xs text-gray-700">
+                                                        <p>
+                                                            {
+                                                                course.articles
+                                                                    .length
+                                                            }{' '}
+                                                            Article
+                                                        </p>
+                                                        <p>
+                                                            {
+                                                                course.quizzes
+                                                                    .length
+                                                            }{' '}
+                                                            Quiz
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <p className="text-xs text-gray-800 md:text-sm">
+                                                    Progress{' '}
+                                                    {`${countMyHistory(course.id)} / ${counter(
+                                                        course.articles.length,
+                                                        course.quizzes.length,
+                                                    )}`}
+                                                </p>
+                                            </div>
+                                            <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-gray-200">
+                                                <div
+                                                    className="h-full bg-[#2276f0]"
+                                                    style={{
+                                                        width: `${(countMyHistory(course.id) / counter(course.articles.length, course.quizzes.length)) * 100}%`,
+                                                    }}
+                                                ></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))
+                            ) : (
+                                <p className="italic text-gray-700">
+                                    Belum ada Kelas yang Diikuti
+                                </p>
+                            )}
+                        </div>
+                    </div>
                     <div className="rounded-lg bg-white/50 p-5 shadow backdrop-blur">
                         <h2 className="text-xl font-semibold md:text-2xl">
                             <span className="text-gray-400">//</span> Riwayat
