@@ -32,14 +32,22 @@ export default function AccessBlockedPage() {
                     materi dan sertifikat kelas.
                 </p>
 
-                <button
-                    onClick={() => {
-                        handleBack();
-                    }}
-                    className="relative mt-10 inline-block rounded-full bg-[#2276f0] px-5 py-2 text-sm font-bold text-white shadow hover:shadow-[#2276f0] active:scale-95 md:px-8 md:py-2.5 md:text-base"
-                >
-                    Kembali
-                </button>
+                <div className="flex justify-center gap-2">
+                    <a
+                        href="mailto:cs@alope.id"
+                        className="relative mt-10 inline-block rounded-full bg-[#2276f0] px-5 py-2 text-sm font-bold text-white shadow hover:shadow-[#2276f0] active:scale-95 md:px-8 md:py-2.5 md:text-base"
+                    >
+                        Hubungi CS
+                    </a>
+                    <button
+                        onClick={() => {
+                            handleBack();
+                        }}
+                        className="relative mt-10 inline-block rounded-full bg-[#e7e8ec] px-5 py-2 text-sm font-bold text-gray-600 shadow hover:shadow-[#e7e8ec] active:scale-95 md:px-8 md:py-2.5 md:text-base"
+                    >
+                        Kembali
+                    </button>
+                </div>
             </div>
         </main>
     );

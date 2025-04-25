@@ -118,7 +118,7 @@ export default function HistoryPage({
                                             <img
                                                 src={course.cover}
                                                 alt="Cover Course"
-                                                className="rounded shadow md:max-h-[100px] md:max-w-[150px]"
+                                                className="rounded shadow md:max-h-[100px] md:max-w-[130px]"
                                             />
                                         </div>
                                         <div className="w-full">
