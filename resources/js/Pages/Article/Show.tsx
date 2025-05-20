@@ -5,14 +5,18 @@ import { Head } from '@inertiajs/react';
 import BreadcrumbComponent from '@/Components/Breadcrumb';
 import { Article } from '@/models/Article';
 import SideArticlesSection from '@/Sections/SideArticles';
-import { IconCalendar } from 'justd-icons';
-// import { Highlight, themes } from 'prism-react-renderer';
-// import { Highlight, themes } from 'prism-react-renderer';
 import { formatDateWithTime } from '@/tools/formatDate';
 import strLimit from '@/tools/strLimit';
+import { IconCalendar } from 'justd-icons';
+import { Highlight, themes } from 'prism-react-renderer';
 import '../../../css/bodyContent.css';
 
-// const codeBlock = `<button class="button">Klik Saya</button>`;
+const codeBlock = `<div class="container">
+  <div class="header">Header</div>
+  <div class="sidebar">Sidebar</div>
+  <div class="main">Main Content</div>
+  <div class="footer">Footer</div>
+</div>`;
 
 export default function ArticleShowPage({
     article,
@@ -39,7 +43,7 @@ export default function ArticleShowPage({
             />
 
             <section className="container mx-auto px-3 md:px-10 xl:px-5 2xl:px-2">
-                {/* <section id="body" className="mt-20">
+                <section id="body" className="mt-20">
                     <Highlight
                         theme={themes.vsDark}
                         code={codeBlock}
@@ -69,7 +73,7 @@ export default function ArticleShowPage({
                             </pre>
                         )}
                     </Highlight>
-                </section> */}
+                </section>
                 {/* <BannerHorizontalComponent /> */}
 
                 <div className="mt-10 grid grid-cols-4 gap-8 xl:gap-10">

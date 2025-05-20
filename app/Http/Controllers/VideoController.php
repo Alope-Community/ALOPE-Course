@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Video;
 use Illuminate\Http\Request;
-use App\Models\Quiz;
-use App\Models\Answer;
-use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
-class QuizController extends Controller
+class VideoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -39,19 +37,11 @@ class QuizController extends Controller
      */
     public function show(string $slug)
     {
-        $quiz = Quiz::with('questions')->whereSlug($slug)->first();
-        $answers = Answer::whereHas('question', function ($query) use ($quiz) {
-            $query->where('quiz_id', $quiz->id);
-        })->where('user_id', Auth::user()->id)->get();
-        $done = false;
-        if (count($answers) == count($quiz->questions)) {
-            $done = true;
-        }
+        $videos = Video::whereSlug($slug)->first();
 
-        return Inertia::render('Quiz/Show', [
-            "quiz" => $quiz,
-            "answers" => $answers,
-            "done" => $done
+        return Inertia::render('Video/Show', [
+            // "course" => $course,
+            "videos" => $videos,
         ]);
     }
 
