@@ -18,11 +18,12 @@ class CourseController extends Controller
         $courses = Course::with([
             'articles' => function ($query) {
                 $query->latest();
-            }, 
+            },
             'quizzes' => function ($query) {
                 $query->latest();
-            }, 
-            'hashtags'
+            },
+            'hashtags',
+            'videos'
         ])->latest()->get();
 
         $articles = Article::with("course")->wherePublished(true)->latest()->get();
@@ -58,7 +59,9 @@ class CourseController extends Controller
             $query->latest();
         }, 'quizzes' => function ($query) {
             $query->latest();
-        }, 'hashtags'])->whereSlug($slug)->first();
+        }, 'hashtags', 'videos' => function ($query) {
+            $query->latest();
+        }])->whereSlug($slug)->first();
 
         $courses = Course::with(['articles' => function ($query) {
             $query->latest();

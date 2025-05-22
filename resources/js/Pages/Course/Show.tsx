@@ -5,7 +5,7 @@ import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
 import { Course } from '@/models/Course';
 import SideCoursesSection from '@/Sections/SideCourses';
-import { Head } from '@inertiajs/react';
+import { Head, Link } from '@inertiajs/react';
 import { IconCircleInfoFill } from 'justd-icons';
 import { useState } from 'react';
 
@@ -96,6 +96,16 @@ export default function CourseShowPage({
                                 >
                                     Quiz
                                 </button>
+                                {course.videos.length ? (
+                                    <Link
+                                        href={`/videos/${course.videos[0].slug}`}
+                                        className={`rounded-md border border-gray-300 bg-gray-200/90 px-4 py-1.5 text-sm font-medium text-gray-600 transition-all duration-200 md:px-6 md:py-2 md:text-base`}
+                                    >
+                                        Video
+                                    </Link>
+                                ) : (
+                                    ''
+                                )}
                             </div>
                         </div>
                         {activeTab === 'article' && (

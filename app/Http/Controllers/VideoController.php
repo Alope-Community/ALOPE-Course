@@ -37,11 +37,11 @@ class VideoController extends Controller
      */
     public function show(string $slug)
     {
-        $videos = Video::whereSlug($slug)->first();
+        $video = Video::with('course')->whereSlug($slug)->first();
 
         return Inertia::render('Video/Show', [
             // "course" => $course,
-            "videos" => $videos,
+            "video" => $video,
         ]);
     }
 
