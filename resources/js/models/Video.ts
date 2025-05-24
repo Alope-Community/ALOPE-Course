@@ -6,6 +6,7 @@ export type Video = {
     title: string;
     description: string;
     link: string;
+    duration: string;
 
     course_id: string;
     course: Course;

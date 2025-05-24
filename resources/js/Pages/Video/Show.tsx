@@ -4,10 +4,15 @@ import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
 import { Video } from '@/models/Video';
 import strLimit from '@/tools/strLimit';
-import { Head } from '@inertiajs/react';
-import { IconLockFill } from 'justd-icons';
+import { Head, Link } from '@inertiajs/react';
 
-export default function ShowVideoPage({ video }: { video: Video }) {
+export default function ShowVideoPage({
+    video,
+    videos,
+}: {
+    video: Video;
+    videos: Video[];
+}) {
     return (
         <>
             <Head title="Courses" />
@@ -51,57 +56,22 @@ export default function ShowVideoPage({ video }: { video: Video }) {
                                 {video.course.title}
                             </h2>
                             <div className="mt-3 flex justify-between text-xs text-gray-100">
-                                <p>6 Video</p>
+                                <p>{videos.length} Video</p>
                                 <p>Web Programming</p>
                             </div>
                         </div>
                         <div className="mt-5 hidden flex-col gap-1 overflow-hidden rounded bg-white/30 backdrop-blur lg:flex">
-                            <div className="border-l-2 border-[#5b8df3] bg-white/40 px-3 py-2">
-                                <div className="flex cursor-pointer justify-between">
-                                    <p>1. Pendahuluan</p>
-                                    <p>03:11</p>
-                                </div>
-                            </div>
-                            <div className="px-3 py-2 hover:bg-white">
-                                <div className="flex cursor-not-allowed justify-between">
-                                    <p>2. Tag HTML</p>
-                                    <p>
-                                        <IconLockFill />
-                                    </p>
-                                </div>
-                            </div>
-                            <div className="px-3 py-2 hover:bg-white">
-                                <div className="flex cursor-not-allowed justify-between">
-                                    <p>3. Basic template HTML</p>
-                                    <p>
-                                        <IconLockFill />
-                                    </p>
-                                </div>
-                            </div>
-                            <div className="px-3 py-2 hover:bg-white">
-                                <div className="flex cursor-not-allowed justify-between">
-                                    <p>4. Mulai Koding di Code Editor</p>
-                                    <p>
-                                        <IconLockFill />
-                                    </p>
-                                </div>
-                            </div>
-                            <div className="px-3 py-2 hover:bg-white">
-                                <div className="flex cursor-not-allowed justify-between">
-                                    <p>5. Paragraph</p>
-                                    <p>
-                                        <IconLockFill />
-                                    </p>
-                                </div>
-                            </div>
-                            <div className="px-3 py-2 hover:bg-white">
-                                <div className="flex cursor-not-allowed justify-between">
-                                    <p>6. Heading</p>
-                                    <p>
-                                        <IconLockFill />
-                                    </p>
-                                </div>
-                            </div>
+                            {videos.map((vid, index) => (
+                                <Link
+                                    href={`/videos/${vid.slug}`}
+                                    className={`${vid.slug == video.slug && 'border-l-2 border-[#5b8df3] bg-white/40'} px-3 py-2`}
+                                >
+                                    <div className="flex cursor-pointer justify-between">
+                                        <p>{`${index + 1}. ${vid.title}`}</p>
+                                        <p>{vid.duration}</p>
+                                    </div>
+                                </Link>
+                            ))}
                         </div>
                     </div>
                 </div>
@@ -119,52 +89,17 @@ export default function ShowVideoPage({ video }: { video: Video }) {
                         ></iframe>
                     </div>
                     <div className="mt-5 flex flex-col gap-1 overflow-hidden rounded bg-white/30 backdrop-blur lg:hidden">
-                        <div className="border-l-2 border-[#5b8df3] bg-white/40 px-3 py-2">
-                            <div className="flex cursor-pointer justify-between">
-                                <p>1. Pendahuluan</p>
-                                <p>03:11</p>
-                            </div>
-                        </div>
-                        <div className="px-3 py-2 hover:bg-white">
-                            <div className="flex cursor-not-allowed justify-between">
-                                <p>2. Tag HTML</p>
-                                <p>
-                                    <IconLockFill />
-                                </p>
-                            </div>
-                        </div>
-                        <div className="px-3 py-2 hover:bg-white">
-                            <div className="flex cursor-not-allowed justify-between">
-                                <p>3. Basic template HTML</p>
-                                <p>
-                                    <IconLockFill />
-                                </p>
-                            </div>
-                        </div>
-                        <div className="px-3 py-2 hover:bg-white">
-                            <div className="flex cursor-not-allowed justify-between">
-                                <p>4. Mulai Koding di Code Editor</p>
-                                <p>
-                                    <IconLockFill />
-                                </p>
-                            </div>
-                        </div>
-                        <div className="px-3 py-2 hover:bg-white">
-                            <div className="flex cursor-not-allowed justify-between">
-                                <p>5. Paragraph</p>
-                                <p>
-                                    <IconLockFill />
-                                </p>
-                            </div>
-                        </div>
-                        <div className="px-3 py-2 hover:bg-white">
-                            <div className="flex cursor-not-allowed justify-between">
-                                <p>6. Heading</p>
-                                <p>
-                                    <IconLockFill />
-                                </p>
-                            </div>
-                        </div>
+                        {videos.map((vid, index) => (
+                            <Link
+                                href={`/videos/${vid.slug}`}
+                                className={`${vid.slug == video.slug && 'border-l-2 border-[#5b8df3] bg-white/40'} px-3 py-2`}
+                            >
+                                <div className="flex cursor-pointer justify-between">
+                                    <p>{`${index + 1}. ${vid.title}`}</p>
+                                    <p>{vid.duration}</p>
+                                </div>
+                            </Link>
+                        ))}
                     </div>
                     <div className="mt-5 overflow-hidden rounded border bg-white/30 p-5 shadow">
                         <h2 className="text-2xl font-semibold">
