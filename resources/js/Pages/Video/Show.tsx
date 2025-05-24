@@ -51,7 +51,7 @@ export default function ShowVideoPage({ video }: { video: Video }) {
                                 {video.course.title}
                             </h2>
                             <div className="mt-3 flex justify-between text-xs text-gray-100">
-                                <p>2 Video</p>
+                                <p>6 Video</p>
                                 <p>Web Programming</p>
                             </div>
                         </div>
@@ -64,7 +64,39 @@ export default function ShowVideoPage({ video }: { video: Video }) {
                             </div>
                             <div className="px-3 py-2 hover:bg-white">
                                 <div className="flex cursor-not-allowed justify-between">
-                                    <p>2. Basic template HTML</p>
+                                    <p>2. Tag HTML</p>
+                                    <p>
+                                        <IconLockFill />
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="px-3 py-2 hover:bg-white">
+                                <div className="flex cursor-not-allowed justify-between">
+                                    <p>3. Basic template HTML</p>
+                                    <p>
+                                        <IconLockFill />
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="px-3 py-2 hover:bg-white">
+                                <div className="flex cursor-not-allowed justify-between">
+                                    <p>4. Mulai Koding di Code Editor</p>
+                                    <p>
+                                        <IconLockFill />
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="px-3 py-2 hover:bg-white">
+                                <div className="flex cursor-not-allowed justify-between">
+                                    <p>5. Paragraph</p>
+                                    <p>
+                                        <IconLockFill />
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="px-3 py-2 hover:bg-white">
+                                <div className="flex cursor-not-allowed justify-between">
+                                    <p>6. Heading</p>
                                     <p>
                                         <IconLockFill />
                                     </p>
@@ -95,7 +127,39 @@ export default function ShowVideoPage({ video }: { video: Video }) {
                         </div>
                         <div className="px-3 py-2 hover:bg-white">
                             <div className="flex cursor-not-allowed justify-between">
-                                <p>2. Basic template HTML</p>
+                                <p>2. Tag HTML</p>
+                                <p>
+                                    <IconLockFill />
+                                </p>
+                            </div>
+                        </div>
+                        <div className="px-3 py-2 hover:bg-white">
+                            <div className="flex cursor-not-allowed justify-between">
+                                <p>3. Basic template HTML</p>
+                                <p>
+                                    <IconLockFill />
+                                </p>
+                            </div>
+                        </div>
+                        <div className="px-3 py-2 hover:bg-white">
+                            <div className="flex cursor-not-allowed justify-between">
+                                <p>4. Mulai Koding di Code Editor</p>
+                                <p>
+                                    <IconLockFill />
+                                </p>
+                            </div>
+                        </div>
+                        <div className="px-3 py-2 hover:bg-white">
+                            <div className="flex cursor-not-allowed justify-between">
+                                <p>5. Paragraph</p>
+                                <p>
+                                    <IconLockFill />
+                                </p>
+                            </div>
+                        </div>
+                        <div className="px-3 py-2 hover:bg-white">
+                            <div className="flex cursor-not-allowed justify-between">
+                                <p>6. Heading</p>
                                 <p>
                                     <IconLockFill />
                                 </p>

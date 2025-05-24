@@ -8,15 +8,14 @@ import SideArticlesSection from '@/Sections/SideArticles';
 import { formatDateWithTime } from '@/tools/formatDate';
 import strLimit from '@/tools/strLimit';
 import { IconCalendar } from 'justd-icons';
-import { Highlight, themes } from 'prism-react-renderer';
 import '../../../css/bodyContent.css';
 
-const codeBlock = `<div class="container">
-  <div class="header">Header</div>
-  <div class="sidebar">Sidebar</div>
-  <div class="main">Main Content</div>
-  <div class="footer">Footer</div>
-</div>`;
+// const codeBlock = `<div class="container">
+//   <div class="header">Header</div>
+//   <div class="sidebar">Sidebar</div>
+//   <div class="main">Main Content</div>
+//   <div class="footer">Footer</div>
+// </div>`;
 
 export default function ArticleShowPage({
     article,
@@ -44,7 +43,7 @@ export default function ArticleShowPage({
 
             <section className="container mx-auto px-3 md:px-10 xl:px-5 2xl:px-2">
                 <section id="body" className="mt-20">
-                    <Highlight
+                    {/* <Highlight
                         theme={themes.vsDark}
                         code={codeBlock}
                         language="html"
@@ -72,7 +71,7 @@ export default function ArticleShowPage({
                                 ))}
                             </pre>
                         )}
-                    </Highlight>
+                    </Highlight> */}
                 </section>
                 {/* <BannerHorizontalComponent /> */}
 
