@@ -16,7 +16,7 @@ export default function NavbarComponent() {
         { name: 'Home', href: '/' },
         { name: 'Course', href: '/courses' },
         { name: 'Article', href: '/articles' },
-        { name: 'Video', href: '/videos/lwd' },
+        { name: 'Video', href: '/videos/pendahuluan' },
     ];
 
     const handleLogout = () => {
