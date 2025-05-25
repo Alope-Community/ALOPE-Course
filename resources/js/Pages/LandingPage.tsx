@@ -9,6 +9,7 @@ import { Video } from '@/models/Video';
 import { Head, Link } from '@inertiajs/react';
 
 import 'glider-js/glider.min.css';
+import { IconChevronRight } from 'justd-icons';
 import Glider from 'react-glider';
 
 export default function LandingPage({
@@ -224,11 +225,18 @@ export default function LandingPage({
                     </div>
 
                     <div className="mb-10">
-                        <div className="mb-5">
+                        <div className="mb-5 lg:flex lg:items-center lg:justify-between">
                             <h2 className="text-xl font-semibold md:text-2xl">
                                 <span className="text-gray-400">//</span>{' '}
-                                Temukan Artikel Menarik Seputar Programming
+                                Artikel Terpopuler
                             </h2>
+                            <Link
+                                href="/articles"
+                                className="flex items-center gap-1 rounded px-5 py-2 text-sm font-bold text-gray-800 duration-300 hover:gap-2 hover:shadow-[#673ef0] active:scale-95"
+                            >
+                                Lihat Semua Artikel
+                                <IconChevronRight className="size-7 text-[#2276f0]" />
+                            </Link>
                         </div>
                         <div className="relative">
                             <Glider

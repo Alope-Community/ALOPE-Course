@@ -16,7 +16,11 @@ class LandingPageController extends Controller
     {
         $courses = Course::with(["articles"])->latest()->get();
         $videos = Video::with(["course.category", "course.hashtags", "course.videos"])->latest('created_at')->get();
-        $articles = Article::with("reads")->latest('created_at')->get();
+        $articles = Article::with('reads')
+            ->withCount('reads') 
+            ->orderBy('reads_count', 'desc')
+            ->limit(7)
+            ->get();
 
         return Inertia::render('LandingPage', [
             "videos" => $videos,
