@@ -13,7 +13,7 @@ export default function ArticleCardComponent({ props }: { props: Article }) {
                 <img
                     src={props.cover}
                     alt="cover article"
-                    className="w-full"
+                    className="w-full rounded-t-md"
                     width={1280}
                     height={720}
                 />

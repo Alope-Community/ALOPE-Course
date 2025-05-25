@@ -12,6 +12,12 @@ class Video extends Model
     public $incrementing = false; 
     protected $keyType = 'string'; 
 
+    public function getArticlesAttribute()
+    {
+        $ids = array_filter(explode(',', $this->article_ids));
+        return Article::with("reads")->whereIn('id', $ids)->get();
+    }
+
     public function course(){
         return $this->belongsTo(Course::class);
     }

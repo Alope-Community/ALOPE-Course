@@ -1,17 +1,24 @@
 import BannerHorizontalComponent from '@/Components/Banners/Horizontal';
 import BreadcrumbComponent from '@/Components/Breadcrumb';
+import ArticleCardComponent from '@/Components/Cards/Article';
 import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
+import { Article } from '@/models/Article';
 import { Video } from '@/models/Video';
 import strLimit from '@/tools/strLimit';
 import { Head, Link } from '@inertiajs/react';
 
+import 'glider-js/glider.min.css';
+import Glider from 'react-glider';
+
 export default function ShowVideoPage({
     video,
     videos,
+    articles,
 }: {
     video: Video;
     videos: Video[];
+    articles: Article[];
 }) {
     return (
         <>
@@ -48,21 +55,52 @@ export default function ShowVideoPage({
                 ]}
             />
 
-            <main className="container relative z-20 mx-auto mt-10 grid gap-8 px-3 md:px-10 lg:grid-cols-7 xl:gap-10 xl:px-5 2xl:px-2">
-                <div className="relative lg:col-span-2">
-                    <div className="sticky top-24">
-                        <div className="rounded bg-gradient-to-r from-[#5b8df3] to-[#307de9] p-5 text-white">
-                            <h2 className="text-xl font-medium">
-                                {video.course.title}
-                            </h2>
-                            <div className="mt-3 flex justify-between text-xs text-gray-100">
-                                <p>{videos.length} Video</p>
-                                <p>Web Programming</p>
+            <main className="container relative z-20 mx-auto mt-10 px-3 md:px-10 xl:px-5 2xl:px-2">
+                <section className="relative grid gap-8 lg:grid-cols-7 xl:gap-10">
+                    <div className="relative lg:col-span-2">
+                        <div className="sticky top-24">
+                            <div className="rounded bg-gradient-to-r from-[#5b8df3] to-[#307de9] p-5 text-white">
+                                <h2 className="text-xl font-medium">
+                                    {video.course.title}
+                                </h2>
+                                <div className="mt-3 flex justify-between text-xs text-gray-100">
+                                    <p>{videos.length} Video</p>
+                                    <p>Web Programming</p>
+                                </div>
+                            </div>
+                            <div className="mt-5 hidden flex-col gap-1 overflow-hidden rounded bg-white/30 backdrop-blur lg:flex">
+                                {videos.map((vid, index) => (
+                                    <Link
+                                        key={index}
+                                        href={`/videos/${vid.slug}`}
+                                        className={`${vid.slug == video.slug && 'border-l-2 border-[#5b8df3] bg-white/40'} px-3 py-2`}
+                                    >
+                                        <div className="flex cursor-pointer justify-between">
+                                            <p>{`${index + 1}. ${vid.title}`}</p>
+                                            <p>{vid.duration}</p>
+                                        </div>
+                                    </Link>
+                                ))}
                             </div>
                         </div>
-                        <div className="mt-5 hidden flex-col gap-1 overflow-hidden rounded bg-white/30 backdrop-blur lg:flex">
+                    </div>
+                    <div className="lg:col-span-5">
+                        <div className="overflow-hidden rounded border bg-white/30 p-1 shadow">
+                            <iframe
+                                width="560"
+                                src={video.link}
+                                title="YouTube video player"
+                                frameBorder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerPolicy="strict-origin-when-cross-origin"
+                                allowFullScreen
+                                className="min-h-[230px] w-full sm:h-[400px] lg:h-[400px] 2xl:h-[600px]"
+                            ></iframe>
+                        </div>
+                        <div className="mt-5 flex flex-col gap-1 overflow-hidden rounded bg-white/30 backdrop-blur lg:hidden">
                             {videos.map((vid, index) => (
                                 <Link
+                                    key={index}
                                     href={`/videos/${vid.slug}`}
                                     className={`${vid.slug == video.slug && 'border-l-2 border-[#5b8df3] bg-white/40'} px-3 py-2`}
                                 >
@@ -73,47 +111,74 @@ export default function ShowVideoPage({
                                 </Link>
                             ))}
                         </div>
+                        <div className="mt-5 overflow-hidden rounded border bg-white/30 p-5 shadow">
+                            <h2 className="text-2xl font-semibold">
+                                {video.course.title}
+                            </h2>
+                            <p className="mt-3 text-gray-800">
+                                {video.course.description}
+                            </p>
+                        </div>
                     </div>
-                </div>
-                <div className="lg:col-span-5">
-                    <div className="overflow-hidden rounded border bg-white/30 p-1 shadow">
-                        <iframe
-                            width="560"
-                            src={video.link}
-                            title="YouTube video player"
-                            frameBorder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerPolicy="strict-origin-when-cross-origin"
-                            allowFullScreen
-                            className="min-h-[230px] w-full sm:h-[400px] lg:h-[400px] 2xl:h-[600px]"
-                        ></iframe>
-                    </div>
-                    <div className="mt-5 flex flex-col gap-1 overflow-hidden rounded bg-white/30 backdrop-blur lg:hidden">
-                        {videos.map((vid, index) => (
-                            <Link
-                                href={`/videos/${vid.slug}`}
-                                className={`${vid.slug == video.slug && 'border-l-2 border-[#5b8df3] bg-white/40'} px-3 py-2`}
-                            >
-                                <div className="flex cursor-pointer justify-between">
-                                    <p>{`${index + 1}. ${vid.title}`}</p>
-                                    <p>{vid.duration}</p>
-                                </div>
-                            </Link>
-                        ))}
-                    </div>
-                    <div className="mt-5 overflow-hidden rounded border bg-white/30 p-5 shadow">
-                        <h2 className="text-2xl font-semibold">
-                            {video.course.title}
-                        </h2>
-                        <p className="mt-3 text-gray-800">
-                            {video.course.description}
-                        </p>
-                    </div>
-                </div>
+                </section>
 
-                <div className="lg:col-span-7">
-                    <BannerHorizontalComponent />
-                </div>
+                <hr className="my-10 border border-gray-300" />
+
+                <section>
+                    {articles.length ? (
+                        <>
+                            <h2 className="mb-5 text-2xl font-bold">
+                                Artikel Terkait
+                            </h2>
+                            <Glider
+                                draggable
+                                slidesToShow={4.5}
+                                slidesToScroll={1}
+                                // hasArrows
+                                dragVelocity={1.5}
+                                responsive={[
+                                    {
+                                        breakpoint: 1536,
+                                        settings: { slidesToShow: 4.5 },
+                                    }, // Desktop
+                                    {
+                                        breakpoint: 1280,
+                                        settings: { slidesToShow: 3.6 },
+                                    }, // Desktop
+                                    {
+                                        breakpoint: 1024,
+                                        settings: { slidesToShow: 2.8 },
+                                    }, // Desktop
+                                    {
+                                        breakpoint: 768,
+                                        settings: { slidesToShow: 2.3 },
+                                    }, // Tablet
+                                    {
+                                        breakpoint: 375,
+                                        settings: { slidesToShow: 1.3 },
+                                    }, // Mobile
+                                    {
+                                        breakpoint: 100,
+                                        settings: { slidesToShow: 1.1 },
+                                    }, // Mobile
+                                ]}
+                            >
+                                {articles.map((article, index) => (
+                                    <ArticleCardComponent
+                                        key={index}
+                                        props={article}
+                                    />
+                                ))}
+                            </Glider>
+                        </>
+                    ) : (
+                        ''
+                    )}
+
+                    <div className="lg:col-span-7">
+                        <BannerHorizontalComponent />
+                    </div>
+                </section>
             </main>
 
             <FooterComponent />

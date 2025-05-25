@@ -37,12 +37,21 @@ class VideoController extends Controller
      */
     public function show(string $slug)
     {
-        $video = Video::with('course')->whereSlug($slug)->first();
-        $videos = Video::where('course_id', $video->course_id)->orderBy('created_at', 'ASC')->get();
+        // Ambil video berdasarkan slug dan relasi course
+        $video = Video::with('course')->whereSlug($slug)->firstOrFail();
+
+        // Ambil semua video lain dalam course yang sama
+        $videos = Video::where('course_id', $video->course_id)
+                    ->orderBy('created_at', 'ASC')
+                    ->get();
+
+                    
+        $articles = $video->articles;
 
         return Inertia::render('Video/Show', [
-            "videos" => $videos,
-            "video" => $video,
+            'videos' => $videos,
+            'video' => $video,
+            'articles' => $articles,
         ]);
     }
 
