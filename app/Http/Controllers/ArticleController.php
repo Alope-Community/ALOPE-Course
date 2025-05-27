@@ -17,14 +17,10 @@ class ArticleController extends Controller
     public function index()
     {
 
-        $articles = Article::with("course")->wherePublished(true)->latest()->get();
-        $lwdArticles = Article::with("course")->whereHas('course', function ($query) {
-            $query->where('slug', 'lwd-pbk');
-        })->wherePublished(true)->latest()->get();
+        $articles = Article::with("course")->wherePublished(true)->latest()->paginate(7);
 
         return Inertia::render('Article/Index', [
-            "articles" => $articles,
-            "lwdArticles" => $lwdArticles,
+            "articles" => $articles
         ]);
     }
 
