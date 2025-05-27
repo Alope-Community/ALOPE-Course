@@ -21,7 +21,7 @@ export default function diffForHumans(timestamp: string): string {
     for (let key in intervals) {
         const count = Math.floor(diffInSeconds / intervals[key]);
         if (count >= 1) {
-            return `${count} ${key}${count > 1 ? 's' : ''} yang lalu`;
+            return `${count} ${key}${count > 1 ? 's' : ''} ago`;
         }
     }
 
