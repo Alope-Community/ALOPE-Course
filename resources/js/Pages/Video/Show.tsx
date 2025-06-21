@@ -1,3 +1,4 @@
+import AccordionComponent from '@/Components/Accordion';
 import BannerHorizontalComponent from '@/Components/Banners/Horizontal';
 import BreadcrumbComponent from '@/Components/Breadcrumb';
 import ArticleCardComponent from '@/Components/Cards/Article';
@@ -111,13 +112,18 @@ export default function ShowVideoPage({
                                 </Link>
                             ))}
                         </div>
-                        <div className="mt-5 overflow-hidden rounded border bg-white/30 p-5 shadow">
-                            <h2 className="text-2xl font-semibold">
-                                {video.course.title}
-                            </h2>
-                            <p className="mt-3 text-gray-800">
-                                {video.course.description}
-                            </p>
+
+                        <div className="mt-5 overflow-hidden rounded border bg-white/30 p-2 shadow">
+                            <AccordionComponent data={[
+                            {
+                              title: "Deskripsi Video",
+                              content: video.description,
+                            },
+                            {
+                              title: video.course.title,
+                              content: video.course.description,
+                            },
+                          ]} />
                         </div>
                     </div>
                 </section>

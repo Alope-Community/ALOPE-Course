@@ -418,7 +418,28 @@ export default function LandingPage({
                     </div>
                     <div className="w-full lg:flex-1">
                         <h3 className="mb-5 px-2 text-3xl font-bold">FAQs</h3>
-                        <AccordionComponent />
+                        <AccordionComponent data={[
+                            {
+                              title: 'Apa itu ALOPE?',
+                              content:
+                                'ALOPE adalah sebuah komunitas programming yang memiliki visi untuk berbagi ilmu dan pengalaman seputar coding, dengan tujuan menciptakan lingkungan belajar yang inklusif dan mendukung bagi siapa saja yang ingin mengembangkan keterampilan di bidang pemrograman khususnya bagi pemula.',
+                            },
+                            {
+                              title: 'Apa keunggulan belajar di ALOPE?',
+                              content:
+                                'Keunggulan belajar di ALOPE adalah tersedianya berbagai artikel tutorial yang dilengkapi dengan video pembelajaran interaktif serta soal berbasis studi kasus untuk mengasah pemahaman secara langsung. Selain itu, ALOPE juga memiliki komunitas aktif di Discord, di mana para anggota dapat berdiskusi, berbagi ilmu, dan saling membantu dalam perjalanan belajar coding mereka.',
+                            },
+                            {
+                              title: 'Apa saja bahasa pemrograman yang diajarkan?',
+                              content:
+                                'Saat ini, ALOPE fokus mengajarkan web programming, termasuk HTML, CSS, JavaScript, serta framework seperti React dan Laravel. Namun, kami terbuka untuk berkembang ke bidang lain seperti IoT atau mobile development. Jika Anda memiliki keahlian di bidang tersebut dan tertarik untuk berbagi ilmu, kami mengundang Anda untuk bergabung sebagai mentor dan membantu lebih banyak orang belajar!',
+                            },
+                            {
+                              title: 'Apakah saya perlu memiliki pengalaman sebelumnya untuk mulai belajar?',
+                              content:
+                                'Tidak perlu! Kami menyediakan materi yang dirancang untuk pemula dari nol, tetapi juga tersedia materi lanjutan bagi yang sudah memiliki pengalaman.',
+                            },
+                          ]} />
                     </div>
                 </div>
 
