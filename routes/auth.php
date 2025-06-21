@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('guest')->group(function () {
     // 
     Route::get('/google', [GoogleController::class, 'redirectToGoogle'])->name('google.login');
-    Route::get('/google/callback', [GoogleController::class, 'handleGoogleCallback']);
+    Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 
     Route::get('register', [RegisteredUserController::class, 'create'])
         ->name('register');
