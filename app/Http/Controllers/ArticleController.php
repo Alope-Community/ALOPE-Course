@@ -47,7 +47,7 @@ class ArticleController extends Controller
     {
 
         $article = Article::with(["writer", "course.users"])->whereSlug($slug)->first();
-        $articles = Article::with("course")->where('slug', '!=', $slug)->latest()->get();
+        $articles = Article::with("course")->wherePublished(true)->where('slug', '!=', $slug)->latest()->get();
 
 
         if ($article->course->visibility == 'private') {
