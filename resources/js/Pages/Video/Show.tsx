@@ -114,7 +114,7 @@ export default function ShowVideoPage({
                         </div>
 
                         <div className="mt-5 overflow-hidden rounded border bg-white/30 p-2 shadow">
-                            <AccordionComponent data={[
+                            <AccordionComponent defaultActive={0} data={[
                             {
                               title: "Deskripsi Video",
                               content: video.description,

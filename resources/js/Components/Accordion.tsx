@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 interface AccordionProps {
   title: string;
@@ -53,9 +53,20 @@ const AccordionItem: React.FC<AccordionProps> = ({
   );
 };
 
-const AccordionComponent = ({data} : {data: AccordionDataProps[]}) => {
-
+const AccordionComponent = ({
+  data,
+  defaultActive,
+}: {
+  data: AccordionDataProps[];
+  defaultActive?: number;
+}) => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (defaultActive !== undefined && defaultActive >= 0 && defaultActive < data.length) {
+      setActiveIndex(defaultActive);
+    }
+  }, [defaultActive, data.length]);
 
   const toggleAccordion = (index: number) => {
     setActiveIndex(activeIndex === index ? null : index);
