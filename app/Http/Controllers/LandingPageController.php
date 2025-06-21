@@ -18,6 +18,7 @@ class LandingPageController extends Controller
         // $videos = Video::with(["course.category", "course.hashtags", "course.videos"])->latest('created_at')->get();
         $articles = Article::with('reads')
             ->withCount('reads') 
+            ->where('published', true)
             ->orderBy('reads_count', 'desc')
             ->limit(7)
             ->get();
