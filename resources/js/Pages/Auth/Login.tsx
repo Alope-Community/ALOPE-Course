@@ -112,7 +112,7 @@ export default function LoginPage() {
                                 {processing && <IconLoader2 />}
                                 Submit
                             </button>
-                            <a href={`${env?.APP_URL}/google`} className="flex w-full items-center text-sm justify-center gap-2 rounded bg-gray-800 py-4 text-white hover:bg-gray-800/80 mt-5">
+                            <a href={`${env?.APP_URL}/auth/google`} className="flex w-full items-center text-sm justify-center gap-2 rounded bg-gray-800 py-4 text-white hover:bg-gray-800/80 mt-5">
                                 <IconBrandGoogle /> Login Atau Registrasi dengan Google
                             </a>
                             <p className="mt-3 text-center text-sm text-gray-700">
