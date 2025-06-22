@@ -1,10 +1,11 @@
 import BreadcrumbComponent from '@/Components/Breadcrumb';
 import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
+import usePreventLeave from '@/hooks/useBeforeUnload';
 import { Answer, Quiz } from '@/models/Quiz';
 import { Head, Link, useForm } from '@inertiajs/react';
 import { IconCircleCheckFill, IconLoader2 } from 'justd-icons';
-import { FormEvent } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 
 export default function QuizShowPage({
@@ -19,6 +20,10 @@ export default function QuizShowPage({
     const { data, setData, post, processing, errors, reset } = useForm({
         answers: [{}],
     });
+
+    const [isDirty, setIsDirty] = useState(false);
+
+    usePreventLeave(isDirty);
 
     const submitAnswer = (e: FormEvent) => {
         e.preventDefault();
@@ -115,6 +120,8 @@ export default function QuizShowPage({
                                                     id={`${index}A`}
                                                     value={question.option1}
                                                     onChange={(e) => {
+                                                        setIsDirty(true)
+
                                                         const newAnswers = [
                                                             ...data.answers,
                                                         ];
@@ -148,6 +155,8 @@ export default function QuizShowPage({
                                                     id={`${index}B`}
                                                     value={question.option2}
                                                     onChange={(e) => {
+                                                        setIsDirty(true)
+
                                                         const newAnswers = [
                                                             ...data.answers,
                                                         ];
@@ -181,6 +190,8 @@ export default function QuizShowPage({
                                                     id={`${index}C`}
                                                     value={question.option3}
                                                     onChange={(e) => {
+                                                        setIsDirty(true)
+
                                                         const newAnswers = [
                                                             ...data.answers,
                                                         ];
@@ -214,6 +225,8 @@ export default function QuizShowPage({
                                                     id={`${index}D`}
                                                     value={question.option4}
                                                     onChange={(e) => {
+                                                        setIsDirty(true)
+
                                                         const newAnswers = [
                                                             ...data.answers,
                                                         ];
