@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Video;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class VideoController extends Controller
@@ -47,6 +49,13 @@ class VideoController extends Controller
 
                     
         $articles = $video->articles;
+
+        if ($video->course->visibility == 'private') {
+            $user = User::with('courses')->find(Auth::id());
+            if (!$video->course->users->contains($user) || !Auth::check()) {
+                return redirect("/access-blocked");
+            }
+        }
 
         return Inertia::render('Video/Show', [
             'videos' => $videos,
