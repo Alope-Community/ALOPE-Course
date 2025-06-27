@@ -4,7 +4,7 @@ import { Link } from '@inertiajs/react';
 
 export default function QuizCardComponent({ props }: { props: Quiz }) {
     return (
-        <Link href={`/quizzes/${props.slug}`}>
+        <Link href={`/quizzes/${props.slug}`} className='mr-5'>
             <img
                 src={props.cover}
                 alt="article cover"

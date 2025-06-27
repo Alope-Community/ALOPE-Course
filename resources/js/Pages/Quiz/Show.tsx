@@ -22,8 +22,7 @@ export default function QuizShowPage({
     });
 
     const [isDirty, setIsDirty] = useState(false);
-
-    usePreventLeave(isDirty);
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const submitAnswer = (e: FormEvent) => {
         e.preventDefault();
@@ -42,18 +41,21 @@ export default function QuizShowPage({
                         <button
                             className="rounded bg-[#2c7cf1] px-3 py-1 text-sm text-white"
                             onClick={() => {
+                                setIsSubmitting(true);
+                                setIsDirty(false);
+                                toast.dismiss(t.id);
+
+                                setTimeout(() => {
                                 post(route('answers.store'), {
                                     onSuccess: () => {
-                                        toast.success('Yeay, kamu berhasil!');
-                                        reset();
+                                    toast.success('Yeay, kamu berhasil!');
+                                    reset();
                                     },
                                     onError: () => {
-                                        toast.error(
-                                            'Sepertinya terjadi kesalahan, silahkan submit ulang!',
-                                        );
+                                    toast.error('Sepertinya terjadi kesalahan, silahkan submit ulang!');
                                     },
                                 });
-                                toast.dismiss(t.id);
+                                }, 0);
                             }}
                         >
                             Yakin
@@ -65,6 +67,8 @@ export default function QuizShowPage({
             toast.error('Jangan lupa jawab semua soal!');
         }
     };
+
+    usePreventLeave(isDirty && !isSubmitting);
 
     return (
         <>
