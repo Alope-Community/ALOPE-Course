@@ -14,7 +14,7 @@ class LandingPageController extends Controller
      */
     public function __invoke()
     {
-        $courses = Course::with(["articles"])->latest()->get();
+        $courses = Course::with(["articles", "category"])->latest()->get();
         // $videos = Video::with(["course.category", "course.hashtags", "course.videos"])->latest('created_at')->get();
         $articles = Article::with('reads')
             ->withCount('reads') 

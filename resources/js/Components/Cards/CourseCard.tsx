@@ -17,7 +17,7 @@ export default function CourseCardComponent({ course }: { course: Course }) {
             />
             <div className="rounded-b-md border border-t-0 border-[#2276f0] px-3 pb-3 pt-2">
                 <small className="text-xs italic text-[#2276f0]">
-                    #web-programing
+                    #{course.category.slug}
                 </small>
                 <div className="mt-2 flex items-center gap-2">
                     <p className="font-semibold">{course.title}</p>
