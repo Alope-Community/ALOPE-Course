@@ -66,7 +66,7 @@ export default function ShowVideoPage({
                                 </h2>
                                 <div className="mt-3 flex justify-between text-xs text-gray-100">
                                     <p>{videos.length} Video</p>
-                                    <p>Web Programming</p>
+                                    <p>{video.course.category.name}</p>
                                 </div>
                             </div>
                             <div className="mt-5 hidden flex-col gap-1 overflow-hidden rounded bg-white/30 backdrop-blur lg:flex">
@@ -114,16 +114,19 @@ export default function ShowVideoPage({
                         </div>
 
                         <div className="mt-5 overflow-hidden rounded border bg-white/30 p-2 shadow">
-                            <AccordionComponent defaultActive={0} data={[
-                            {
-                              title: "Deskripsi Video",
-                              content: video.description,
-                            },
-                            {
-                              title: video.course.title,
-                              content: video.course.description,
-                            },
-                          ]} />
+                            <AccordionComponent
+                                defaultActive={0}
+                                data={[
+                                    {
+                                        title: 'Deskripsi Video',
+                                        content: video.description,
+                                    },
+                                    {
+                                        title: video.course.title,
+                                        content: video.course.description,
+                                    },
+                                ]}
+                            />
                         </div>
                     </div>
                 </section>

@@ -40,7 +40,7 @@ class VideoController extends Controller
     public function show(string $slug)
     {
         // Ambil video berdasarkan slug dan relasi course
-        $video = Video::with('course')->whereSlug($slug)->firstOrFail();
+        $video = Video::with('course.category')->whereSlug($slug)->firstOrFail();
 
         // Ambil semua video lain dalam course yang sama
         $videos = Video::where('course_id', $video->course_id)
