@@ -10,6 +10,7 @@ export type Course = {
     title: string;
     cover?: string;
     visibility: 'public' | 'private';
+    status: 'coming-soon' | 'on-going' | 'compleated';
     category_id: string;
     description: string;
 

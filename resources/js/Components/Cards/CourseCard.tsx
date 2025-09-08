@@ -1,4 +1,5 @@
 import { Course } from '@/models/Course';
+import unslug from '@/tools/unslug';
 import { Link } from '@inertiajs/react';
 import { IconRocketFill } from 'justd-icons';
 
@@ -31,7 +32,9 @@ export default function CourseCardComponent({ course }: { course: Course }) {
                     )}
                 </div>
                 <div className="mt-1 flex items-center gap-2">
-                    <p className="text-xs font-medium italic">On Going</p>
+                    <p className="text-xs font-medium italic">
+                        {unslug(course.status)}
+                    </p>
                     <p className="text-xs">-</p>
                     <p className="mt-1 text-xs text-gray-800">
                         {course.articles.length} Total Articles

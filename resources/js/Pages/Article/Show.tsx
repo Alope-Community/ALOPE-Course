@@ -8,26 +8,37 @@ import SideArticlesSection from '@/Sections/SideArticles';
 import { formatDateWithTime } from '@/tools/formatDate';
 import strLimit from '@/tools/strLimit';
 import { IconCalendar } from 'justd-icons';
-import '../../../css/bodyContent.css';
-import { Highlight, themes } from 'prism-react-renderer';
+// import { Highlight, themes } from 'prism-react-renderer';
+// import '../../../css/bodyContent.css';
 
-// const codeBlock = `<script>
-//     document.addEventListener("DOMContentLoaded", function () {
-//         const hamburger = document.querySelector(".hamburger");
-//         const navLinks = document.querySelector(".nav-links");
+// const codeBlock = `from mlxtend.frequent_patterns import apriori, association_rules
+// import pandas as pd
 
-//         hamburger.addEventListener("click", function () {
-//             navLinks.classList.toggle("active");
-//         });
+// # Sample transaction data
+// transactions = [
+//     ['bread', 'milk', 'beer'],
+//     ['bread', 'butter', 'milk'],
+//     ['beer', 'chips', 'milk'],
+//     ['bread', 'butter', 'beer'],
+//     ['milk', 'chips'],
+//     ['bread', 'milk', 'chips', 'butter']
+// ]
 
-//         // Menutup menu saat item menu diklik
-//         document.querySelectorAll(".nav-links a").forEach((link) => {
-//             link.addEventListener("click", () => {
-//             navLinks.classList.remove("active");
-//             });
-//         });
-//     });
-// </script>`;
+// # Convert to one-hot encoding
+// from mlxtend.preprocessing import TransactionEncoder
+// te = TransactionEncoder()
+// te_ary = te.fit(transactions).transform(transactions)
+// df = pd.DataFrame(te_ary, columns=te.columns_)
+
+// # Find frequent itemsets
+// frequent_itemsets = apriori(df, min_support=0.3, use_colnames=True)
+// print("Frequent Itemsets:")
+// print(frequent_itemsets)
+
+// # Generate association rules
+// rules = association_rules(frequent_itemsets, metric="confidence", min_threshold=0.5)
+// print("\nAssociation Rules:")
+// print(rules[['antecedents', 'consequents', 'support', 'confidence', 'lift']])`;
 
 export default function ArticleShowPage({
     article,
@@ -58,7 +69,7 @@ export default function ArticleShowPage({
                     <Highlight
                         theme={themes.vsDark}
                         code={codeBlock}
-                        language="html"
+                        language="python"
                     >
                         {({
                             // className,
