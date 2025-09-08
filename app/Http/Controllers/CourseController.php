@@ -60,7 +60,7 @@ class CourseController extends Controller
         }, 'quizzes' => function ($query) {
             $query->latest();
         }, 'hashtags', 'videos' => function ($query) {
-            $query->latest();
+            $query->oldest();
         }])->whereSlug($slug)->first();
 
         $courses = Course::with(['articles' => function ($query) {
