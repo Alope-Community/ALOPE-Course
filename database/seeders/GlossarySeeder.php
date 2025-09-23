@@ -2,46 +2,64 @@
 
 namespace Database\Seeders;
 
-use App\Models\Glossary;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class GlossarySeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        $data = [
+        // kosongkan dulu (opsional, hapus jika tidak mau truncate)
+        DB::table('glosaries')->truncate();
+
+        $items = [
             [
-                'title' => 'API',
-                'slug' => 'api',
-                'short_definition' => 'Antarmuka untuk komunikasi antar aplikasi.',
-                'long_definition' => 'API (Application Programming Interface) adalah sekumpulan aturan dan protokol yang memungkinkan aplikasi berbeda berkomunikasi satu sama lain.'
+                'title' => 'CSS',
+                'slug' => 'css',
+                'description' => 'Bahasa untuk mendesain tampilan web.',
+                'body' => "CSS (Cascading Style Sheets) adalah bahasa stylesheet yang digunakan untuk mengontrol tampilan elemen HTML di halaman web. 
+                Dengan CSS, pengembang dapat mengatur warna, ukuran font, spasi, posisi elemen, hingga membuat layout yang responsif. 
+                Seiring perkembangan web modern, CSS juga mendukung fitur seperti animasi, grid system, dan variabel, sehingga memungkinkan desain yang konsisten dan fleksibel."
             ],
             [
-                'title' => 'Framework',
-                'slug' => 'framework',
-                'short_definition' => 'Kerangka kerja untuk pengembangan aplikasi.',
-                'long_definition' => 'Framework adalah kumpulan library, aturan, dan struktur yang memudahkan developer dalam membangun aplikasi dengan pola tertentu.'
+                'title' => 'HTML',
+                'slug' => 'html',
+                'description' => 'Bahasa markup untuk struktur web.',
+                'body' => "HTML (HyperText Markup Language) adalah bahasa markup standar untuk membangun struktur konten di web. 
+                HTML menyusun teks, gambar, tautan, tabel, formulir, hingga media interaktif dengan menggunakan elemen (tag). 
+                Versi terbaru, HTML5, menambahkan dukungan untuk video, audio, grafik vektor (SVG), serta semantic tags yang meningkatkan aksesibilitas dan SEO."
             ],
             [
-                'title' => 'Laravel',
-                'slug' => 'laravel',
-                'short_definition' => 'Framework PHP populer.',
-                'long_definition' => 'Laravel adalah framework PHP open-source dengan sintaks elegan, menyediakan fitur seperti routing, ORM, queue, event, dan lainnya.'
+                'title' => 'Machine Learning',
+                'slug' => 'machine-learning',
+                'description' => 'Cabang AI untuk pembelajaran mesin.',
+                'body' => "Machine Learning adalah sub-bidang kecerdasan buatan (AI) yang berfokus pada pengembangan algoritma dan model yang mampu \"belajar\" dari data. 
+                Alih-alih diprogram secara eksplisit, sistem ML meningkatkan performa dengan pengalaman. 
+                Contohnya mencakup pengenalan wajah, rekomendasi produk, analisis sentimen, dan prediksi cuaca. 
+                Pendekatan populer dalam ML meliputi supervised learning, unsupervised learning, dan reinforcement learning."
             ],
             [
-                'title' => 'Database',
-                'slug' => 'database',
-                'short_definition' => 'Sistem untuk menyimpan dan mengelola data.',
-                'long_definition' => 'Database adalah kumpulan data yang terorganisir, dikelola dengan DBMS seperti MySQL, PostgreSQL, atau MongoDB.'
+                'title' => 'PBK',
+                'slug' => 'pbk',
+                'description' => 'Pembelajaran Berbasis Kompetensi.',
+                'body' => "PBK (Pembelajaran Berbasis Kompetensi) adalah pendekatan pendidikan yang menekankan pencapaian kompetensi spesifik oleh peserta didik, 
+                bukan hanya penyelesaian materi atau jam belajar. 
+                Dalam PBK, keberhasilan diukur dari sejauh mana siswa mampu mendemonstrasikan keterampilan, pengetahuan, dan sikap yang relevan dengan tujuan pembelajaran. 
+                Pendekatan ini sering digunakan dalam pendidikan vokasi, pelatihan profesional, dan kurikulum berbasis capaian."
             ],
         ];
 
-        foreach ($data as $item) {
-            Glossary::create($item);
+        foreach ($items as $item) {
+            DB::table('glosaries')->insert([
+                'id' => (string) Str::uuid(),
+                'title' => $item['title'],
+                'slug' => $item['slug'],
+                'description' => $item['description'],
+                'body' => $item['body'],
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
         }
     }
 }

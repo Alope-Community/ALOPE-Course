@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('glosaries', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('title'); // istilah, misalnya "API"
-            $table->string('slug')->unique(); // url-friendly, misalnya "api"
-            $table->string('short_definition'); // definisi singkat (tooltip)
-            $table->longText('long_definition')->nullable(); // penjelasan panjang
+            $table->string('title'); 
+            $table->string('slug')->unique();
+            $table->string('description')->nullable(); 
+            $table->longText('body')->nullable(); 
             $table->timestamps();
         });
     }

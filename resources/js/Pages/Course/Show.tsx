@@ -8,13 +8,52 @@ import SideCoursesSection from '@/Sections/SideCourses';
 import { Head, Link } from '@inertiajs/react';
 import { IconCircleInfoFill } from 'justd-icons';
 import { useState } from 'react';
+import Tooltip from '@/Components/Tooltip'; // ✅ pakai Tooltip custom
+
+// 👉 helper highlight glossary
+function highlightGlossary(
+    text: string,
+    glosaries: { title: string; description: string; body: string }[]
+) {
+    let result: (string | JSX.Element)[] = [text];
+
+    glosaries.forEach((glossary) => {
+        result = result.flatMap((chunk) => {
+            if (typeof chunk !== 'string') return chunk;
+
+            const parts = chunk.split(
+                new RegExp(`(${glossary.title})`, 'gi')
+            );
+
+            return parts.map((part, index) => {
+                if (
+                    part.toLowerCase() ===
+                    glossary.title.toLowerCase()
+                ) {
+                    return (
+                        <Tooltip key={index} content={glossary.description}>
+                            <span className="text-blue-600 cursor-help font-medium">
+                                {part}
+                            </span>
+                        </Tooltip>
+                    );
+                }
+                return part;
+            });
+        });
+    });
+
+    return result;
+}
 
 export default function CourseShowPage({
     course,
     courses,
+    glosaries, // 👉 props glossary baru
 }: {
     course: Course;
     courses: Course[];
+    glosaries: { title: string; description: string; body: string }[];
 }) {
     const [activeTab, setActiveTab] = useState('article');
 
@@ -69,7 +108,7 @@ export default function CourseShowPage({
                     <div className="mt-5">
                         <h1 className="text-3xl font-bold">{course.title}</h1>
                         <p className="mt-4 text-gray-800">
-                            {course.description}
+                            {highlightGlossary(course.description, glosaries)}
                         </p>
                     </div>
 

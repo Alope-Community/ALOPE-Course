@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\Course;
+use App\Models\Glossary;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -68,10 +69,12 @@ class CourseController extends Controller
         }, 'hashtags'])->where('slug', '!=', $slug)->latest()->get();
 
         // $articles = Article::with("course")->wherePublished(true)->latest()->get();
+        $glosaries = Glossary::select('title', 'description')->get();
 
         return Inertia::render('Course/Show', [
             "course" => $course,
             "courses" => $courses,
+            "glosaries" => $glosaries,
         ]);
     }
 
