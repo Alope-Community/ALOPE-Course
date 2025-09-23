@@ -32,7 +32,7 @@ function highlightGlossary(
                 ) {
                     return (
                         <Tooltip key={index} content={glossary.description}>
-                            <span className="text-blue-600 cursor-help font-medium">
+                            <span className="text-blue-600 cursor-pointer font-medium">
                                 {part}
                             </span>
                         </Tooltip>
