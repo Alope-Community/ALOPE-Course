@@ -8,7 +8,7 @@ interface TooltipProps {
 export default function Tooltip({ children, content }: TooltipProps) {
     const [show, setShow] = useState(false);
     const [shiftX, setShiftX] = useState(0);
-    const tooltipRef = useRef<HTMLDivElement | null>(null);
+    const tooltipRef = useRef<HTMLSpanElement | null>(null);
     const triggerRef = useRef<HTMLSpanElement | null>(null);
 
     let timer: NodeJS.Timeout;
@@ -30,7 +30,6 @@ export default function Tooltip({ children, content }: TooltipProps) {
         const triggerRect = triggerRef.current.getBoundingClientRect();
         const tooltipRect = tooltipRef.current.getBoundingClientRect();
 
-        // Posisi ideal = center di atas trigger
         let left =
             triggerRect.left + triggerRect.width / 2 - tooltipRect.width / 2;
 
@@ -48,15 +47,19 @@ export default function Tooltip({ children, content }: TooltipProps) {
     return (
         <span
             ref={triggerRef}
-            className="relative cursor-help font-medium text-blue-700"
+            className="relative inline-block cursor-help font-medium text-blue-700"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
             {children}
 
-            <div
+            <span
                 ref={tooltipRef}
-                className={`absolute bottom-full z-50 mb-2 max-h-32 min-w-[200px] max-w-[320px] overflow-hidden whitespace-normal break-words rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm leading-relaxed text-gray-800 shadow-xl transition-all duration-200 ease-out ${show ? 'translate-y-0 opacity-100' : 'pointer-events-none translate-y-2 opacity-0'}`}
+                className={`absolute bottom-full z-50 mb-2 max-h-32 min-w-[200px] max-w-[320px] overflow-hidden whitespace-normal break-words rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm leading-relaxed text-gray-800 shadow-xl transition-all duration-200 ease-out ${
+                    show
+                        ? 'translate-y-0 opacity-100'
+                        : 'pointer-events-none translate-y-2 opacity-0'
+                }`}
                 style={{
                     left: '50%',
                     transform: `translateX(-50%) translateX(${shiftX}px)`,
@@ -64,9 +67,8 @@ export default function Tooltip({ children, content }: TooltipProps) {
             >
                 {content}
 
-                {/* Fade dari bawah ke atas */}
-                <div className="absolute bottom-0 left-0 h-8 w-full bg-gradient-to-t from-white to-transparent" />
-            </div>
+                <span className="absolute bottom-0 left-0 h-8 w-full bg-gradient-to-t from-white to-transparent" />
+            </span>
         </span>
     );
 }
