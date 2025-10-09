@@ -8,7 +8,8 @@ import SideCoursesSection from '@/Sections/SideCourses';
 import { Head, Link } from '@inertiajs/react';
 import { IconCircleInfoFill } from 'justd-icons';
 import { useState } from 'react';
-import Tooltip from '@/Components/Tooltip'; // ✅ pakai Tooltip custom
+import Tooltip from '@/Components/Tooltip';
+import GlosariumSection from '@/Pages/Glosarium/Show'; 
 
 // 👉 helper highlight glossary
 function highlightGlossary(
@@ -21,15 +22,10 @@ function highlightGlossary(
         result = result.flatMap((chunk) => {
             if (typeof chunk !== 'string') return chunk;
 
-            const parts = chunk.split(
-                new RegExp(`(${glossary.title})`, 'gi')
-            );
+            const parts = chunk.split(new RegExp(`(${glossary.title})`, 'gi'));
 
             return parts.map((part, index) => {
-                if (
-                    part.toLowerCase() ===
-                    glossary.title.toLowerCase()
-                ) {
+                if (part.toLowerCase() === glossary.title.toLowerCase()) {
                     return (
                         <Tooltip key={index} content={glossary.description}>
                             <span className="text-blue-600 cursor-pointer font-medium">
@@ -49,13 +45,13 @@ function highlightGlossary(
 export default function CourseShowPage({
     course,
     courses,
-    glosaries, // 👉 props glossary baru
+    glosaries,
 }: {
     course: Course;
     courses: Course[];
     glosaries: { title: string; description: string; body: string }[];
 }) {
-    const [activeTab, setActiveTab] = useState('article');
+    const [activeTab, setActiveTab] = useState<'article' | 'quiz' | 'glosarium'>('article');
 
     return (
         <>
@@ -99,8 +95,7 @@ export default function CourseShowPage({
                         <div className="mt-6 flex items-center gap-2 rounded-md bg-gradient-to-r from-[#f0c322] to-[#f0c322]/50 px-5 py-4 text-gray-800">
                             <IconCircleInfoFill className="size-5" />
                             <p>
-                                Kamu harus bergabung kelas untuk membaca
-                                mengikuti Kelas ini
+                                Kamu harus bergabung kelas untuk membaca mengikuti kelas ini
                             </p>
                         </div>
                     )}
@@ -112,6 +107,7 @@ export default function CourseShowPage({
                         </p>
                     </div>
 
+                    {/* ================== TABS ================== */}
                     <section className="mt-16">
                         <div className="mb-10">
                             <div className="flex gap-3">
@@ -125,6 +121,7 @@ export default function CourseShowPage({
                                 >
                                     Artikel
                                 </button>
+
                                 <button
                                     onClick={() => setActiveTab('quiz')}
                                     className={`rounded-md px-4 py-1.5 text-sm font-medium transition-all duration-200 md:px-6 md:py-2 md:text-base ${
@@ -135,10 +132,22 @@ export default function CourseShowPage({
                                 >
                                     Quiz
                                 </button>
+
+                                <button
+                                    onClick={() => setActiveTab('glosarium')}
+                                    className={`rounded-md px-4 py-1.5 text-sm font-medium transition-all duration-200 md:px-6 md:py-2 md:text-base ${
+                                        activeTab === 'glosarium'
+                                            ? 'border border-[#2276f0] bg-[#2276f0] text-white shadow-lg'
+                                            : 'border border-gray-300 bg-gray-200/90 text-gray-600'
+                                    }`}
+                                >
+                                    Glosarium
+                                </button>
+
                                 {course.videos.length ? (
                                     <Link
                                         href={`/videos/${course.videos[0].slug}`}
-                                        className={`rounded-md border border-gray-300 bg-gray-200/90 px-4 py-1.5 text-sm font-medium text-gray-600 transition-all duration-200 md:px-6 md:py-2 md:text-base`}
+                                        className="rounded-md border border-gray-300 bg-gray-200/90 px-4 py-1.5 text-sm font-medium text-gray-600 transition-all duration-200 md:px-6 md:py-2 md:text-base"
                                     >
                                         Video
                                     </Link>
@@ -151,18 +160,12 @@ export default function CourseShowPage({
                             <>
                                 <div className="mb-7 mt-7">
                                     <h2 className="text-xl font-semibold md:text-2xl">
-                                        <span className="text-gray-400">
-                                            //
-                                        </span>{' '}
-                                        Artikel Pelajaran
+                                        <span className="text-gray-400">//</span> Artikel Pelajaran
                                     </h2>
                                 </div>
                                 {course.articles.length ? (
                                     course.articles.map((article, index) => (
-                                        <HorizontalArticleCardComponent
-                                            key={index}
-                                            props={article}
-                                        />
+                                        <HorizontalArticleCardComponent key={index} props={article} />
                                     ))
                                 ) : (
                                     <p className="italic text-gray-700">
@@ -171,22 +174,17 @@ export default function CourseShowPage({
                                 )}
                             </>
                         )}
+
                         {activeTab === 'quiz' && (
                             <>
                                 <div className="mb-7 mt-7">
                                     <h2 className="text-xl font-semibold md:text-2xl">
-                                        <span className="text-gray-400">
-                                            //
-                                        </span>{' '}
-                                        Quiz
+                                        <span className="text-gray-400">//</span> Quiz
                                     </h2>
                                 </div>
                                 {course.quizzes.length ? (
                                     course.quizzes.map((quiz, index) => (
-                                        <HorizontalQuizCardComponent
-                                            key={index}
-                                            props={quiz}
-                                        />
+                                        <HorizontalQuizCardComponent key={index} props={quiz} />
                                     ))
                                 ) : (
                                     <p className="italic text-gray-700">
@@ -195,8 +193,15 @@ export default function CourseShowPage({
                                 )}
                             </>
                         )}
+                        
+                        {activeTab === 'glosarium' && (
+                            <div className="mt-7">
+                                <GlosariumSection />
+                            </div>
+                        )}
                     </section>
                 </div>
+
                 <SideCoursesSection courses={courses} />
             </main>
 
