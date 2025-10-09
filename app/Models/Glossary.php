@@ -11,7 +11,7 @@ class Glossary extends Model
     use HasUuids;
 
     protected $table = 'glosaries'; 
-    protected $fillable = ['title', 'slug', 'short_definition', 'long_definition'];
+    protected $fillable = ['title', 'slug', 'description', 'body'];
 
     public $incrementing = false;
     protected $keyType = 'string';
