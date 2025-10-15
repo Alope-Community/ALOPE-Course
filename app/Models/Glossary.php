@@ -10,7 +10,7 @@ class Glossary extends Model
 {
     use HasUuids;
 
-    protected $table = 'glosaries'; 
+    protected $table = 'glosaries';
     protected $fillable = ['title', 'slug', 'description', 'body'];
 
     public $incrementing = false;
@@ -25,5 +25,10 @@ class Glossary extends Model
                 $model->{$model->getKeyName()} = (string) Str::uuid();
             }
         });
+    }
+
+    public function courses()
+    {
+        return $this->belongsTo(Course::class);
     }
 }
