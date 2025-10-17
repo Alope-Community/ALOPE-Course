@@ -4,6 +4,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\AnswerController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\GlossaryController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\LandingPageController;
@@ -25,6 +26,7 @@ Route::get('/access-blocked', function () {
 Route::resource('/articles', ArticleController::class);
 Route::resource('/courses', CourseController::class);
 Route::resource('/videos', VideoController::class);
+Route::resource('/blogs', BlogController::class);
 // Route::get('/glosarium', [GlossaryController::class, 'index'])->name('glosarium.index');
 
 Route::middleware('auth')->group(function () {
