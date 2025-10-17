@@ -44,4 +44,9 @@ class Course extends Model
     {
         return $this->belongsToMany(User::class);
     }
+
+    public function glossaries()
+    {
+        return $this->hasMany(Glossary::class);
+    }
 }
