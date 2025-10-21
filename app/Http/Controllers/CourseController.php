@@ -68,7 +68,7 @@ class CourseController extends Controller
             'videos' => function ($query) {
                 $query->latest();
             },
-            'glosaries' => function ($query) { 
+            'glosaries' => function ($query) {
                 $query->select('glosaries.id', 'title', 'description')
                     ->get();
             }
@@ -81,7 +81,10 @@ class CourseController extends Controller
             'hashtags'
         ])->where('slug', '!=', $slug)->latest()->get();
 
-        $glosaries = Glosary::select('title', 'description', 'slug', 'body')
+        $glosaries = Glosary::select('glosaries.id', 'title', 'description', 'slug', 'body')
+            ->whereHas('courses', function ($query) use ($course) {
+                $query->where('courses.id', $course->id);
+            })
             ->orderBy('slug')
             ->get();
 
