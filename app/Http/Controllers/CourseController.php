@@ -57,22 +57,35 @@ class CourseController extends Controller
      */
     public function show(string $slug)
     {
-        $course = Course::with(['articles' => function ($query) {
-            $query->latest();
-        }, 'quizzes' => function ($query) {
-            $query->latest();
-        }, 'hashtags', 'videos' => function ($query) {
-            $query->latest();
-        }])->whereSlug($slug)->firstOrFail();
+        $course = Course::with([
+            'articles' => function ($query) {
+                $query->latest();
+            },
+            'quizzes' => function ($query) {
+                $query->latest();
+            },
+            'hashtags',
+            'videos' => function ($query) {
+                $query->latest();
+            },
+            'glosaries' => function ($query) { 
+                $query->select('glosaries.id', 'title', 'description')
+                    ->get();
+            }
+        ])->whereSlug($slug)->firstOrFail();
 
-        $courses = Course::with(['articles' => function ($query) {
-            $query->latest();
-        }, 'hashtags'])->where('slug', '!=', $slug)->latest()->get();
+        $courses = Course::with([
+            'articles' => function ($query) {
+                $query->latest();
+            },
+            'hashtags'
+        ])->where('slug', '!=', $slug)->latest()->get();
 
-        // $articles = Article::with("course")->wherePublished(true)->latest()->get();
-        $glosaries = Glosary::select('title', 'description', 'slug', 'body')->orderBy('slug')->get();
+        $glosaries = Glosary::select('title', 'description', 'slug', 'body')
+            ->orderBy('slug')
+            ->get();
 
-        $glosariesAll = Glosary::select('title', 'description', 'course_id')->where('course_id', $course->id)->get();
+        $glosariesAll = $course->glosaries;
 
         return Inertia::render('Course/Show', [
             "course" => $course,
@@ -82,6 +95,8 @@ class CourseController extends Controller
         ]);
     }
 
+
+    // $articles = Article::with("course")->wherePublished(true)->latest()->get();
     /**
      * Show the form for editing the specified resource.
      */
