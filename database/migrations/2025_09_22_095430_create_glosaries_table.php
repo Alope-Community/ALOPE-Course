@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('description')->nullable(); 
             $table->longText('body')->nullable();
-            $table->foreignUuid('course_id')->references('id')->on('courses')->onDelete('cascade'); 
             $table->timestamps();
         });
     }

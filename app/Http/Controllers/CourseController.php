@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\Course;
+use App\Models\Glosary;
 use App\Models\Glossary;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -69,9 +70,9 @@ class CourseController extends Controller
         }, 'hashtags'])->where('slug', '!=', $slug)->latest()->get();
 
         // $articles = Article::with("course")->wherePublished(true)->latest()->get();
-        $glosaries = Glossary::select('title', 'description', 'slug', 'body')->orderBy('slug')->get();
+        $glosaries = Glosary::select('title', 'description', 'slug', 'body')->orderBy('slug')->get();
 
-         $glosariesAll = Glossary::select('title', 'description', 'course_id')->where('course_id', $course->id)->get();
+        $glosariesAll = Glosary::select('title', 'description', 'course_id')->where('course_id', $course->id)->get();
 
         return Inertia::render('Course/Show', [
             "course" => $course,

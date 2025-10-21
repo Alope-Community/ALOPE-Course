@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-class Glossary extends Model
+class Glosary extends Model
 {
     use HasUuids;
 
@@ -29,6 +29,6 @@ class Glossary extends Model
 
     public function courses()
     {
-        return $this->belongsTo(Course::class);
+        return $this->belongsToMany(Course::class);
     }
 }

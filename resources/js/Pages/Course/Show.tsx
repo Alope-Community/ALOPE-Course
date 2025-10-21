@@ -3,36 +3,42 @@ import HorizontalArticleCardComponent from '@/Components/Cards/HorizontalArticle
 import HorizontalQuizCardComponent from '@/Components/Cards/HorizontalQuiz';
 import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
+import Tooltip from '@/Components/Tooltip';
 import { Course } from '@/models/Course';
+import GlosariumSection from '@/Pages/Glosarium/Show';
 import SideCoursesSection from '@/Sections/SideCourses';
 import { Head, Link } from '@inertiajs/react';
 import { IconCircleInfoFill } from 'justd-icons';
 import { useState } from 'react';
-import Tooltip from '@/Components/Tooltip';
-import GlosariumSection from '@/Pages/Glosarium/Show'; 
 
 // 👉 helper highlight glossary
 function highlightGlossary(
     text: string,
-    glosaries: { title: string; description: string; slug: string; body: string }[]
+    glosaries: {
+        title: string;
+        description: string;
+        slug: string;
+        body: string;
+    }[],
 ) {
     let result: (string | JSX.Element)[] = [text];
 
     glosaries.forEach((glossary, glossaryIndex) => {
-        result = result.flatMap((chunk) => {
-            if (typeof chunk !== "string") return chunk;
+        result = result.flatMap((chunk, chunkIndex) => {
+            if (typeof chunk !== 'string') return chunk;
 
-            const regex = new RegExp(`\\b(${glossary.title})\\b`, "gi");
+            const regex = new RegExp(`\\b(${glossary.title})\\b`, 'gi');
             const parts = chunk.split(regex);
 
             return parts.map((part, index) => {
                 if (part.toLowerCase() === glossary.title.toLowerCase()) {
                     return (
                         <Tooltip
-                            key={`${glossary.slug || glossary.title}-${glossaryIndex}-${index}`}
+                            key={`tooltip-${glossary.slug}-${glossaryIndex}-${chunkIndex}-${index}-${Math.random().toString(36).slice(2)}`}
                             content={glossary.description}
+                            slug={glossary.slug}
                         >
-                            <span className="text-blue-600 cursor-pointer font-medium">
+                            <span className="cursor-pointer font-medium text-blue-600">
                                 {part}
                             </span>
                         </Tooltip>
@@ -54,10 +60,18 @@ export default function CourseShowPage({
 }: {
     course: Course;
     courses: Course[];
-    glosaries: { title: string; description: string; slug: string; body: string }[];
+    glosaries: {
+        title: string;
+        description: string;
+        slug: string;
+        body: string;
+    }[];
     glosariesAll: { title: string; description: string; course_id: string }[];
 }) {
-    const [activeTab, setActiveTab] = useState<'article' | 'quiz' | 'glosarium'>('article');
+    const [activeTab, setActiveTab] = useState<
+        'article' | 'quiz' | 'glosarium'
+    >('article');
+
     return (
         <>
             <Head title="Courses" />
@@ -100,7 +114,8 @@ export default function CourseShowPage({
                         <div className="mt-6 flex items-center gap-2 rounded-md bg-gradient-to-r from-[#f0c322] to-[#f0c322]/50 px-5 py-4 text-gray-800">
                             <IconCircleInfoFill className="size-5" />
                             <p>
-                                Kamu harus bergabung kelas untuk membaca mengikuti kelas ini
+                                Kamu harus bergabung kelas untuk membaca
+                                mengikuti kelas ini
                             </p>
                         </div>
                     )}
@@ -165,12 +180,18 @@ export default function CourseShowPage({
                             <>
                                 <div className="mb-7 mt-7">
                                     <h2 className="text-xl font-semibold md:text-2xl">
-                                        <span className="text-gray-400">//</span> Artikel Pelajaran
+                                        <span className="text-gray-400">
+                                            //
+                                        </span>{' '}
+                                        Artikel Pelajaran
                                     </h2>
                                 </div>
                                 {course.articles.length ? (
                                     course.articles.map((article, index) => (
-                                        <HorizontalArticleCardComponent key={index} props={article} />
+                                        <HorizontalArticleCardComponent
+                                            key={index}
+                                            props={article}
+                                        />
                                     ))
                                 ) : (
                                     <p className="italic text-gray-700">
@@ -184,12 +205,18 @@ export default function CourseShowPage({
                             <>
                                 <div className="mb-7 mt-7">
                                     <h2 className="text-xl font-semibold md:text-2xl">
-                                        <span className="text-gray-400">//</span> Quiz
+                                        <span className="text-gray-400">
+                                            //
+                                        </span>{' '}
+                                        Quiz
                                     </h2>
                                 </div>
                                 {course.quizzes.length ? (
                                     course.quizzes.map((quiz, index) => (
-                                        <HorizontalQuizCardComponent key={index} props={quiz} />
+                                        <HorizontalQuizCardComponent
+                                            key={index}
+                                            props={quiz}
+                                        />
                                     ))
                                 ) : (
                                     <p className="italic text-gray-700">
@@ -198,7 +225,7 @@ export default function CourseShowPage({
                                 )}
                             </>
                         )}
-                        
+
                         {activeTab === 'glosarium' && (
                             <div className="mt-7">
                                 <GlosariumSection glosaries={glosariesAll} />

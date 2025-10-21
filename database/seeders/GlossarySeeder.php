@@ -13,14 +13,6 @@ class GlossarySeeder extends Seeder
     {
         DB::table('glosaries')->truncate();
 
-        // ambil course pertama (atau sesuai kebutuhan)
-        $course = Course::first();
-
-        if (!$course) {
-            $this->command->error('Tidak ada course ditemukan! Jalankan seeder CourseSeeder dulu.');
-            return;
-        }
-
         $items = [
             [
                 'title' => 'CSS',
@@ -45,7 +37,6 @@ class GlossarySeeder extends Seeder
         foreach ($items as $item) {
             DB::table('glosaries')->insert([
                 'id' => (string) Str::uuid(),
-                'course_id' => $course->id, // 🔥 ini penting
                 'title' => $item['title'],
                 'slug' => $item['slug'],
                 'description' => $item['description'],
