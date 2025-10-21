@@ -11,7 +11,7 @@ class GlossarySeeder extends Seeder
 {
     public function run(): void
     {
-        DB::table('glosaries')->truncate();
+        DB::table('glosaries')->delete();
 
         $items = [
             [
