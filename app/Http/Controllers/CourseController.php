@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\Course;
+use App\Models\Glosary;
 use App\Models\Glossary;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -56,22 +57,38 @@ class CourseController extends Controller
      */
     public function show(string $slug)
     {
-        $course = Course::with(['articles' => function ($query) {
-            $query->latest();
-        }, 'quizzes' => function ($query) {
-            $query->latest();
-        }, 'hashtags', 'videos' => function ($query) {
-            $query->latest();
-        }])->whereSlug($slug)->firstOrFail();
+        $course = Course::with([
+            'articles' => function ($query) {
+                $query->latest();
+            },
+            'quizzes' => function ($query) {
+                $query->latest();
+            },
+            'hashtags',
+            'videos' => function ($query) {
+                $query->latest();
+            },
+            'glosaries' => function ($query) {
+                $query->select('glosaries.id', 'title', 'description')
+                    ->get();
+            }
+        ])->whereSlug($slug)->firstOrFail();
 
-        $courses = Course::with(['articles' => function ($query) {
-            $query->latest();
-        }, 'hashtags'])->where('slug', '!=', $slug)->latest()->get();
+        $courses = Course::with([
+            'articles' => function ($query) {
+                $query->latest();
+            },
+            'hashtags'
+        ])->where('slug', '!=', $slug)->latest()->get();
 
-        // $articles = Article::with("course")->wherePublished(true)->latest()->get();
-        $glosaries = Glossary::select('title', 'description', 'slug', 'body')->orderBy('slug')->get();
+        $glosaries = Glosary::select('glosaries.id', 'title', 'description', 'slug', 'body')
+            ->whereHas('courses', function ($query) use ($course) {
+                $query->where('courses.id', $course->id);
+            })
+            ->orderBy('slug')
+            ->get();
 
-         $glosariesAll = Glossary::select('title', 'description', 'course_id')->where('course_id', $course->id)->get();
+        $glosariesAll = $course->glosaries;
 
         return Inertia::render('Course/Show', [
             "course" => $course,
@@ -81,6 +98,8 @@ class CourseController extends Controller
         ]);
     }
 
+
+    // $articles = Article::with("course")->wherePublished(true)->latest()->get();
     /**
      * Show the form for editing the specified resource.
      */

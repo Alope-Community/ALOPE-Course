@@ -26,6 +26,7 @@ Route::get('/access-blocked', function () {
 Route::resource('/articles', ArticleController::class);
 Route::resource('/courses', CourseController::class);
 Route::resource('/videos', VideoController::class);
+Route::get('/glosarium/{slug}', [GlossaryController::class, 'show'])->name('glosarium.show');
 Route::resource('/blogs', BlogController::class);
 // Route::get('/glosarium', [GlossaryController::class, 'index'])->name('glosarium.index');
 

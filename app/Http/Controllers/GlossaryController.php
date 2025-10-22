@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Glosary;
 use App\Models\Glossary;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class GlossaryController extends Controller
 {
-    // public function index()
-    // {
-    //     $glosaries = Glossary::orderBy('title')->get();
+    public function show($slug)
+    {
+        $glosary = Glosary::where('slug', $slug)->firstOrFail();
 
-    //     return Inertia::render('GlosariumSection', [
-    //         'glosaries' => $glosaries,
-    //     ]);
-    // }
+        return Inertia::render('TooltipDetail/Show', [
+            'glosary' => $glosary,
+        ]);
+    }
 }
