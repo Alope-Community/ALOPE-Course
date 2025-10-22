@@ -17,7 +17,6 @@ export default function Show({ glosary }: GlosaryDetailProps) {
         <>
             <Head title={glosary.title} />
 
-            {/* Navbar */}
             <NavbarComponent />
 
             {/* Background dekoratif */}
@@ -34,7 +33,6 @@ export default function Show({ glosary }: GlosaryDetailProps) {
                 loading="lazy"
             />
 
-            {/* Breadcrumb */}
             <BreadcrumbComponent
                 links={[
                     { title: 'Glosarium', url: '/glosarium' },
@@ -46,28 +44,33 @@ export default function Show({ glosary }: GlosaryDetailProps) {
                 ]}
             />
 
-            {/* Konten utama di tengah */}
-            <main className="relative z-20 mx-auto mt-10 flex min-h-screen justify-center overflow-x-hidden px-3 md:px-10 xl:px-5 2xl:px-2">
-                <div className="w-full max-w-3xl rounded-lg bg-white p-8 shadow-md">
-                    {/* Judul di tengah */}
-                    <h1 className="mb-4 text-center text-3xl font-bold text-gray-900">
-                        {glosary.title}
-                    </h1>
-
-                    {/* Deskripsi di kiri */}
-                    <p className="mb-6 text-justify text-base text-gray-600 md:text-left">
-                        {glosary.description}
-                    </p>
-
-                    {/* Body di kiri */}
-                    <article
-                        className="prose max-w-none text-justify text-gray-800"
-                        dangerouslySetInnerHTML={{ __html: glosary.body }}
-                    />
-                </div>
+            <main className="container relative z-20 mx-auto mt-5 grid grid-cols-4 gap-8 px-3 md:px-10 xl:gap-10 xl:px-5 2xl:px-2">
+                <section className="col-span-4 lg:col-span-3">
+                    <div className="rounded-xl bg-white p-8 shadow-md backdrop-blur-md">
+                        <h1 className="mb-4 text-center text-3xl font-bold text-gray-900">
+                            {glosary.title}
+                        </h1>
+                        <p className="mb-6 text-justify text-base text-gray-600 md:text-left">
+                            {glosary.description}
+                        </p>
+                        <article
+                            className="prose max-w-none text-justify text-gray-800"
+                            dangerouslySetInnerHTML={{ __html: glosary.body }}
+                        />
+                    </div>
+                </section>
+                <aside className="hidden lg:block">
+                    <div className="rounded-xl bg-white/50 p-6 shadow-md backdrop-blur-md">
+                        <h2 className="mb-3 text-lg font-semibold text-gray-800">
+                            Glosarium Lainnya
+                        </h2>
+                        <p className="text-sm text-gray-600">
+                            Konten tambahan bisa ditempatkan di sini.
+                        </p>
+                    </div>
+                </aside>
             </main>
 
-            {/* Footer */}
             <FooterComponent />
         </>
     );
