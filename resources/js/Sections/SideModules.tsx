@@ -1,4 +1,4 @@
-import SimpleArticleCardComponent from '@/Components/Cards/SimpleModule';
+import SimpleModuleCardComponent from '@/Components/Cards/SimpleModule';
 import { Module } from '@/models/Module';
 import { formatDateWithTime } from '@/tools/formatDate';
 import strLimit from '@/tools/strLimit';
@@ -50,7 +50,7 @@ export default function SideModulesSection({ modules }: { modules: Module[] }) {
                 {modules.map(
                     (module, index) =>
                         index < 2 && (
-                            <SimpleArticleCardComponent
+                            <SimpleModuleCardComponent
                                 key={index}
                                 props={module}
                             />

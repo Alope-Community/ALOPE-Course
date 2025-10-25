@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
             CourseSeeder::class,
             CourseHashtagSeeder::class,
             VideoSeeder::class,
-            ArticleSeeder::class,
+            ModuleSeeder::class,
             UserSeeder::class,
             BlogSeeder::class,
             GlossarySeeder::class,

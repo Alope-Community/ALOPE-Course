@@ -23,7 +23,7 @@ export type Module = {
 
 export type ReadModule = {
     id: number;
-    article_id: string;
+    module_id: string;
 
     created_at?: string;
 };

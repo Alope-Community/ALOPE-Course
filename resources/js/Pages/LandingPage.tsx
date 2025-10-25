@@ -1,6 +1,6 @@
 import AccordionComponent from '@/Components/Accordion';
-import ArticleCardComponent from '@/Components/Cards/Article';
 import CourseCardComponent from '@/Components/Cards/CourseCard';
+import ModuleCardComponent from '@/Components/Cards/Module';
 import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
 import { Course } from '@/models/Course';
@@ -355,7 +355,7 @@ export default function LandingPage({
                                 ]}
                             >
                                 {modules.map((module, index) => (
-                                    <ArticleCardComponent
+                                    <ModuleCardComponent
                                         key={index}
                                         props={module}
                                     />

@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
 
-class ArticleController extends Controller
+class ModuleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,7 +19,7 @@ class ArticleController extends Controller
 
         $modules = Module::with("course")->wherePublished(true)->latest()->paginate(7);
 
-        return Inertia::render('Article/Index', [
+        return Inertia::render('Module/Index', [
             "modules" => $modules
         ]);
     }
@@ -78,7 +78,7 @@ class ArticleController extends Controller
             ]);
         }
 
-        return Inertia::render('Article/Show', [
+        return Inertia::render('Module/Show', [
             "module" => $module,
             "modules" => $modules,
         ]);

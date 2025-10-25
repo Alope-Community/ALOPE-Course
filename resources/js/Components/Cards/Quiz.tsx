@@ -7,7 +7,7 @@ export default function QuizCardComponent({ props }: { props: Quiz }) {
         <Link href={`/quizzes/${props.slug}`}>
             <img
                 src={props.cover}
-                alt="article cover"
+                alt="module cover"
                 className="max-h-[150px] w-full rounded 2xl:max-h-[200px]"
                 width={1280}
                 height={720}

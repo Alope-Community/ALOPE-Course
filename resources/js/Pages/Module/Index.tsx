@@ -13,7 +13,7 @@ import 'glider-js/glider.min.css';
 import { IconChevronLeft, IconChevronRight } from 'justd-icons';
 import { useEffect, useState } from 'react';
 
-export default function ArticleIndexPage({
+export default function ModuleIndexPage({
     modules,
 }: {
     modules: PaginatedResponse<Module>;

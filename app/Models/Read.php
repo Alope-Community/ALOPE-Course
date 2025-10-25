@@ -18,6 +18,6 @@ class Read extends Model
 
     public function modules()
     {
-        return $this->belongsTo(Module::class);
+        return $this->belongsTo(Module::class, 'module_id', 'id');
     }
 }

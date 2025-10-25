@@ -1,9 +1,9 @@
-import { Article } from '@/models/Module';
+import { Module } from '@/models/Module';
 import { formatDateWithTime } from '@/tools/formatDate';
 import strLimit from '@/tools/strLimit';
 import { Link } from '@inertiajs/react';
 
-export default function ArticleCardComponent({ props }: { props: Article }) {
+export default function ModuleCardComponent({ props }: { props: Module }) {
     return (
         <Link
             href={`/modules/${props.slug}`}

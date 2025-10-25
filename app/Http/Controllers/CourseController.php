@@ -98,7 +98,6 @@ class CourseController extends Controller
     }
 
 
-    // $articles = Module::with("course")->wherePublished(true)->latest()->get();
     /**
      * Show the form for editing the specified resource.
      */

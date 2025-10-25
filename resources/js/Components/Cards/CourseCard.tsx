@@ -34,7 +34,7 @@ export default function CourseCardComponent({ course }: { course: Course }) {
                     <p className="text-xs font-medium italic">On Going</p>
                     <p className="text-xs">-</p>
                     <p className="mt-1 text-xs text-gray-800">
-                        {course.articles.length} Total Articles
+                        {course.modules.length} Total Modules
                     </p>
                 </div>
             </div>

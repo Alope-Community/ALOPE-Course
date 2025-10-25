@@ -1,10 +1,10 @@
 import AccordionComponent from '@/Components/Accordion';
 import BannerHorizontalComponent from '@/Components/Banners/Horizontal';
 import BreadcrumbComponent from '@/Components/Breadcrumb';
-import ArticleCardComponent from '@/Components/Cards/Article';
+import ModuleCardComponent from '@/Components/Cards/Module';
 import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
-import { Article } from '@/models/Module';
+import { Module } from '@/models/Module';
 import { Video } from '@/models/Video';
 import strLimit from '@/tools/strLimit';
 import { Head, Link } from '@inertiajs/react';
@@ -15,11 +15,11 @@ import Glider from 'react-glider';
 export default function ShowVideoPage({
     video,
     videos,
-    articles,
+    modules,
 }: {
     video: Video;
     videos: Video[];
-    articles: Article[];
+    modules: Module[];
 }) {
     console.log(video);
 
@@ -136,10 +136,10 @@ export default function ShowVideoPage({
                 <hr className="my-10 border border-gray-300" />
 
                 <section>
-                    {articles.length ? (
+                    {modules.length ? (
                         <>
                             <h2 className="mb-5 text-2xl font-bold">
-                                Artikel Terkait
+                                Modul Terkait
                             </h2>
                             <Glider
                                 draggable
@@ -174,10 +174,10 @@ export default function ShowVideoPage({
                                     }, // Mobile
                                 ]}
                             >
-                                {articles.map((article, index) => (
-                                    <ArticleCardComponent
+                                {modules.map((module, index) => (
+                                    <ModuleCardComponent
                                         key={index}
-                                        props={article}
+                                        props={module}
                                     />
                                 ))}
                             </Glider>

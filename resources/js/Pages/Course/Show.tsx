@@ -68,9 +68,9 @@ export default function CourseShowPage({
     }[];
     glosariesAll: { title: string; description: string; course_id: string }[];
 }) {
-    const [activeTab, setActiveTab] = useState<
-        'article' | 'quiz' | 'glosarium'
-    >('article');
+    const [activeTab, setActiveTab] = useState<'module' | 'quiz' | 'glosarium'>(
+        'module',
+    );
 
     return (
         <>
@@ -132,9 +132,9 @@ export default function CourseShowPage({
                         <div className="mb-10">
                             <div className="flex gap-3">
                                 <button
-                                    onClick={() => setActiveTab('article')}
+                                    onClick={() => setActiveTab('module')}
                                     className={`rounded-md px-4 py-1.5 text-sm font-medium transition-all duration-200 md:px-6 md:py-2 md:text-base ${
-                                        activeTab === 'article'
+                                        activeTab === 'module'
                                             ? 'border border-[#2276f0] bg-[#2276f0] text-white shadow-lg'
                                             : 'border border-gray-300 bg-gray-200/90 text-gray-600'
                                     }`}
@@ -186,7 +186,7 @@ export default function CourseShowPage({
                                 )}
                             </div>
                         </div>
-                        {activeTab === 'article' && (
+                        {activeTab === 'module' && (
                             <>
                                 <div className="mb-7 mt-7">
                                     <h2 className="text-xl font-semibold md:text-2xl">

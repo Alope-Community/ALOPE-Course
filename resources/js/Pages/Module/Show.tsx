@@ -17,7 +17,7 @@ import '../../../css/bodyContent.css';
 //   <div class="footer">Footer</div>
 // </div>`;
 
-export default function ArticleShowPage({
+export default function ModuleShowPage({
     module,
     modules,
 }: {

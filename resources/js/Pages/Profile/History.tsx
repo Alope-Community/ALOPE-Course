@@ -27,7 +27,7 @@ export default function HistoryPage({
     const countMyHistory = (courseId: string) => {
         let count = 0;
         histories.forEach((history) => {
-            if (history.logs[0].article?.course_id == courseId) {
+            if (history.logs[0].module?.course_id == courseId) {
                 count++;
             }
         });
@@ -104,8 +104,8 @@ export default function HistoryPage({
                 <section className="lg:col-span-2 xl:col-span-1">
                     <div className="mb-5 rounded-lg bg-white/50 p-5 shadow backdrop-blur">
                         <h2 className="text-xl font-semibold md:text-2xl">
-                            <span className="text-gray-400">//</span> Kelas yang
-                            Diikuti
+                            <span className="text-gray-400">//</span> Kursus
+                            yang Diikuti
                         </h2>
                         <div className="mt-10">
                             {courses.length ? (
@@ -146,10 +146,10 @@ export default function HistoryPage({
                                                     <div className="flex gap-2 text-xs text-gray-700">
                                                         <p>
                                                             {
-                                                                course.articles
+                                                                course.modules
                                                                     .length
                                                             }{' '}
-                                                            Article
+                                                            Module
                                                         </p>
                                                         <p>
                                                             {
@@ -163,7 +163,7 @@ export default function HistoryPage({
                                                 <p className="text-xs text-gray-800 md:text-sm">
                                                     Progress{' '}
                                                     {`${countMyHistory(course.id)} / ${counter(
-                                                        course.articles.length,
+                                                        course.modules.length,
                                                         course.quizzes.length,
                                                     )}`}
                                                 </p>
@@ -172,7 +172,7 @@ export default function HistoryPage({
                                                 <div
                                                     className="h-full bg-[#2276f0]"
                                                     style={{
-                                                        width: `${(countMyHistory(course.id) / counter(course.articles.length, course.quizzes.length)) * 100}%`,
+                                                        width: `${(countMyHistory(course.id) / counter(course.modules.length, course.quizzes.length)) * 100}%`,
                                                     }}
                                                 ></div>
                                             </div>
@@ -181,7 +181,7 @@ export default function HistoryPage({
                                 ))
                             ) : (
                                 <p className="italic text-gray-700">
-                                    Belum ada Kelas yang Diikuti
+                                    Belum ada Kursus yang Diikuti
                                 </p>
                             )}
                         </div>
@@ -196,10 +196,10 @@ export default function HistoryPage({
                                 histories.map((history, index) => (
                                     <div key={index} className="mb-10 ml-6">
                                         <div
-                                            className={`absolute -left-0 flex size-7 -translate-x-1/2 items-center justify-center rounded-full border border-white text-white ${history.history.type == 'article' ? 'bg-[#2276f0]' : 'bg-[#673ef0]'}`}
+                                            className={`absolute -left-0 flex size-7 -translate-x-1/2 items-center justify-center rounded-full border border-white text-white ${history.history.type == 'module' ? 'bg-[#2276f0]' : 'bg-[#673ef0]'}`}
                                         >
                                             {history.history.type ==
-                                            'article' ? (
+                                            'module' ? (
                                                 <IconBookOpenFill className="size-3.5" />
                                             ) : (
                                                 <IconPuzzleFill className="size-3.5" />
@@ -207,7 +207,7 @@ export default function HistoryPage({
                                         </div>
                                         <div className="flex items-center gap-2">
                                             <p
-                                                className={`text-xs font-medium capitalize md:text-sm ${history.history.type == 'article' ? 'text-[#2276f0]' : 'text-[#673ef0]'}`}
+                                                className={`text-xs font-medium capitalize md:text-sm ${history.history.type == 'module' ? 'text-[#2276f0]' : 'text-[#673ef0]'}`}
                                             >
                                                 {history.history.type}
                                             </p>
@@ -221,12 +221,12 @@ export default function HistoryPage({
                                             </time>
                                         </div>
                                         <Link
-                                            href={`${history.history.type == 'article' ? `/modules/${history.history.slug}` : `/quizzes/${history.history.slug}`}`}
+                                            href={`${history.history.type == 'module' ? `/modules/${history.history.slug}` : `/quizzes/${history.history.slug}`}`}
                                             className="block font-medium text-gray-900 md:text-lg"
                                         >
                                             {history.history.title}
                                         </Link>
-                                        {history.history.type == 'article' ? (
+                                        {history.history.type == 'module' ? (
                                             <p className="text-xs text-gray-700 md:text-sm">
                                                 Membaca sebanyak{' '}
                                                 {history.logs.length}x

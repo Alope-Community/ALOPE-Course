@@ -41,8 +41,8 @@ export default function SideCoursesSection({ courses }: { courses: Course[] }) {
                                         </p>
                                         <p className="text-xs">-</p>
                                         <p className="mt-1 text-xs text-gray-800">
-                                            {course.articles.length} Total
-                                            Articles
+                                            {course.modules.length} Total
+                                            Modules
                                         </p>
                                     </div>
                                 </div>

@@ -46,12 +46,12 @@ class VideoController extends Controller
                     ->get();
 
                     
-        $articles = $video->articles;
+        $modules = $video->modules;
 
         return Inertia::render('Video/Show', [
             'videos' => $videos,
             'video' => $video,
-            'articles' => $articles,
+            'modules' => $modules,
         ]);
     }
 

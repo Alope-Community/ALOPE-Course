@@ -7,7 +7,7 @@ use App\Models\Module;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 
-class ArticleSeeder extends Seeder
+class ModuleSeeder extends Seeder
 {
     /**
      * Run the database seeds.
