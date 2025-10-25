@@ -3,8 +3,8 @@ import NavbarComponent from '@/Components/Navbar';
 import { Head } from '@inertiajs/react';
 
 import BreadcrumbComponent from '@/Components/Breadcrumb';
-import { Article } from '@/models/Article';
-import SideArticlesSection from '@/Sections/SideArticles';
+import { Module } from '@/models/Module';
+import SideModulesSection from '@/Sections/SideModules';
 import { formatDateWithTime } from '@/tools/formatDate';
 import strLimit from '@/tools/strLimit';
 import { IconCalendar } from 'justd-icons';
@@ -18,15 +18,15 @@ import '../../../css/bodyContent.css';
 // </div>`;
 
 export default function ArticleShowPage({
-    article,
-    articles,
+    module,
+    modules,
 }: {
-    article: Article;
-    articles: Article[];
+    module: Module;
+    modules: Module[];
 }) {
     return (
         <>
-            <Head title="Article" />
+            <Head title="Modul" />
 
             <NavbarComponent />
 
@@ -34,8 +34,8 @@ export default function ArticleShowPage({
                 links={[
                     { title: 'Modules', url: '/modules' },
                     {
-                        title: strLimit(article.title, 20),
-                        url: `/modules/${article.slug}`,
+                        title: strLimit(module.title, 20),
+                        url: `/modules/${module.slug}`,
                         active: true,
                     },
                 ]}
@@ -79,7 +79,7 @@ export default function ArticleShowPage({
                     <main className="col-span-4 lg:col-span-3">
                         <header>
                             <h1 className="mb-2 text-xl font-bold sm:text-2xl xl:text-3xl">
-                                {article.title}
+                                {module.title}
                             </h1>
                             <p className="my-3 flex items-center gap-1 text-xs text-[#2276f0] sm:text-sm">
                                 {/* <span className="italic underline">
@@ -88,32 +88,32 @@ export default function ArticleShowPage({
                                 <IconCalendar />
                                 <span className="text-gray-700">
                                     {formatDateWithTime(
-                                        article.created_at || '',
+                                        module.created_at || '',
                                     )}
                                 </span>
                             </p>
                             <div className="my-7 flex gap-2 sm:items-center">
                                 <div>
                                     <img
-                                        src={article.writer.profile}
+                                        src={module.writer.profile}
                                         alt="ilham hafidz photo"
                                         className="size-11 rounded-full border shadow"
                                     />
                                 </div>
                                 <div className="flex flex-col sm:flex-row sm:gap-2">
                                     <p className="text-sm font-semibold text-[#2276f0] xl:text-base">
-                                        {article.writer.name}
+                                        {module.writer.name}
                                     </p>
                                     <p className="hidden sm:block">&#128900;</p>
                                     <p className="text-sm text-gray-500 xl:text-base">
-                                        {article.writer.as}
+                                        {module.writer.as}
                                     </p>
                                 </div>
                             </div>
                             <img
-                                src={article.cover}
+                                src={module.cover}
                                 // src={'https://alope.id/images/thumbs/lwd2.png'}
-                                alt="Cover Article"
+                                alt="Cover Module"
                                 className="max-h-[300px] w-full rounded object-contain sm:max-h-[450px] lg:object-cover xl:max-h-[600px]"
                             />
                         </header>
@@ -122,11 +122,11 @@ export default function ArticleShowPage({
                             id="body"
                             className="mt-5"
                             dangerouslySetInnerHTML={{
-                                __html: article.body,
+                                __html: module.body,
                             }}
                         ></section>
                     </main>
-                    <SideArticlesSection articles={articles} />
+                    <SideModulesSection modules={modules} />
                 </div>
             </section>
 

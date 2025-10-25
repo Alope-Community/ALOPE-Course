@@ -1,5 +1,5 @@
 import BreadcrumbComponent from '@/Components/Breadcrumb';
-import HorizontalArticleCardComponent from '@/Components/Cards/HorizontalArticle';
+import HorizontalModuleCardComponent from '@/Components/Cards/HorizontalModule';
 import HorizontalQuizCardComponent from '@/Components/Cards/HorizontalQuiz';
 import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
@@ -196,11 +196,11 @@ export default function CourseShowPage({
                                         Modul Pelajaran
                                     </h2>
                                 </div>
-                                {course.articles.length ? (
-                                    course.articles.map((article, index) => (
-                                        <HorizontalArticleCardComponent
+                                {course.modules.length ? (
+                                    course.modules.map((module, index) => (
+                                        <HorizontalModuleCardComponent
                                             key={index}
-                                            props={article}
+                                            props={module}
                                         />
                                     ))
                                 ) : (

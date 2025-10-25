@@ -30,9 +30,9 @@ class Course extends Model
         return $this->hasMany(Video::class);
     }
 
-    public function articles()
+    public function modules()
     {
-        return $this->hasMany(Article::class);
+        return $this->hasMany(Module::class);
     }
 
     public function quizzes()

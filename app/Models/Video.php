@@ -15,7 +15,7 @@ class Video extends Model
     public function getArticlesAttribute()
     {
         $ids = array_filter(explode(',', $this->article_ids));
-        return Article::with("reads")->whereIn('id', $ids)->get();
+        return Module::with("reads")->whereIn('id', $ids)->get();
     }
 
     public function course(){

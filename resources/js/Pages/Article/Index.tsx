@@ -1,10 +1,10 @@
 import BannerHorizontalComponent from '@/Components/Banners/Horizontal';
 import BreadcrumbComponent from '@/Components/Breadcrumb';
-import HorizontalArticleCardComponent from '@/Components/Cards/HorizontalArticle';
+import HorizontalModuleCardComponent from '@/Components/Cards/HorizontalModule';
 import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
-import { Article } from '@/models/Article';
-import SideArticlesSection from '@/Sections/SideArticles';
+import { Module } from '@/models/Module';
+import SideModulesSection from '@/Sections/SideModules';
 import { PaginatedResponse } from '@/types/PaginateResponse';
 import { Inertia, Method } from '@inertiajs/inertia';
 import { Head, router, usePage } from '@inertiajs/react';
@@ -14,9 +14,9 @@ import { IconChevronLeft, IconChevronRight } from 'justd-icons';
 import { useEffect, useState } from 'react';
 
 export default function ArticleIndexPage({
-    articles,
+    modules,
 }: {
-    articles: PaginatedResponse<Article>;
+    modules: PaginatedResponse<Module>;
 }) {
     const { props } = usePage();
     const searchQuery = (props as any).search || ''; // Ambil search dari props
@@ -24,13 +24,13 @@ export default function ArticleIndexPage({
 
     const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
-            Inertia.visit(route('articles.index'), {
+            Inertia.visit(route('modules.index'), {
                 method: Method.GET,
                 data: { q: query },
                 preserveState: true,
                 preserveScroll: true,
                 replace: true,
-                only: ['articles'], // Pastikan ini sesuai dengan nama di backend
+                only: ['modules'], // Pastikan ini sesuai dengan nama di backend
             });
         }
     };
@@ -48,12 +48,12 @@ export default function ArticleIndexPage({
     };
 
     const goToPageNumber = (page: number) => {
-        router.visit(`${articles.path}?page=${page}`);
+        router.visit(`${modules.path}?page=${page}`);
     };
 
     return (
         <>
-            <Head title="Articles" />
+            <Head title="modules" />
 
             <NavbarComponent />
 
@@ -78,10 +78,10 @@ export default function ArticleIndexPage({
                 <section className="col-span-4 lg:col-span-3">
                     <BannerHorizontalComponent />
                     <section>
-                        {articles.data.map((article, index) => (
-                            <HorizontalArticleCardComponent
+                        {modules.data.map((module, index) => (
+                            <HorizontalModuleCardComponent
                                 key={index}
-                                props={article}
+                                props={module}
                             />
                         ))}
                     </section>
@@ -90,8 +90,8 @@ export default function ArticleIndexPage({
                     <div className="mt-10 flex items-center justify-center gap-2">
                         {/* Tombol Previous */}
                         <button
-                            onClick={() => goToPage(articles.prev_page_url)}
-                            disabled={!articles.prev_page_url}
+                            onClick={() => goToPage(modules.prev_page_url)}
+                            disabled={!modules.prev_page_url}
                             className="flex items-center rounded border bg-white/50 px-3 py-1 disabled:opacity-50"
                         >
                             <IconChevronLeft className="size-5" /> Prev
@@ -99,14 +99,14 @@ export default function ArticleIndexPage({
 
                         {/* Tombol Angka Halaman */}
                         {Array.from(
-                            { length: articles.last_page },
+                            { length: modules.last_page },
                             (_, i) => i + 1,
                         ).map((page) => (
                             <button
                                 key={page}
                                 onClick={() => goToPageNumber(page)}
                                 className={`rounded border px-3 py-1 ${
-                                    page === articles.current_page
+                                    page === modules.current_page
                                         ? 'bg-[#4a86ef] text-white'
                                         : 'bg-white/50 text-gray-800 backdrop-blur-md'
                                 }`}
@@ -117,15 +117,15 @@ export default function ArticleIndexPage({
 
                         {/* Tombol Next */}
                         <button
-                            onClick={() => goToPage(articles.next_page_url)}
-                            disabled={!articles.next_page_url}
+                            onClick={() => goToPage(modules.next_page_url)}
+                            disabled={!modules.next_page_url}
                             className="flex items-center rounded border bg-white/50 px-3 py-1 disabled:opacity-50"
                         >
                             Next <IconChevronRight className="size-5" />
                         </button>
                     </div>
                 </section>
-                <SideArticlesSection articles={articles.data} />
+                <SideModulesSection modules={modules.data} />
             </main>
 
             <FooterComponent />

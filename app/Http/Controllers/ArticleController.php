@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Article;
+use App\Models\Module;
 use App\Models\Read;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -17,10 +17,10 @@ class ArticleController extends Controller
     public function index()
     {
 
-        $articles = Article::with("course")->wherePublished(true)->latest()->paginate(7);
+        $modules = Module::with("course")->wherePublished(true)->latest()->paginate(7);
 
         return Inertia::render('Article/Index', [
-            "articles" => $articles
+            "modules" => $modules
         ]);
     }
 
@@ -46,41 +46,41 @@ class ArticleController extends Controller
     public function show(string $slug)
     {
 
-        $article = Article::with(["writer", "course.users"])->whereSlug($slug)->first();
-        $articles = Article::with("course")->wherePublished(true)->where('slug', '!=', $slug)->latest()->get();
+        $module = Module::with(["writer", "course.users"])->whereSlug($slug)->first();
+        $modules = Module::with("course")->wherePublished(true)->where('slug', '!=', $slug)->latest()->get();
 
 
-        if ($article->course->visibility == 'private') {
+        if ($module->course->visibility == 'private') {
             $user = User::with('courses')->find(Auth::id());
-            if (!$article->course->users->contains($user) || !Auth::check()) {
+            if (!$module->course->users->contains($user) || !Auth::check()) {
                 return redirect("/access-blocked");
             }
         }
 
         if (Auth::user()) {
             $existingRead = Read::where('user_id', Auth::user()->id)
-                ->where('article_id', $article->id)
+                ->where('module_id', $module->id)
                 ->whereDate('created_at', today())
                 ->first();
 
             if (!$existingRead) {
                 Read::create([
                     "user_id" => Auth::user()->id,
-                    "article_id" => $article->id,
+                    "module_id" => $module->id,
                     "created_at" => now()
                 ]);
             }
         } else {
             Read::create([
                 "user_id" => 1,
-                "article_id" => $article->id,
+                "module_id" => $module->id,
                 "created_at" => now()
             ]);
         }
 
         return Inertia::render('Article/Show', [
-            "article" => $article,
-            "articles" => $articles,
+            "module" => $module,
+            "modules" => $modules,
         ]);
     }
 

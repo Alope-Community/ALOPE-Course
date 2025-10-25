@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Read extends Model
 {
-    protected $fillable = ["user_id", "article_id"];
+    protected $fillable = ["user_id", "module_id"];
 
     public $timestamps = true; // Tetap gunakan timestamps
 
@@ -16,8 +16,8 @@ class Read extends Model
         return null;
     }
 
-    public function article()
+    public function modules()
     {
-        return $this->belongsTo(Article::class);
+        return $this->belongsTo(Module::class);
     }
 }

@@ -4,7 +4,7 @@ import BreadcrumbComponent from '@/Components/Breadcrumb';
 import ArticleCardComponent from '@/Components/Cards/Article';
 import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
-import { Article } from '@/models/Article';
+import { Article } from '@/models/Module';
 import { Video } from '@/models/Video';
 import strLimit from '@/tools/strLimit';
 import { Head, Link } from '@inertiajs/react';

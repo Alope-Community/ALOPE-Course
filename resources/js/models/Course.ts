@@ -1,6 +1,6 @@
-import { Article } from './Article';
 import { Category } from './Category';
 import { Hashtag } from './Hashtag';
+import { Module } from './Module';
 import { Quiz } from './Quiz';
 import { Video } from './Video';
 
@@ -14,7 +14,7 @@ export type Course = {
     description: string;
 
     hashtags: Hashtag[];
-    articles: Article[];
+    modules: Module[];
     videos: Video[];
     category: Category;
     quizzes: Quiz[];

@@ -1,21 +1,21 @@
 import BadgeComponent from '@/Components/Badge';
 import BreadcrumbComponent from '@/Components/Breadcrumb';
 import QuizCardComponent from '@/Components/Cards/Quiz';
-import SimpleArticleCardComponent from '@/Components/Cards/SimpleArticle';
+import SimpleModuleCardComponent from '@/Components/Cards/SimpleModule';
 import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
-import { Article } from '@/models/Article';
 import { Course } from '@/models/Course';
-import SideArticlesSection from '@/Sections/SideArticles';
+import { Module } from '@/models/Module';
+import SideModulesSection from '@/Sections/SideModules';
 import { Head, Link } from '@inertiajs/react';
 import Glider from 'react-glider';
 
 export default function CourseIndexPage({
     courses,
-    articles,
+    modules,
 }: {
     courses: Course[];
-    articles: Article[];
+    modules: Module[];
 }) {
     return (
         <>
@@ -108,16 +108,14 @@ export default function CourseIndexPage({
                                         }, // Mobile
                                     ]}
                                 >
-                                    {course.articles.length ? (
-                                        course.articles.map(
-                                            (article, index) => (
-                                                <SimpleArticleCardComponent
-                                                    key={index}
-                                                    props={article}
-                                                    withoutBorder
-                                                />
-                                            ),
-                                        )
+                                    {course.modules.length ? (
+                                        course.modules.map((module, index) => (
+                                            <SimpleModuleCardComponent
+                                                key={index}
+                                                props={module}
+                                                withoutBorder
+                                            />
+                                        ))
                                     ) : (
                                         <p className="italic text-gray-700">
                                             Belum ada artikel terkait
@@ -207,7 +205,7 @@ export default function CourseIndexPage({
                         </div>
                     ))}
                 </section>
-                <SideArticlesSection articles={articles} />
+                <SideModulesSection modules={modules} />
             </main>
 
             <FooterComponent />

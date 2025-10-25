@@ -3,8 +3,8 @@ import ArticleCardComponent from '@/Components/Cards/Article';
 import CourseCardComponent from '@/Components/Cards/CourseCard';
 import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
-import { Article } from '@/models/Article';
 import { Course } from '@/models/Course';
+import { Module } from '@/models/Module';
 import { Video } from '@/models/Video';
 import { Head, Link } from '@inertiajs/react';
 
@@ -15,13 +15,13 @@ import Glider from 'react-glider';
 export default function LandingPage({
     courses,
     videos,
-    articles,
-    latestArticle,
+    modules,
+    latestModule,
 }: {
     courses: Course[];
     videos: Video[];
-    articles: Article[];
-    latestArticle: Article;
+    modules: Module[];
+    latestModule: Module;
 }) {
     return (
         <>
@@ -354,10 +354,10 @@ export default function LandingPage({
                                     }, // Mobile
                                 ]}
                             >
-                                {articles.map((article, index) => (
+                                {modules.map((module, index) => (
                                     <ArticleCardComponent
                                         key={index}
-                                        props={article}
+                                        props={module}
                                     />
                                 ))}
                             </Glider>

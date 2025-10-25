@@ -1,4 +1,4 @@
-import { Article } from './Article';
+import Module from 'module';
 import { Question } from './Quiz';
 
 export type HistoryLog = {
@@ -7,7 +7,7 @@ export type HistoryLog = {
     user_id: number;
     // article
     article_id: string;
-    article?: Article;
+    article?: Module;
     // quiz
     answer?: string;
     is_correct?: number;

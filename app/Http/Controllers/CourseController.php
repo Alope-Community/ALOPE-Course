@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Article;
 use App\Models\Course;
 use App\Models\Glosary;
-use App\Models\Glossary;
+use App\Models\Module;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -18,7 +17,7 @@ class CourseController extends Controller
     {
 
         $courses = Course::with([
-            'articles' => function ($query) {
+            'modules' => function ($query) {
                 $query->latest();
             },
             'quizzes' => function ($query) {
@@ -28,11 +27,11 @@ class CourseController extends Controller
             'videos'
         ])->latest()->get();
 
-        $articles = Article::with("course")->wherePublished(true)->latest()->get();
+        $modules = Module::with("course")->wherePublished(true)->latest()->get();
 
         return Inertia::render('Course/Index', [
             "courses" => $courses,
-            "articles" => $articles,
+            "modules" => $modules,
         ]);
     }
 
@@ -58,7 +57,7 @@ class CourseController extends Controller
     public function show(string $slug)
     {
         $course = Course::with([
-            'articles' => function ($query) {
+            'modules' => function ($query) {
                 $query->latest();
             },
             'quizzes' => function ($query) {
@@ -75,7 +74,7 @@ class CourseController extends Controller
         ])->whereSlug($slug)->firstOrFail();
 
         $courses = Course::with([
-            'articles' => function ($query) {
+            'modules' => function ($query) {
                 $query->latest();
             },
             'hashtags'
@@ -99,7 +98,7 @@ class CourseController extends Controller
     }
 
 
-    // $articles = Article::with("course")->wherePublished(true)->latest()->get();
+    // $articles = Module::with("course")->wherePublished(true)->latest()->get();
     /**
      * Show the form for editing the specified resource.
      */

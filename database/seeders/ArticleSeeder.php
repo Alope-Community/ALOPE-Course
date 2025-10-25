@@ -2,9 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\Article;
 use App\Models\Course;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Module;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 
@@ -22,7 +21,7 @@ class ArticleSeeder extends Seeder
             return;
         }
 
-        Article::insert([
+        Module::insert([
             [
                 'id' => Str::uuid(),
                 "title" => "CSS Pseudo Class untuk Membuat Website Lebih Interaktif",

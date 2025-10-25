@@ -1,4 +1,4 @@
-import { Article } from '@/models/Article';
+import { Article } from '@/models/Module';
 import { formatDateWithTime } from '@/tools/formatDate';
 import strLimit from '@/tools/strLimit';
 import { Link } from '@inertiajs/react';

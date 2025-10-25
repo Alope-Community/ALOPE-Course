@@ -1,7 +1,7 @@
 import { Course } from './Course';
 import { Writer } from './Writer';
 
-export type Article = {
+export type Module = {
     id: string;
     slug: string;
     title: string;
@@ -12,7 +12,7 @@ export type Article = {
     course_id: string;
     course: Course;
 
-    reads: ReadArticle[];
+    reads: ReadModule[];
 
     writer: Writer;
 
@@ -21,7 +21,7 @@ export type Article = {
     updated_at?: string;
 };
 
-export type ReadArticle = {
+export type ReadModule = {
     id: number;
     article_id: string;
 
