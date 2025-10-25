@@ -32,10 +32,10 @@ export default function ArticleShowPage({
 
             <BreadcrumbComponent
                 links={[
-                    { title: 'Articles', url: '/articles' },
+                    { title: 'Modules', url: '/modules' },
                     {
                         title: strLimit(article.title, 20),
-                        url: `/articles/${article.slug}`,
+                        url: `/modules/${article.slug}`,
                         active: true,
                     },
                 ]}

@@ -221,7 +221,7 @@ export default function HistoryPage({
                                             </time>
                                         </div>
                                         <Link
-                                            href={`${history.history.type == 'article' ? `/articles/${history.history.slug}` : `/quizzes/${history.history.slug}`}`}
+                                            href={`${history.history.type == 'article' ? `/modules/${history.history.slug}` : `/quizzes/${history.history.slug}`}`}
                                             className="block font-medium text-gray-900 md:text-lg"
                                         >
                                             {history.history.title}

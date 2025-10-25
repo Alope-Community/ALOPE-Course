@@ -21,6 +21,8 @@ export default function ShowVideoPage({
     videos: Video[];
     articles: Article[];
 }) {
+    console.log(video);
+
     return (
         <>
             <Head title="Courses" />
@@ -114,16 +116,19 @@ export default function ShowVideoPage({
                         </div>
 
                         <div className="mt-5 overflow-hidden rounded border bg-white/30 p-2 shadow">
-                            <AccordionComponent defaultActive={0} data={[
-                            {
-                              title: "Deskripsi Video",
-                              content: video.description,
-                            },
-                            {
-                              title: video.course.title,
-                              content: video.course.description,
-                            },
-                          ]} />
+                            <AccordionComponent
+                                defaultActive={0}
+                                data={[
+                                    {
+                                        title: 'Deskripsi Video',
+                                        content: video.description,
+                                    },
+                                    {
+                                        title: video.course.title,
+                                        content: video.course.description,
+                                    },
+                                ]}
+                            />
                         </div>
                     </div>
                 </section>

@@ -6,12 +6,10 @@ import NavbarComponent from '@/Components/Navbar';
 import { Article } from '@/models/Article';
 import { Course } from '@/models/Course';
 import { Video } from '@/models/Video';
-import diffForHumans from '@/tools/diffForHumans';
-import strLimit from '@/tools/strLimit';
 import { Head, Link } from '@inertiajs/react';
 
 import 'glider-js/glider.min.css';
-import { IconCalendar2Fill, IconChevronRight, IconEyeFill } from 'justd-icons';
+import { IconChevronRight } from 'justd-icons';
 import Glider from 'react-glider';
 
 export default function LandingPage({
@@ -75,13 +73,13 @@ export default function LandingPage({
                                 Subscribe Gratis
                             </a>
                             <Link
-                                href="/articles"
+                                href="/modules"
                                 className="rounded-full bg-white px-5 py-2 text-sm font-bold text-[#2276f0] shadow hover:shadow-[#2276f0] active:scale-95 md:px-8 md:py-2.5 md:text-base"
                             >
                                 Explore
                             </Link> */}
                             <Link
-                                href="/articles"
+                                href="/modules"
                                 className="rounded-full bg-[#2276f0] px-5 py-2 text-sm font-bold text-white shadow hover:shadow-[#2276f0] active:scale-95 md:px-8 md:py-2.5 md:text-base"
                             >
                                 Explore Gratis
@@ -118,13 +116,13 @@ export default function LandingPage({
                 </div>
             </header>
 
-            <section className="mb-20 px-3 md:px-10 xl:px-5 2xl:px-2">
+            {/* <section className="mb-20 px-3 md:px-10 xl:px-5 2xl:px-2">
                 <div className="container relative mx-auto overflow-hidden p-1">
                     <span className="absolute -right-[70px] top-4 inline-block w-[200px] rotate-45 bg-red-500 p-2 text-center text-xs font-semibold text-gray-100 sm:-right-[50px] sm:top-7 sm:p-3 sm:text-sm lg:-left-[50px] lg:right-auto lg:-rotate-45 lg:text-base xl:top-6">
                         Artikel Baru
                     </span>
                     <div className="absolute inset-0 -z-10 flex items-center justify-center overflow-hidden rounded-xl">
-                        <div className="animate-scale-pulse h-full w-full bg-purple-300 blur-xl"></div>
+                        <div className="h-full w-full animate-scale-pulse bg-purple-300 blur-xl"></div>
                     </div>
                     <div className="grid grid-cols-1 items-center gap-5 rounded-lg border border-[#673ef0] bg-white/90 p-5 lg:grid-cols-2 xl:gap-10">
                         <div className="hidden h-full lg:block">
@@ -180,7 +178,7 @@ export default function LandingPage({
                                 </div>
                                 <div>
                                     <Link
-                                        href={`/articles/${latestArticle.slug}`}
+                                        href={`/modules/${latestArticle.slug}`}
                                         className="flex items-center justify-center gap-2 rounded bg-[#663399] px-4 py-2 text-sm text-gray-100 shadow hover:bg-[#663399]/80 active:scale-95 sm:inline-flex xl:px-8 xl:py-2.5 xl:text-base"
                                     >
                                         Lihat Artikel
@@ -191,7 +189,7 @@ export default function LandingPage({
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> */}
 
             <section className="relative mb-20 gap-10 px-3 md:px-10 xl:px-5 2xl:px-2">
                 <div className="container mx-auto">
@@ -252,68 +250,73 @@ export default function LandingPage({
                         </div>
                     </div> */}
 
-                    <div className="mb-10">
-                        <div className="mb-5">
-                            <h2 className="text-xl font-semibold md:text-2xl">
-                                <span className="text-gray-400">//</span> Lihat
-                                Pelajaran-pelajaran untuk Upgrade Skill
-                            </h2>
+                    {courses.length > 1 ? (
+                        <div className="mb-10">
+                            <div className="mb-5">
+                                <h2 className="text-xl font-semibold md:text-2xl">
+                                    <span className="text-gray-400">//</span>{' '}
+                                    Lihat Pelajaran-pelajaran untuk Upgrade
+                                    Skill
+                                </h2>
+                            </div>
+                            <div className="relative">
+                                <Glider
+                                    draggable
+                                    slidesToShow={4.5}
+                                    slidesToScroll={1}
+                                    // hasArrows
+                                    dragVelocity={1.5}
+                                    responsive={[
+                                        {
+                                            breakpoint: 1536,
+                                            settings: { slidesToShow: 4.5 },
+                                        }, // Desktop
+                                        {
+                                            breakpoint: 1280,
+                                            settings: { slidesToShow: 3.6 },
+                                        }, // Desktop
+                                        {
+                                            breakpoint: 1024,
+                                            settings: { slidesToShow: 2.8 },
+                                        }, // Desktop
+                                        {
+                                            breakpoint: 768,
+                                            settings: { slidesToShow: 2.3 },
+                                        }, // Tablet
+                                        {
+                                            breakpoint: 375,
+                                            settings: { slidesToShow: 1.3 },
+                                        }, // Mobile
+                                        {
+                                            breakpoint: 100,
+                                            settings: { slidesToShow: 1.1 },
+                                        }, // Mobile
+                                    ]}
+                                >
+                                    {courses.map((course, index) => (
+                                        <CourseCardComponent
+                                            key={index}
+                                            course={course}
+                                        />
+                                    ))}
+                                </Glider>
+                            </div>
                         </div>
-                        <div className="relative">
-                            <Glider
-                                draggable
-                                slidesToShow={4.5}
-                                slidesToScroll={1}
-                                // hasArrows
-                                dragVelocity={1.5}
-                                responsive={[
-                                    {
-                                        breakpoint: 1536,
-                                        settings: { slidesToShow: 4.5 },
-                                    }, // Desktop
-                                    {
-                                        breakpoint: 1280,
-                                        settings: { slidesToShow: 3.6 },
-                                    }, // Desktop
-                                    {
-                                        breakpoint: 1024,
-                                        settings: { slidesToShow: 2.8 },
-                                    }, // Desktop
-                                    {
-                                        breakpoint: 768,
-                                        settings: { slidesToShow: 2.3 },
-                                    }, // Tablet
-                                    {
-                                        breakpoint: 375,
-                                        settings: { slidesToShow: 1.3 },
-                                    }, // Mobile
-                                    {
-                                        breakpoint: 100,
-                                        settings: { slidesToShow: 1.1 },
-                                    }, // Mobile
-                                ]}
-                            >
-                                {courses.map((course, index) => (
-                                    <CourseCardComponent
-                                        key={index}
-                                        course={course}
-                                    />
-                                ))}
-                            </Glider>
-                        </div>
-                    </div>
+                    ) : (
+                        ''
+                    )}
 
                     <div className="mb-10">
                         <div className="mb-5 lg:flex lg:items-center lg:justify-between">
                             <h2 className="text-xl font-semibold md:text-2xl">
-                                <span className="text-gray-400">//</span>{' '}
-                                Artikel Terpopuler
+                                <span className="text-gray-400">//</span>
+                                Modul Terpopuler
                             </h2>
                             <Link
-                                href="/articles"
+                                href="/modules"
                                 className="flex items-center gap-1 rounded px-5 py-2 text-sm font-bold text-gray-800 duration-300 hover:gap-2 hover:shadow-[#673ef0] active:scale-95"
                             >
-                                Lihat Semua Artikel
+                                Lihat Semua Modul
                                 <IconChevronRight className="size-7 text-[#2276f0]" />
                             </Link>
                         </div>
@@ -376,7 +379,7 @@ export default function LandingPage({
                 />
             </section>
 
-            <section className="container mx-auto my-20 px-3 md:px-10 xl:px-5 2xl:px-2">
+            {/* <section className="container mx-auto my-20 px-3 md:px-10 xl:px-5 2xl:px-2">
                 <section className="relative flex items-center overflow-hidden rounded-2xl bg-gradient-to-r from-[#040924] to-gray-900 px-6 py-16 text-gray-100 after:absolute after:inset-0 after:z-10 after:bg-[#040924]/80 after:content-[''] md:px-10 lg:overflow-visible lg:after:hidden xl:px-14">
                     <div className="relative z-20 flex-1 text-center md:text-left">
                         <h3 className="mb-5 text-xl font-bold md:text-2xl xl:text-3xl">
@@ -405,7 +408,7 @@ export default function LandingPage({
                         />
                     </div>
                 </section>
-            </section>
+            </section> */}
 
             <section className="relative px-3 md:px-10 xl:px-5 2xl:px-2">
                 <div className="container mx-auto flex flex-col items-center lg:flex-row">
@@ -418,28 +421,30 @@ export default function LandingPage({
                     </div>
                     <div className="w-full lg:flex-1">
                         <h3 className="mb-5 px-2 text-3xl font-bold">FAQs</h3>
-                        <AccordionComponent data={[
-                            {
-                              title: 'Apa itu ALOPE?',
-                              content:
-                                'ALOPE adalah sebuah komunitas programming yang memiliki visi untuk berbagi ilmu dan pengalaman seputar coding, dengan tujuan menciptakan lingkungan belajar yang inklusif dan mendukung bagi siapa saja yang ingin mengembangkan keterampilan di bidang pemrograman khususnya bagi pemula.',
-                            },
-                            {
-                              title: 'Apa keunggulan belajar di ALOPE?',
-                              content:
-                                'Keunggulan belajar di ALOPE adalah tersedianya berbagai artikel tutorial yang dilengkapi dengan video pembelajaran interaktif serta soal berbasis studi kasus untuk mengasah pemahaman secara langsung. Selain itu, ALOPE juga memiliki komunitas aktif di Discord, di mana para anggota dapat berdiskusi, berbagi ilmu, dan saling membantu dalam perjalanan belajar coding mereka.',
-                            },
-                            {
-                              title: 'Apa saja bahasa pemrograman yang diajarkan?',
-                              content:
-                                'Saat ini, ALOPE fokus mengajarkan web programming, termasuk HTML, CSS, JavaScript, serta framework seperti React dan Laravel. Namun, kami terbuka untuk berkembang ke bidang lain seperti IoT atau mobile development. Jika Anda memiliki keahlian di bidang tersebut dan tertarik untuk berbagi ilmu, kami mengundang Anda untuk bergabung sebagai mentor dan membantu lebih banyak orang belajar!',
-                            },
-                            {
-                              title: 'Apakah saya perlu memiliki pengalaman sebelumnya untuk mulai belajar?',
-                              content:
-                                'Tidak perlu! Kami menyediakan materi yang dirancang untuk pemula dari nol, tetapi juga tersedia materi lanjutan bagi yang sudah memiliki pengalaman.',
-                            },
-                          ]} />
+                        <AccordionComponent
+                            data={[
+                                {
+                                    title: 'Apa itu ALOPE?',
+                                    content:
+                                        'ALOPE adalah sebuah komunitas programming yang memiliki visi untuk berbagi ilmu dan pengalaman seputar coding, dengan tujuan menciptakan lingkungan belajar yang inklusif dan mendukung bagi siapa saja yang ingin mengembangkan keterampilan di bidang pemrograman khususnya bagi pemula.',
+                                },
+                                {
+                                    title: 'Apa keunggulan belajar di ALOPE?',
+                                    content:
+                                        'Keunggulan belajar di ALOPE adalah tersedianya berbagai artikel tutorial yang dilengkapi dengan video pembelajaran interaktif serta soal berbasis studi kasus untuk mengasah pemahaman secara langsung. Selain itu, ALOPE juga memiliki komunitas aktif di Discord, di mana para anggota dapat berdiskusi, berbagi ilmu, dan saling membantu dalam perjalanan belajar coding mereka.',
+                                },
+                                {
+                                    title: 'Apa saja bahasa pemrograman yang diajarkan?',
+                                    content:
+                                        'Saat ini, ALOPE fokus mengajarkan web programming, termasuk HTML, CSS, JavaScript, serta framework seperti React dan Laravel. Namun, kami terbuka untuk berkembang ke bidang lain seperti IoT atau mobile development. Jika Anda memiliki keahlian di bidang tersebut dan tertarik untuk berbagi ilmu, kami mengundang Anda untuk bergabung sebagai mentor dan membantu lebih banyak orang belajar!',
+                                },
+                                {
+                                    title: 'Apakah saya perlu memiliki pengalaman sebelumnya untuk mulai belajar?',
+                                    content:
+                                        'Tidak perlu! Kami menyediakan materi yang dirancang untuk pemula dari nol, tetapi juga tersedia materi lanjutan bagi yang sudah memiliki pengalaman.',
+                                },
+                            ]}
+                        />
                     </div>
                 </div>
 

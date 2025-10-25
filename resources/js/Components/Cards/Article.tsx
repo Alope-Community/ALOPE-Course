@@ -6,7 +6,7 @@ import { Link } from '@inertiajs/react';
 export default function ArticleCardComponent({ props }: { props: Article }) {
     return (
         <Link
-            href={`/articles/${props.slug}`}
+            href={`/modules/${props.slug}`}
             className={`mr-5 overflow-hidden rounded-md bg-gray-50 shadow`}
         >
             <div className="relative">

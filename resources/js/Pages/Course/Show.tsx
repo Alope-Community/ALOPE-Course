@@ -139,30 +139,40 @@ export default function CourseShowPage({
                                             : 'border border-gray-300 bg-gray-200/90 text-gray-600'
                                     }`}
                                 >
-                                    Artikel
+                                    Modul
                                 </button>
 
-                                <button
-                                    onClick={() => setActiveTab('quiz')}
-                                    className={`rounded-md px-4 py-1.5 text-sm font-medium transition-all duration-200 md:px-6 md:py-2 md:text-base ${
-                                        activeTab === 'quiz'
-                                            ? 'border border-[#2276f0] bg-[#2276f0] text-white shadow-lg'
-                                            : 'border border-gray-300 bg-gray-200/90 text-gray-600'
-                                    }`}
-                                >
-                                    Quiz
-                                </button>
+                                {course.quizzes.length ? (
+                                    <button
+                                        onClick={() => setActiveTab('quiz')}
+                                        className={`rounded-md px-4 py-1.5 text-sm font-medium transition-all duration-200 md:px-6 md:py-2 md:text-base ${
+                                            activeTab === 'quiz'
+                                                ? 'border border-[#2276f0] bg-[#2276f0] text-white shadow-lg'
+                                                : 'border border-gray-300 bg-gray-200/90 text-gray-600'
+                                        }`}
+                                    >
+                                        Quiz
+                                    </button>
+                                ) : (
+                                    ''
+                                )}
 
-                                <button
-                                    onClick={() => setActiveTab('glosarium')}
-                                    className={`rounded-md px-4 py-1.5 text-sm font-medium transition-all duration-200 md:px-6 md:py-2 md:text-base ${
-                                        activeTab === 'glosarium'
-                                            ? 'border border-[#2276f0] bg-[#2276f0] text-white shadow-lg'
-                                            : 'border border-gray-300 bg-gray-200/90 text-gray-600'
-                                    }`}
-                                >
-                                    Glosarium
-                                </button>
+                                {glosariesAll.length ? (
+                                    <button
+                                        onClick={() =>
+                                            setActiveTab('glosarium')
+                                        }
+                                        className={`rounded-md px-4 py-1.5 text-sm font-medium transition-all duration-200 md:px-6 md:py-2 md:text-base ${
+                                            activeTab === 'glosarium'
+                                                ? 'border border-[#2276f0] bg-[#2276f0] text-white shadow-lg'
+                                                : 'border border-gray-300 bg-gray-200/90 text-gray-600'
+                                        }`}
+                                    >
+                                        Glosarium
+                                    </button>
+                                ) : (
+                                    ''
+                                )}
 
                                 {course.videos.length ? (
                                     <Link
@@ -183,7 +193,7 @@ export default function CourseShowPage({
                                         <span className="text-gray-400">
                                             //
                                         </span>{' '}
-                                        Artikel Pelajaran
+                                        Modul Pelajaran
                                     </h2>
                                 </div>
                                 {course.articles.length ? (
@@ -195,7 +205,7 @@ export default function CourseShowPage({
                                     ))
                                 ) : (
                                     <p className="italic text-gray-700">
-                                        Belum ada Artikel untuk kelas ini!
+                                        Belum ada Modul untuk kelas ini!
                                     </p>
                                 )}
                             </>

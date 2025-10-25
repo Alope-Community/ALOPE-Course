@@ -12,7 +12,7 @@ export default function SimpleArticleCardComponent({
 }) {
     return (
         <Link
-            href={`/articles/${props.slug}`}
+            href={`/modules/${props.slug}`}
             className={`${!withoutBorder && 'shadow'} mr-5`}
         >
             <img

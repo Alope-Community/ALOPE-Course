@@ -10,7 +10,7 @@ export default function HorizontalArticleCardComponent({
 }) {
     return (
         <Link
-            href={`/articles/${props.slug}`}
+            href={`/modules/${props.slug}`}
             className="mb-7 flex flex-col items-center gap-5 sm:mb-5 sm:flex-row"
         >
             <img

@@ -71,7 +71,7 @@ export default function ArticleIndexPage({
             />
 
             <BreadcrumbComponent
-                links={[{ title: 'Articles', url: '/articles', active: true }]}
+                links={[{ title: 'Modules', url: '/modules', active: true }]}
             />
 
             <main className="container relative z-20 mx-auto mt-5 grid grid-cols-4 gap-8 px-3 md:px-10 xl:gap-10 xl:px-5 2xl:px-2">

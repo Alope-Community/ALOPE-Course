@@ -12,7 +12,7 @@ export default function SideArticlesSection({
     return (
         <aside className="relative hidden lg:block">
             <h3 className="mb-7 mt-4 font-bold sm:text-xl">
-                <span className="text-gray-500">// </span> Artikel Terbaru
+                <span className="text-gray-500">// </span> Modul Terbaru
             </h3>
             {articles.map(
                 (article, index) =>
@@ -36,7 +36,7 @@ export default function SideArticlesSection({
                                 </p>
                             </div>
                             <Link
-                                href={`/articles/${article.slug}`}
+                                href={`/modules/${article.slug}`}
                                 className="relative mt-1 flex font-medium before:absolute before:-left-3.5 before:top-2 before:size-1.5 before:rounded-full before:bg-[#2276f0] before:content-[''] xl:before:size-2"
                             >
                                 {article.title}

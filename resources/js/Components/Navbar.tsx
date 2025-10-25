@@ -13,10 +13,10 @@ export default function NavbarComponent() {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     const navLinks = [
-        { name: 'Home', href: '/' },
-        { name: 'Course', href: '/courses' },
-        { name: 'Article', href: '/articles' },
-        { name: 'Video', href: '/videos/pendahuluan' },
+        { name: 'Beranda', href: '/' },
+        { name: 'Kursus', href: '/courses' },
+        { name: 'Modul', href: '/modules' },
+        { name: 'Video', href: '/videos/kickstart-ml-implementasi-project' },
     ];
 
     const handleLogout = () => {
@@ -56,7 +56,9 @@ export default function NavbarComponent() {
             <nav className="max-w-screen fixed left-0 right-0 top-0 z-50 px-3 py-3 shadow backdrop-blur-lg md:px-10 md:py-5 xl:px-5 2xl:px-2">
                 <div className="container mx-auto flex items-center justify-between">
                     <Link href="/">
-                        <p className="text-xl font-bold md:text-2xl">ALOPE</p>
+                        <p className="text-xl font-bold md:text-2xl">
+                            ALP Course
+                        </p>
                     </Link>
                     <div className="md:hidden">
                         <button

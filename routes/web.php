@@ -23,7 +23,7 @@ Route::get('/access-blocked', function () {
     return Inertia::render('Informational/AccessBlocked');
 });
 
-Route::resource('/articles', ArticleController::class);
+Route::resource('/modules', ArticleController::class);
 Route::resource('/courses', CourseController::class);
 Route::resource('/videos', VideoController::class);
 Route::get('/glosarium/{slug}', [GlossaryController::class, 'show'])->name('glosarium.show');

@@ -5,9 +5,13 @@ export default function SideCoursesSection({ courses }: { courses: Course[] }) {
     return (
         <aside className="relative hidden lg:block">
             <section className="sticky top-24">
-                <h3 className="mb-7 mt-4 font-bold sm:text-xl">
-                    <span className="text-gray-500">// </span> Other Course
-                </h3>
+                {courses.length ? (
+                    <h3 className="mb-7 mt-4 font-bold sm:text-xl">
+                        <span className="text-gray-500">// </span> Other Course
+                    </h3>
+                ) : (
+                    ''
+                )}
 
                 {courses.map(
                     (course, index) =>

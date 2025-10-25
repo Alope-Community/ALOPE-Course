@@ -69,7 +69,7 @@ export default function CourseIndexPage({
 
                                 <h3 className="mb-7 mt-6 font-bold sm:text-xl">
                                     <span className="text-gray-500">// </span>{' '}
-                                    Pelajaran
+                                    Modul Pembelajaran
                                 </h3>
                                 <Glider
                                     draggable
