@@ -55,18 +55,18 @@ function highlightGlossary(
 export default function CourseShowPage({
     course,
     courses,
-    glosaries,
-    glosariesAll,
+    glossaries,
+    allGlossary,
 }: {
     course: Course;
     courses: Course[];
-    glosaries: {
+    glossaries: {
         title: string;
         description: string;
         slug: string;
         body: string;
     }[];
-    glosariesAll: { title: string; description: string; course_id: string }[];
+    allGlossary: { title: string; description: string; course_id: string }[];
 }) {
     const [activeTab, setActiveTab] = useState<'module' | 'quiz' | 'glosarium'>(
         'module',
@@ -123,13 +123,13 @@ export default function CourseShowPage({
                     <div className="mt-5">
                         <h1 className="text-3xl font-bold">{course.title}</h1>
                         <p className="mt-4 text-gray-800">
-                            {highlightGlossary(course.description, glosaries)}
+                            {highlightGlossary(course.description, glossaries)}
                         </p>
                     </div>
 
                     {/* ================== TABS ================== */}
                     <section className="mt-16">
-                        <div className="mb-10">
+                        <div className="mb-10 flex items-center justify-between">
                             <div className="flex gap-3">
                                 <button
                                     onClick={() => setActiveTab('module')}
@@ -157,7 +157,19 @@ export default function CourseShowPage({
                                     ''
                                 )}
 
-                                {glosariesAll.length ? (
+                                {course.videos.length ? (
+                                    <Link
+                                        href={`/videos/${course.videos[0].slug}`}
+                                        className="rounded-md border border-gray-300 bg-gray-200/90 px-4 py-1.5 text-sm font-medium text-gray-600 transition-all duration-200 md:px-6 md:py-2 md:text-base"
+                                    >
+                                        Video
+                                    </Link>
+                                ) : (
+                                    ''
+                                )}
+                            </div>
+                            <div>
+                                {allGlossary.length ? (
                                     <button
                                         onClick={() =>
                                             setActiveTab('glosarium')
@@ -170,17 +182,6 @@ export default function CourseShowPage({
                                     >
                                         Glosarium
                                     </button>
-                                ) : (
-                                    ''
-                                )}
-
-                                {course.videos.length ? (
-                                    <Link
-                                        href={`/videos/${course.videos[0].slug}`}
-                                        className="rounded-md border border-gray-300 bg-gray-200/90 px-4 py-1.5 text-sm font-medium text-gray-600 transition-all duration-200 md:px-6 md:py-2 md:text-base"
-                                    >
-                                        Video
-                                    </Link>
                                 ) : (
                                     ''
                                 )}
@@ -238,7 +239,7 @@ export default function CourseShowPage({
 
                         {activeTab === 'glosarium' && (
                             <div className="mt-7">
-                                <GlosariumSection glosaries={glosariesAll} />
+                                <GlosariumSection glosaries={allGlossary} />
                             </div>
                         )}
                     </section>

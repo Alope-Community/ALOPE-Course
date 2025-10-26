@@ -45,8 +45,8 @@ class Course extends Model
         return $this->belongsToMany(User::class);
     }
 
-    public function glosaries()
+    public function glossaries()
     {
-        return $this->belongsToMany(Glosary::class);
+        return $this->belongsToMany(Glossary::class);
     }
 }

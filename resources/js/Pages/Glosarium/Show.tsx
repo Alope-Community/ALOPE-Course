@@ -19,20 +19,13 @@ export default function GlosariumSection({
                     Glosarium
                 </h1>
                 <p className="text-base leading-relaxed text-gray-700">
-                    Berikut adalah glosarium dengan istilah umum yang digunakan
-                    pada kelas ini. Anda dapat membaca sekilas materi berikut
-                    untuk mengenali istilah-istilah umum yang ada di modul kelas
-                    ini. Selain itu, Anda juga dapat mengunjungi kembali halaman
-                    ini setiap kali menemukan istilah yang belum dimengerti.
-                    Carilah istilah tersebut pada halaman glosarium ini untuk
-                    mengidentifikasi makna atau definisinya. Jika masih terdapat
-                    kosakata yang tidak Anda pahami dan belum masuk di daftar
-                    ini, Anda dapat memberikan saran melalui fitur Laporan
-                    Materi.
+                    Ini adalah kumpulan kata-kata kunci penting yang dapat kamu
+                    pelajari untuk memahami istilah dan konsep yang sering
+                    digunakan dalam materi ini.
                 </p>
             </div>
 
-            <div className="space-y-10">
+            <div className="mt-10 space-y-10">
                 {glosaries.map((item, index) => (
                     <div
                         key={`${item.course_id ?? 'no-course'}-${item.id ?? index}-${item.title ?? 'untitled'}`}

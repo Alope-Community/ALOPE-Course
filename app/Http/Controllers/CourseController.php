@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
-use App\Models\Glosary;
+use App\Models\Glossary;
 use App\Models\Module;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -67,8 +67,8 @@ class CourseController extends Controller
             'videos' => function ($query) {
                 $query->latest();
             },
-            'glosaries' => function ($query) {
-                $query->select('glosaries.id', 'title', 'description')
+            'glossaries' => function ($query) {
+                $query->select('glossaries.id', 'title', 'description')
                     ->get();
             }
         ])->whereSlug($slug)->firstOrFail();
@@ -80,20 +80,20 @@ class CourseController extends Controller
             'hashtags'
         ])->where('slug', '!=', $slug)->latest()->get();
 
-        $glosaries = Glosary::select('glosaries.id', 'title', 'description', 'slug', 'body')
+        $glossaries = Glossary::select('glossaries.id', 'title', 'description', 'slug', 'body')
             ->whereHas('courses', function ($query) use ($course) {
                 $query->where('courses.id', $course->id);
             })
             ->orderBy('slug')
             ->get();
 
-        $glosariesAll = $course->glosaries;
+        $allGlossary = $course->glossaries;
 
         return Inertia::render('Course/Show', [
             "course" => $course,
             "courses" => $courses,
-            "glosaries" => $glosaries,
-            "glosariesAll" => $glosariesAll,
+            "glossaries" => $glossaries,
+            "allGlossary" => $allGlossary,
         ]);
     }
 

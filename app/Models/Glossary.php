@@ -6,11 +6,10 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-class Glosary extends Model
+class Glossary extends Model
 {
     use HasUuids;
-
-    protected $table = 'glosaries';
+    
     protected $fillable = ['title', 'slug', 'description', 'body'];
 
     public $incrementing = false;
