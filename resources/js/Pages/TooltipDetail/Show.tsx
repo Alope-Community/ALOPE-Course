@@ -35,7 +35,7 @@ export default function Show({ glosary }: GlosaryDetailProps) {
 
             <BreadcrumbComponent
                 links={[
-                    { title: 'Glosarium', url: '/glosarium' },
+                    { title: 'Glosarium', url: '/courses' },
                     {
                         title: glosary.title,
                         url: `/tooltip/${glosary.slug}`,

@@ -58,7 +58,7 @@ export default function CourseIndexPage({
                                         />
                                     ))}
                                 </div>
-                                <Link href={`/courses/${course.slug}`}>
+                                <Link href={ `/courses/${course.slug}`}>
                                     <h3 className="text-xl font-bold sm:text-2xl xl:text-3xl">
                                         {course.title}
                                     </h3>
