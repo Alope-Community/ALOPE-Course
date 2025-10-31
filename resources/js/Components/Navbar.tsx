@@ -16,6 +16,7 @@ export default function NavbarComponent() {
         { name: 'Home', href: '/' },
         { name: 'Course', href: '/courses' },
         { name: 'Article', href: '/articles' },
+        { name: 'Blog', href: '/blogs' },
         { name: 'Video', href: '/videos/pendahuluan' },
     ];
 

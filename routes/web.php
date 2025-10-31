@@ -27,6 +27,8 @@ Route::resource('/articles', ArticleController::class);
 Route::resource('/courses', CourseController::class);
 Route::resource('/videos', VideoController::class);
 Route::get('/glosarium/{slug}', [GlossaryController::class, 'show'])->name('glosarium.show');
+Route::get('/blogs', [BlogController::class, 'index'])->name('blogs.index');
+Route::get('/blogs/{slug}', [BlogController::class, 'show'])->name('blogs.show');
 Route::resource('/blogs', BlogController::class);
 // Route::get('/glosarium', [GlossaryController::class, 'index'])->name('glosarium.index');
 

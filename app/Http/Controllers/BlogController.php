@@ -20,7 +20,7 @@ class BlogController extends Controller
         //     'message' => 'Blog list fetched successfully',
         //     'datas' => $blogs,
         // ]);
-        return inertia('Blogs/Index', [
+        return inertia('Blog/Index', [
             'blogs' => $blogs,
         ]);
     }
@@ -47,13 +47,14 @@ class BlogController extends Controller
     public function show(string $slug)
     {
         $blog = Blog::where('slug', $slug)->firstOrFail();
-        // return response()->json([
-        //     'success' => true,
-        //     'message' => 'Blog detail fetched successfully',
-        //     'datas' => $blog,
-        // ]);
-        return inertia('Blogs/Show', [
+        $blogs = Blog::select('title', 'slug', 'cover')
+            ->where('id', '!=', $blog->id)
+            ->latest()
+            ->take(5)
+            ->get();
+        return inertia('Blog/Show', [
             'blog' => $blog,
+            'blogs' => $blogs,
         ]);
     }
 
