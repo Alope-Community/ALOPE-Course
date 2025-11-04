@@ -1,9 +1,22 @@
-import { Head, Link, useForm } from '@inertiajs/react';
-import { IconEye, IconEyeClosed, IconLoader2 } from 'justd-icons';
+import { Head, Link, useForm, usePage } from '@inertiajs/react';
+import {
+    IconBrandGoogle,
+    IconEye,
+    IconEyeClosed,
+    IconLoader2,
+} from 'justd-icons';
 import { FormEventHandler, useState } from 'react';
 import toast from 'react-hot-toast';
 
+type SharedEnvProps = {
+    env?: {
+        APP_URL: string;
+    };
+};
+
 export default function LoginPage() {
+    const { env } = usePage().props as unknown as SharedEnvProps;
+
     const { data, setData, post, processing, errors, reset } = useForm({
         email: '',
         password: '',
@@ -38,10 +51,6 @@ export default function LoginPage() {
 
             <main className="flex">
                 <div className="flex min-h-screen flex-1 flex-col items-center justify-center px-5 lg:px-10">
-                    {/* <div className="absolute top-20 text-center">
-                    <h2 className="text-2xl font-semibold">Login</h2>
-                </div> */}
-
                     <form onSubmit={submit} className="w-full lg:w-2/3">
                         <div className="mb-16">
                             <h2 className="text-3xl font-semibold md:text-4xl">
@@ -107,6 +116,13 @@ export default function LoginPage() {
                                 {processing && <IconLoader2 />}
                                 Submit
                             </button>
+                            <a
+                                href={`${env?.APP_URL}/auth/google`}
+                                className="mt-5 flex w-full items-center justify-center gap-2 rounded bg-gray-800 py-4 text-sm text-white hover:bg-gray-800/80"
+                            >
+                                <IconBrandGoogle /> Login Atau Registrasi dengan
+                                Google
+                            </a>
                             <p className="mt-3 text-center text-sm text-gray-700">
                                 Kembali ke{' '}
                                 <Link href="/" className="text-blue-500">

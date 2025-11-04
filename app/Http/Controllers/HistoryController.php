@@ -94,7 +94,7 @@ class HistoryController extends Controller
         // Kelas yang diikuti
         $courses = Course::whereHas('users', function ($query) {
             $query->whereUserId(Auth::id());
-        })->with('articles', 'quizzes')->get();
+        })->with('modules', 'quizzes')->get();
 
         return Inertia::render('Profile/History', [
             "histories" => $histories,
