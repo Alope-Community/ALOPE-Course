@@ -11,7 +11,7 @@ class GlossaryController extends Controller
 {
     public function show($slug)
     {
-        $glosary = Glosary::where('slug', $slug)->firstOrFail();
+        $glosary = Glossary::where('slug', $slug)->firstOrFail();
 
         return Inertia::render('TooltipDetail/Show', [
             'glosary' => $glosary,
