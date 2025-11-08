@@ -6,7 +6,6 @@ import toast from 'react-hot-toast';
 export default function NavbarComponent() {
     const { url, props } = usePage();
     const { auth } = props;
-
     const { post } = useForm();
 
     const [isOpen, setIsOpen] = useState(false);
@@ -16,7 +15,7 @@ export default function NavbarComponent() {
         { name: 'Beranda', href: '/' },
         { name: 'Kursus', href: '/courses' },
         { name: 'Modul', href: '/modules' },
-        { name: 'Video', href: '/videos/kickstart-ml-implementasi-project' },
+        { name: 'Tentang Kami', href: '#' },
     ];
 
     const handleLogout = () => {
@@ -34,12 +33,9 @@ export default function NavbarComponent() {
                         className="rounded bg-red-500 px-3 py-1 text-sm text-white"
                         onClick={() => {
                             post(route('logout'), {
-                                onSuccess: () => {
-                                    toast.success('Logged out successfully');
-                                },
-                                onError: () => {
-                                    toast.error('Failed to logout');
-                                },
+                                onSuccess: () =>
+                                    toast.success('Berhasil logout'),
+                                onError: () => toast.error('Gagal logout'),
                             });
                             toast.dismiss(t.id);
                         }}
@@ -51,50 +47,61 @@ export default function NavbarComponent() {
         ));
     };
 
+    const isActive = (path: string) => url === path;
+
     return (
         <>
-            <nav className="max-w-screen fixed left-0 right-0 top-0 z-50 px-3 py-3 shadow backdrop-blur-lg md:px-10 md:py-5 xl:px-5 2xl:px-2">
-                <div className="container mx-auto flex items-center justify-between">
-                    <Link href="/">
-                        <p className="text-xl font-bold md:text-2xl">
-                            ALP Course
-                        </p>
+            {/* Navbar */}
+            <nav className="fixed left-0 right-0 top-0 z-50 bg-white shadow-sm">
+                <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+                    {/* Logo & Brand */}
+                    <Link href="/" className="flex items-center gap-3">
+                        <img
+                            src="/images/Alope.png"
+                            alt="Alope Course Logo"
+                            className="h-10 w-10 object-contain"
+                        />
+                        <div className="leading-tight">
+                            <h1 className="text-primary text-lg font-semibold">
+                                Alope Course
+                            </h1>
+                            <p className="-mt-1 text-sm text-gray-500">
+                                Upgrade Your Skills
+                            </p>
+                        </div>
                     </Link>
-                    <div className="md:hidden">
-                        <button
-                            onClick={() => setIsOpen(!isOpen)}
-                            className="flex"
-                        >
-                            <IconHamburger />
-                        </button>
-                    </div>
-                    <ul className="hidden items-center gap-5 md:flex">
+
+                    {/* Desktop Menu */}
+                    <ul className="hidden items-center gap-8 font-medium md:flex">
                         {navLinks.map((link) => (
                             <li key={link.href}>
                                 <Link
                                     href={link.href}
-                                    className={`${
-                                        link.href === '/'
-                                            ? url === '/'
-                                                ? 'font-semibold text-[#2276f0]'
-                                                : ''
-                                            : url.startsWith(link.href)
-                                              ? 'font-semibold text-[#2276f0]'
-                                              : ''
+                                    className={`hover:text-primary transition ${
+                                        isActive(link.href)
+                                            ? 'text-primary font-semibold'
+                                            : 'text-gray-600'
                                     }`}
                                 >
                                     {link.name}
                                 </Link>
                             </li>
                         ))}
-                        <li className="mx-6 text-gray-700">|</li>
+                    </ul>
+
+                    {/* Desktop Right Side */}
+                    <div className="hidden items-center gap-6 md:flex">
                         {auth.user ? (
-                            <li className="relative">
+                            <div className="relative">
                                 <button
                                     onClick={() =>
                                         setIsDropdownOpen(!isDropdownOpen)
                                     }
-                                    className={`flex items-center gap-2 rounded-lg px-2 py-1 hover:bg-[#2276f0] hover:text-white ${isDropdownOpen && 'bg-[#2276f0] text-white'}`}
+                                    className={`flex items-center gap-2 rounded-lg px-3 py-1.5 text-gray-700 transition ${
+                                        isDropdownOpen
+                                            ? 'bg-primary text-white'
+                                            : 'hover:bg-primary hover:text-white'
+                                    }`}
                                 >
                                     <IconCirclePersonFill className="size-5" />
                                     <span>{auth.user.name}</span>
@@ -102,93 +109,89 @@ export default function NavbarComponent() {
 
                                 {isDropdownOpen && (
                                     <div className="absolute right-0 mt-2 w-48 rounded-lg bg-white py-2 shadow-lg">
-                                        {/* <Link
-                                            href="/dashboard"
-                                            className="block px-4 py-2 hover:bg-gray-100"
-                                        >
-                                            Dashboard
-                                        </Link> */}
                                         <Link
                                             href="/profile"
                                             className="block px-4 py-2 hover:bg-gray-100"
                                         >
                                             Profile
                                         </Link>
-                                        {/* <hr className="my-2" /> */}
                                         <button
                                             className="block w-full px-4 py-2 text-left text-red-600 hover:bg-gray-100"
-                                            onClick={() => handleLogout()}
+                                            onClick={handleLogout}
                                         >
                                             Logout
                                         </button>
                                     </div>
                                 )}
-                            </li>
+                            </div>
                         ) : (
-                            <li>
-                                <Link
-                                    href="/login"
-                                    className="rounded-full bg-[#2276f0] px-5 py-1.5 text-white hover:bg-[#2276f0]/80"
-                                >
-                                    Login
-                                </Link>
-                            </li>
+                            <Link
+                                href="/login"
+                                className="bg-primary rounded-xl px-5 py-2 text-white transition hover:brightness-90"
+                            >
+                                Masuk
+                            </Link>
                         )}
-                    </ul>
+                    </div>
+
+                    {/* Mobile Menu Button */}
+                    <button
+                        onClick={() => setIsOpen(!isOpen)}
+                        className="text-gray-700 md:hidden"
+                    >
+                        <IconHamburger />
+                    </button>
                 </div>
             </nav>
 
-            {/* Sidebar Menu untuk Mobile */}
+            {/* Mobile Sidebar */}
             <aside
-                className={`fixed left-0 top-0 z-40 h-full w-64 transform bg-white shadow-lg backdrop-blur-lg transition-transform ${
+                className={`fixed left-0 top-0 z-40 h-full w-64 transform bg-white shadow-lg transition-transform md:hidden ${
                     isOpen ? 'translate-x-0' : '-translate-x-full'
-                } md:hidden`}
+                }`}
             >
                 <button
                     onClick={() => setIsOpen(false)}
-                    className="absolute right-4 top-4 text-gray-600"
+                    className="absolute right-4 top-4 text-2xl text-gray-600"
                 >
                     ✕
                 </button>
-                <ul className="mt-16 flex flex-col gap-5 p-5">
+
+                <ul className="mt-16 flex flex-col gap-4 px-6 font-medium text-gray-600">
                     {navLinks.map((link) => (
                         <li key={link.href}>
                             <Link
                                 href={link.href}
-                                onClick={() => setIsOpen(false)}
-                                className={`block py-2 text-lg ${
-                                    link.href === '/'
-                                        ? url === '/'
-                                            ? 'font-semibold text-[#2276f0]'
-                                            : ''
-                                        : url.startsWith(link.href)
-                                          ? 'font-semibold text-[#2276f0]'
-                                          : ''
+                                className={`hover:text-primary block py-2 transition ${
+                                    isActive(link.href)
+                                        ? 'text-primary font-semibold'
+                                        : 'text-gray-600'
                                 }`}
+                                onClick={() => setIsOpen(false)}
                             >
                                 {link.name}
                             </Link>
                         </li>
                     ))}
+
                     {auth.user ? (
                         <>
                             <li>
                                 <Link
-                                    href={'/profile'}
+                                    href="/profile"
+                                    className="hover:text-primary block py-2"
                                     onClick={() => setIsOpen(false)}
-                                    className={`block py-2 text-lg ${
-                                        url.startsWith('/profile')
-                                            ? 'font-semibold text-[#2276f0]'
-                                            : ''
-                                    }`}
                                 >
                                     Profile
                                 </Link>
                             </li>
                             <li>
                                 <button
-                                    className="text-red-600"
-                                    onClick={() => handleLogout()}
+                                    onClick={() => {
+                                        setIsOpen(false);
+                                        handleLogout();
+                                    }}
+                                    className="block w-full py-2 text-left text-red-600 hover:text-red-700"
                                 >
                                     Logout
                                 </button>
@@ -196,26 +199,32 @@ export default function NavbarComponent() {
                         </>
                     ) : (
                         <li>
-                            <Link href="/login">Login</Link>
+                            <Link
+                                href="/login"
+                                className="bg-primary block rounded-xl px-4 py-2 text-center text-white hover:brightness-90"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                Masuk
+                            </Link>
                         </li>
                     )}
                 </ul>
             </aside>
 
-            {/* Overlay untuk menutup menu saat diklik di luar */}
+            {/* Overlay saat sidebar terbuka */}
             {isOpen && (
                 <div
-                    className="fixed inset-0 z-30 bg-black bg-opacity-50 backdrop-blur md:hidden"
+                    className="fixed inset-0 z-30 bg-black/40 backdrop-blur-sm md:hidden"
                     onClick={() => setIsOpen(false)}
-                ></div>
+                />
             )}
 
-            {/* Add click outside handler for dropdown */}
+            {/* Overlay untuk dropdown */}
             {isDropdownOpen && (
                 <div
                     className="fixed inset-0 z-40"
                     onClick={() => setIsDropdownOpen(false)}
-                ></div>
+                />
             )}
         </>
     );

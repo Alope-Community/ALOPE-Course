@@ -13,7 +13,10 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                sans: ['Poppins', ...defaultTheme.fontFamily.sans],
+            },
+            colors: {
+                primary: '#2B7FFF',
             },
             animation: {
                 'scale-pulse': 'scalePulse 2s ease-in-out infinite',
