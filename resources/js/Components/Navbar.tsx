@@ -51,10 +51,8 @@ export default function NavbarComponent() {
 
     return (
         <>
-            {/* Navbar */}
-            <nav className="fixed left-0 right-0 top-0 z-50 bg-white shadow-sm">
-                <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-                    {/* Logo & Brand */}
+            <nav className="max-w-screen fixed left-0 right-0 top-0 z-50 px-3 py-3 shadow bg-white md:px-10 md:py-5 xl:px-5 2xl:px-2">
+                <div className="container mx-auto flex items-center justify-between">
                     <Link href="/" className="flex items-center gap-3">
                         <img
                             src="/images/Alope.png"
@@ -70,8 +68,6 @@ export default function NavbarComponent() {
                             </p>
                         </div>
                     </Link>
-
-                    {/* Desktop Menu */}
                     <ul className="hidden items-center gap-8 font-medium md:flex">
                         {navLinks.map((link) => (
                             <li key={link.href}>
@@ -88,8 +84,6 @@ export default function NavbarComponent() {
                             </li>
                         ))}
                     </ul>
-
-                    {/* Desktop Right Side */}
                     <div className="hidden items-center gap-6 md:flex">
                         {auth.user ? (
                             <div className="relative">
@@ -133,8 +127,6 @@ export default function NavbarComponent() {
                             </Link>
                         )}
                     </div>
-
-                    {/* Mobile Menu Button */}
                     <button
                         onClick={() => setIsOpen(!isOpen)}
                         className="text-gray-700 md:hidden"
@@ -143,8 +135,7 @@ export default function NavbarComponent() {
                     </button>
                 </div>
             </nav>
-
-            {/* Mobile Sidebar */}
+            <div className="h-[76px] md:h-[80px]" />
             <aside
                 className={`fixed left-0 top-0 z-40 h-full w-64 transform bg-white shadow-lg transition-transform md:hidden ${
                     isOpen ? 'translate-x-0' : '-translate-x-full'
@@ -210,16 +201,12 @@ export default function NavbarComponent() {
                     )}
                 </ul>
             </aside>
-
-            {/* Overlay saat sidebar terbuka */}
             {isOpen && (
                 <div
                     className="fixed inset-0 z-30 bg-black/40 backdrop-blur-sm md:hidden"
                     onClick={() => setIsOpen(false)}
                 />
             )}
-
-            {/* Overlay untuk dropdown */}
             {isDropdownOpen && (
                 <div
                     className="fixed inset-0 z-40"
