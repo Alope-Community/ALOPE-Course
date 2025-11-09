@@ -17,6 +17,7 @@ export default {
             },
             colors: {
                 primary: '#2B7FFF',
+                grey: '#737373',
             },
             animation: {
                 'scale-pulse': 'scalePulse 2s ease-in-out infinite',

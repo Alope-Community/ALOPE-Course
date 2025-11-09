@@ -3,11 +3,11 @@ import CourseCardComponent from '@/Components/Cards/CourseCard';
 import ModuleCardComponent from '@/Components/Cards/Module';
 import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
+import NewPrimaryButton from '@/Components/NewPrimaryButton';
 import { Course } from '@/models/Course';
 import { Module } from '@/models/Module';
 import { Video } from '@/models/Video';
 import { Head, Link } from '@inertiajs/react';
-
 import 'glider-js/glider.min.css';
 import { IconChevronRight } from 'justd-icons';
 import Glider from 'react-glider';
@@ -29,89 +29,99 @@ export default function LandingPage({
 
             <NavbarComponent />
 
-            <header className="relative min-h-[800px] pt-16">
-                <img
-                    src="/images/shapes/blueBlur1.svg"
-                    alt="blue blur"
-                    className="absolute left-0 top-0"
-                    loading="lazy"
-                />
-                <img
-                    src="/images/shapes/yellowBlur1.svg"
-                    alt="blue blur"
-                    className="absolute right-0 top-0"
-                    loading="lazy"
-                />
-                <img
-                    src="/images/shapes/purpleBlur1.svg"
-                    alt="blue blur"
-                    className="absolute -bottom-[400px] left-0"
-                    loading="lazy"
-                />
+            <header className="relative min-h-[800px] overflow-hidden bg-gradient-to-br from-blue-50 via-white to-yellow-50 pt-16">
                 <div className="container relative z-10 mx-auto flex flex-col items-center justify-between px-3 md:px-10 lg:flex-row xl:px-5 2xl:px-2">
                     <div className="order-2 lg:order-1 lg:w-1/2">
-                        <h1 className="mb-4 text-center text-3xl font-medium leading-snug md:text-4xl lg:text-left xl:text-6xl">
-                            Upgrade <br className="hidden lg:block" />
-                            <span className="mt-3 block">
-                                <span className="font-bold text-[#2276f0]">
-                                    Skill Koding{' '}
-                                </span>
-                                disini!
-                            </span>
+                        <h1 className="text-black mb-4 text-center text-3xl font-bold leading-snug md:text-4xl lg:text-left xl:text-6xl">
+                            Tingkatkan{' '}
+                            <span className="text-primary">Skill Coding</span>{' '}
+                            <br className="hidden lg:block" />
+                            dari Nol hingga Mahir!
                         </h1>
-                        <p className="mx-auto mb-6 mt-3 w-full text-center text-sm text-gray-800 md:mx-0 md:mb-10 md:w-[90%] md:text-base lg:text-left xl:w-[85%] xl:text-xl">
+
+                        <p className="text-grey mx-auto mb-6 mt-3 w-full text-center text-sm md:mx-0 md:mb-10 md:w-[90%] md:text-base lg:text-left xl:w-[85%] xl:text-xl">
                             Belajar coding dari nol hingga mahir dengan panduan
                             lengkap, materi terstruktur, dan artikel mendalam
                             yang membantumu meningkatkan skill programming
                             secara efektif.
                         </p>
+
                         <div className="mt-2 flex justify-center gap-5 lg:justify-start xl:mt-14">
-                            {/* <a
-                                href=""
-                                className="rounded-full bg-[#2276f0] px-5 py-2 text-sm font-bold text-white shadow hover:shadow-[#2276f0] active:scale-95 md:px-8 md:py-2.5 md:text-base"
-                            >
-                                Subscribe Gratis
-                            </a>
-                            <Link
-                                href="/modules"
-                                className="rounded-full bg-white px-5 py-2 text-sm font-bold text-[#2276f0] shadow hover:shadow-[#2276f0] active:scale-95 md:px-8 md:py-2.5 md:text-base"
-                            >
-                                Explore
-                            </Link> */}
-                            <Link
-                                href="/modules"
-                                className="rounded-full bg-[#2276f0] px-5 py-2 text-sm font-bold text-white shadow hover:shadow-[#2276f0] active:scale-95 md:px-8 md:py-2.5 md:text-base"
-                            >
-                                Explore Gratis
-                            </Link>
+                            <NewPrimaryButton
+                                text="Mulai Belajar sekarang"
+                                className="px-8 py-3 text-sm font-semibold md:text-base"
+                            />
                         </div>
                     </div>
-                    <div className="relative order-1 lg:order-2 lg:w-1/2">
-                        <img
-                            src="/images/shapes/purpleText.svg"
-                            alt="purple text"
-                            className="absolute bottom-24 left-2 w-[120px] md:bottom-1/3 md:left-32 md:w-[170px] lg:hidden xl:left-24 xl:block xl:w-auto"
-                            loading="lazy"
-                        />
-                        <img
-                            src="/images/shapes/yellowText.svg"
-                            alt="yellow text"
-                            className="absolute right-3 top-24 w-[110px] md:right-32 md:top-24 md:w-[150px] lg:hidden xl:right-20 xl:top-40 xl:block xl:w-auto"
-                            loading="lazy"
-                        />
-                        <img
-                            src="/images/shapes/blueText.svg"
-                            alt="blue text"
-                            className="absolute bottom-[40%] right-4 w-[110px] md:bottom-28 md:right-36 md:w-[150px] lg:hidden xl:bottom-[40%] xl:right-32 xl:block xl:w-auto"
-                            loading="lazy"
-                        />
+                    <div className="relative order-1 mt-10 flex justify-center lg:order-2 lg:mt-0 lg:w-1/2">
+                        <div className="absolute right-[12%] top-4 h-[380px] w-[340px] rotate-[25deg] rounded-3xl bg-primary blur-[1px] md:h-[460px] md:w-[420px] lg:right-[16%]" />
+                        <div className="absolute right-[5%] top-0 h-[400px] w-[360px] rounded-3xl bg-blue-200/100 md:h-[467px] md:w-[440px] lg:right-[10%]" />
                         <img
                             src="/images/header.png"
-                            alt="alope mascot"
-                            className="mx-auto w-full md:w-[60%] lg:w-full"
-                            width={760}
-                            height={760}
+                            alt="Belajar coding"
+                            className="relative z-10 w-[80%] max-w-[400px] object-contain md:w-[70%] lg:w-[85%]"
+                            loading="lazy"
                         />
+                        <div className="absolute left-[10%] top-10 z-20 flex translate-x-6 items-center gap-2 rounded-xl bg-white px-3 py-1.5 shadow-lg md:left-[12%] md:translate-x-8 lg:left-[14%] lg:translate-x-10">
+                            <div className="flex h-5 w-5 items-center justify-center rounded-md bg-yellow-400 text-white">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    className="h-3 w-3"
+                                >
+                                    <path d="M22 2L11 13" />
+                                    <path d="M22 2L15 22L11 13L2 9L22 2Z" />
+                                </svg>
+                            </div>
+                            <span className="text-grey whitespace-nowrap text-xs font-semibold">
+                                Effective Learning
+                            </span>
+                        </div>
+                        <div className="absolute bottom-20 left-[8%] z-20 flex translate-x-8 items-center gap-2 rounded-xl bg-white px-3 py-1.5 shadow-lg md:left-[10%] md:translate-x-10 lg:left-[12%] lg:translate-x-12">
+                            <div className="flex h-5 w-5 items-center justify-center rounded-md bg-purple-600 text-white">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    className="h-3 w-3"
+                                >
+                                    <path d="M22 2L11 13" />
+                                    <path d="M22 2L15 22L11 13L2 9L22 2Z" />
+                                </svg>
+                            </div>
+                            <span className="text-grey whitespace-nowrap text-xs font-semibold">
+                                Upgrade Skill
+                            </span>
+                        </div>
+                        <div className="absolute bottom-8 right-6 flex items-center gap-2 rounded-xl bg-white px-3 py-1.5 shadow-lg md:right-8 lg:right-10">
+                            <div className="flex h-5 w-5 items-center justify-center rounded-md bg-primary text-white">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    className="h-3 w-3"
+                                >
+                                    <path d="M22 2L11 13" />
+                                    <path d="M22 2L15 22L11 13L2 9L22 2Z" />
+                                </svg>
+                            </div>
+                            <span className="text-grey whitespace-nowrap text-xs font-semibold">
+                                Learn by Doing
+                            </span>
+                        </div>
                     </div>
                 </div>
             </header>
