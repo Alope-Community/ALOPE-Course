@@ -32,14 +32,14 @@ export default function LandingPage({
             <header className="relative min-h-[800px] overflow-hidden bg-gradient-to-br from-blue-50 via-white to-yellow-50 pt-16">
                 <div className="container relative z-10 mx-auto flex flex-col items-center justify-between px-3 md:px-10 lg:flex-row xl:px-5 2xl:px-2">
                     <div className="order-2 lg:order-1 lg:w-1/2">
-                        <h1 className="text-black mb-4 text-center text-3xl font-bold leading-snug md:text-4xl lg:text-left xl:text-6xl">
+                        <h1 className="mb-4 text-center text-3xl font-bold leading-snug text-black md:text-4xl lg:text-left xl:text-6xl">
                             Tingkatkan{' '}
                             <span className="text-primary">Skill Coding</span>{' '}
                             <br className="hidden lg:block" />
                             dari Nol hingga Mahir!
                         </h1>
 
-                        <p className="text-grey mx-auto mb-6 mt-3 w-full text-center text-sm md:mx-0 md:mb-10 md:w-[90%] md:text-base lg:text-left xl:w-[85%] xl:text-xl">
+                        <p className="mx-auto mb-6 mt-3 w-full text-center text-sm text-grey md:mx-0 md:mb-10 md:w-[90%] md:text-base lg:text-left xl:w-[85%] xl:text-xl">
                             Belajar coding dari nol hingga mahir dengan panduan
                             lengkap, materi terstruktur, dan artikel mendalam
                             yang membantumu meningkatkan skill programming
@@ -48,8 +48,9 @@ export default function LandingPage({
 
                         <div className="mt-2 flex justify-center gap-5 lg:justify-start xl:mt-14">
                             <NewPrimaryButton
-                                text="Mulai Belajar sekarang"
-                                className="px-8 py-3 text-sm font-semibold md:text-base"
+                                text="Mulai Belajar Sekarang"
+                                circleIcon
+                                showIcon
                             />
                         </div>
                     </div>
@@ -78,7 +79,7 @@ export default function LandingPage({
                                     <path d="M22 2L15 22L11 13L2 9L22 2Z" />
                                 </svg>
                             </div>
-                            <span className="text-grey whitespace-nowrap text-xs font-semibold">
+                            <span className="whitespace-nowrap text-xs font-semibold text-grey">
                                 Effective Learning
                             </span>
                         </div>
@@ -98,7 +99,7 @@ export default function LandingPage({
                                     <path d="M22 2L15 22L11 13L2 9L22 2Z" />
                                 </svg>
                             </div>
-                            <span className="text-grey whitespace-nowrap text-xs font-semibold">
+                            <span className="whitespace-nowrap text-xs font-semibold text-grey">
                                 Upgrade Skill
                             </span>
                         </div>
@@ -118,7 +119,7 @@ export default function LandingPage({
                                     <path d="M22 2L15 22L11 13L2 9L22 2Z" />
                                 </svg>
                             </div>
-                            <span className="text-grey whitespace-nowrap text-xs font-semibold">
+                            <span className="whitespace-nowrap text-xs font-semibold text-grey">
                                 Learn by Doing
                             </span>
                         </div>

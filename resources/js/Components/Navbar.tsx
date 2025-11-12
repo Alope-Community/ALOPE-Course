@@ -1,3 +1,4 @@
+import NewPrimaryButton from '@/Components/NewPrimaryButton';
 import { Link, useForm, usePage } from '@inertiajs/react';
 import { IconCirclePersonFill, IconHamburger } from 'justd-icons';
 import { useState } from 'react';
@@ -51,8 +52,9 @@ export default function NavbarComponent() {
 
     return (
         <>
-            <nav className="max-w-screen fixed left-0 right-0 top-0 z-50 px-3 py-3 shadow bg-white md:px-10 md:py-5 xl:px-5 2xl:px-2">
+            <nav className="max-w-screen fixed left-0 right-0 top-0 z-50 bg-white px-3 py-3 shadow md:px-10 md:py-5 xl:px-5 2xl:px-2">
                 <div className="container mx-auto flex items-center justify-between">
+                    {/* Logo */}
                     <Link href="/" className="flex items-center gap-3">
                         <img
                             src="/images/Alope.png"
@@ -60,7 +62,7 @@ export default function NavbarComponent() {
                             className="h-10 w-10 object-contain"
                         />
                         <div className="leading-tight">
-                            <h1 className="text-primary text-lg font-semibold">
+                            <h1 className="text-lg font-semibold text-primary">
                                 Alope Course
                             </h1>
                             <p className="-mt-1 text-sm text-gray-500">
@@ -68,14 +70,16 @@ export default function NavbarComponent() {
                             </p>
                         </div>
                     </Link>
+
+                    {/* Menu desktop */}
                     <ul className="hidden items-center gap-8 font-medium md:flex">
                         {navLinks.map((link) => (
                             <li key={link.href}>
                                 <Link
                                     href={link.href}
-                                    className={`hover:text-primary transition ${
+                                    className={`transition hover:text-primary ${
                                         isActive(link.href)
-                                            ? 'text-primary font-semibold'
+                                            ? 'font-semibold text-primary'
                                             : 'text-gray-600'
                                     }`}
                                 >
@@ -84,7 +88,9 @@ export default function NavbarComponent() {
                             </li>
                         ))}
                     </ul>
-                    <div className="hidden items-center gap-6 md:flex">
+
+                    {/* Tombol kanan */}
+                    <div className="hidden items-center gap-4 md:flex">
                         {auth.user ? (
                             <div className="relative">
                                 <button
@@ -119,14 +125,27 @@ export default function NavbarComponent() {
                                 )}
                             </div>
                         ) : (
-                            <Link
-                                href="/login"
-                                className="bg-primary rounded-xl px-5 py-2 text-white transition hover:brightness-90"
-                            >
-                                Masuk
-                            </Link>
+                            <div className="flex items-center gap-3">
+                                {/* Tombol Daftar */}
+                                <Link href="/register">
+                                    <NewPrimaryButton
+                                        text="Daftar"
+                                        variant="outline"
+                                    />
+                                </Link>
+
+                                {/* Tombol Masuk */}
+                                <Link href="/login">
+                                    <NewPrimaryButton
+                                        text="Masuk"
+                                        variant="primary"
+                                    />
+                                </Link>
+                            </div>
                         )}
                     </div>
+
+                    {/* Tombol menu mobile */}
                     <button
                         onClick={() => setIsOpen(!isOpen)}
                         className="text-gray-700 md:hidden"
@@ -135,7 +154,11 @@ export default function NavbarComponent() {
                     </button>
                 </div>
             </nav>
+
+            {/* Spacer biar konten ga ketimpa navbar */}
             <div className="h-[76px] md:h-[80px]" />
+
+            {/* Drawer mobile */}
             <aside
                 className={`fixed left-0 top-0 z-40 h-full w-64 transform bg-white shadow-lg transition-transform md:hidden ${
                     isOpen ? 'translate-x-0' : '-translate-x-full'
@@ -153,9 +176,9 @@ export default function NavbarComponent() {
                         <li key={link.href}>
                             <Link
                                 href={link.href}
-                                className={`hover:text-primary block py-2 transition ${
+                                className={`block py-2 transition hover:text-primary ${
                                     isActive(link.href)
-                                        ? 'text-primary font-semibold'
+                                        ? 'font-semibold text-primary'
                                         : 'text-gray-600'
                                 }`}
                                 onClick={() => setIsOpen(false)}
@@ -170,7 +193,7 @@ export default function NavbarComponent() {
                             <li>
                                 <Link
                                     href="/profile"
-                                    className="hover:text-primary block py-2"
+                                    className="block py-2 hover:text-primary"
                                     onClick={() => setIsOpen(false)}
                                 >
                                     Profile
@@ -189,24 +212,52 @@ export default function NavbarComponent() {
                             </li>
                         </>
                     ) : (
-                        <li>
-                            <Link
-                                href="/login"
-                                className="bg-primary block rounded-xl px-4 py-2 text-center text-white hover:brightness-90"
-                                onClick={() => setIsOpen(false)}
-                            >
-                                Masuk
-                            </Link>
-                        </li>
+                        <>
+                            {/* Tombol Daftar mobile */}
+                            <li>
+                                <Link
+                                    href="/register"
+                                    onClick={() => setIsOpen(false)}
+                                >
+                                    <NewPrimaryButton
+                                        variant="outline"
+                                        showIcon={false}
+                                        className="w-full !rounded-xl !py-2"
+                                    >
+                                        Daftar
+                                    </NewPrimaryButton>
+                                </Link>
+                            </li>
+
+                            {/* Tombol Masuk mobile */}
+                            <li>
+                                <Link
+                                    href="/login"
+                                    onClick={() => setIsOpen(false)}
+                                >
+                                    <NewPrimaryButton
+                                        variant="primary"
+                                        showIcon={false}
+                                        className="w-full !rounded-xl !py-2"
+                                    >
+                                        Masuk
+                                    </NewPrimaryButton>
+                                </Link>
+                            </li>
+                        </>
                     )}
                 </ul>
             </aside>
+
+            {/* Overlay */}
             {isOpen && (
                 <div
                     className="fixed inset-0 z-30 bg-black/40 backdrop-blur-sm md:hidden"
                     onClick={() => setIsOpen(false)}
                 />
             )}
+
+            {/* Tutup dropdown kalau klik luar */}
             {isDropdownOpen && (
                 <div
                     className="fixed inset-0 z-40"
