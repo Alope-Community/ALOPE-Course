@@ -1,5 +1,6 @@
 import { Module } from '@/models/Module';
-import { formatDateWithTime } from '@/tools/formatDate';
+import diffForHumans from '@/tools/diffForHumans';
+import { formatDate } from '@/tools/formatDate';
 import strLimit from '@/tools/strLimit';
 import { Link } from '@inertiajs/react';
 
@@ -7,52 +8,59 @@ export default function ModuleCardComponent({ props }: { props: Module }) {
     return (
         <Link
             href={`/modules/${props.slug}`}
-            className={`mr-5 overflow-hidden rounded-md bg-gray-50 shadow`}
+            className="group flex h-full w-full flex-col overflow-hidden rounded-2xl border-2 border-gray-300 bg-white"
         >
-            <div className="relative">
+            <div className="relative h-48 w-full">
                 <img
                     src={props.cover}
-                    alt="cover article"
-                    className="w-full rounded-t-md"
-                    width={1280}
-                    height={720}
+                    alt="cover"
+                    className="h-full w-full object-cover"
                 />
-                <span className="absolute bottom-2 left-2 rounded bg-gray-800/80 p-1">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth={1.5}
-                        stroke="currentColor"
-                        className="size-5 text-white"
-                    >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M16.5 3.75V16.5L12 14.25 7.5 16.5V3.75m9 0H18A2.25 2.25 0 0 1 20.25 6v12A2.25 2.25 0 0 1 18 20.25H6A2.25 2.25 0 0 1 3.75 18V6A2.25 2.25 0 0 1 6 3.75h1.5m9 0h-9"
-                        />
-                    </svg>
-                </span>
             </div>
-            <div className="rounded-b-md border border-t-0 border-[#2276f0] p-3">
-                <p className="font-semibold">{props.title}</p>
-                <p className="mt-1 text-sm text-gray-800">
-                    {strLimit(props.description, 100)}
-                </p>
+            <div className="flex flex-1 flex-col justify-between p-4">
+                <div>
+                    <div className="mb-2 flex items-center gap-3 text-xs text-black">
+                        <div className="flex">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                strokeWidth={1.5}
+                                stroke="currentColor"
+                                className="size-4"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M6.75 3v2.25M17.25 3v2.25M3.75 8.25h16.5M4.5 21h15a1.5 1.5 0 0 0 1.5-1.5V7.5a1.5 1.5 0 0 0-1.5-1.5h-15A1.5 1.5 0 0 0 3 7.5v12A1.5 1.5 0 0 0 4.5 21Z"
+                                />
+                            </svg>
+                        </div>
+                        {formatDate(props.created_at || '')}
+                        <div className="flex gap-1">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                strokeWidth={1.5}
+                                stroke="currentColor"
+                                className="size-4"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                                />
+                            </svg>
+                            {diffForHumans(props.created_at || '')}
+                        </div>
 
-                <div className="mt-4 flex justify-between text-gray-700">
-                    <div>
-                        <small className="text-xs">
-                            {formatDateWithTime(props.created_at || '')}
-                        </small>
-                    </div>
-                    <div className="flex gap-3">
-                        <span className="flex items-center gap-1 text-xs">
+                        <div className="flex gap-1">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 24 24"
                                 fill="currentColor"
-                                className="size-3"
+                                className="size-4"
                             >
                                 <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
                                 <path
@@ -61,23 +69,30 @@ export default function ModuleCardComponent({ props }: { props: Module }) {
                                     clipRule="evenodd"
                                 />
                             </svg>
-                            {props.reads.length}
-                        </span>
-                        {/* <span className="flex items-center gap-1 text-xs">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                                fill="currentColor"
-                                className="size-3"
-                            >
-                                <path
-                                    fillRule="evenodd"
-                                    d="M5.337 21.718a6.707 6.707 0 0 1-.533-.074.75.75 0 0 1-.44-1.223 3.73 3.73 0 0 0 .814-1.686c.023-.115-.022-.317-.254-.543C3.274 16.587 2.25 14.41 2.25 12c0-5.03 4.428-9 9.75-9s9.75 3.97 9.75 9c0 5.03-4.428 9-9.75 9-.833 0-1.643-.097-2.417-.279a6.721 6.721 0 0 1-4.246.997Z"
-                                    clipRule="evenodd"
-                                />
-                            </svg>
-                            ?
-                        </span> */}
+                            {props.reads.length} views
+                        </div>
+                    </div>
+
+                    <p className="font-semibold text-gray-900">{props.title}</p>
+                    <p className="mt-1 line-clamp-2 text-sm text-gray-600">
+                        {strLimit(props.description, 100)}
+                    </p>
+                </div>
+                <div className="mt-4 flex items-center gap-2">
+                    <img
+                        src={
+                            props.writer?.profile || '/images/default-user.png'
+                        }
+                        className="size-8 rounded-full object-cover"
+                        alt={props.writer?.name}
+                    />
+                    <div>
+                        <p className="text-sm font-semibold text-gray-900">
+                            {props.writer?.name || 'Unknown'}
+                        </p>
+                        <p className="text-xs text-black">
+                            {props.writer?.as || 'Machine Learning Mentor'}
+                        </p>
                     </div>
                 </div>
             </div>

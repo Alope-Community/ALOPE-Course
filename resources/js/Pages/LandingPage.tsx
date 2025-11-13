@@ -202,7 +202,7 @@ export default function LandingPage({
                 </div>
             </section> */}
 
-            <section className="relative mb-20 gap-10 px-3 md:px-10 xl:px-5 2xl:px-2">
+            <section className="relative mb-20 gap-10 bg-white px-3 md:px-10 xl:px-5 2xl:px-2">
                 <div className="container mx-auto">
                     {/* <div className="mb-20">
                         <div className="mb-5">
@@ -318,76 +318,90 @@ export default function LandingPage({
                     )}
 
                     <div className="mb-10">
-                        <div className="mb-5 lg:flex lg:items-center lg:justify-between">
-                            <h2 className="text-xl font-semibold md:text-2xl">
-                                <span className="text-gray-400">//</span>
-                                Modul Terpopuler
-                            </h2>
-                            <Link
-                                href="/modules"
-                                className="flex items-center gap-1 rounded px-5 py-2 text-sm font-bold text-gray-800 duration-300 hover:gap-2 hover:shadow-[#673ef0] active:scale-95"
-                            >
-                                Lihat Semua Modul
-                                <IconChevronRight className="size-7 text-[#2276f0]" />
-                            </Link>
-                        </div>
-                        <div className="relative">
-                            <Glider
-                                draggable
-                                slidesToShow={4.5}
-                                slidesToScroll={1}
-                                // hasArrows
-                                dragVelocity={1.5}
-                                responsive={[
-                                    {
-                                        breakpoint: 1536,
-                                        settings: { slidesToShow: 4.5 },
-                                    }, // Desktop
-                                    {
-                                        breakpoint: 1280,
-                                        settings: { slidesToShow: 3.6 },
-                                    }, // Desktop
-                                    {
-                                        breakpoint: 1024,
-                                        settings: { slidesToShow: 2.8 },
-                                    }, // Desktop
-                                    {
-                                        breakpoint: 768,
-                                        settings: { slidesToShow: 2.3 },
-                                    }, // Tablet
-                                    {
-                                        breakpoint: 375,
-                                        settings: { slidesToShow: 1.3 },
-                                    }, // Mobile
-                                    {
-                                        breakpoint: 100,
-                                        settings: { slidesToShow: 1.1 },
-                                    }, // Mobile
-                                ]}
-                            >
-                                {modules.map((module, index) => (
-                                    <ModuleCardComponent
-                                        key={index}
-                                        props={module}
-                                    />
-                                ))}
-                            </Glider>
-                            {/* <div className="absolute right-0 top-0 h-full w-24 bg-gradient-to-r from-gray-100/0 to-gray-100 md:w-36"></div> */}
+                        <div className="container mx-auto px-4">
+                            <div className="mb-5 flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
+                                <div>
+                                    <p className="text-xs font-semibold uppercase tracking-widest text-primary">
+                                        Popular Courses
+                                    </p>
+
+                                    <div className="mt-1">
+                                        <h2 className="text-2xl font-extrabold leading-tight text-gray-900 md:text-3xl">
+                                            Materi Pembelajaran
+                                        </h2>
+                                        <h2 className="text-2xl font-extrabold leading-tight text-gray-900 md:text-3xl">
+                                            Terpopuler Saat Ini
+                                        </h2>
+                                    </div>
+                                </div>
+                                <Link
+                                    href="/modules"
+                                    className="flex items-center gap-1 rounded px-5 py-2 text-sm font-bold text-gray-800 duration-300 hover:gap-2 active:scale-95"
+                                >
+                                    {' '}
+                                    Lihat Semua Modul{' '}
+                                    <IconChevronRight className="size-7 text-primary" />{' '}
+                                </Link>
+                            </div>
+                            {modules.length <= 3 ? (
+                                <div className="flex flex-wrap justify-center gap-5">
+                                    {modules.map((module, index) => (
+                                        <div
+                                            key={index}
+                                            className="w-full max-w-sm"
+                                        >
+                                            <ModuleCardComponent
+                                                props={module}
+                                            />
+                                        </div>
+                                    ))}
+                                </div>
+                            ) : (
+                                <div className="relative">
+                                    <Glider
+                                        draggable
+                                        slidesToShow={3.5}
+                                        slidesToScroll={1}
+                                        dragVelocity={1.5}
+                                        responsive={[
+                                            {
+                                                breakpoint: 1536,
+                                                settings: { slidesToShow: 4.5 },
+                                            },
+                                            {
+                                                breakpoint: 1280,
+                                                settings: { slidesToShow: 3.5 },
+                                            },
+                                            {
+                                                breakpoint: 1024,
+                                                settings: { slidesToShow: 2.8 },
+                                            },
+                                            {
+                                                breakpoint: 768,
+                                                settings: { slidesToShow: 1.5 },
+                                            },
+                                            {
+                                                breakpoint: 480,
+                                                settings: { slidesToShow: 1 },
+                                            },
+                                        ]}
+                                    >
+                                        {modules.map((module, index) => (
+                                            <div
+                                                key={index}
+                                                className="w-full max-w-md sm:w-[350px]"
+                                            >
+                                                <ModuleCardComponent
+                                                    props={module}
+                                                />
+                                            </div>
+                                        ))}
+                                    </Glider>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>
-                <img
-                    src="/images/shapes/blueBlur2.svg"
-                    className="absolute -bottom-96 right-0 -z-10"
-                    loading="lazy"
-                    alt="blue blur"
-                />
-                <img
-                    src="/images/shapes/yellowBlur2.svg"
-                    className="absolute -bottom-96 left-0 -z-10"
-                    loading="lazy"
-                    alt="yellow blur"
-                />
             </section>
 
             {/* <section className="container mx-auto my-20 px-3 md:px-10 xl:px-5 2xl:px-2">
