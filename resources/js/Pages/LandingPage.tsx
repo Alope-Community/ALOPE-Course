@@ -29,8 +29,8 @@ export default function LandingPage({
 
             <NavbarComponent />
 
-            <header className="relative min-h-[800px] overflow-hidden bg-gradient-to-br from-blue-50 via-white to-yellow-50 pt-16">
-                <div className="container relative z-10 mx-auto flex flex-col items-center justify-between px-3 md:px-10 lg:flex-row xl:px-5 2xl:px-2">
+            <header className="relative min-h-[800px] overflow-hidden bg-gradient-to-tr from-white to-yellow-50 pt-16">
+                <div className="container relative z-10 mx-auto flex flex-col items-center justify-between px-4 py-10 md:px-10 lg:flex-row">
                     <div className="order-2 lg:order-1 lg:w-1/2">
                         <h1 className="mb-4 text-center text-3xl font-bold leading-snug text-black md:text-4xl lg:text-left xl:text-6xl">
                             Tingkatkan{' '}
@@ -126,7 +126,6 @@ export default function LandingPage({
                     </div>
                 </div>
             </header>
-
             {/* <section className="mb-20 px-3 md:px-10 xl:px-5 2xl:px-2">
                 <div className="container relative mx-auto overflow-hidden p-1">
                     <span className="absolute -right-[70px] top-4 inline-block w-[200px] rotate-45 bg-red-500 p-2 text-center text-xs font-semibold text-gray-100 sm:-right-[50px] sm:top-7 sm:p-3 sm:text-sm lg:-left-[50px] lg:right-auto lg:-rotate-45 lg:text-base xl:top-6">
