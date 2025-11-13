@@ -52,9 +52,8 @@ export default function NavbarComponent() {
 
     return (
         <>
-            <nav className="max-w-screen fixed left-0 right-0 top-0 z-50 bg-white px-3 py-3 shadow md:px-10 md:py-5 xl:px-5 2xl:px-2">
-                <div className="container mx-auto flex items-center justify-between">
-                    {/* Logo */}
+            <nav className="fixed left-0 right-0 top-0 z-50 bg-white">
+                 <div className="container mx-auto flex items-center justify-between px-4 py-3 md:px-10 md:py-5">
                     <Link href="/" className="flex items-center gap-3">
                         <img
                             src="/images/Alope.png"
@@ -70,8 +69,6 @@ export default function NavbarComponent() {
                             </p>
                         </div>
                     </Link>
-
-                    {/* Menu desktop */}
                     <ul className="hidden items-center gap-8 font-medium md:flex">
                         {navLinks.map((link) => (
                             <li key={link.href}>
@@ -88,8 +85,6 @@ export default function NavbarComponent() {
                             </li>
                         ))}
                     </ul>
-
-                    {/* Tombol kanan */}
                     <div className="hidden items-center gap-4 md:flex">
                         {auth.user ? (
                             <div className="relative">
@@ -126,15 +121,12 @@ export default function NavbarComponent() {
                             </div>
                         ) : (
                             <div className="flex items-center gap-3">
-                                {/* Tombol Daftar */}
                                 <Link href="/register">
                                     <NewPrimaryButton
                                         text="Daftar"
                                         variant="outline"
                                     />
                                 </Link>
-
-                                {/* Tombol Masuk */}
                                 <Link href="/login">
                                     <NewPrimaryButton
                                         text="Masuk"
@@ -144,8 +136,6 @@ export default function NavbarComponent() {
                             </div>
                         )}
                     </div>
-
-                    {/* Tombol menu mobile */}
                     <button
                         onClick={() => setIsOpen(!isOpen)}
                         className="text-gray-700 md:hidden"
@@ -154,8 +144,6 @@ export default function NavbarComponent() {
                     </button>
                 </div>
             </nav>
-
-            {/* Spacer biar konten ga ketimpa navbar */}
             <div className="h-[76px] md:h-[80px]" />
 
             {/* Drawer mobile */}
@@ -213,7 +201,6 @@ export default function NavbarComponent() {
                         </>
                     ) : (
                         <>
-                            {/* Tombol Daftar mobile */}
                             <li>
                                 <Link
                                     href="/register"
@@ -228,8 +215,6 @@ export default function NavbarComponent() {
                                     </NewPrimaryButton>
                                 </Link>
                             </li>
-
-                            {/* Tombol Masuk mobile */}
                             <li>
                                 <Link
                                     href="/login"
@@ -248,16 +233,12 @@ export default function NavbarComponent() {
                     )}
                 </ul>
             </aside>
-
-            {/* Overlay */}
             {isOpen && (
                 <div
                     className="fixed inset-0 z-30 bg-black/40 backdrop-blur-sm md:hidden"
                     onClick={() => setIsOpen(false)}
                 />
             )}
-
-            {/* Tutup dropdown kalau klik luar */}
             {isDropdownOpen && (
                 <div
                     className="fixed inset-0 z-40"
