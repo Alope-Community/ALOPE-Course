@@ -9,7 +9,7 @@ import { Module } from '@/models/Module';
 import { Video } from '@/models/Video';
 import { Head, Link } from '@inertiajs/react';
 import 'glider-js/glider.min.css';
-import { IconChevronRight } from 'justd-icons';
+import { IconChevronRight, IconCircleCheckFill } from 'justd-icons';
 import Glider from 'react-glider';
 
 export default function LandingPage({
@@ -126,6 +126,53 @@ export default function LandingPage({
                     </div>
                 </div>
             </header>
+            <section className="relative bg-white py-20">
+                <div className="container mx-auto flex flex-col items-center gap-12 px-4 py-4 md:flex-row md:items-center md:px-10 xl:px-20">
+                    <div className="flex w-full justify-center md:w-1/2">
+                        <div className="relative">
+                            <img
+                                src="/images/header.png"
+                                alt="student"
+                                className="relative z-10 w-[400px] rounded-3xl"
+                            />
+                            <div className="absolute bottom-0 left-8 right-0 top-8 z-0 rounded-3xl bg-blue-400" />
+                        </div>
+                    </div>
+
+                    <div className="w-full md:w-1/2">
+                        <p className="text-sm font-semibold uppercase tracking-wide text-primary">
+                            Why Choose Us
+                        </p>
+
+                        <h2 className="mt-2 text-3xl font-bold text-gray-900 md:text-4xl">
+                            Belajar Coding dengan <br /> Pendekatan yang Tepat
+                        </h2>
+
+                        <ul className="mt-6 space-y-3 text-grey">
+                            {[
+                                'Materi Terarah & Terstruktur',
+                                'Fokus pada Konsep Dasar',
+                                'Fleksibel & Ramah Pemula',
+                                'Komunitas yang Mendukung',
+                            ].map((item, i) => (
+                                <li key={i} className="flex items-center gap-3">
+                                    <IconCircleCheckFill className="size-5 text-green-500" />
+                                    {item}
+                                </li>
+                            ))}
+                        </ul>
+
+                        <div className="mt-8">
+                            <NewPrimaryButton
+                                text="Mulai Belajar Sekarang"
+                                circleIcon
+                                showIcon
+                            />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             {/* <section className="mb-20 px-3 md:px-10 xl:px-5 2xl:px-2">
                 <div className="container relative mx-auto overflow-hidden p-1">
                     <span className="absolute -right-[70px] top-4 inline-block w-[200px] rotate-45 bg-red-500 p-2 text-center text-xs font-semibold text-gray-100 sm:-right-[50px] sm:top-7 sm:p-3 sm:text-sm lg:-left-[50px] lg:right-auto lg:-rotate-45 lg:text-base xl:top-6">
@@ -202,7 +249,7 @@ export default function LandingPage({
             </section> */}
 
             <section className="relative mb-20 gap-10 bg-white px-3 md:px-10 xl:px-5 2xl:px-2">
-                <div className="container mx-auto">
+                <div className="container mx-auto px-4">
                     {/* <div className="mb-20">
                         <div className="mb-5">
                             <h2 className="text-xl font-semibold md:text-2xl">
@@ -317,7 +364,7 @@ export default function LandingPage({
                     )}
 
                     <div className="mb-10">
-                        <div className="container mx-auto px-4">
+                        <div className="container mx-auto px-4 py-4">
                             <div className="mb-5 flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
                                 <div>
                                     <p className="text-xs font-semibold uppercase tracking-widest text-primary">
