@@ -177,7 +177,7 @@ export default function LandingPage({
 
             {/* Section semuua module */}
             <section className="bg-white py-10">
-                <div className="mx-auto px-4 md:px-10">
+                <div className="container mx-auto px-4 md:px-10">
                     <p className="text-xs font-semibold uppercase tracking-widest text-primary">
                         Choose Your Path
                     </p>
@@ -416,11 +416,11 @@ export default function LandingPage({
                                 </Link>
                             </div>
                             {modules.length <= 4 ? (
-                                <div className="flex flex-wrap gap-5">
+                                <div className="flex gap-5">
                                     {modules.map((module, index) => (
                                         <div
                                             key={index}
-                                            className="w-full max-w-sm"
+                                            className="flex-1"
                                         >
                                             <ModuleCardComponent
                                                 props={module}

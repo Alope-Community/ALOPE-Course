@@ -10,7 +10,7 @@ export default function ModuleCardComponent({ props }: { props: Module }) {
             href={`/modules/${props.slug}`}
             className="group flex h-full w-full flex-col overflow-hidden rounded-2xl border-2 border-gray-300 bg-white"
         >
-            <div className="relative h-48 w-full">
+            <div className="relative h-60 w-full">
                 <img
                     src={props.cover}
                     alt="cover"
