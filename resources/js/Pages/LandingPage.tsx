@@ -126,6 +126,8 @@ export default function LandingPage({
                     </div>
                 </div>
             </header>
+            
+            {/* Section belajar coding */}
             <section className="relative bg-white py-20">
                 <div className="container mx-auto flex flex-col items-center gap-12 px-4 py-4 md:flex-row md:items-center md:px-10 xl:px-20">
                     <div className="flex w-full justify-center md:w-1/2">
@@ -169,6 +171,30 @@ export default function LandingPage({
                                 showIcon
                             />
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Section semuua module */}
+            <section className="bg-white py-10">
+                <div className="mx-auto px-4 md:px-10">
+                    <p className="text-xs font-semibold uppercase tracking-widest text-primary">
+                        Choose Your Path
+                    </p>
+
+                    <h2 className="text-2xl font-extrabold leading-tight text-gray-900 md:text-3xl">
+                        Pilih Jalur Pembelajaran
+                    </h2>
+                    <h2 className="text-2xl font-extrabold leading-tight text-gray-900 md:text-3xl">
+                        Sesuai Minatmu
+                    </h2>
+                </div>
+
+                <div className="container mx-auto mt-8 px-4">
+                    <div className="grid grid-cols-1 gap-6 md:ml-4 md:grid-cols-2 lg:ml-6 lg:grid-cols-3">
+                        {courses.slice(0, 3).map((course, index) => (
+                            <CourseCardComponent key={index} course={course} />
+                        ))}
                     </div>
                 </div>
             </section>
@@ -319,7 +345,7 @@ export default function LandingPage({
                             <div className="relative">
                                 <Glider
                                     draggable
-                                    slidesToShow={4.5}
+                                    slidesToShow={3.5}
                                     slidesToScroll={1}
                                     // hasArrows
                                     dragVelocity={1.5}
@@ -389,12 +415,12 @@ export default function LandingPage({
                                     <IconChevronRight className="size-7 text-primary" />{' '}
                                 </Link>
                             </div>
-                            {modules.length <= 3 ? (
-                                <div className="flex flex-wrap justify-center gap-5">
+                            {modules.length <= 4 ? (
+                                <div className="flex flex-wrap gap-5">
                                     {modules.map((module, index) => (
                                         <div
                                             key={index}
-                                            className="w-full max-w-sm"
+                                            className="w-full max-w-sm px-4"
                                         >
                                             <ModuleCardComponent
                                                 props={module}
@@ -435,7 +461,7 @@ export default function LandingPage({
                                         {modules.map((module, index) => (
                                             <div
                                                 key={index}
-                                                className="w-full max-w-md sm:w-[350px]"
+                                                className="w-full max-w-lg sm:w-[350px]"
                                             >
                                                 <ModuleCardComponent
                                                     props={module}
