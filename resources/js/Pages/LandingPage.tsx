@@ -126,7 +126,7 @@ export default function LandingPage({
                     </div>
                 </div>
             </header>
-            
+
             {/* Section belajar coding */}
             <section className="relative bg-white py-20">
                 <div className="container mx-auto flex flex-col items-center gap-12 px-4 py-4 md:flex-row md:items-center md:px-10 xl:px-20">
@@ -420,7 +420,7 @@ export default function LandingPage({
                                     {modules.map((module, index) => (
                                         <div
                                             key={index}
-                                            className="w-full max-w-sm px-4"
+                                            className="w-full max-w-sm"
                                         >
                                             <ModuleCardComponent
                                                 props={module}
