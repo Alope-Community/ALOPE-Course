@@ -1,9 +1,11 @@
 import AccordionComponent from '@/Components/Accordion';
+import SimpleBlogCardComponent from '@/Components/Cards/Blog';
 import CourseCardComponent from '@/Components/Cards/CourseCard';
 import ModuleCardComponent from '@/Components/Cards/Module';
 import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
 import NewPrimaryButton from '@/Components/NewPrimaryButton';
+import { Blog } from '@/models/Blog';
 import { Course } from '@/models/Course';
 import { Module } from '@/models/Module';
 import { Video } from '@/models/Video';
@@ -17,11 +19,13 @@ export default function LandingPage({
     videos,
     modules,
     latestModule,
+    blogs = [],
 }: {
     courses: Course[];
     videos: Video[];
     modules: Module[];
     latestModule: Module;
+    blogs: Blog[];
 }) {
     return (
         <>
@@ -135,9 +139,8 @@ export default function LandingPage({
                             <img
                                 src="/images/header.png"
                                 alt="student"
-                                className="relative z-10 w-[400px] rounded-3xl"
+                                className="w-full max-w-sm object-contain md:max-w-md"
                             />
-                            <div className="absolute bottom-0 left-8 right-0 top-8 z-0 rounded-3xl bg-blue-400" />
                         </div>
                     </div>
 
@@ -199,198 +202,11 @@ export default function LandingPage({
                 </div>
             </section>
 
-            {/* <section className="mb-20 px-3 md:px-10 xl:px-5 2xl:px-2">
-                <div className="container relative mx-auto overflow-hidden p-1">
-                    <span className="absolute -right-[70px] top-4 inline-block w-[200px] rotate-45 bg-red-500 p-2 text-center text-xs font-semibold text-gray-100 sm:-right-[50px] sm:top-7 sm:p-3 sm:text-sm lg:-left-[50px] lg:right-auto lg:-rotate-45 lg:text-base xl:top-6">
-                        Artikel Baru
-                    </span>
-                    <div className="absolute inset-0 -z-10 flex items-center justify-center overflow-hidden rounded-xl">
-                        <div className="h-full w-full animate-scale-pulse bg-purple-300 blur-xl"></div>
-                    </div>
-                    <div className="grid grid-cols-1 items-center gap-5 rounded-lg border border-[#673ef0] bg-white/90 p-5 lg:grid-cols-2 xl:gap-10">
-                        <div className="hidden h-full lg:block">
-                            <img
-                                src={latestArticle.cover}
-                                alt="cover latest article"
-                                className="h-full rounded-md"
-                            />
-                        </div>
-                        <div className="text-gray-900">
-                            <p className="mb-1 text-sm font-bold text-[#663399] lg:mt-7 xl:text-base">
-                                {latestArticle.course.title}
-                            </p>
-                            <h4 className="text-xl font-bold xl:text-3xl">
-                                {latestArticle.title}
-                            </h4>
-                            <div className="mb-5 mt-2 flex gap-5 text-gray-600">
-                                <p className="flex items-center gap-1 text-xs xl:text-base">
-                                    <IconCalendar2Fill />
-                                    {diffForHumans(
-                                        latestArticle.created_at || '',
-                                    )}
-                                </p>
-                                <p className="flex items-center gap-1 text-xs xl:text-base">
-                                    <IconEyeFill />
-                                    {latestArticle.reads.length}
-                                </p>
-                            </div>
-                            <p className="mb-5 hidden text-sm text-gray-700 sm:mb-3 sm:block xl:mb-7 xl:text-base">
-                                {latestArticle.description}
-                            </p>
-                            <p className="mb-5 block text-sm text-gray-700 sm:mb-3 sm:hidden xl:mb-7 xl:text-base">
-                                {strLimit(latestArticle.description, 150)}
-                            </p>
-
-                            <div className="items-center justify-between sm:flex lg:mb-7">
-                                <div className="mb-5 flex items-center gap-3 sm:mb-0">
-                                    <div>
-                                        <img
-                                            src={latestArticle.writer.profile}
-                                            alt="writer article"
-                                            className="w-[50px] rounded-full border p-1 xl:w-[60px]"
-                                        />
-                                    </div>
-                                    <div>
-                                        <p className="font-semibold">
-                                            {latestArticle.writer.name}
-                                        </p>
-                                        <small className="-mt-1 block text-xs text-gray-700 sm:text-base">
-                                            {latestArticle.writer.as}
-                                        </small>
-                                    </div>
-                                </div>
-                                <div>
-                                    <Link
-                                        href={`/modules/${latestArticle.slug}`}
-                                        className="flex items-center justify-center gap-2 rounded bg-[#663399] px-4 py-2 text-sm text-gray-100 shadow hover:bg-[#663399]/80 active:scale-95 sm:inline-flex xl:px-8 xl:py-2.5 xl:text-base"
-                                    >
-                                        Lihat Artikel
-                                        <IconChevronRight className="size-6" />
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section> */}
-
-            <section className="relative mb-20 gap-10 bg-white px-3 md:px-10 xl:px-5 2xl:px-2">
-                <div className="container mx-auto px-4">
-                    {/* <div className="mb-20">
-                        <div className="mb-5">
-                            <h2 className="text-xl font-semibold md:text-2xl">
-                                <span className="text-gray-400">//</span> Tonton
-                                Video Tutorial Seputar Programming
-                            </h2>
-                        </div>
-                        <div className="relative">
-                            <Glider
-                                draggable
-                                slidesToShow={4.5}
-                                slidesToScroll={1}
-                                // hasArrows
-                                dragVelocity={1.5}
-                                responsive={[
-                                    {
-                                        breakpoint: 1536,
-                                        settings: { slidesToShow: 4.5 },
-                                    }, // Desktop
-                                    {
-                                        breakpoint: 1280,
-                                        settings: { slidesToShow: 3.6 },
-                                    }, // Desktop
-                                    {
-                                        breakpoint: 1024,
-                                        settings: { slidesToShow: 2.8 },
-                                    }, // Desktop
-                                    {
-                                        breakpoint: 768,
-                                        settings: { slidesToShow: 2.3 },
-                                    }, // Tablet
-                                    {
-                                        breakpoint: 375,
-                                        settings: { slidesToShow: 1.3 },
-                                    }, // Mobile
-                                    {
-                                        breakpoint: 100,
-                                        settings: { slidesToShow: 1.1 },
-                                    }, // Mobile
-                                ]}
-                            >
-                                {videos.map((video, index) => (
-                                    <div key={index}>
-                                        <VideoCardComponent
-                                            title={video.title}
-                                            video_link={video.link}
-                                            course_name={video.course.title}
-                                            total_video_course={
-                                                video.course.videos.length
-                                            }
-                                        />
-                                    </div>
-                                ))}
-                            </Glider>
-                        </div>
-                    </div> */}
-
-                    {courses.length > 1 ? (
-                        <div className="mb-10">
-                            <div className="mb-5">
-                                <h2 className="text-xl font-semibold md:text-2xl">
-                                    <span className="text-gray-400">//</span>{' '}
-                                    Lihat Pelajaran-pelajaran untuk Upgrade
-                                    Skill
-                                </h2>
-                            </div>
-                            <div className="relative">
-                                <Glider
-                                    draggable
-                                    slidesToShow={3.5}
-                                    slidesToScroll={1}
-                                    // hasArrows
-                                    dragVelocity={1.5}
-                                    responsive={[
-                                        {
-                                            breakpoint: 1536,
-                                            settings: { slidesToShow: 4.5 },
-                                        }, // Desktop
-                                        {
-                                            breakpoint: 1280,
-                                            settings: { slidesToShow: 3.6 },
-                                        }, // Desktop
-                                        {
-                                            breakpoint: 1024,
-                                            settings: { slidesToShow: 2.8 },
-                                        }, // Desktop
-                                        {
-                                            breakpoint: 768,
-                                            settings: { slidesToShow: 2.3 },
-                                        }, // Tablet
-                                        {
-                                            breakpoint: 375,
-                                            settings: { slidesToShow: 1.3 },
-                                        }, // Mobile
-                                        {
-                                            breakpoint: 100,
-                                            settings: { slidesToShow: 1.1 },
-                                        }, // Mobile
-                                    ]}
-                                >
-                                    {courses.map((course, index) => (
-                                        <CourseCardComponent
-                                            key={index}
-                                            course={course}
-                                        />
-                                    ))}
-                                </Glider>
-                            </div>
-                        </div>
-                    ) : (
-                        ''
-                    )}
-
+            {/* Section popular modules */}
+            <section className="relative gap-10 bg-white px-3 md:px-10 xl:px-5 2xl:px-2">
+                <div className="container mx-auto px-4 py-4">
                     <div className="mb-10">
-                        <div className="container mx-auto px-4 py-4">
+                        <div className="px-4 py-4">
                             <div className="mb-5 flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
                                 <div>
                                     <p className="text-xs font-semibold uppercase tracking-widest text-primary">
@@ -410,18 +226,14 @@ export default function LandingPage({
                                     href="/modules"
                                     className="flex items-center gap-1 rounded px-5 py-2 text-sm font-bold text-gray-800 duration-300 hover:gap-2 active:scale-95"
                                 >
-                                    {' '}
-                                    Lihat Semua Modul{' '}
-                                    <IconChevronRight className="size-7 text-primary" />{' '}
+                                    Lihat Semua Modul
+                                    <IconChevronRight className="size-7 text-primary" />
                                 </Link>
                             </div>
-                            {modules.length <= 4 ? (
+                            {modules.length <= 3 ? (
                                 <div className="flex gap-5">
                                     {modules.map((module, index) => (
-                                        <div
-                                            key={index}
-                                            className="flex-1"
-                                        >
+                                        <div key={index} className="flex-1">
                                             <ModuleCardComponent
                                                 props={module}
                                             />
@@ -476,37 +288,42 @@ export default function LandingPage({
                 </div>
             </section>
 
-            {/* <section className="container mx-auto my-20 px-3 md:px-10 xl:px-5 2xl:px-2">
-                <section className="relative flex items-center overflow-hidden rounded-2xl bg-gradient-to-r from-[#040924] to-gray-900 px-6 py-16 text-gray-100 after:absolute after:inset-0 after:z-10 after:bg-[#040924]/80 after:content-[''] md:px-10 lg:overflow-visible lg:after:hidden xl:px-14">
-                    <div className="relative z-20 flex-1 text-center md:text-left">
-                        <h3 className="mb-5 text-xl font-bold md:text-2xl xl:text-3xl">
-                            Gabung "Bootcamp Bersama PBK", Perkuat Fundamental
-                            Skill Web Programming
-                        </h3>
-                        <p className="mb-14 text-xs text-gray-200 md:text-sm xl:text-base">
-                            Belajar dari Dasar hingga Mahir! Bergabunglah dengan
-                            Bootcamp PBK untuk Memperkuat Fundamental Skill Web
-                            Programming dan Siapkan Diri Menjadi Developer
-                            Profesional!
-                        </p>
+            {/* Section Blog */}
+            <section className="relative w-full gap-10 bg-white px-3 md:px-10 xl:px-5 2xl:px-2">
+                <div className="container mx-auto px-4 py-4">
+                    <div className="mb-10">
+                        <div className="px-4 py-4">
+                            <div className="mb-5 flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
+                                <div>
+                                    <p className="text-sm font-semibold text-primary">
+                                        FROM OUR BLOG
+                                    </p>
+                                    <h2 className="mt-1 text-4xl font-bold leading-tight text-gray-900">
+                                        Cerita, Tren, dan Insight <br />
+                                        Seputar Dunia Tech
+                                    </h2>
+                                </div>
 
-                        <Link
-                            href="/courses/lwd-pbk"
-                            className="rounded-full bg-[#2276f0] px-5 py-2 text-sm font-bold text-white shadow hover:shadow-[#2276f0] active:scale-95 md:px-8 md:py-2.5 md:text-base"
-                        >
-                            Mulai Belajar
-                        </Link>
+                                <Link
+                                    href="/blogs"
+                                    className="text-sm font-medium text-primary hover:underline"
+                                >
+                                    Lihat Semua
+                                </Link>
+                            </div>
+                            <div className="flex gap-5">
+                                {blogs.map((blog, index) => (
+                                    <div key={index} className="flex-1">
+                                        <SimpleBlogCardComponent props={blog} />
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
                     </div>
-                    <div className="lg:flex-1">
-                        <img
-                            src="/images/rocket.svg"
-                            alt="rocket"
-                            className="absolute right-0 top-0 z-[1] size-[400px] md:-top-12 lg:top-0 lg:size-[450px] xl:-top-14"
-                        />
-                    </div>
-                </section>
-            </section> */}
+                </div>
+            </section>
 
+            {/*Section FAQ  */}
             <section className="relative px-3 md:px-10 xl:px-5 2xl:px-2">
                 <div className="container mx-auto flex flex-col items-center lg:flex-row">
                     <div className="hidden flex-1 lg:block">
