@@ -4,8 +4,8 @@ export default function diffForHumans(timestamp: string): string {
     const now = new Date();
     const diffInSeconds = Math.floor((now.getTime() - date.getTime()) / 1000);
 
-    console.log(date);
-    console.log(now);
+    // console.log(date);
+    // console.log(now);
 
     if (diffInSeconds < 60) return 'Beberapa detik yang lalu'; // Perbaikan utama
 

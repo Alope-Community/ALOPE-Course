@@ -2,6 +2,9 @@ import AccordionComponent from '@/Components/Accordion';
 import SimpleBlogCardComponent from '@/Components/Cards/Blog';
 import CourseCardComponent from '@/Components/Cards/CourseCard';
 import ModuleCardComponent from '@/Components/Cards/Module';
+import TestimonialCard, {
+    TestimonialCardProps,
+} from '@/Components/Cards/Testimonial';
 import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
 import NewPrimaryButton from '@/Components/NewPrimaryButton';
@@ -27,6 +30,29 @@ export default function LandingPage({
     latestModule: Module;
     blogs: Blog[];
 }) {
+    const data: TestimonialCardProps[] = [
+        {
+            quote: 'Materinya runtut dan gampang dipahami. Sekarang aku jadi ngerti dasar Machine Learning.',
+            name: 'Wahyu',
+            role: 'Mahasiswa',
+            avatar: '/images/ilham.jpg',
+            rating: 5,
+        },
+        {
+            quote: 'Awalnya belum pernah ngoding, tapi lewat modul web dev, aku bisa bikin web pertamaku!',
+            name: 'Rina',
+            role: 'Mahasiswa',
+            avatar: '/images/ilham.jpg',
+            rating: 5,
+        },
+        {
+            quote: 'Belajarnya step by step, jadi konsep yang rumit terasa lebih mudah dipahami.',
+            name: 'Tono',
+            role: 'Mahasiswa',
+            avatar: '/images/ilham.jpg',
+            rating: 5,
+        },
+    ];
     return (
         <>
             <Head title="Welcome" />
@@ -62,7 +88,7 @@ export default function LandingPage({
                         <div className="absolute right-[12%] top-4 h-[380px] w-[340px] rotate-[25deg] rounded-3xl bg-primary blur-[1px] md:h-[460px] md:w-[420px] lg:right-[16%]" />
                         <div className="absolute right-[5%] top-0 h-[400px] w-[360px] rounded-3xl bg-blue-200/100 md:h-[467px] md:w-[440px] lg:right-[10%]" />
                         <img
-                            src="/images/header.png"
+                            src="/images/header1.png"
                             alt="Belajar coding"
                             className="relative z-10 w-[80%] max-w-[400px] object-contain md:w-[70%] lg:w-[85%]"
                             loading="lazy"
@@ -132,7 +158,7 @@ export default function LandingPage({
             </header>
 
             {/* Section belajar coding */}
-            <section className="relative bg-white py-20">
+            <section className="relative bg-white py-10">
                 <div className="container mx-auto flex flex-col items-center gap-12 px-4 py-4 md:flex-row md:items-center md:px-10 xl:px-20">
                     <div className="flex w-full justify-center md:w-1/2">
                         <div className="relative">
@@ -203,7 +229,7 @@ export default function LandingPage({
             </section>
 
             {/* Section popular modules */}
-            <section className="relative gap-10 bg-white px-3 md:px-10 xl:px-5 2xl:px-2">
+            <section className="relative bg-white px-3 md:px-10 xl:px-5 2xl:px-2">
                 <div className="container mx-auto px-4 py-4">
                     <div className="mb-10">
                         <div className="px-4 py-4">
@@ -289,7 +315,7 @@ export default function LandingPage({
             </section>
 
             {/* Section Blog */}
-            <section className="relative w-full gap-10 bg-white px-3 md:px-10 xl:px-5 2xl:px-2">
+            <section className="relative bg-white px-3 md:px-10 xl:px-5 2xl:px-2">
                 <div className="container mx-auto px-4 py-4">
                     <div className="mb-10">
                         <div className="px-4 py-4">
@@ -319,6 +345,36 @@ export default function LandingPage({
                                 ))}
                             </div>
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            <section className="relative w-full bg-white px-3 md:px-10 xl:px-5 2xl:px-2">
+                <div className="container mx-auto px-8 py-8">
+                    <div className="mb-5 flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
+                        <div>
+                            <p className="text-sm font-semibold text-primary">
+                                FROM OUR BLOG
+                            </p>
+                            <h2 className="mt-1 text-4xl font-bold leading-tight text-gray-900">
+                                Cerita, Tren, dan Insight <br />
+                                Seputar Dunia Tech
+                            </h2>
+                        </div>
+
+                        <Link
+                            href="/blogs"
+                            className="text-sm font-medium text-primary hover:underline"
+                        >
+                            Lihat Semua
+                        </Link>
+                    </div>
+                    <div className="flex gap-5">
+                        {data.map((item, i) => (
+                            <div key={i} className="flex-1">
+                                <TestimonialCard {...item} />
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>
