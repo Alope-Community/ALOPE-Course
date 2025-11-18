@@ -15,7 +15,6 @@ import { Video } from '@/models/Video';
 import { Head, Link } from '@inertiajs/react';
 import 'glider-js/glider.min.css';
 import { IconChevronRight, IconCircleCheckFill } from 'justd-icons';
-import Glider from 'react-glider';
 
 export default function LandingPage({
     courses,
@@ -84,7 +83,7 @@ export default function LandingPage({
                             />
                         </div>
                     </div>
-                    <div className="relative order-1 mt-10 flex justify-center lg:order-2 lg:mt-0 lg:w-1/2">
+                    <div className="relative order-1 mt-10 hidden justify-center lg:order-2 lg:mt-0 lg:flex lg:w-1/2">
                         <div className="absolute right-[12%] top-4 h-[380px] w-[340px] rotate-[25deg] rounded-3xl bg-primary blur-[1px] md:h-[460px] md:w-[420px] lg:right-[16%]" />
                         <div className="absolute right-[5%] top-0 h-[400px] w-[360px] rounded-3xl bg-blue-200/100 md:h-[467px] md:w-[440px] lg:right-[10%]" />
                         <img
@@ -228,7 +227,7 @@ export default function LandingPage({
             </section>
 
             {/* Section popular modules */}
-            <section className="relative w-full bg-white px-3 md:px-10 xl:px-5 2xl:px-2">
+            <section className="bg-white ">
                 <div className="container mx-auto px-8 py-8">
                     <div className="mb-5 flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
                         <div>
@@ -245,6 +244,7 @@ export default function LandingPage({
                                 </h2>
                             </div>
                         </div>
+
                         <Link
                             href="/modules"
                             className="flex items-center gap-1 rounded px-5 py-2 text-sm font-bold text-gray-800 duration-300 hover:gap-2 active:scale-95"
@@ -253,60 +253,24 @@ export default function LandingPage({
                             <IconChevronRight className="size-7 text-primary" />
                         </Link>
                     </div>
-                    {modules.length <= 3 ? (
-                        <div className="flex gap-5">
-                            {modules.map((module, index) => (
-                                <div key={index} className="flex-1">
-                                    <ModuleCardComponent props={module} />
-                                </div>
-                            ))}
-                        </div>
-                    ) : (
-                        <div className="relative">
-                            <Glider
-                                draggable
-                                slidesToShow={3.5}
-                                slidesToScroll={1}
-                                dragVelocity={1.5}
-                                responsive={[
-                                    {
-                                        breakpoint: 1536,
-                                        settings: { slidesToShow: 4.5 },
-                                    },
-                                    {
-                                        breakpoint: 1280,
-                                        settings: { slidesToShow: 3.5 },
-                                    },
-                                    {
-                                        breakpoint: 1024,
-                                        settings: { slidesToShow: 2.8 },
-                                    },
-                                    {
-                                        breakpoint: 768,
-                                        settings: { slidesToShow: 1.5 },
-                                    },
-                                    {
-                                        breakpoint: 480,
-                                        settings: { slidesToShow: 1 },
-                                    },
-                                ]}
+
+                    <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                        {modules.map((module, index) => (
+                            <div
+                                key={index}
+                                className={
+                                    index >= 2 ? 'md:hidden lg:block' : ''
+                                }
                             >
-                                {modules.map((module, index) => (
-                                    <div
-                                        key={index}
-                                        className="w-full max-w-lg sm:w-[350px]"
-                                    >
-                                        <ModuleCardComponent props={module} />
-                                    </div>
-                                ))}
-                            </Glider>
-                        </div>
-                    )}
+                                <ModuleCardComponent props={module} />
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </section>
 
             {/* Section Blog */}
-            <section className="relative bg-white px-3 md:px-10 xl:px-5 2xl:px-2">
+            <section className="bg-white">
                 <div className="container mx-auto px-8 py-8">
                     <div className="mb-5 flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
                         <div>
@@ -326,9 +290,14 @@ export default function LandingPage({
                             Lihat Semua
                         </Link>
                     </div>
-                    <div className="flex gap-5">
-                        {blogs.map((blog, index) => (
-                            <div key={index} className="flex-1">
+                    <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                        {blogs.slice(0, 3).map((blog, index) => (
+                            <div
+                                key={index}
+                                className={
+                                    index >= 2 ? 'md:hidden lg:block' : ''
+                                }
+                            >
                                 <SimpleBlogCardComponent props={blog} />
                             </div>
                         ))}
@@ -337,7 +306,7 @@ export default function LandingPage({
             </section>
 
             {/* Sextion What They Say */}
-            <section className="relative w-full bg-white px-3 md:px-10 xl:px-5 2xl:px-2">
+            <section className="bg-white">
                 <div className="container mx-auto px-8 py-8">
                     <div className="mb-5 flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
                         <div>
@@ -357,9 +326,11 @@ export default function LandingPage({
                             Lihat Semua
                         </Link>
                     </div>
-                    <div className="flex gap-5">
+                    <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
                         {data.map((item, i) => (
-                            <div key={i} className="flex-1">
+                            <div key={i}  className={
+                                    i >= 2 ? 'md:hidden lg:block' : ''
+                                }>
                                 <TestimonialCard {...item} />
                             </div>
                         ))}
@@ -368,9 +339,8 @@ export default function LandingPage({
             </section>
 
             {/* Section FAQ */}
-            <section className="relative bg-white px-3 py-10 md:px-10 xl:px-5 2xl:px-2">
-                <div className="container mx-auto px-8 py-8 grid grid-cols-1 gap-10 lg:grid-cols-2">
-                    {/* LEFT TITLE */}
+            <section className="bg-white">
+                <div className="container mx-auto grid grid-cols-1 gap-10 px-8 py-8 lg:grid-cols-2">
                     <div>
                         <p className="text-sm font-semibold uppercase tracking-widest text-blue-600">
                             Frequently Asked Questions
@@ -383,7 +353,6 @@ export default function LandingPage({
                         </h2>
                     </div>
 
-                    {/* RIGHT ACCORDION */}
                     <div className="w-full">
                         <AccordionComponent
                             data={[
