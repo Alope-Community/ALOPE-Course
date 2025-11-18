@@ -2,11 +2,11 @@ import { IconMail, IconMap, IconPilone } from 'justd-icons';
 
 export default function FooterComponent() {
     return (
-        <footer className="bg-primary pb-10 pt-16 text-white">
+        <footer className="overflow-x-hidden bg-primary pb-10 pt-16 text-white">
             <div className="container mx-auto">
-                <div className="grid grid-cols-12 gap-10 px-4 md:px-10">
-                    <div className="col-span-12 md:col-span-6">
-                        <div className="flex items-center gap-2">
+                <div className="grid grid-cols-1 gap-10 px-4 text-center md:grid-cols-12 md:px-10 md:text-left">
+                    <div className="flex flex-col items-center md:col-span-5 md:items-start">
+                        <div className="flex items-center justify-center gap-2 md:justify-start">
                             <img
                                 src="/images/Alope.png"
                                 alt="Alope Logo"
@@ -22,8 +22,7 @@ export default function FooterComponent() {
                             menyenangkan!
                         </p>
                     </div>
-
-                    <div className="col-span-6 md:col-span-2">
+                    <div className="flex flex-col items-center md:col-span-2 md:items-start">
                         <h4 className="mb-3 text-lg font-semibold">Navigasi</h4>
                         <ul className="space-y-2 text-sm">
                             <li>
@@ -44,7 +43,7 @@ export default function FooterComponent() {
                         </ul>
                     </div>
 
-                    <div className="col-span-6 md:col-span-2">
+                    <div className="flex flex-col items-center md:col-span-2 md:items-start">
                         <h4 className="mb-3 text-lg font-semibold">Kursus</h4>
                         <ul className="space-y-2 text-sm">
                             <li>
@@ -65,17 +64,17 @@ export default function FooterComponent() {
                         </ul>
                     </div>
 
-                    <div className="col-span-12 md:col-span-2">
+                    <div className="flex flex-col items-center md:col-span-3 md:items-start">
                         <h4 className="mb-3 text-lg font-semibold">Kontak</h4>
                         <ul className="space-y-3 text-sm">
-                            <li className="flex items-center gap-2">
+                            <li className="flex items-center justify-center gap-2 md:justify-start">
                                 <IconPilone className="w-4" /> 089123456789
                             </li>
-                            <li className="flex items-center gap-2">
+                            <li className="flex items-center justify-center gap-2 md:justify-start">
                                 <IconMap className="w-4" /> Darma, Kuningan,
                                 Jawa Barat
                             </li>
-                            <li className="flex items-center gap-2">
+                            <li className="flex items-center justify-center gap-2 md:justify-start">
                                 <IconMail className="w-4" /> contact@alope.id
                             </li>
                         </ul>
@@ -86,7 +85,7 @@ export default function FooterComponent() {
                     <hr className="my-10 border border-white/30" />
                 </div>
 
-                <div className="px-4 md:px-10">
+                <div className="px-4 text-center md:px-10 md:text-left">
                     <p className="text-sm text-white/90">
                         Copyright 2025 by Alope. All Right Reserved
                     </p>
