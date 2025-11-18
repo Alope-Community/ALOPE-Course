@@ -206,21 +206,20 @@ export default function LandingPage({
 
             {/* Section semuua module */}
             <section className="bg-white py-10">
-                <div className="container mx-auto px-4 md:px-10">
-                    <p className="text-xs font-semibold uppercase tracking-widest text-primary">
-                        Choose Your Path
-                    </p>
+                <div className="container mx-auto px-8 py-8">
+                    <div className="mb-8">
+                        <p className="text-xs font-semibold uppercase tracking-widest text-primary">
+                            Choose Your Path
+                        </p>
 
-                    <h2 className="text-2xl font-extrabold leading-tight text-gray-900 md:text-3xl">
-                        Pilih Jalur Pembelajaran
-                    </h2>
-                    <h2 className="text-2xl font-extrabold leading-tight text-gray-900 md:text-3xl">
-                        Sesuai Minatmu
-                    </h2>
-                </div>
-
-                <div className="container mx-auto mt-8 px-4">
-                    <div className="grid grid-cols-1 gap-6 md:ml-4 md:grid-cols-2 lg:ml-6 lg:grid-cols-3">
+                        <h2 className="text-2xl font-extrabold leading-tight text-gray-900 md:text-3xl">
+                            Pilih Jalur Pembelajaran
+                        </h2>
+                        <h2 className="text-2xl font-extrabold leading-tight text-gray-900 md:text-3xl">
+                            Sesuai Minatmu
+                        </h2>
+                    </div>
+                    <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
                         {courses.slice(0, 3).map((course, index) => (
                             <CourseCardComponent key={index} course={course} />
                         ))}
@@ -229,127 +228,85 @@ export default function LandingPage({
             </section>
 
             {/* Section popular modules */}
-            <section className="relative bg-white px-3 md:px-10 xl:px-5 2xl:px-2">
-                <div className="container mx-auto px-4 py-4">
-                    <div className="mb-10">
-                        <div className="px-4 py-4">
-                            <div className="mb-5 flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
-                                <div>
-                                    <p className="text-xs font-semibold uppercase tracking-widest text-primary">
-                                        Popular Courses
-                                    </p>
+            <section className="relative w-full bg-white px-3 md:px-10 xl:px-5 2xl:px-2">
+                <div className="container mx-auto px-8 py-8">
+                    <div className="mb-5 flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
+                        <div>
+                            <p className="text-xs font-semibold uppercase tracking-widest text-primary">
+                                Popular Courses
+                            </p>
 
-                                    <div className="mt-1">
-                                        <h2 className="text-2xl font-extrabold leading-tight text-gray-900 md:text-3xl">
-                                            Materi Pembelajaran
-                                        </h2>
-                                        <h2 className="text-2xl font-extrabold leading-tight text-gray-900 md:text-3xl">
-                                            Terpopuler Saat Ini
-                                        </h2>
-                                    </div>
-                                </div>
-                                <Link
-                                    href="/modules"
-                                    className="flex items-center gap-1 rounded px-5 py-2 text-sm font-bold text-gray-800 duration-300 hover:gap-2 active:scale-95"
-                                >
-                                    Lihat Semua Modul
-                                    <IconChevronRight className="size-7 text-primary" />
-                                </Link>
+                            <div className="mt-1">
+                                <h2 className="text-2xl font-extrabold leading-tight text-gray-900 md:text-3xl">
+                                    Materi Pembelajaran
+                                </h2>
+                                <h2 className="text-2xl font-extrabold leading-tight text-gray-900 md:text-3xl">
+                                    Terpopuler Saat Ini
+                                </h2>
                             </div>
-                            {modules.length <= 3 ? (
-                                <div className="flex gap-5">
-                                    {modules.map((module, index) => (
-                                        <div key={index} className="flex-1">
-                                            <ModuleCardComponent
-                                                props={module}
-                                            />
-                                        </div>
-                                    ))}
-                                </div>
-                            ) : (
-                                <div className="relative">
-                                    <Glider
-                                        draggable
-                                        slidesToShow={3.5}
-                                        slidesToScroll={1}
-                                        dragVelocity={1.5}
-                                        responsive={[
-                                            {
-                                                breakpoint: 1536,
-                                                settings: { slidesToShow: 4.5 },
-                                            },
-                                            {
-                                                breakpoint: 1280,
-                                                settings: { slidesToShow: 3.5 },
-                                            },
-                                            {
-                                                breakpoint: 1024,
-                                                settings: { slidesToShow: 2.8 },
-                                            },
-                                            {
-                                                breakpoint: 768,
-                                                settings: { slidesToShow: 1.5 },
-                                            },
-                                            {
-                                                breakpoint: 480,
-                                                settings: { slidesToShow: 1 },
-                                            },
-                                        ]}
-                                    >
-                                        {modules.map((module, index) => (
-                                            <div
-                                                key={index}
-                                                className="w-full max-w-lg sm:w-[350px]"
-                                            >
-                                                <ModuleCardComponent
-                                                    props={module}
-                                                />
-                                            </div>
-                                        ))}
-                                    </Glider>
-                                </div>
-                            )}
                         </div>
+                        <Link
+                            href="/modules"
+                            className="flex items-center gap-1 rounded px-5 py-2 text-sm font-bold text-gray-800 duration-300 hover:gap-2 active:scale-95"
+                        >
+                            Lihat Semua Modul
+                            <IconChevronRight className="size-7 text-primary" />
+                        </Link>
                     </div>
+                    {modules.length <= 3 ? (
+                        <div className="flex gap-5">
+                            {modules.map((module, index) => (
+                                <div key={index} className="flex-1">
+                                    <ModuleCardComponent props={module} />
+                                </div>
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="relative">
+                            <Glider
+                                draggable
+                                slidesToShow={3.5}
+                                slidesToScroll={1}
+                                dragVelocity={1.5}
+                                responsive={[
+                                    {
+                                        breakpoint: 1536,
+                                        settings: { slidesToShow: 4.5 },
+                                    },
+                                    {
+                                        breakpoint: 1280,
+                                        settings: { slidesToShow: 3.5 },
+                                    },
+                                    {
+                                        breakpoint: 1024,
+                                        settings: { slidesToShow: 2.8 },
+                                    },
+                                    {
+                                        breakpoint: 768,
+                                        settings: { slidesToShow: 1.5 },
+                                    },
+                                    {
+                                        breakpoint: 480,
+                                        settings: { slidesToShow: 1 },
+                                    },
+                                ]}
+                            >
+                                {modules.map((module, index) => (
+                                    <div
+                                        key={index}
+                                        className="w-full max-w-lg sm:w-[350px]"
+                                    >
+                                        <ModuleCardComponent props={module} />
+                                    </div>
+                                ))}
+                            </Glider>
+                        </div>
+                    )}
                 </div>
             </section>
 
             {/* Section Blog */}
             <section className="relative bg-white px-3 md:px-10 xl:px-5 2xl:px-2">
-                <div className="container mx-auto px-4 py-4">
-                    <div className="mb-10">
-                        <div className="px-4 py-4">
-                            <div className="mb-5 flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
-                                <div>
-                                    <p className="text-sm font-semibold text-primary">
-                                        FROM OUR BLOG
-                                    </p>
-                                    <h2 className="mt-1 text-4xl font-bold leading-tight text-gray-900">
-                                        Cerita, Tren, dan Insight <br />
-                                        Seputar Dunia Tech
-                                    </h2>
-                                </div>
-
-                                <Link
-                                    href="/blogs"
-                                    className="text-sm font-medium text-primary hover:underline"
-                                >
-                                    Lihat Semua
-                                </Link>
-                            </div>
-                            <div className="flex gap-5">
-                                {blogs.map((blog, index) => (
-                                    <div key={index} className="flex-1">
-                                        <SimpleBlogCardComponent props={blog} />
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section className="relative w-full bg-white px-3 md:px-10 xl:px-5 2xl:px-2">
                 <div className="container mx-auto px-8 py-8">
                     <div className="mb-5 flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
                         <div>
@@ -370,6 +327,37 @@ export default function LandingPage({
                         </Link>
                     </div>
                     <div className="flex gap-5">
+                        {blogs.map((blog, index) => (
+                            <div key={index} className="flex-1">
+                                <SimpleBlogCardComponent props={blog} />
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Sextion What They Say */}
+            <section className="relative w-full bg-white px-3 md:px-10 xl:px-5 2xl:px-2">
+                <div className="container mx-auto px-8 py-8">
+                    <div className="mb-5 flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
+                        <div>
+                            <p className="text-sm font-semibold text-primary">
+                                WHAT THEY SAY
+                            </p>
+                            <h2 className="mt-1 text-4xl font-bold leading-tight text-gray-900">
+                                Apa Kata Mereka yang <br />
+                                Sudah Belajar
+                            </h2>
+                        </div>
+
+                        <Link
+                            href="/blogs"
+                            className="text-sm font-medium text-primary hover:underline"
+                        >
+                            Lihat Semua
+                        </Link>
+                    </div>
+                    <div className="flex gap-5">
                         {data.map((item, i) => (
                             <div key={i} className="flex-1">
                                 <TestimonialCard {...item} />
@@ -379,18 +367,24 @@ export default function LandingPage({
                 </div>
             </section>
 
-            {/*Section FAQ  */}
-            <section className="relative px-3 md:px-10 xl:px-5 2xl:px-2">
-                <div className="container mx-auto flex flex-col items-center lg:flex-row">
-                    <div className="hidden flex-1 lg:block">
-                        <img
-                            src="/images/about.svg"
-                            alt="About 3D"
-                            loading="eager"
-                        />
+            {/* Section FAQ */}
+            <section className="relative bg-white px-3 py-10 md:px-10 xl:px-5 2xl:px-2">
+                <div className="container mx-auto px-8 py-8 grid grid-cols-1 gap-10 lg:grid-cols-2">
+                    {/* LEFT TITLE */}
+                    <div>
+                        <p className="text-sm font-semibold uppercase tracking-widest text-blue-600">
+                            Frequently Asked Questions
+                        </p>
+
+                        <h2 className="mt-2 text-4xl font-bold leading-snug text-gray-900">
+                            Hal-hal yang Sering Kamu
+                            <br />
+                            Tanyakan
+                        </h2>
                     </div>
-                    <div className="w-full lg:flex-1">
-                        <h3 className="mb-5 px-2 text-3xl font-bold">FAQs</h3>
+
+                    {/* RIGHT ACCORDION */}
+                    <div className="w-full">
                         <AccordionComponent
                             data={[
                                 {
@@ -417,13 +411,6 @@ export default function LandingPage({
                         />
                     </div>
                 </div>
-
-                <img
-                    src="/images/shapes/purpleBlur2.svg"
-                    className="absolute -bottom-64 left-0 -z-10 md:-bottom-96"
-                    loading="lazy"
-                    alt="purple blur"
-                />
             </section>
 
             <FooterComponent />
