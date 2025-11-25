@@ -3,17 +3,16 @@ import HorizontalArticleCardComponent from '@/Components/Cards/HorizontalArticle
 import HorizontalQuizCardComponent from '@/Components/Cards/HorizontalQuiz';
 import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
+import Tooltip from '@/Components/Tooltip';
 import { Course } from '@/models/Course';
 import SideCoursesSection from '@/Sections/SideCourses';
 import { Head, Link } from '@inertiajs/react';
 import { IconCircleInfoFill } from 'justd-icons';
 import { useState } from 'react';
-import Tooltip from '@/Components/Tooltip'; // ✅ pakai Tooltip custom
 
-// 👉 helper highlight glossary
 function highlightGlossary(
     text: string,
-    glosaries: { title: string; description: string; body: string }[]
+    glosaries: { title: string; description: string; body: string }[],
 ) {
     let result: (string | JSX.Element)[] = [text];
 
@@ -21,18 +20,13 @@ function highlightGlossary(
         result = result.flatMap((chunk) => {
             if (typeof chunk !== 'string') return chunk;
 
-            const parts = chunk.split(
-                new RegExp(`(${glossary.title})`, 'gi')
-            );
+            const parts = chunk.split(new RegExp(`(${glossary.title})`, 'gi'));
 
             return parts.map((part, index) => {
-                if (
-                    part.toLowerCase() ===
-                    glossary.title.toLowerCase()
-                ) {
+                if (part.toLowerCase() === glossary.title.toLowerCase()) {
                     return (
                         <Tooltip key={index} content={glossary.description}>
-                            <span className="text-blue-600 cursor-pointer font-medium">
+                            <span className="cursor-pointer font-medium text-blue-600">
                                 {part}
                             </span>
                         </Tooltip>
@@ -49,7 +43,7 @@ function highlightGlossary(
 export default function CourseShowPage({
     course,
     courses,
-    glosaries, // 👉 props glossary baru
+    glosaries,
 }: {
     course: Course;
     courses: Course[];
