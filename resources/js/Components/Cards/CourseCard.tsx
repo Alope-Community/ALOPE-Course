@@ -17,7 +17,7 @@ export default function CourseCardComponent({ course }: { course: Course }) {
             />
             <div className="rounded-b-md border border-t-0 border-[#2276f0] px-3 pb-3 pt-2">
                 <small className="text-xs italic text-[#2276f0]">
-                    #web-programing
+                    #{course.category.slug}
                 </small>
                 <div className="mt-2 flex items-center gap-2">
                     <p className="font-semibold">{course.title}</p>
@@ -31,10 +31,13 @@ export default function CourseCardComponent({ course }: { course: Course }) {
                     )}
                 </div>
                 <div className="mt-1 flex items-center gap-2">
-                    <p className="text-xs font-medium italic">On Going</p>
+                    <p className="text-xs font-medium italic">
+                        {course.status}
+                    </p>
                     <p className="text-xs">-</p>
                     <p className="mt-1 text-xs text-gray-800">
-                        {course.modules.length} Total Modules
+                        {course.modules.length} Modul & {course.videos.length}{' '}
+                        Video
                     </p>
                 </div>
             </div>

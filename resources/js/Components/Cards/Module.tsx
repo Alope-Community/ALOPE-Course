@@ -10,13 +10,13 @@ export default function ModuleCardComponent({ props }: { props: Module }) {
             className={`mr-5 overflow-hidden rounded-md bg-gray-50 shadow`}
         >
             <div className="relative">
-                <img
+                {/* <img
                     src={props.cover}
                     alt="cover article"
                     className="w-full rounded-t-md"
                     width={1280}
                     height={720}
-                />
+                /> */}
                 <span className="absolute bottom-2 left-2 rounded bg-gray-800/80 p-1">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -34,7 +34,11 @@ export default function ModuleCardComponent({ props }: { props: Module }) {
                     </svg>
                 </span>
             </div>
-            <div className="rounded-b-md border border-t-0 border-[#2276f0] p-3">
+
+            <div className="rounded-md border border-[#2276f0] p-3">
+                <span className="rounded text-xs font-semibold text-[#2276f0]">
+                    {props.course.title}
+                </span>
                 <p className="font-semibold">{props.title}</p>
                 <p className="mt-1 text-sm text-gray-800">
                     {strLimit(props.description, 100)}

@@ -9,6 +9,7 @@ export type Course = {
     slug: string;
     title: string;
     cover?: string;
+    status: 'coming-soon' | 'on-going' | 'compleated';
     visibility: 'public' | 'private';
     category_id: string;
     description: string;
