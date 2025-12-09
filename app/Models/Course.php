@@ -32,7 +32,7 @@ class Course extends Model
 
     public function articles()
     {
-        return $this->hasMany(Article::class);
+        return $this->hasMany(Module::class);
     }
 
     public function quizzes()

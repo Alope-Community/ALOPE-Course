@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Article;
 use App\Models\Course;
 use App\Models\Glossary;
+use App\Models\Module;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -27,7 +27,7 @@ class CourseController extends Controller
             'videos'
         ])->latest()->get();
 
-        $articles = Article::with("course")->wherePublished(true)->latest()->get();
+        $articles = Module::with("course")->wherePublished(true)->latest()->get();
 
         return Inertia::render('Course/Index', [
             "courses" => $courses,

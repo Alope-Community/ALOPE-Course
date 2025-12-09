@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Article;
+use App\Models\Module;
 use App\Models\Read;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -17,7 +17,7 @@ class ArticleController extends Controller
     public function index()
     {
 
-        $articles = Article::with("course")->wherePublished(true)->latest()->paginate(7);
+        $articles = Module::with("course")->wherePublished(true)->latest()->paginate(7);
 
         return Inertia::render('Article/Index', [
             "articles" => $articles
@@ -46,8 +46,8 @@ class ArticleController extends Controller
     public function show(string $slug)
     {
 
-        $article = Article::with(["writer", "course.users"])->whereSlug($slug)->first();
-        $articles = Article::with("course")->wherePublished(true)->where('slug', '!=', $slug)->latest()->get();
+        $article = Module::with(["writer", "course.users"])->whereSlug($slug)->first();
+        $articles = Module::with("course")->wherePublished(true)->where('slug', '!=', $slug)->latest()->get();
 
 
         if ($article->course->visibility == 'private') {
