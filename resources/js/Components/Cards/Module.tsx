@@ -69,7 +69,7 @@ export default function ModuleCardComponent({ props }: { props: Module }) {
                                     clipRule="evenodd"
                                 />
                             </svg>
-                            {props.reads.length} views
+                            {props.reads?.length} views
                         </div>
                     </div>
 

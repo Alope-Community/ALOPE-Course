@@ -95,18 +95,18 @@ export default function ModuleShowPage({
                             <div className="my-7 flex gap-2 sm:items-center">
                                 <div>
                                     <img
-                                        src={module.writer.profile}
+                                        src={module.writer?.profile}
                                         alt="ilham hafidz photo"
                                         className="size-11 rounded-full border shadow"
                                     />
                                 </div>
                                 <div className="flex flex-col sm:flex-row sm:gap-2">
                                     <p className="text-sm font-semibold text-[#2276f0] xl:text-base">
-                                        {module.writer.name}
+                                        {module.writer?.name}
                                     </p>
                                     <p className="hidden sm:block">&#128900;</p>
                                     <p className="text-sm text-gray-500 xl:text-base">
-                                        {module.writer.as}
+                                        {module.writer?.as}
                                     </p>
                                 </div>
                             </div>
