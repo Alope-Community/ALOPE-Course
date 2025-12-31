@@ -85,7 +85,7 @@ export default function LandingPage({
                     </div>
                     <div className="relative order-1 mt-10 hidden justify-center lg:order-2 lg:mt-0 lg:flex lg:w-1/2">
                         <div className="absolute right-[12%] top-4 h-[380px] w-[340px] rotate-[25deg] rounded-3xl bg-primary blur-[1px] md:h-[460px] md:w-[420px] lg:right-[16%]" />
-                        <div className="absolute right-[5%] top-0 h-[400px] w-[360px] rounded-3xl bg-blue-200/100 md:h-[467px] md:w-[440px] lg:right-[10%]" />
+                        <div className="absolute right-[5%] top-0 h-[400px] w-[360px] rounded-3xl bg-[#51a2ff] md:h-[467px] md:w-[440px] lg:right-[10%]" />
                         <img
                             src="/images/header1.png"
                             alt="Belajar coding"
@@ -169,7 +169,8 @@ export default function LandingPage({
                         </div>
                     </div>
 
-                    <div className="w-full md:w-1/2">
+                    {/* Kontainer teks */}
+                    <div className="flex w-full flex-col items-center text-center md:w-1/2 md:items-start md:text-left">
                         <p className="text-sm font-semibold uppercase tracking-wide text-primary">
                             Why Choose Us
                         </p>
@@ -185,7 +186,10 @@ export default function LandingPage({
                                 'Fleksibel & Ramah Pemula',
                                 'Komunitas yang Mendukung',
                             ].map((item, i) => (
-                                <li key={i} className="flex items-center gap-3">
+                                <li
+                                    key={i}
+                                    className="flex items-center justify-center gap-3 md:justify-start"
+                                >
                                     <IconCircleCheckFill className="size-5 text-green-500" />
                                     {item}
                                 </li>
@@ -227,7 +231,7 @@ export default function LandingPage({
             </section>
 
             {/* Section popular modules */}
-            <section className="bg-white ">
+            <section className="bg-white">
                 <div className="container mx-auto px-8 py-8">
                     <div className="mb-5 flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
                         <div>
@@ -246,11 +250,10 @@ export default function LandingPage({
                         </div>
 
                         <Link
-                            href="/modules"
-                            className="flex items-center gap-1 rounded px-5 py-2 text-sm font-bold text-gray-800 duration-300 hover:gap-2 active:scale-95"
+                            href="/blogs"
+                            className="text-sm font-medium text-primary hover:underline"
                         >
-                            Lihat Semua Modul
-                            <IconChevronRight className="size-7 text-primary" />
+                            Lihat Semua
                         </Link>
                     </div>
 
@@ -290,7 +293,7 @@ export default function LandingPage({
                             Lihat Semua
                         </Link>
                     </div>
-                    <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                    <div className="grid grid-cols-1 gap-14 sm:grid-cols-2 lg:grid-cols-3">
                         {blogs.slice(0, 3).map((blog, index) => (
                             <div
                                 key={index}
@@ -328,9 +331,10 @@ export default function LandingPage({
                     </div>
                     <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
                         {data.map((item, i) => (
-                            <div key={i}  className={
-                                    i >= 2 ? 'md:hidden lg:block' : ''
-                                }>
+                            <div
+                                key={i}
+                                className={i >= 2 ? 'md:hidden lg:block' : ''}
+                            >
                                 <TestimonialCard {...item} />
                             </div>
                         ))}

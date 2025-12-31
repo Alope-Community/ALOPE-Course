@@ -14,7 +14,7 @@ export default function ModuleCardComponent({ props }: { props: Module }) {
                 <img
                     src={props.cover}
                     alt="cover"
-                    className="h-full w-full object-cover"
+                    className="h-full w-full"
                 />
             </div>
             <div className="flex flex-1 flex-col justify-between p-4">

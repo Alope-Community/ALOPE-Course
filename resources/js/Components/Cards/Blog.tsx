@@ -16,7 +16,6 @@ export default function SimpleBlogCardComponent({
             href={`/blogs/${props.slug}`}
             className="block w-full max-w-md overflow-hidden rounded-2xl border-2 border-gray-300 bg-white transition"
         >
-            {/* Gambar full di atas */}
             <img
                 src={props.cover}
                 alt={props.title}
@@ -25,7 +24,6 @@ export default function SimpleBlogCardComponent({
                 height={720}
             />
 
-            {/* Konten card */}
             <div className="p-5">
                 <span
                     className={`mb-3 inline-block rounded-full px-3 py-1 text-sm font-medium ${tagColor}`}
@@ -33,9 +31,13 @@ export default function SimpleBlogCardComponent({
                     {tag}
                 </span>
 
-                <p className="mb-2 text-xl font-semibold">{props.title}</p>
+                {/* Title — dibatasi 2 baris dan fixed height */}
+                <p className="mb-2 text-xl font-semibold line-clamp-2 min-h-[56px]">
+                    {props.title}
+                </p>
 
-                <p className="mb-4 line-clamp-3 text-sm text-gray-600">
+                {/* Description — dibatasi 3 baris dan fixed height */}
+                <p className="mb-4 line-clamp-3 text-sm text-gray-600 min-h-[60px]">
                     {props.description}
                 </p>
 
