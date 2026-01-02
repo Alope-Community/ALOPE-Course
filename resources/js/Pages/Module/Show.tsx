@@ -7,7 +7,7 @@ import { Module } from '@/models/Module';
 import SideModulesSection from '@/Sections/SideModules';
 import { formatDateWithTime } from '@/tools/formatDate';
 import strLimit from '@/tools/strLimit';
-import { IconCalendar } from 'justd-icons';
+import { IconCalendar, IconClock, IconEye } from 'justd-icons';
 import '../../../css/bodyContent.css';
 
 // const codeBlock = `<div class="container">
@@ -78,26 +78,48 @@ export default function ModuleShowPage({
                 <div className="mt-10 grid grid-cols-4 gap-8 xl:gap-10">
                     <main className="col-span-4 lg:col-span-3">
                         <header>
-                            <h1 className="mb-2 text-xl font-bold sm:text-2xl xl:text-3xl">
+                            <img
+                                src={module.cover}
+                                // src={'https://alope.id/images/thumbs/lwd2.png'}
+                                alt="Cover Module"
+                                className="max-h-[300px] w-full rounded object-contain sm:max-h-[450px] lg:object-cover xl:max-h-[600px]"
+                            />
+                            <div className="flex gap-5">
+                                <p className="mt-7 flex items-center gap-1 text-xs text-[#2276f0] sm:text-sm md:text-base">
+                                    {/* <span className="italic underline">
+                                    alope.id/articles/{article.slug}
+                                    </span> */}
+                                    <IconCalendar />
+                                    <span className="text-gray-700 font-semibold">
+                                        {formatDateWithTime(
+                                            module.created_at || '',
+                                        )}
+                                    </span>
+                                </p>
+                                <p className="mt-7 flex items-center gap-1 text-xs sm:text-sm md:text-base">
+                                    <IconClock />
+                                    <span className="text-gray-700 font-semibold">
+                                        {/* STATIC */}
+                                        3 Menit
+                                    </span>
+                                </p>
+                                <p className="mt-7 flex items-center gap-1 text-xs sm:text-sm md:text-base">
+                                    <IconEye />
+                                    <span className="text-gray-700 font-semibold">
+                                        {/* STATIC */}
+                                        200 Views
+                                    </span>
+                                </p>
+                            </div>
+                            <h1 className="mt-7 text-xl font-bold sm:text-2xl xl:text-3xl">
                                 {module.title}
                             </h1>
-                            <p className="my-3 flex items-center gap-1 text-xs text-[#2276f0] sm:text-sm">
-                                {/* <span className="italic underline">
-                                    alope.id/articles/{article.slug}
-                                </span> */}
-                                <IconCalendar />
-                                <span className="text-gray-700">
-                                    {formatDateWithTime(
-                                        module.created_at || '',
-                                    )}
-                                </span>
-                            </p>
                             <div className="my-7 flex gap-2 sm:items-center">
                                 <div>
                                     <img
-                                        src={module.writer?.profile}
+                                        src={module.writer?.profile || 'https://placehold.co/600x400?text=No+Image'}
                                         alt="ilham hafidz photo"
-                                        className="size-11 rounded-full border shadow"
+                                        className="size-11 rounded-full border shadow object-cover"
                                     />
                                 </div>
                                 <div className="flex flex-col sm:flex-row sm:gap-2">
@@ -110,12 +132,6 @@ export default function ModuleShowPage({
                                     </p>
                                 </div>
                             </div>
-                            <img
-                                src={module.cover}
-                                // src={'https://alope.id/images/thumbs/lwd2.png'}
-                                alt="Cover Module"
-                                className="max-h-[300px] w-full rounded object-contain sm:max-h-[450px] lg:object-cover xl:max-h-[600px]"
-                            />
                         </header>
 
                         <section
