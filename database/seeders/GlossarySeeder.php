@@ -11,8 +11,6 @@ class GlossarySeeder extends Seeder
 {
     public function run(): void
     {
-        DB::table('glosaries')->delete();
-
         $items = [
             [
                 'title' => 'CSS',
@@ -35,7 +33,7 @@ class GlossarySeeder extends Seeder
         ];
 
         foreach ($items as $item) {
-            DB::table('glosaries')->insert([
+            DB::table('glossaries')->insert([
                 'id' => (string) Str::uuid(),
                 'title' => $item['title'],
                 'slug' => $item['slug'],
