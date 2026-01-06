@@ -21,4 +21,8 @@ class Video extends Model
     public function course(){
         return $this->belongsTo(Course::class);
     }
+
+    //  public function modules(){
+    //     return $this->belongsTo(Course::class);
+    // }
 }

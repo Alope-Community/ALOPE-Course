@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Module;
 use App\Models\Video;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -45,8 +46,17 @@ class VideoController extends Controller
                     ->orderBy('created_at', 'ASC')
                     ->get();
 
+         // Convert module_ids string → array
+        $moduleIds = explode(',', $video->module_ids);
+
+        // Ambil modules berdasarkan ID dan ikutkan relasi course
+        $modules = Module::with('course', 'reads')
+            ->whereIn('id', $moduleIds)
+            ->orderBy('created_at', 'ASC')
+            ->get();
+
                     
-        $modules = $video->modules;
+        // $modules = $video->modules;
 
         return Inertia::render('Video/Show', [
             'videos' => $videos,
