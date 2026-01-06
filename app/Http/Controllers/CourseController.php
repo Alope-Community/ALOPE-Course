@@ -17,21 +17,22 @@ class CourseController extends Controller
     {
 
         $courses = Course::with([
-            'articles' => function ($query) {
+            'modules' => function ($query) {
                 $query->latest();
             },
             'quizzes' => function ($query) {
                 $query->latest();
             },
             'hashtags',
-            'videos'
+            'videos',
+            'category'
         ])->latest()->get();
 
-        $articles = Module::with("course")->wherePublished(true)->latest()->get();
+        $modules = Module::with("course")->wherePublished(true)->latest()->get();
 
         return Inertia::render('Course/Index', [
             "courses" => $courses,
-            "articles" => $articles,
+            "modules" => $modules,
         ]);
     }
 
@@ -56,27 +57,47 @@ class CourseController extends Controller
      */
     public function show(string $slug)
     {
-        $course = Course::with(['articles' => function ($query) {
-            $query->latest();
-        }, 'quizzes' => function ($query) {
-            $query->latest();
-        }, 'hashtags', 'videos' => function ($query) {
-            $query->oldest();
-        }])->whereSlug($slug)->first();
+        $course = Course::with([
+            'modules' => function ($query) {
+                $query->latest();
+            },
+            'quizzes' => function ($query) {
+                $query->latest();
+            },
+            'hashtags',
+            'videos' => function ($query) {
+                $query->latest();
+            },
+            'glossaries' => function ($query) {
+                $query->select('glossaries.id', 'title', 'description')
+                    ->get();
+            }
+        ])->whereSlug($slug)->firstOrFail();
 
-        $courses = Course::with(['articles' => function ($query) {
-            $query->latest();
-        }, 'hashtags'])->where('slug', '!=', $slug)->latest()->get();
+        $courses = Course::with([
+            'modules' => function ($query) {
+                $query->latest();
+            },
+            'hashtags'
+        ])->where('slug', '!=', $slug)->latest()->get();
 
-        // $articles = Article::with("course")->wherePublished(true)->latest()->get();
-        $glosaries = Glossary::select('title', 'description')->get();
+        $glossaries = Glossary::select('glossaries.id', 'title', 'description', 'slug', 'body')
+            ->whereHas('courses', function ($query) use ($course) {
+                $query->where('courses.id', $course->id);
+            })
+            ->orderBy('slug')
+            ->get();
+
+        $allGlossary = $course->glossaries;
 
         return Inertia::render('Course/Show', [
             "course" => $course,
             "courses" => $courses,
-            "glosaries" => $glosaries,
+            "glossaries" => $glossaries,
+            "allGlossary" => $allGlossary,
         ]);
     }
+
 
     /**
      * Show the form for editing the specified resource.

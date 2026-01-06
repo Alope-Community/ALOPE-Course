@@ -7,9 +7,9 @@ export default function CardComponent({
     type: string;
     addedClass?: string;
 }) {
-    return type == 'article' ? (
+    return type == 'module' ? (
         <Link
-            href="/articles/css-pseudo-classuuntuk-membuat-website-lebih-interaktif"
+            href="/modules/css-pseudo-classuuntuk-membuat-website-lebih-interaktif"
             className={`overflow-hidden rounded-md bg-gray-50 shadow ${addedClass}`}
         >
             <div className="relative h-[200px]">

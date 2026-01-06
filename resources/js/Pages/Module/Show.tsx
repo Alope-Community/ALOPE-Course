@@ -3,13 +3,12 @@ import NavbarComponent from '@/Components/Navbar';
 import { Head } from '@inertiajs/react';
 
 import BreadcrumbComponent from '@/Components/Breadcrumb';
-import { Article } from '@/models/Article';
-import SideArticlesSection from '@/Sections/SideArticles';
+import { Module } from '@/models/Module';
+import SideModulesSection from '@/Sections/SideModules';
 import { formatDateWithTime } from '@/tools/formatDate';
 import strLimit from '@/tools/strLimit';
-import { IconCalendar } from 'justd-icons';
-// import { Highlight, themes } from 'prism-react-renderer';
-// import '../../../css/bodyContent.css';
+import { IconCalendar, IconClock, IconEye } from 'justd-icons';
+import '../../../css/bodyContent.css';
 
 // const codeBlock = `from mlxtend.frequent_patterns import apriori, association_rules
 // import pandas as pd
@@ -40,25 +39,25 @@ import { IconCalendar } from 'justd-icons';
 // print("\nAssociation Rules:")
 // print(rules[['antecedents', 'consequents', 'support', 'confidence', 'lift']])`;
 
-export default function ArticleShowPage({
-    article,
-    articles,
+export default function ModuleShowPage({
+    module,
+    modules,
 }: {
-    article: Article;
-    articles: Article[];
+    module: Module;
+    modules: Module[];
 }) {
     return (
         <>
-            <Head title="Article" />
+            <Head title="Modul" />
 
             <NavbarComponent />
 
             <BreadcrumbComponent
                 links={[
-                    { title: 'Articles', url: '/articles' },
+                    { title: 'Modules', url: '/modules' },
                     {
-                        title: strLimit(article.title, 20),
-                        url: `/articles/${article.slug}`,
+                        title: strLimit(module.title, 20),
+                        url: `/modules/${module.slug}`,
                         active: true,
                     },
                 ]}
@@ -101,55 +100,73 @@ export default function ArticleShowPage({
                 <div className="mt-10 grid grid-cols-4 gap-8 xl:gap-10">
                     <main className="col-span-4 lg:col-span-3">
                         <header>
-                            <h1 className="mb-2 text-xl font-bold sm:text-2xl xl:text-3xl">
-                                {article.title}
-                            </h1>
-                            <p className="my-3 flex items-center gap-1 text-xs text-[#2276f0] sm:text-sm">
-                                {/* <span className="italic underline">
+                            <img
+                                src={module.cover}
+                                // src={'https://alope.id/images/thumbs/lwd2.png'}
+                                alt="Cover Module"
+                                className="max-h-[300px] w-full rounded object-contain sm:max-h-[450px] lg:object-cover xl:max-h-[600px]"
+                            />
+                            <div className="flex gap-5">
+                                <p className="mt-7 flex items-center gap-1 text-xs text-[#2276f0] sm:text-sm md:text-base">
+                                    {/* <span className="italic underline">
                                     alope.id/articles/{article.slug}
-                                </span> */}
-                                <IconCalendar />
-                                <span className="text-gray-700">
-                                    {formatDateWithTime(
-                                        article.created_at || '',
-                                    )}
-                                </span>
-                            </p>
+                                    </span> */}
+                                    <IconCalendar />
+                                    <span className="font-semibold text-gray-700">
+                                        {formatDateWithTime(
+                                            module.created_at || '',
+                                        )}
+                                    </span>
+                                </p>
+                                <p className="mt-7 flex items-center gap-1 text-xs sm:text-sm md:text-base">
+                                    <IconClock />
+                                    <span className="font-semibold text-gray-700">
+                                        {/* STATIC */}3 Menit
+                                    </span>
+                                </p>
+                                <p className="mt-7 flex items-center gap-1 text-xs sm:text-sm md:text-base">
+                                    <IconEye />
+                                    <span className="font-semibold text-gray-700">
+                                        {/* STATIC */}
+                                        200 Views
+                                    </span>
+                                </p>
+                            </div>
+                            <h1 className="mt-7 text-xl font-bold sm:text-2xl xl:text-3xl">
+                                {module.title}
+                            </h1>
                             <div className="my-7 flex gap-2 sm:items-center">
                                 <div>
                                     <img
-                                        src={article.writer.profile}
+                                        src={
+                                            module.writer?.profile ||
+                                            'https://placehold.co/600x400?text=No+Image'
+                                        }
                                         alt="ilham hafidz photo"
-                                        className="size-11 rounded-full border shadow"
+                                        className="size-11 rounded-full border object-cover shadow"
                                     />
                                 </div>
                                 <div className="flex flex-col sm:flex-row sm:gap-2">
                                     <p className="text-sm font-semibold text-[#2276f0] xl:text-base">
-                                        {article.writer.name}
+                                        {module.writer?.name}
                                     </p>
                                     <p className="hidden sm:block">&#128900;</p>
                                     <p className="text-sm text-gray-500 xl:text-base">
-                                        {article.writer.as}
+                                        {module.writer?.as}
                                     </p>
                                 </div>
                             </div>
-                            <img
-                                src={article.cover}
-                                // src={'https://alope.id/images/thumbs/lwd2.png'}
-                                alt="Cover Article"
-                                className="max-h-[300px] w-full rounded object-contain sm:max-h-[450px] lg:object-cover xl:max-h-[600px]"
-                            />
                         </header>
 
                         <section
                             id="body"
                             className="mt-5"
                             dangerouslySetInnerHTML={{
-                                __html: article.body,
+                                __html: module.body,
                             }}
                         ></section>
                     </main>
-                    <SideArticlesSection articles={articles} />
+                    <SideModulesSection modules={modules} />
                 </div>
             </section>
 

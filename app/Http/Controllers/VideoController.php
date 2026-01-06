@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Module;
 use App\Models\Video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -47,20 +47,22 @@ class VideoController extends Controller
                     ->orderBy('created_at', 'ASC')
                     ->get();
 
-                    
-        $articles = $video->articles;
+         // Convert module_ids string → array
+        $moduleIds = explode(',', $video->module_ids);
 
-        if ($video->course->visibility == 'private') {
-            $user = User::with('courses')->find(Auth::id());
-            if (!$video->course->users->contains($user) || !Auth::check()) {
-                return redirect("/access-blocked");
-            }
-        }
+        // Ambil modules berdasarkan ID dan ikutkan relasi course
+        $modules = Module::with('course', 'reads')
+            ->whereIn('id', $moduleIds)
+            ->orderBy('created_at', 'ASC')
+            ->get();
+
+                    
+        // $modules = $video->modules;
 
         return Inertia::render('Video/Show', [
             'videos' => $videos,
             'video' => $video,
-            'articles' => $articles,
+            'modules' => $modules,
         ]);
     }
 

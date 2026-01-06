@@ -1,6 +1,6 @@
-import { Article } from './Article';
 import { Category } from './Category';
 import { Hashtag } from './Hashtag';
+import { Module } from './Module';
 import { Quiz } from './Quiz';
 import { Video } from './Video';
 
@@ -9,13 +9,14 @@ export type Course = {
     slug: string;
     title: string;
     cover?: string;
+    status: 'coming-soon' | 'on-going' | 'compleated';
     visibility: 'public' | 'private';
     status: 'coming-soon' | 'on-going' | 'compleated';
     category_id: string;
     description: string;
 
     hashtags: Hashtag[];
-    articles: Article[];
+    modules: Module[];
     videos: Video[];
     category: Category;
     quizzes: Quiz[];

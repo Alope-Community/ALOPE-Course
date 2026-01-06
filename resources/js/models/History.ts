@@ -1,13 +1,13 @@
-import { Article } from './Article';
+import { Module } from './Module';
 import { Question } from './Quiz';
 
 export type HistoryLog = {
     id: string;
     created_at: string;
     user_id: number;
-    // article
-    article_id: string;
-    article?: Article;
+    // module
+    module_id: string;
+    module?: Module;
     // quiz
     answer?: string;
     is_correct?: number;
@@ -21,7 +21,7 @@ export type History = {
         id: string;
         title: string;
         slug: string;
-        type: 'article' | 'course';
+        type: 'module' | 'course';
     };
     logs: HistoryLog[];
     created_at: string;

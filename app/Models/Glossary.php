@@ -9,9 +9,8 @@ use Illuminate\Support\Str;
 class Glossary extends Model
 {
     use HasUuids;
-
-    protected $table = 'glosaries'; 
-    protected $fillable = ['title', 'slug', 'short_definition', 'long_definition'];
+    
+    protected $fillable = ['title', 'slug', 'description', 'body'];
 
     public $incrementing = false;
     protected $keyType = 'string';
@@ -25,5 +24,10 @@ class Glossary extends Model
                 $model->{$model->getKeyName()} = (string) Str::uuid();
             }
         });
+    }
+
+    public function courses()
+    {
+        return $this->belongsToMany(Course::class);
     }
 }

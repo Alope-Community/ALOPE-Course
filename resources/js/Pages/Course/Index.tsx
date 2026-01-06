@@ -1,21 +1,19 @@
-import BadgeComponent from '@/Components/Badge';
-import BreadcrumbComponent from '@/Components/Breadcrumb';
-import QuizCardComponent from '@/Components/Cards/Quiz';
-import SimpleArticleCardComponent from '@/Components/Cards/SimpleArticle';
+import CourseCardComponent from '@/Components/Cards/CourseCard';
+import { Container } from '@/Components/Container';
 import FooterComponent from '@/Components/Footer';
+import { HeaderText } from '@/Components/HeaderText';
 import NavbarComponent from '@/Components/Navbar';
-import { Article } from '@/models/Article';
+import { SubText } from '@/Components/SubText';
 import { Course } from '@/models/Course';
-import SideArticlesSection from '@/Sections/SideArticles';
-import { Head, Link } from '@inertiajs/react';
-import Glider from 'react-glider';
+import { Module } from '@/models/Module';
+import { Head } from '@inertiajs/react';
 
 export default function CourseIndexPage({
     courses,
-    articles,
+    modules,
 }: {
     courses: Course[];
-    articles: Article[];
+    modules: Module[];
 }) {
     return (
         <>
@@ -23,7 +21,24 @@ export default function CourseIndexPage({
 
             <NavbarComponent />
 
-            <img
+            <Container>
+                <SubText text='CHOOSE YOUR PATH' />
+                <HeaderText text='Pilih jalur belajar sesuai dengan minatmu' />
+
+                <section className="my-10">
+                    <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                        {courses.map((course) => (
+                            <CourseCardComponent
+                                key={course.id}
+                                course={course}
+                            />
+                        ))}
+                    </div>
+                </section>
+
+            </Container>
+
+            {/* <img
                 src="/images/shapes/blueBlur2.svg"
                 alt="blueBlur"
                 className="absolute right-0 top-0 hidden xl:block"
@@ -69,7 +84,7 @@ export default function CourseIndexPage({
 
                                 <h3 className="mb-7 mt-6 font-bold sm:text-xl">
                                     <span className="text-gray-500">// </span>{' '}
-                                    Pelajaran
+                                    Modul Pembelajaran
                                 </h3>
                                 <Glider
                                     draggable
@@ -108,16 +123,14 @@ export default function CourseIndexPage({
                                         }, // Mobile
                                     ]}
                                 >
-                                    {course.articles.length ? (
-                                        course.articles.map(
-                                            (article, index) => (
-                                                <SimpleArticleCardComponent
-                                                    key={index}
-                                                    props={article}
-                                                    withoutBorder
-                                                />
-                                            ),
-                                        )
+                                    {course.modules.length ? (
+                                        course.modules.map((module, index) => (
+                                            <SimpleModuleCardComponent
+                                                key={index}
+                                                props={module}
+                                                withoutBorder
+                                            />
+                                        ))
                                     ) : (
                                         <p className="italic text-gray-700">
                                             Belum ada artikel terkait
@@ -207,8 +220,8 @@ export default function CourseIndexPage({
                         </div>
                     ))}
                 </section>
-                <SideArticlesSection articles={articles} />
-            </main>
+                <SideModulesSection modules={modules} />
+            </main> */}
 
             <FooterComponent />
         </>

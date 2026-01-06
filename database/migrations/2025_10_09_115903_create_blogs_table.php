@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('glosaries', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->string('title'); 
-            $table->string('slug')->unique();
-            $table->string('description')->nullable(); 
-            $table->longText('body')->nullable();
+        Schema::create('blogs', function (Blueprint $table) {
+            $table->uuid("id")->primary();
+            $table->string("title");
+            $table->string("slug");
+            $table->string("cover");
+            $table->text("description");
+            $table->text("body");
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('glosaries');
+        Schema::dropIfExists('blogs');
     }
 };

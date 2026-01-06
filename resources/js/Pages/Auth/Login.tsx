@@ -1,16 +1,20 @@
 import { Head, Link, useForm, usePage } from '@inertiajs/react';
-import { IconBrandGoogle, IconEye, IconEyeClosed, IconLoader2 } from 'justd-icons';
+import {
+    IconBrandGoogle,
+    IconEye,
+    IconEyeClosed,
+    IconLoader2,
+} from 'justd-icons';
 import { FormEventHandler, useState } from 'react';
 import toast from 'react-hot-toast';
 
 type SharedEnvProps = {
-  env?: {
-    APP_URL: string;
-  };
+    env?: {
+        APP_URL: string;
+    };
 };
 
 export default function LoginPage() {
-
     const { env } = usePage().props as unknown as SharedEnvProps;
 
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -112,8 +116,12 @@ export default function LoginPage() {
                                 {processing && <IconLoader2 />}
                                 Submit
                             </button>
-                            <a href={`${env?.APP_URL}/auth/google`} className="flex w-full items-center text-sm justify-center gap-2 rounded bg-gray-800 py-4 text-white hover:bg-gray-800/80 mt-5">
-                                <IconBrandGoogle /> Login Atau Registrasi dengan Google
+                            <a
+                                href={`${env?.APP_URL}/auth/google`}
+                                className="mt-5 flex w-full items-center justify-center gap-2 rounded bg-gray-800 py-4 text-sm text-white hover:bg-gray-800/80"
+                            >
+                                <IconBrandGoogle /> Login Atau Registrasi dengan
+                                Google
                             </a>
                             <p className="mt-3 text-center text-sm text-gray-700">
                                 Kembali ke{' '}

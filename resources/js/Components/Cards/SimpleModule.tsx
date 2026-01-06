@@ -1,23 +1,23 @@
-import { Article } from '@/models/Article';
+import { Module } from '@/models/Module';
 import { formatDateWithTime } from '@/tools/formatDate';
 import strLimit from '@/tools/strLimit';
 import { Link } from '@inertiajs/react';
 
-export default function SimpleArticleCardComponent({
+export default function SimpleModuleCardComponent({
     props,
     withoutBorder = false,
 }: {
-    props: Article;
+    props: Module;
     withoutBorder?: boolean;
 }) {
     return (
         <Link
-            href={`/articles/${props.slug}`}
+            href={`/modules/${props.slug}`}
             className={`${!withoutBorder && 'shadow'} mr-5`}
         >
             <img
                 src={props.cover}
-                alt="article cover"
+                alt="module cover"
                 className="max-h-[150px] w-full rounded 2xl:max-h-[200px]"
                 width={1280}
                 height={720}

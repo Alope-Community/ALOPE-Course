@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use App\Models\Course;
 use App\Models\Module;
 use Inertia\Inertia;
@@ -13,22 +14,26 @@ class LandingPageController extends Controller
      */
     public function __invoke()
     {
-        $courses = Course::with(["articles", "category", 'videos'])->latest()->get();
-        // $videos = Video::with(["course.category", "course.hashtags", "course.videos"])->latest('created_at')->get();
-        $articles = Module::with('reads')
+        $courses = Course::with(["modules", 'category', 'videos'])->latest()->get();
+        $modules = Module::with(['reads', 'course', 'writer'])
             ->withCount('reads') 
             ->where('published', true)
             ->orderBy('reads_count', 'desc')
-            ->limit(7)
+            ->limit(3)
             ->get();
 
-        $latestArticle = Module::with(['course', 'writer', 'reads'])->latest()->first();
+        $latestModule = Module::with(['course', 'writer', 'reads'])->latest()->first();
+
+        $blogs = Blog::select('title', 'slug', 'cover', 'description')
+            ->latest()
+            ->take(3)
+            ->get();
 
         return Inertia::render('LandingPage', [
-            // "videos" => $videos,
-            "latestArticle" => $latestArticle,
-            "articles" => $articles,
+            "latestModule" => $latestModule,
+            "modules" => $modules,
             "courses" => $courses,
+            "blogs" => $blogs,
         ]);
     }
 }

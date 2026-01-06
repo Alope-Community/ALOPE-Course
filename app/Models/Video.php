@@ -12,13 +12,17 @@ class Video extends Model
     public $incrementing = false; 
     protected $keyType = 'string'; 
 
-    public function getArticlesAttribute()
+    public function getModulesAttribute()
     {
-        $ids = array_filter(explode(',', $this->article_ids));
+        $ids = array_filter(explode(',', $this->module_ids));
         return Module::with("reads")->whereIn('id', $ids)->get();
     }
 
     public function course(){
         return $this->belongsTo(Course::class);
     }
+
+    //  public function modules(){
+    //     return $this->belongsTo(Course::class);
+    // }
 }

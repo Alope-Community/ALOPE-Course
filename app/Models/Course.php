@@ -30,7 +30,7 @@ class Course extends Model
         return $this->hasMany(Video::class);
     }
 
-    public function articles()
+    public function modules()
     {
         return $this->hasMany(Module::class);
     }
@@ -43,5 +43,10 @@ class Course extends Model
     public function users()
     {
         return $this->belongsToMany(User::class);
+    }
+
+    public function glossaries()
+    {
+        return $this->belongsToMany(Glossary::class);
     }
 }

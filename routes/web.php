@@ -1,11 +1,13 @@
 <?php
 
-use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\AnswerController;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\GlossaryController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\LandingPageController;
+use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;
@@ -21,9 +23,12 @@ Route::get('/access-blocked', function () {
     return Inertia::render('Informational/AccessBlocked');
 });
 
-Route::resource('/articles', ArticleController::class);
+Route::resource('/modules', ModuleController::class);
 Route::resource('/courses', CourseController::class);
 Route::resource('/videos', VideoController::class);
+Route::get('/glosarium/{slug}', [GlossaryController::class, 'show'])->name('glosarium.show');
+Route::resource('/blogs', BlogController::class);
+// Route::get('/glosarium', [GlossaryController::class, 'index'])->name('glosarium.index');
 
 Route::middleware('auth')->group(function () {
     Route::resource('/quizzes', QuizController::class);
