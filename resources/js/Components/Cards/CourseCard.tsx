@@ -9,12 +9,20 @@ import {
 import NewPrimaryButton from '../NewPrimaryButton';
 
 export default function CourseCardComponent({ course }: { course: Course }) {
+    console.log(course.cover);
+
     return (
         <Link
             href={`/courses/${course.slug}`}
             className="group block w-full max-w-sm overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-lg transition-all hover:shadow-xl"
         >
-            <div className="h-40 w-full rounded-b-3xl bg-blue-500"></div>
+            <div className="h-50 w-full rounded-b-3xl bg-blue-500">
+                <img
+                    src={course.cover}
+                    alt="Cover Course"
+                    className="h-full w-full"
+                />
+            </div>
 
             <div className="px-6 py-6">
                 <small className="text-xs italic text-[#2276f0]">

@@ -15,8 +15,8 @@ export default function NavbarComponent() {
     const navLinks = [
         { name: 'Beranda', href: '/' },
         { name: 'Kelas', href: '/courses' },
-        { name: 'Artikel', href: '/modules' },
-        { name: 'Video', href: '#' },
+        { name: 'Modul', href: '/modules' },
+        { name: 'Video', href: '/videos/kickstart-ml-implementasi-project' },
     ];
 
     const handleLogout = () => {
@@ -121,12 +121,12 @@ export default function NavbarComponent() {
                             </div>
                         ) : (
                             <div className="flex items-center gap-3">
-                                <Link href="/register">
+                                {/* <Link href="/register">
                                     <NewPrimaryButton
                                         text="Daftar"
                                         variant="outline"
                                     />
-                                </Link>
+                                </Link> */}
                                 <Link href="/login">
                                     <NewPrimaryButton
                                         text="Masuk"
@@ -201,7 +201,7 @@ export default function NavbarComponent() {
                         </>
                     ) : (
                         <>
-                            <li>
+                            {/* <li>
                                 <Link
                                     href="/register"
                                     onClick={() => setIsOpen(false)}
@@ -214,7 +214,7 @@ export default function NavbarComponent() {
                                         Daftar
                                     </NewPrimaryButton>
                                 </Link>
-                            </li>
+                            </li> */}
                             <li>
                                 <Link
                                     href="/login"

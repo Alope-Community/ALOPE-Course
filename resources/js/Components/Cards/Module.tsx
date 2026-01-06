@@ -5,6 +5,8 @@ import strLimit from '@/tools/strLimit';
 import { Link } from '@inertiajs/react';
 
 export default function ModuleCardComponent({ props }: { props: Module }) {
+    console.log(props.writer);
+
     return (
         <Link
             href={`/modules/${props.slug}`}
