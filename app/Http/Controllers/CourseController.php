@@ -24,7 +24,8 @@ class CourseController extends Controller
                 $query->latest();
             },
             'hashtags',
-            'videos'
+            'videos',
+            'category'
         ])->latest()->get();
 
         $modules = Module::with("course")->wherePublished(true)->latest()->get();

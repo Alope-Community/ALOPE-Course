@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use App\Models\Course;
 use App\Models\Module;
 use Inertia\Inertia;
@@ -19,16 +20,22 @@ class LandingPageController extends Controller
             ->withCount('reads') 
             ->where('published', true)
             ->orderBy('reads_count', 'desc')
-            ->limit(7)
+            ->limit(3)
             ->get();
 
         $latestModule = Module::with(['course', 'writer', 'reads'])->latest()->first();
+
+        $blogs = Blog::select('title', 'slug', 'cover', 'description')
+            ->latest()
+            ->take(3)
+            ->get();
 
         return Inertia::render('LandingPage', [
             // "videos" => $videos,
             "latestModule" => $latestModule,
             "modules" => $modules,
             "courses" => $courses,
+            "blogs" => $blogs,
         ]);
     }
 }
