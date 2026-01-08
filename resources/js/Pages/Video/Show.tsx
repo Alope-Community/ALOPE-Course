@@ -141,46 +141,13 @@ export default function ShowVideoPage({
                             <h2 className="mb-5 text-2xl font-bold">
                                 Modul Terkait
                             </h2>
-                            <Glider
-                                draggable
-                                slidesToShow={4.5}
-                                slidesToScroll={1}
-                                // hasArrows
-                                dragVelocity={1.5}
-                                responsive={[
-                                    {
-                                        breakpoint: 1536,
-                                        settings: { slidesToShow: 4.5 },
-                                    }, // Desktop
-                                    {
-                                        breakpoint: 1280,
-                                        settings: { slidesToShow: 3.6 },
-                                    }, // Desktop
-                                    {
-                                        breakpoint: 1024,
-                                        settings: { slidesToShow: 2.8 },
-                                    }, // Desktop
-                                    {
-                                        breakpoint: 768,
-                                        settings: { slidesToShow: 2.3 },
-                                    }, // Tablet
-                                    {
-                                        breakpoint: 375,
-                                        settings: { slidesToShow: 1.3 },
-                                    }, // Mobile
-                                    {
-                                        breakpoint: 100,
-                                        settings: { slidesToShow: 1.1 },
-                                    }, // Mobile
-                                ]}
-                            >
+                            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
                                 {modules.map((module, index) => (
-                                    <ModuleCardComponent
-                                        key={index}
-                                        props={module}
-                                    />
+                                    <div key={index} className={index > 0 ? "px-2" : ""}>
+                                        <ModuleCardComponent props={module} />
+                                    </div>
                                 ))}
-                            </Glider>
+                            </div>
                         </>
                     ) : (
                         ''

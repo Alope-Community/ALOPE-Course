@@ -44,19 +44,19 @@ class VideoController extends Controller
 
         // Ambil semua video lain dalam course yang sama
         $videos = Video::where('course_id', $video->course_id)
-                    ->orderBy('created_at', 'ASC')
-                    ->get();
+            ->orderBy('created_at', 'ASC')
+            ->get();
 
-         // Convert module_ids string → array
+        // Convert module_ids string → array
         $moduleIds = explode(',', $video->module_ids);
 
         // Ambil modules berdasarkan ID dan ikutkan relasi course
-        $modules = Module::with('course', 'reads')
+        $modules = Module::with('course', 'reads', 'writer')
             ->whereIn('id', $moduleIds)
             ->orderBy('created_at', 'ASC')
             ->get();
 
-                    
+
         // $modules = $video->modules;
 
         return Inertia::render('Video/Show', [
