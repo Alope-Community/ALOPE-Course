@@ -6,7 +6,6 @@ import TestimonialCard, {
     TestimonialCardProps,
 } from '@/Components/Cards/Testimonial';
 import FooterComponent from '@/Components/Footer';
-import Icon from '@/Components/Icon';
 import NavbarComponent from '@/Components/Navbar';
 import NewPrimaryButton from '@/Components/NewPrimaryButton';
 import { Blog } from '@/models/Blog';
@@ -59,7 +58,7 @@ export default function LandingPage({
 
             <NavbarComponent />
 
-            <header className="relative min-h-[800px] overflow-hidden bg-gradient-to-tr from-white to-yellow-50 pt-16">
+            <header className="relative min-h-[800px] overflow-hidden bg-gradient-to-tr from-white to-yellow-50 pt-0 md:pt-16">
                 <div className="container relative z-10 mx-auto flex flex-col items-center justify-between px-4 py-10 md:px-10 lg:flex-row">
                     <div className="order-2 lg:order-1 lg:w-1/2">
                         <h1 className="mb-4 text-center text-3xl font-bold leading-snug text-black md:text-4xl lg:text-left xl:text-6xl">
@@ -85,35 +84,35 @@ export default function LandingPage({
                         </div>
                     </div>
                     <div className="relative order-1 mt-10 hidden justify-center lg:order-2 lg:mt-0 lg:flex lg:w-1/2">
-                        <div className="absolute right-[12%] top-4 h-[380px] w-[340px] rotate-[25deg] rounded-3xl bg-primary blur-[1px] md:h-[460px] md:w-[420px] lg:right-[16%]" />
-                        <div className="absolute right-[5%] top-0 h-[400px] w-[360px] rounded-3xl bg-[#51a2ff] md:h-[467px] md:w-[440px] lg:right-[10%]" />
+                        <div className="absolute right-[12%] top-4 h-[380px] w-[340px] rotate-[25deg] rounded-3xl bg-primary blur-[1px] md:h-[460px] md:w-[420px] lg:right-[20%] lg:top-0 lg:h-[380px] lg:w-[290px] xl:right-[16%] xl:top-4 xl:h-[460px] xl:w-[420px]" />
+                        <div className="absolute right-[5%] top-0 h-[400px] w-[360px] rounded-3xl bg-[#51a2ff] md:h-[467px] md:w-[440px] lg:right-[14%] lg:top-0 lg:h-[400px] lg:w-[310px] xl:right-[10%] xl:top-0 xl:h-[467px] xl:w-[440px]" />
                         <img
                             src="/images/header1.png"
                             alt="Belajar coding"
-                            className="relative z-10 w-[80%] max-w-[400px] object-contain md:w-[70%] lg:w-[85%]"
+                            className="relative z-10 w-[80%] max-w-[400px] object-cover md:w-[70%] md:object-contain lg:h-[400px] lg:w-[60%] lg:max-w-[300px] lg:object-cover xl:h-auto xl:w-[85%] xl:max-w-[400px] xl:object-contain"
                             loading="lazy"
                         />
-                        <div className="absolute left-[10%] top-10 z-20 flex translate-x-6 items-center gap-2 rounded-xl bg-white px-3 py-1.5 shadow-lg md:left-[12%] md:translate-x-8 lg:left-[14%] lg:translate-x-10">
-                            <div className="flex h-5 w-5 items-center justify-center rounded-md bg-yellow-400 text-white">
-                                <IconSend3 className="h-3 w-3" />
+                        <div className="absolute left-[10%] top-10 z-20 flex translate-x-6 items-center gap-2 rounded-xl bg-white px-3 py-1.5 shadow-lg md:left-[12%] md:translate-x-8 lg:left-[8%] lg:top-8 lg:translate-x-6 lg:gap-1 lg:px-2 lg:py-1 xl:left-[14%] xl:top-10 xl:translate-x-10 xl:gap-2 xl:px-3 xl:py-1.5">
+                            <div className="flex h-5 w-5 items-center justify-center rounded-md bg-yellow-400 text-white lg:h-4 lg:w-4 xl:h-5 xl:w-5">
+                                <IconSend3 className="h-3 w-3 lg:h-2 lg:w-2 xl:h-3 xl:w-3" />
                             </div>
-                            <span className="whitespace-nowrap text-xs font-semibold text-grey">
+                            <span className="whitespace-nowrap text-xs font-semibold text-grey lg:text-[10px] xl:text-xs">
                                 Effective Learning
                             </span>
                         </div>
-                        <div className="absolute bottom-20 left-[8%] z-20 flex translate-x-8 items-center gap-2 rounded-xl bg-white px-3 py-1.5 shadow-lg md:left-[10%] md:translate-x-10 lg:left-[12%] lg:translate-x-12">
-                            <div className="flex h-5 w-5 items-center justify-center rounded-md bg-purple-600 text-white">
-                                <IconSend3 className="h-3 w-3" />
+                        <div className="absolute bottom-20 left-[8%] z-20 flex translate-x-8 items-center gap-2 rounded-xl bg-white px-3 py-1.5 shadow-lg md:left-[10%] md:translate-x-10 lg:bottom-20 lg:left-[5%] lg:translate-x-6 lg:gap-1 lg:px-2 lg:py-1 xl:bottom-20 xl:left-[12%] xl:translate-x-12 xl:gap-2 xl:px-3 xl:py-1.5">
+                            <div className="flex h-5 w-5 items-center justify-center rounded-md bg-purple-600 text-white lg:h-4 lg:w-4 xl:h-5 xl:w-5">
+                                <IconSend3 className="h-3 w-3 lg:h-2 lg:w-2 xl:h-3 xl:w-3" />
                             </div>
-                            <span className="whitespace-nowrap text-xs font-semibold text-grey">
+                            <span className="whitespace-nowrap text-xs font-semibold text-grey lg:text-[10px] xl:text-xs">
                                 Upgrade Skill
                             </span>
                         </div>
-                        <div className="absolute bottom-8 right-6 flex items-center gap-2 rounded-xl bg-white px-3 py-1.5 shadow-lg md:right-8 lg:right-10">
-                            <div className="flex h-5 w-5 items-center justify-center rounded-md bg-primary text-white">
-                                <IconBookOpen className="h-3 w-3" />
+                        <div className="absolute bottom-8 right-6 z-20 flex items-center gap-2 rounded-xl bg-white px-3 py-1.5 shadow-lg md:right-8 lg:bottom-8 lg:right-6 lg:gap-1 lg:px-2 lg:py-1 xl:bottom-8 xl:right-10 xl:gap-2 xl:px-3 xl:py-1.5">
+                            <div className="flex h-5 w-5 items-center justify-center rounded-md bg-primary text-white lg:h-4 lg:w-4 xl:h-5 xl:w-5">
+                                <IconBookOpen className="h-3 w-3 lg:h-2 lg:w-2 xl:h-3 xl:w-3" />
                             </div>
-                            <span className="whitespace-nowrap text-xs font-semibold text-grey">
+                            <span className="whitespace-nowrap text-xs font-semibold text-grey lg:text-[10px] xl:text-xs">
                                 Learn by Doing
                             </span>
                         </div>

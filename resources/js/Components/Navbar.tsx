@@ -144,7 +144,7 @@ export default function NavbarComponent() {
                     </button>
                 </div>
             </nav>
-            <div className="h-[76px] md:h-[80px]" />
+            <div className="h-[76px] bg-gradient-to-tr from-white to-yellow-50 md:h-[80px]" />
 
             {/* Drawer mobile */}
             <aside
