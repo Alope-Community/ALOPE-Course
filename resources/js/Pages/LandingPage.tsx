@@ -293,18 +293,31 @@ export default function LandingPage({
                             Lihat Semua
                         </Link>
                     </div>
-                    <div className="grid grid-cols-1 gap-14 sm:grid-cols-2 lg:grid-cols-3">
-                        {blogs.slice(0, 3).map((blog, index) => (
-                            <div
-                                key={index}
-                                className={
-                                    index >= 2 ? 'md:hidden lg:block' : ''
-                                }
-                            >
-                                <SimpleBlogCardComponent props={blog} />
-                            </div>
-                        ))}
-                    </div>
+                    {blogs.length > 0 ? (
+                        <div className="grid grid-cols-1 gap-14 sm:grid-cols-2 lg:grid-cols-3">
+                            {blogs.slice(0, 3).map((blog, index) => (
+                                <div
+                                    key={index}
+                                    className={
+                                        index >= 2 ? 'md:hidden lg:block' : ''
+                                    }
+                                >
+                                    <SimpleBlogCardComponent props={blog} />
+                                </div>
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="col-span-1 flex w-full flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-gray-300 bg-gray-50 py-16 text-center text-gray-500 sm:col-span-2 lg:col-span-3">
+                            <p className="text-lg font-semibold text-gray-900">
+                                Belum ada artikel terbaru
+                            </p>
+                            <p className="max-w-md text-sm text-gray-500">
+                                Saat ini belum ada artikel yang tersedia.
+                                Nantikan cerita, tren, dan insight menarik
+                                seputar dunia tech segera!
+                            </p>
+                        </div>
+                    )}
                 </div>
             </section>
 
