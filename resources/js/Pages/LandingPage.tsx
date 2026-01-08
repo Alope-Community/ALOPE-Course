@@ -6,6 +6,7 @@ import TestimonialCard, {
     TestimonialCardProps,
 } from '@/Components/Cards/Testimonial';
 import FooterComponent from '@/Components/Footer';
+import Icon from '@/Components/Icon';
 import NavbarComponent from '@/Components/Navbar';
 import NewPrimaryButton from '@/Components/NewPrimaryButton';
 import { Blog } from '@/models/Blog';
@@ -14,7 +15,7 @@ import { Module } from '@/models/Module';
 import { Video } from '@/models/Video';
 import { Head, Link } from '@inertiajs/react';
 import 'glider-js/glider.min.css';
-import { IconCircleCheckFill } from 'justd-icons';
+import { IconBookOpen, IconCircleCheckFill, IconSend3 } from 'justd-icons';
 
 export default function LandingPage({
     courses,
@@ -94,19 +95,7 @@ export default function LandingPage({
                         />
                         <div className="absolute left-[10%] top-10 z-20 flex translate-x-6 items-center gap-2 rounded-xl bg-white px-3 py-1.5 shadow-lg md:left-[12%] md:translate-x-8 lg:left-[14%] lg:translate-x-10">
                             <div className="flex h-5 w-5 items-center justify-center rounded-md bg-yellow-400 text-white">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    className="h-3 w-3"
-                                >
-                                    <path d="M22 2L11 13" />
-                                    <path d="M22 2L15 22L11 13L2 9L22 2Z" />
-                                </svg>
+                                <IconSend3 className="h-3 w-3" />
                             </div>
                             <span className="whitespace-nowrap text-xs font-semibold text-grey">
                                 Effective Learning
@@ -114,19 +103,7 @@ export default function LandingPage({
                         </div>
                         <div className="absolute bottom-20 left-[8%] z-20 flex translate-x-8 items-center gap-2 rounded-xl bg-white px-3 py-1.5 shadow-lg md:left-[10%] md:translate-x-10 lg:left-[12%] lg:translate-x-12">
                             <div className="flex h-5 w-5 items-center justify-center rounded-md bg-purple-600 text-white">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    className="h-3 w-3"
-                                >
-                                    <path d="M22 2L11 13" />
-                                    <path d="M22 2L15 22L11 13L2 9L22 2Z" />
-                                </svg>
+                                <IconSend3 className="h-3 w-3" />
                             </div>
                             <span className="whitespace-nowrap text-xs font-semibold text-grey">
                                 Upgrade Skill
@@ -134,19 +111,7 @@ export default function LandingPage({
                         </div>
                         <div className="absolute bottom-8 right-6 flex items-center gap-2 rounded-xl bg-white px-3 py-1.5 shadow-lg md:right-8 lg:right-10">
                             <div className="flex h-5 w-5 items-center justify-center rounded-md bg-primary text-white">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    className="h-3 w-3"
-                                >
-                                    <path d="M22 2L11 13" />
-                                    <path d="M22 2L15 22L11 13L2 9L22 2Z" />
-                                </svg>
+                                <IconBookOpen className="h-3 w-3" />
                             </div>
                             <span className="whitespace-nowrap text-xs font-semibold text-grey">
                                 Learn by Doing
