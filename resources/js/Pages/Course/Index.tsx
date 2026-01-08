@@ -25,7 +25,7 @@ export default function CourseIndexPage({
                 <SubText text='CHOOSE YOUR PATH' />
                 <HeaderText text='Pilih jalur belajar sesuai dengan minatmu' />
 
-                <section className="my-10">
+                <section className="my-10 min-h-screen">
                     <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                         {courses.map((course) => (
                             <CourseCardComponent
