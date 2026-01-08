@@ -19,7 +19,7 @@ import {
     IconLayersFill,
     IconStarFill,
 } from 'justd-icons';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function highlightGlossary(
     text: string,
@@ -77,6 +77,12 @@ export default function CourseShowPage({
     }[];
     allGlossary: { title: string; description: string; course_id: string }[];
 }) {
+
+    useEffect(() => {
+        console.log(course.modules);
+    }, [])
+
+
     const [activeTab, setActiveTab] = useState<'module' | 'quiz' | 'glosarium'>(
         'module',
     );
@@ -188,11 +194,10 @@ export default function CourseShowPage({
                             <div className="flex flex-wrap gap-3">
                                 <button
                                     onClick={() => setActiveTab('module')}
-                                    className={`rounded-md px-4 py-2 text-sm font-medium transition md:text-base ${
-                                        activeTab === 'module'
+                                    className={`rounded-md px-4 py-2 text-sm font-medium transition md:text-base ${activeTab === 'module'
                                             ? 'bg-[#2276f0] text-white shadow'
                                             : 'bg-gray-200 text-gray-600'
-                                    }`}
+                                        }`}
                                 >
                                     Modul
                                 </button>
@@ -200,11 +205,10 @@ export default function CourseShowPage({
                                 {course.quizzes.length > 0 && (
                                     <button
                                         onClick={() => setActiveTab('quiz')}
-                                        className={`rounded-md px-4 py-2 text-sm font-medium transition md:text-base ${
-                                            activeTab === 'quiz'
+                                        className={`rounded-md px-4 py-2 text-sm font-medium transition md:text-base ${activeTab === 'quiz'
                                                 ? 'bg-[#2276f0] text-white shadow'
                                                 : 'bg-gray-200 text-gray-600'
-                                        }`}
+                                            }`}
                                     >
                                         Quiz
                                     </button>
@@ -223,11 +227,10 @@ export default function CourseShowPage({
                             {allGlossary.length > 0 && (
                                 <button
                                     onClick={() => setActiveTab('glosarium')}
-                                    className={`rounded-md px-4 py-2 text-sm font-medium transition md:text-base ${
-                                        activeTab === 'glosarium'
+                                    className={`rounded-md px-4 py-2 text-sm font-medium transition md:text-base ${activeTab === 'glosarium'
                                             ? 'bg-[#2276f0] text-white shadow'
                                             : 'bg-gray-200 text-gray-600'
-                                    }`}
+                                        }`}
                                 >
                                     Glosarium
                                 </button>

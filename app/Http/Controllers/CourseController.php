@@ -61,6 +61,7 @@ class CourseController extends Controller
             'modules' => function ($query) {
                 $query->latest();
             },
+            'modules.writer',
             'quizzes' => function ($query) {
                 $query->latest();
             },
