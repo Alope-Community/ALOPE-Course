@@ -36,10 +36,8 @@ export default function NewPrimaryButton({
             disabled={disabled}
             className={`overflow-hidden px-5 py-2 text-sm md:text-base ${baseStyle} ${variantStyle} ${disabledStyle} ${className}`}
         >
-            <span
-                className={`relative z-10 ${circleIcon ? 'pr-6' : ''}`}
-            >
-                {text}
+            <span className={`relative z-10 ${circleIcon ? 'pr-6' : ''}`}>
+                {text || children}
             </span>
             {circleIcon && (
                 <span className="absolute right-2 top-1/2 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full bg-white/25 transition-all duration-300 group-hover:bg-white/35">
