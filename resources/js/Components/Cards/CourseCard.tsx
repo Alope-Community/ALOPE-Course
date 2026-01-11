@@ -14,11 +14,12 @@ export default function CourseCardComponent({ course }: { course: Course }) {
     return (
         <Link
             href={`/courses/${course.slug}`}
-            className="group block w-full max-w-sm overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-lg transition-all hover:shadow-xl"
+            className="group block w-full overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-lg transition-all hover:shadow-xl"
         >
             <div className="h-50 w-full rounded-b-3xl bg-blue-500">
                 <img
-                    src={course.cover}
+                    // src={props.cover}
+                    src={'/images/thumb.png'}
                     alt="Cover Course"
                     className="h-full w-full"
                 />

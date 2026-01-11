@@ -22,10 +22,10 @@ export default function CourseIndexPage({
             <NavbarComponent />
 
             <Container>
-                <SubText text='CHOOSE YOUR PATH' />
-                <HeaderText text='Pilih jalur belajar sesuai dengan minatmu' />
+                <SubText text="CHOOSE YOUR PATH" />
+                <HeaderText text="Pilih jalur belajar sesuai dengan minatmu" />
 
-                <section className="my-10 min-h-screen">
+                <section className="my-10 min-h-[calc(100vh-600px)]">
                     <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                         {courses.map((course) => (
                             <CourseCardComponent
@@ -35,7 +35,6 @@ export default function CourseIndexPage({
                         ))}
                     </div>
                 </section>
-
             </Container>
 
             {/* <img

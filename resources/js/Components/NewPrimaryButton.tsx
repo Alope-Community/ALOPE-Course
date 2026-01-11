@@ -23,7 +23,7 @@ export default function NewPrimaryButton({
     ...props
 }: NewPrimaryButtonProps) {
     const baseStyle =
-        'relative flex items-center justify-center gap-2 rounded-full font-semibold transition-all active:scale-95';
+        'relative flex items-center justify-center gap-2 rounded-full transition-all active:scale-95 h-[50px] px-7';
     const disabledStyle = disabled ? 'cursor-not-allowed opacity-50' : '';
     const variantStyle =
         variant === 'outline'
@@ -34,21 +34,25 @@ export default function NewPrimaryButton({
         <button
             {...props}
             disabled={disabled}
-            className={`overflow-hidden px-5 py-2 text-sm md:text-base ${baseStyle} ${variantStyle} ${disabledStyle} ${className}`}
+            className={`overflow-hidden px-5 py-2 text-sm md:text-base ${baseStyle} ${variantStyle} ${disabledStyle} ${className} ${circleIcon && '!pr-10'}`}
         >
             <span className={`relative z-10 ${circleIcon ? 'pr-6' : ''}`}>
                 {text || children}
             </span>
             {circleIcon && (
-                <span className="absolute right-2 top-1/2 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full bg-white/25 transition-all duration-300 group-hover:bg-white/35">
+                <span className="absolute right-2 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/25 transition-all duration-300 group-hover:bg-white/35">
                     {icon ??
-                        (showIcon && <IconArrowRight className="h-4 w-4" />)}
+                        (showIcon && (
+                            <IconArrowRight className="h-5 w-5 font-semibold" />
+                        ))}
                 </span>
             )}
             {!circleIcon &&
                 (icon
                     ? icon
-                    : showIcon && <IconArrowRight className="h-4 w-4" />)}
+                    : showIcon && (
+                          <IconArrowRight className="h-5 w-5 font-semibold" />
+                      ))}
         </button>
     );
 }

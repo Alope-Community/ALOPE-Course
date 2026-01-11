@@ -8,7 +8,7 @@ export default function FooterComponent() {
                     <div className="flex flex-col items-center md:col-span-5 md:items-start">
                         <div className="flex items-center justify-center gap-2 md:justify-start">
                             <img
-                                src="/images/Alope.png"
+                                src="/images/logo/alope-white.png"
                                 alt="Alope Logo"
                                 className="h-10 w-10 object-contain"
                             />

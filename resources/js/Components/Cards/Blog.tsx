@@ -17,7 +17,8 @@ export default function SimpleBlogCardComponent({
             className="block w-full max-w-md overflow-hidden rounded-2xl border-2 border-gray-300 bg-white transition"
         >
             <img
-                src={props.cover}
+                // src={props.cover}
+                src={'/images/thumb.png'}
                 alt={props.title}
                 className="h-48 w-full object-cover"
                 width={1280}
@@ -32,12 +33,12 @@ export default function SimpleBlogCardComponent({
                 </span>
 
                 {/* Title — dibatasi 2 baris dan fixed height */}
-                <p className="mb-2 text-xl font-semibold line-clamp-2 min-h-[56px]">
+                <p className="mb-2 line-clamp-2 min-h-[56px] text-xl font-semibold">
                     {props.title}
                 </p>
 
                 {/* Description — dibatasi 3 baris dan fixed height */}
-                <p className="mb-4 line-clamp-3 text-sm text-gray-600 min-h-[60px]">
+                <p className="mb-4 line-clamp-3 min-h-[60px] text-sm text-gray-600">
                     {props.description}
                 </p>
 

@@ -61,14 +61,11 @@ export default function LandingPage({
             <header className="relative min-h-[800px] overflow-hidden bg-gradient-to-tr from-white to-yellow-50 pt-0 md:pt-16">
                 <div className="container relative z-10 mx-auto flex flex-col items-center justify-between px-4 py-10 md:px-10 lg:flex-row">
                     <div className="order-2 lg:order-1 lg:w-1/2">
-                        <h1 className="mb-4 text-center text-3xl font-bold leading-snug text-black md:text-4xl lg:text-left xl:text-6xl">
-                            Tingkatkan{' '}
-                            <span className="text-primary">Skill Coding</span>{' '}
-                            <br className="hidden lg:block" />
-                            dari Nol hingga Mahir!
+                        <h1 className="mb-4 text-center text-3xl font-medium leading-snug text-black md:text-4xl lg:text-left xl:text-6xl">
+                            Tingkatkan Skill Coding dari Nol hingga Mahir!
                         </h1>
 
-                        <p className="mx-auto mb-6 mt-3 w-full text-center text-sm text-grey md:mx-0 md:mb-10 md:w-[90%] md:text-base lg:text-left xl:w-[85%] xl:text-xl">
+                        <p className="mx-auto mb-6 mt-3 w-full text-center text-base text-grey md:mx-0 md:mb-10 md:w-[90%] md:text-base lg:text-left xl:w-[85%]">
                             Belajar coding dari nol hingga mahir dengan panduan
                             lengkap, materi terstruktur, dan artikel mendalam
                             yang membantumu meningkatkan skill programming
@@ -135,11 +132,11 @@ export default function LandingPage({
 
                     {/* Kontainer teks */}
                     <div className="flex w-full flex-col items-center text-center md:w-1/2 md:items-start md:text-left">
-                        <p className="text-sm font-semibold uppercase tracking-wide text-primary">
+                        <p className="mb-5 font-semibold uppercase tracking-widest text-primary">
                             Why Choose Us
                         </p>
 
-                        <h2 className="mt-2 text-3xl font-bold text-gray-900 md:text-4xl">
+                        <h2 className="mt-2 text-3xl font-medium text-gray-900 md:text-4xl">
                             Belajar Coding dengan <br /> Pendekatan yang Tepat
                         </h2>
 
@@ -150,10 +147,7 @@ export default function LandingPage({
                                 'Fleksibel & Ramah Pemula',
                                 'Komunitas yang Mendukung',
                             ].map((item, i) => (
-                                <li
-                                    key={i}
-                                    className="flex items-center justify-center gap-3 md:justify-start"
-                                >
+                                <li key={i} className="flex items-center gap-3">
                                     <IconCircleCheckFill className="size-5 text-green-500" />
                                     {item}
                                 </li>
@@ -175,14 +169,14 @@ export default function LandingPage({
             <section className="bg-white py-10">
                 <div className="container mx-auto px-8 py-8">
                     <div className="mb-8">
-                        <p className="text-xs font-semibold uppercase tracking-widest text-primary">
+                        <p className="mb-5 font-semibold uppercase tracking-widest text-primary">
                             Choose Your Path
                         </p>
 
-                        <h2 className="text-2xl font-extrabold leading-tight text-gray-900 md:text-3xl">
+                        <h2 className="text-2xl font-medium leading-tight text-gray-900 md:text-5xl">
                             Pilih Jalur Pembelajaran
                         </h2>
-                        <h2 className="text-2xl font-extrabold leading-tight text-gray-900 md:text-3xl">
+                        <h2 className="text-2xl font-medium leading-tight text-gray-900 md:text-5xl">
                             Sesuai Minatmu
                         </h2>
                     </div>
@@ -199,15 +193,15 @@ export default function LandingPage({
                 <div className="container mx-auto px-8 py-8">
                     <div className="mb-5 flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
                         <div>
-                            <p className="text-xs font-semibold uppercase tracking-widest text-primary">
+                            <p className="mb-5 font-semibold uppercase tracking-widest text-primary">
                                 Popular Courses
                             </p>
 
                             <div className="mt-1">
-                                <h2 className="text-2xl font-extrabold leading-tight text-gray-900 md:text-3xl">
+                                <h2 className="text-2xl font-medium leading-tight text-gray-900 md:text-5xl">
                                     Materi Pembelajaran
                                 </h2>
-                                <h2 className="text-2xl font-extrabold leading-tight text-gray-900 md:text-3xl">
+                                <h2 className="text-2xl font-medium leading-tight text-gray-900 md:text-5xl">
                                     Terpopuler Saat Ini
                                 </h2>
                             </div>
@@ -241,10 +235,10 @@ export default function LandingPage({
                 <div className="container mx-auto px-8 py-8">
                     <div className="mb-5 flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
                         <div>
-                            <p className="text-sm font-semibold text-primary">
+                            <p className="mb-5 font-semibold uppercase tracking-widest text-primary">
                                 FROM OUR BLOG
                             </p>
-                            <h2 className="mt-1 text-4xl font-bold leading-tight text-gray-900">
+                            <h2 className="text-2xl font-medium leading-tight text-gray-900 md:text-5xl">
                                 Cerita, Tren, dan Insight <br />
                                 Seputar Dunia Tech
                             </h2>
@@ -271,7 +265,7 @@ export default function LandingPage({
                             ))}
                         </div>
                     ) : (
-                        <div className="col-span-1 flex w-full flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-gray-300 bg-gray-50 py-16 text-center text-gray-500 sm:col-span-2 lg:col-span-3">
+                        <div className="col-span-1 flex w-full flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-gray-300 bg-gray-50 p-3 py-16 text-center text-gray-500 sm:col-span-2 lg:col-span-3">
                             <p className="text-lg font-semibold text-gray-900">
                                 Belum ada artikel terbaru
                             </p>
@@ -290,10 +284,10 @@ export default function LandingPage({
                 <div className="container mx-auto px-8 py-8">
                     <div className="mb-5 flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
                         <div>
-                            <p className="text-sm font-semibold text-primary">
+                            <p className="mb-5 font-semibold uppercase tracking-widest text-primary">
                                 WHAT THEY SAY
                             </p>
-                            <h2 className="mt-1 text-4xl font-bold leading-tight text-gray-900">
+                            <h2 className="text-2xl font-medium leading-tight text-gray-900 md:text-5xl">
                                 Apa Kata Mereka yang <br />
                                 Sudah Belajar
                             </h2>
@@ -323,11 +317,11 @@ export default function LandingPage({
             <section className="bg-white">
                 <div className="container mx-auto grid grid-cols-1 gap-10 px-8 py-8 lg:grid-cols-2">
                     <div>
-                        <p className="text-sm font-semibold uppercase tracking-widest text-blue-600">
+                        <p className="mb-5 font-semibold uppercase tracking-widest text-primary">
                             Frequently Asked Questions
                         </p>
 
-                        <h2 className="mt-2 text-4xl font-bold leading-snug text-gray-900">
+                        <h2 className="text-2xl font-medium leading-tight text-gray-900 md:text-5xl">
                             Hal-hal yang Sering Kamu
                             <br />
                             Tanyakan

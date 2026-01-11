@@ -14,7 +14,7 @@ export default function NavbarComponent() {
 
     const navLinks = [
         { name: 'Home', href: '/' },
-        { name: 'Course', href: '/courses' },
+        { name: 'Kursus', href: '/courses' },
         { name: 'Modul', href: '/modules' },
         { name: 'Video', href: '/videos/kickstart-ml-persiapan' },
     ];
@@ -56,7 +56,7 @@ export default function NavbarComponent() {
                 <div className="container mx-auto flex items-center justify-between px-4 py-3 md:px-10 md:py-5">
                     <Link href="/" className="flex items-center gap-3">
                         <img
-                            src="/images/Alope.png"
+                            src="/images/logo/alope-blue.png"
                             alt="Alope Course Logo"
                             className="h-10 w-10 object-contain"
                         />
