@@ -14,6 +14,7 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['Poppins', ...defaultTheme.fontFamily.sans],
+                spartan: ['League Spartan', ...defaultTheme.fontFamily.sans],
             },
             colors: {
                 primary: '#2B7FFF',
