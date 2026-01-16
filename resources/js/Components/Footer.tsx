@@ -1,3 +1,4 @@
+import { Link } from '@inertiajs/react';
 import { IconDevicePhone, IconLocation, IconMail } from 'justd-icons';
 
 export default function FooterComponent() {
@@ -26,19 +27,19 @@ export default function FooterComponent() {
                         <h4 className="mb-3 text-lg font-semibold">Navigasi</h4>
                         <ul className="space-y-2 text-sm">
                             <li>
-                                <a href="/courses" className="hover:underline">
+                                <Link href="/courses" className="hover:underline">
                                     Kursus
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="#" className="hover:underline">
+                                <Link href="/blogs" className="hover:underline">
                                     Artikel
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="#" className="hover:underline">
+                                <Link href="/videos" className="hover:underline">
                                     Video
-                                </a>
+                                </Link>
                             </li>
                         </ul>
                     </div>
@@ -47,19 +48,19 @@ export default function FooterComponent() {
                         <h4 className="mb-3 text-lg font-semibold">Kursus</h4>
                         <ul className="space-y-2 text-sm">
                             <li>
-                                <a href="#" className="hover:underline">
+                                <Link href="/courses" className="hover:underline">
                                     Kursus
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="#" className="hover:underline">
+                                <Link href="/blogs" className="hover:underline">
                                     Artikel
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="#" className="hover:underline">
+                                <Link href="/videos" className="hover:underline">
                                     Video
-                                </a>
+                                </Link>
                             </li>
                         </ul>
                     </div>
