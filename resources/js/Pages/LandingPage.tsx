@@ -172,12 +172,12 @@ export default function LandingPage({
 
             {/* Section semuua module */}
             <section className="py-10">
-                <div className="flex gap-5 w-full flex-col container mx-auto px-6 md:px-10 lg:px-20 py-8">
+                <div className="flex gap-5 flex-col container mx-auto px-6 md:px-10 lg:px-20 py-8">
                     <SubText text='Choose Your Path' />
 
                     <TitleText text='Pilih Jalur Pembelajaran Sesuai Minatmu' />
-                    <div className="mt-5">
-                        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                    <div className="mt-5 w-full">
+                        <div className="grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
                             {courses.slice(0, 3).map((course, index) => (
                                 <CourseCardComponent key={index} course={course} />
                             ))}
