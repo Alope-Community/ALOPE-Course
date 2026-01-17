@@ -91,11 +91,19 @@ class CourseController extends Controller
 
         $allGlossary = $course->glossaries;
 
+        $testimonials = $course->testimonials()
+            ->where('status', 'approved')
+            ->with('user')
+            ->latest()
+            ->take(3)
+            ->get();
+
         return Inertia::render('Course/Show', [
             "course" => $course,
             "courses" => $courses,
             "glossaries" => $glossaries,
             "allGlossary" => $allGlossary,
+            "testimonials" => $testimonials,
         ]);
     }
 

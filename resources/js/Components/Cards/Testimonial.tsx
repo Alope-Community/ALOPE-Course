@@ -2,17 +2,19 @@
 import { IconStarFill } from 'justd-icons';
 
 export interface TestimonialCardProps {
-    quote: string;
-    name: string;
-    role?: string;
+    user: {
+        name: string;
+    };
+    message: string;
+    profession?: string;
     avatar?: string;
     rating: number;
 }
 
 export default function TestimonialCard({
-    quote,
-    name,
-    role = 'Mahasiswa',
+    user,
+    message,
+    profession = 'Mahasiswa',
     avatar = '/images/ilham.jpg',
     rating,
 }: TestimonialCardProps) {
@@ -29,18 +31,18 @@ export default function TestimonialCard({
                 </svg>
             </div>
 
-            <p className="mb-6 leading-relaxed text-gray-700">{quote}</p>
+            <p className="mb-6 leading-relaxed text-gray-700">{message}</p>
 
             <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                     <img
                         src={avatar}
-                        alt={name}
+                        alt={user.name}
                         className="h-10 w-10 rounded-full object-cover"
                     />
                     <div>
-                        <p className="font-semibold">{name}</p>
-                        <p className="text-xs text-gray-500">{role}</p>
+                        <p className="font-semibold">{user.name}</p>
+                        <p className="text-xs text-gray-500">{profession}</p>
                     </div>
                 </div>
 

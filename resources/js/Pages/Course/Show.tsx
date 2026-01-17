@@ -66,6 +66,7 @@ export default function CourseShowPage({
     courses,
     glossaries,
     allGlossary,
+    testimonials,
 }: {
     course: Course;
     courses: Course[];
@@ -76,35 +77,11 @@ export default function CourseShowPage({
         body: string;
     }[];
     allGlossary: { title: string; description: string; course_id: string }[];
+    testimonials: TestimonialCardProps[];
 }) {
-
     const [activeTab, setActiveTab] = useState<'module' | 'quiz' | 'glosarium'>(
         'module',
     );
-
-    const testimonials: TestimonialCardProps[] = [
-        {
-            quote: 'Materinya runtut dan gampang dipahami. Sekarang aku jadi ngerti dasar Machine Learning.',
-            name: 'Wahyu',
-            role: 'Mahasiswa',
-            avatar: '/images/ilham.jpg',
-            rating: 5,
-        },
-        {
-            quote: 'Awalnya belum pernah ngoding, tapi lewat modul web dev, aku bisa bikin web pertamaku!',
-            name: 'Rina',
-            role: 'Mahasiswa',
-            avatar: '/images/ilham.jpg',
-            rating: 5,
-        },
-        {
-            quote: 'Belajarnya step by step, jadi konsep yang rumit terasa lebih mudah dipahami.',
-            name: 'Tono',
-            role: 'Mahasiswa',
-            avatar: '/images/ilham.jpg',
-            rating: 5,
-        },
-    ];
 
     return (
         <>
@@ -189,10 +166,11 @@ export default function CourseShowPage({
                             <div className="flex flex-wrap gap-3">
                                 <button
                                     onClick={() => setActiveTab('module')}
-                                    className={`rounded-md px-4 py-2 text-sm font-medium transition md:text-base ${activeTab === 'module'
-                                        ? 'bg-[#2276f0] text-white shadow'
-                                        : 'bg-gray-200 text-gray-600'
-                                        }`}
+                                    className={`rounded-md px-4 py-2 text-sm font-medium transition md:text-base ${
+                                        activeTab === 'module'
+                                            ? 'bg-[#2276f0] text-white shadow'
+                                            : 'bg-gray-200 text-gray-600'
+                                    }`}
                                 >
                                     Modul
                                 </button>
@@ -200,10 +178,11 @@ export default function CourseShowPage({
                                 {course.quizzes.length > 0 && (
                                     <button
                                         onClick={() => setActiveTab('quiz')}
-                                        className={`rounded-md px-4 py-2 text-sm font-medium transition md:text-base ${activeTab === 'quiz'
-                                            ? 'bg-[#2276f0] text-white shadow'
-                                            : 'bg-gray-200 text-gray-600'
-                                            }`}
+                                        className={`rounded-md px-4 py-2 text-sm font-medium transition md:text-base ${
+                                            activeTab === 'quiz'
+                                                ? 'bg-[#2276f0] text-white shadow'
+                                                : 'bg-gray-200 text-gray-600'
+                                        }`}
                                     >
                                         Quiz
                                     </button>
@@ -222,10 +201,11 @@ export default function CourseShowPage({
                             {allGlossary.length > 0 && (
                                 <button
                                     onClick={() => setActiveTab('glosarium')}
-                                    className={`rounded-md px-4 py-2 text-sm font-medium transition md:text-base ${activeTab === 'glosarium'
-                                        ? 'bg-[#2276f0] text-white shadow'
-                                        : 'bg-gray-200 text-gray-600'
-                                        }`}
+                                    className={`rounded-md px-4 py-2 text-sm font-medium transition md:text-base ${
+                                        activeTab === 'glosarium'
+                                            ? 'bg-[#2276f0] text-white shadow'
+                                            : 'bg-gray-200 text-gray-600'
+                                    }`}
                                 >
                                     Glosarium
                                 </button>
@@ -299,7 +279,6 @@ export default function CourseShowPage({
                         )}
                     </section>
                 </main>
-
                 <section className="my-20">
                     <div className="mb-6">
                         <SubText text="WHAT THEY SAY" />
@@ -307,14 +286,32 @@ export default function CourseShowPage({
                     </div>
 
                     <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
-                        {testimonials.map((item, i) => (
-                            <div
-                                key={i}
-                                className={i >= 2 ? 'md:hidden lg:block' : ''}
-                            >
-                                <TestimonialCard {...item} />
+                        {testimonials.length > 0 ? (
+                            testimonials.map((item, i) => (
+                                <div
+                                    key={i}
+                                    className={
+                                        i >= 2 ? 'md:hidden lg:block' : ''
+                                    }
+                                >
+                                    <TestimonialCard
+                                        message={item.message}
+                                        user={item.user}
+                                        rating={item.rating}
+                                    />
+                                </div>
+                            ))
+                        ) : (
+                            <div className="col-span-1 flex w-full flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-gray-300 bg-gray-50 p-3 py-16 text-center text-gray-500 sm:col-span-2 lg:col-span-3">
+                                <p className="text-lg font-semibold text-gray-900">
+                                    Belum ada testimoni
+                                </p>
+                                <p className="max-w-md text-sm text-gray-500">
+                                    Jadilah yang pertama memberikan testimoni
+                                    setelah menyelesaikan kursus ini
+                                </p>
                             </div>
-                        ))}
+                        )}
                     </div>
                 </section>
             </Container>
