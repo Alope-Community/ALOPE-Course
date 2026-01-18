@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use App\Models\Course;
-use App\Models\testimonial;
+use App\Models\Testimonial;
 use App\Models\Module;
 use Inertia\Inertia;
 
