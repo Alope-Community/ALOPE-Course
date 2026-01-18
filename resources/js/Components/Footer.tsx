@@ -27,17 +27,26 @@ export default function FooterComponent() {
                         <h4 className="mb-3 text-lg font-semibold">Navigasi</h4>
                         <ul className="space-y-2 text-sm">
                             <li>
-                                <Link href="/courses" className="hover:underline">
+                                <Link
+                                    href="/courses"
+                                    className="hover:underline"
+                                >
                                     Kursus
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/blogs" className="hover:underline">
-                                    Artikel
+                                <Link
+                                    href="/modules"
+                                    className="hover:underline"
+                                >
+                                    Modul
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/videos" className="hover:underline">
+                                <Link
+                                    href="/videos"
+                                    className="hover:underline"
+                                >
                                     Video
                                 </Link>
                             </li>
@@ -48,17 +57,26 @@ export default function FooterComponent() {
                         <h4 className="mb-3 text-lg font-semibold">Kursus</h4>
                         <ul className="space-y-2 text-sm">
                             <li>
-                                <Link href="/courses" className="hover:underline">
+                                <Link
+                                    href="/courses"
+                                    className="hover:underline"
+                                >
                                     Kursus
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/blogs" className="hover:underline">
-                                    Artikel
+                                <Link
+                                    href="/modules"
+                                    className="hover:underline"
+                                >
+                                    Modul
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/videos" className="hover:underline">
+                                <Link
+                                    href="/videos"
+                                    className="hover:underline"
+                                >
                                     Video
                                 </Link>
                             </li>
@@ -72,8 +90,8 @@ export default function FooterComponent() {
                                 <IconDevicePhone className="w-4" /> 089123456789
                             </li>
                             <li className="flex items-center justify-center gap-2 md:justify-start">
-                                <IconLocation className="w-4" /> Darma, Kuningan,
-                                Jawa Barat
+                                <IconLocation className="w-4" /> Darma,
+                                Kuningan, Jawa Barat
                             </li>
                             <li className="flex items-center justify-center gap-2 md:justify-start">
                                 <IconMail className="w-4" /> contact@alope.id

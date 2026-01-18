@@ -17,7 +17,8 @@ export default function CourseCardComponent({ course }: { course: Course }) {
             {/* Cover */}
             <div className="aspect-[16/9] w-full overflow-hidden bg-blue-500">
                 <img
-                    src={course.cover}
+                    // src={course.cover}
+                    src={'/images/thumb.png'}
                     alt={course.title}
                     className="h-full w-full object-cover"
                 />

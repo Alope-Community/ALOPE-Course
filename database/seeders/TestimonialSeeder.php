@@ -15,9 +15,15 @@ class TestimonialSeeder extends Seeder
      */
     public function run(): void
     {
-        $users = User::take(13)->get();
+        $users = User::all();
+        $courses = Course::all();
+    
 
-        $courses = Course::take(4)->get();
+        if ($users->count() < 13 || $courses->count() < 1) {
+            $this->command->error('Not enough users or courses to seed testimonials.');
+            return;
+        }
+
 
         Testimonial::insert([
             [
@@ -65,21 +71,21 @@ class TestimonialSeeder extends Seeder
             ],
 
             [
-                'course_id' => $courses[2]->id,
+                'course_id' => $courses[0]->id,
                 'user_id' => $users[7]->id,
                 'message' => 'Belajar CSS jadi tidak membingungkan.',
                 'rating' => 4,
                 'status' => 'approved',
             ],
             [
-                'course_id' => $courses[2]->id,
+                'course_id' => $courses[1]->id,
                 'user_id' => $users[8]->id,
                 'message' => 'Contohnya relevan dengan kebutuhan.',
                 'rating' => 5,
                 'status' => 'approved',
             ],
             [
-                'course_id' => $courses[2]->id,
+                'course_id' => $courses[0]->id,
                 'user_id' => $users[9]->id,
                 'message' => 'Styling website jadi lebih percaya diri.',
                 'rating' => 5,
@@ -87,21 +93,21 @@ class TestimonialSeeder extends Seeder
             ],
 
             [
-                'course_id' => $courses[3]->id,
+                'course_id' => $courses[1]->id,
                 'user_id' => $users[10]->id,
                 'message' => 'Belajar sambil praktik sangat membantu.',
                 'rating' => 5,
                 'status' => 'approved',
             ],
             [
-                'course_id' => $courses[3]->id,
+                'course_id' => $courses[0]->id,
                 'user_id' => $users[11]->id,
                 'message' => 'Pendekatannya menyenangkan.',
                 'rating' => 4,
                 'status' => 'approved',
             ],
             [
-                'course_id' => $courses[3]->id,
+                'course_id' => $courses[1]->id,
                 'user_id' => $users[12]->id,
                 'message' => 'Konsep jadi lebih cepat dipahami.',
                 'rating' => 5,

@@ -18,7 +18,12 @@ import { Module } from '@/models/Module';
 import { Video } from '@/models/Video';
 import { Head, Link } from '@inertiajs/react';
 import 'glider-js/glider.min.css';
-import { IconArrowRight, IconBookOpen, IconCircleCheckFill, IconSend3 } from 'justd-icons';
+import {
+    IconArrowRight,
+    IconBookOpen,
+    IconCircleCheckFill,
+    IconSend3,
+} from 'justd-icons';
 
 export default function LandingPage({
     courses,
@@ -35,26 +40,30 @@ export default function LandingPage({
     blogs: Blog[];
     testimonials: TestimonialCardProps[];
 }) {
+    console.log(testimonials);
+
     return (
-        <div className='bg-white'>
+        <div className="bg-white">
             <Head title="Welcome" />
 
             <NavbarComponent />
 
             <header className="relative min-h-[800px] overflow-hidden bg-gradient-to-tr from-white to-yellow-50 pt-20 md:pt-16">
-                <div className="container relative z-10 mx-auto flex flex-col items-center justify-between px-4 py-10 md:px-20 lg:flex-row lg:text-left text-center">
+                <div className="container relative z-10 mx-auto flex flex-col items-center justify-between px-4 py-10 text-center md:px-20 lg:flex-row lg:text-left">
                     <div className="flex flex-col gap-10 lg:w-1/2">
-                        <h1 className="leading-tight font-medium text-[40px] md:text-[48px] lg:text-[64px] font-spartan">
+                        <h1 className="font-spartan text-[40px] font-medium leading-tight md:text-[48px] lg:text-[64px]">
                             Tingkatkan Skill Coding dari Nol hingga Mahir!
                         </h1>
 
-                        <BodySecondaryText text='Belajar coding dari nol hingga mahir dengan panduan
+                        <BodySecondaryText
+                            text="Belajar coding dari nol hingga mahir dengan panduan
                             lengkap, materi terstruktur, dan artikel mendalam
                             yang membantumu meningkatkan skill programming
-                            secara efektif.' />
+                            secara efektif."
+                        />
 
                         <div className="flex justify-center lg:justify-start">
-                            <Link href='/courses'>
+                            <Link href="/courses">
                                 <NewPrimaryButton
                                     text="Mulai Belajar Sekarang"
                                     circleIcon
@@ -114,10 +123,10 @@ export default function LandingPage({
                     </div>
 
                     {/* Kontainer teks */}
-                    <div className="flex gap-5 w-full flex-col items-center text-center md:w-1/2 md:items-start md:text-left">
-                        <SubText text='Why Choose Us' />
+                    <div className="flex w-full flex-col items-center gap-5 text-center md:w-1/2 md:items-start md:text-left">
+                        <SubText text="Why Choose Us" />
 
-                        <TitleText text='Belajar Coding dengan Pendekatan yang Tepat' />
+                        <TitleText text="Belajar Coding dengan Pendekatan yang Tepat" />
 
                         <ul className="space-y-3 text-grey">
                             {[
@@ -134,7 +143,7 @@ export default function LandingPage({
                         </ul>
 
                         <div className="mt-3">
-                            <Link href='/courses'>
+                            <Link href="/courses">
                                 <NewPrimaryButton
                                     text="Mulai Belajar Sekarang"
                                     circleIcon
@@ -148,14 +157,17 @@ export default function LandingPage({
 
             {/* Section semuua module */}
             <section className="py-10">
-                <div className="flex gap-5 flex-col container mx-auto px-6 md:px-10 lg:px-20 py-8">
-                    <SubText text='Choose Your Path' />
+                <div className="container mx-auto flex flex-col gap-5 px-6 py-8 md:px-10 lg:px-20">
+                    <SubText text="Choose Your Path" />
 
-                    <TitleText text='Pilih Jalur Pembelajaran Sesuai Minatmu' />
+                    <TitleText text="Pilih Jalur Pembelajaran Sesuai Minatmu" />
                     <div className="mt-5 w-full">
                         <div className="grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
                             {courses.slice(0, 3).map((course, index) => (
-                                <CourseCardComponent key={index} course={course} />
+                                <CourseCardComponent
+                                    key={index}
+                                    course={course}
+                                />
                             ))}
                         </div>
                     </div>
@@ -164,17 +176,17 @@ export default function LandingPage({
 
             {/* Section popular modules */}
             <section className="py-10">
-                <div className="container mx-auto px-6 md:px-10 lg:px-20 py-8">
-                    <div className="flex flex-col gap-10 md:flex-row md:justify-start md:items-center lg:justify-between">
-                        <div className='flex flex-col gap-5'>
-                            <SubText text='Course Populer' />
+                <div className="container mx-auto px-6 py-8 md:px-10 lg:px-20">
+                    <div className="flex flex-col gap-10 md:flex-row md:items-center md:justify-start lg:justify-between">
+                        <div className="flex flex-col gap-5">
+                            <SubText text="Modul Populer" />
 
-                            <TitleText text='Materi Pembelajaran Terpopuler Saat Ini' />
+                            <TitleText text="Materi Pembelajaran Terpopuler Saat Ini" />
                         </div>
 
                         <Link
                             href="/modules"
-                            className="gap-2 text-sm font-medium text-primary hover:underline min-w-fit hidden md:flex"
+                            className="hidden min-w-fit gap-2 text-sm font-medium text-primary hover:underline md:flex"
                         >
                             Lihat Semua
                         </Link>
@@ -198,16 +210,15 @@ export default function LandingPage({
             </section>
 
             <section className="py-10">
-                <div className="container mx-auto px-6 md:px-10 lg:px-20 py-8">
-                    <div className="flex flex-col gap-5 text-white bg-primary p-10 md:p-20 rounded-2xl ">
+                <div className="container mx-auto px-6 py-8 md:px-10 lg:px-20">
+                    <div className="flex flex-col gap-5 rounded-2xl bg-primary p-10 text-white md:p-20">
                         <TitleText text='Gabung "Bootcamp Bersama PBK", Perkuat Fundamental Skill Web Programming' />
                         <Link
                             href="/blogs"
-                            className="flex gap-2 items-center font-medium hover:underline"
+                            className="flex items-center gap-2 font-medium hover:underline"
                         >
                             Belajar Sekarang
-
-                            <IconArrowRight className='w-5 h-5' />
+                            <IconArrowRight className="h-5 w-5" />
                         </Link>
                     </div>
                 </div>
@@ -215,16 +226,16 @@ export default function LandingPage({
 
             {/* Section Blog */}
             <section className="py-10">
-                <div className="container mx-auto px-6 md:px-10 lg:px-20 py-8">
+                <div className="container mx-auto px-6 py-8 md:px-10 lg:px-20">
                     <div className="flex flex-col gap-10 md:flex-row md:items-center lg:justify-between">
-                        <div className='flex flex-col gap-5'>
-                            <SubText text='From Our Blog' />
-                            <TitleText text='Cerita, Tren & Insight Seputar Dunia Teknologi' />
+                        <div className="flex flex-col gap-5">
+                            <SubText text="From Our Blog" />
+                            <TitleText text="Cerita, Tren & Insight Seputar Dunia Teknologi" />
                         </div>
 
                         <Link
                             href="/modules"
-                            className=" gap-2 text-sm font-medium text-primary hover:underline min-w-fit hidden md:flex"
+                            className="hidden min-w-fit gap-2 text-sm font-medium text-primary hover:underline md:flex"
                         >
                             Lihat Semua
                         </Link>
@@ -236,7 +247,9 @@ export default function LandingPage({
                                     <div
                                         key={index}
                                         className={
-                                            index >= 2 ? 'md:hidden lg:block' : ''
+                                            index >= 2
+                                                ? 'md:hidden lg:block'
+                                                : ''
                                         }
                                     >
                                         <SimpleBlogCardComponent props={blog} />
@@ -245,8 +258,8 @@ export default function LandingPage({
                             </div>
                         ) : (
                             <EmptyStateBox
-                                title='Belum ada artikel terbaru'
-                                description='Saat ini belum ada artikel yang tersedia. Nantikan cerita, tren, dan insight menarik seputar dunia teknologi segera!'
+                                title="Belum ada artikel terbaru"
+                                description="Saat ini belum ada artikel yang tersedia. Nantikan cerita, tren, dan insight menarik seputar dunia teknologi segera!"
                             />
                         )}
                     </div>
@@ -254,12 +267,12 @@ export default function LandingPage({
             </section>
 
             {/* Sextion What They Say */}
-            <section className="bg-[#F9FAFB] py-10 my-10">
-                <div className="container mx-auto px-6 md:px-10 lg:px-20 py-8">
+            <section className="my-10 bg-[#F9FAFB] py-10">
+                <div className="container mx-auto px-6 py-8 md:px-10 lg:px-20">
                     <div className="flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
-                        <div className='flex flex-col gap-5'>
-                            <SubText text='What They Say' />
-                            <TitleText text='Apa Kata Mereka yang Sudah Belajar' />
+                        <div className="flex flex-col gap-5">
+                            <SubText text="What They Say" />
+                            <TitleText text="Apa Kata Mereka yang Sudah Belajar" />
                         </div>
 
                         {/* <Link
@@ -269,7 +282,7 @@ export default function LandingPage({
                             Lihat Semua
                         </Link> */}
                     </div>
-                    <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
+                    <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
                         {testimonials.length > 0 ? (
                             testimonials.map((item, i) => (
                                 <div
@@ -296,7 +309,7 @@ export default function LandingPage({
                                 </p>
                             </div>
                         )}
-                    <div className="mt-5">
+                        {/* <div className="mt-5">
                         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
                             {data.map((item, i) => (
                                 <div
@@ -307,17 +320,18 @@ export default function LandingPage({
                                 </div>
                             ))}
                         </div>
+                    </div> */}
                     </div>
                 </div>
             </section>
 
             {/* Section FAQ */}
             <section className="py-10">
-                <div className="container mx-auto grid grid-cols-1 gap-10 px-6 md:px-10 lg:px-20 py-8 lg:grid-cols-2">
-                    <div className='flex flex-col gap-5'>
-                        <SubText text='Frequently Asked Questions' />
+                <div className="container mx-auto grid grid-cols-1 gap-10 px-6 py-8 md:px-10 lg:grid-cols-2 lg:px-20">
+                    <div className="flex flex-col gap-5">
+                        <SubText text="Frequently Asked Questions" />
 
-                        <TitleText text='Hal-hal yang Sering Kamu Tanyakan' />
+                        <TitleText text="Hal-hal yang Sering Kamu Tanyakan" />
                     </div>
 
                     <div className="w-full">

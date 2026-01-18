@@ -31,7 +31,7 @@ class LandingPageController extends Controller
             ->get();
 
         $testimonials = Testimonial::with('user')
-            ->where('status', 'pending')
+            ->where('status', 'approved')
             ->latest()
             ->limit(3)
             ->get();
