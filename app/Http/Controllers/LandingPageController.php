@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use App\Models\Course;
+use App\Models\testimonial;
 use App\Models\Module;
 use Inertia\Inertia;
 
@@ -29,11 +30,18 @@ class LandingPageController extends Controller
             ->take(3)
             ->get();
 
+        $testimonials = Testimonial::with('user')
+            ->where('status', 'pending')
+            ->latest()
+            ->limit(3)
+            ->get();
+
         return Inertia::render('LandingPage', [
             "latestModule" => $latestModule,
             "modules" => $modules,
             "courses" => $courses,
             "blogs" => $blogs,
+            "testimonials" => $testimonials,
         ]);
     }
 }

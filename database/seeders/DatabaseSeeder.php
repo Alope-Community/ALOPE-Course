@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             BlogSeeder::class,
             GlossarySeeder::class,
+            TestimonialSeeder::class,
         ]);
     }
 }

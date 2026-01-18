@@ -49,4 +49,9 @@ class Course extends Model
     {
         return $this->belongsToMany(Glossary::class);
     }
+
+    public function testimonials()
+    {
+        return $this->hasMany(Testimonial::class);
+    }
 }
