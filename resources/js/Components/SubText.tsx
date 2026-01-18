@@ -1,7 +1,11 @@
-export const SubText = ({ text }: { text: string }) => {
+type Subtext = {
+    text: string
+}
+
+export const SubText = ({ text }: Subtext) => {
     return (
-        <h4 className="mb-2 font-medium text-primary text-xl">
+        <p className="font-medium text-[16px] uppercase tracking-wide text-primary">
             {text}
-        </h4>
+        </p>
     )
 }

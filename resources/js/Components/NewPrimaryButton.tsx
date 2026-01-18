@@ -34,7 +34,7 @@ export default function NewPrimaryButton({
         <button
             {...props}
             disabled={disabled}
-            className={`overflow-hidden px-5 py-2 text-sm md:text-base ${baseStyle} ${variantStyle} ${disabledStyle} ${className} ${circleIcon && '!pr-10'}`}
+            className={`overflow-hidden px-5 py-3 text-sm md:text-base ${baseStyle} ${variantStyle} ${disabledStyle} ${className}`}
         >
             <span className={`relative z-10 ${circleIcon ? 'pr-6' : ''}`}>
                 {text || children}
