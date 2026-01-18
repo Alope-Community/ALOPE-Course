@@ -11,7 +11,6 @@ export type Course = {
     cover?: string;
     status: 'coming-soon' | 'on-going' | 'compleated';
     visibility: 'public' | 'private';
-    status: 'coming-soon' | 'on-going' | 'compleated';
     category_id: string;
     description: string;
 
