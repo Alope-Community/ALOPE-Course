@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
-use App\Models\course;
+use App\Models\Course;
 use App\Models\Testimonial;
 
 class TestimonialSeeder extends Seeder
