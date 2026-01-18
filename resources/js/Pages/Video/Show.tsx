@@ -42,24 +42,26 @@ export default function ShowVideoPage({
                 loading="lazy"
             />
 
-            <BreadcrumbComponent
-                links={[
-                    { title: 'Course', url: '/courses' },
-                    {
-                        title: strLimit(video.course.title, 7),
-                        url: `/courses/${video.course.slug}`,
-                    },
-                    { title: 'Video', url: '/courses' },
-                    {
-                        title: strLimit(video.title, 5),
-                        url: `/videos/${video.slug}`,
-                        active: true,
-                    },
-                ]}
-            />
 
-            <main className="container relative z-20 mx-auto mt-10 px-3 md:px-10 xl:px-5 2xl:px-2">
-                <section className="relative grid gap-8 lg:grid-cols-7 xl:gap-10">
+            <main className="container relative z-20 mx-auto mt-10 px-3 md:px-10 xl:px-5 2xl:px-2 pb-20">
+
+                <BreadcrumbComponent
+                    links={[
+                        { title: 'Course', url: '/courses' },
+                        {
+                            title: strLimit(video.course.title, 7),
+                            url: `/courses/${video.course.slug}`,
+                        },
+                        { title: 'Video', url: '/courses' },
+                        {
+                            title: strLimit(video.title, 5),
+                            url: `/videos/${video.slug}`,
+                            active: true,
+                        },
+                    ]}
+                />
+
+                <section className="relative mt-10 grid gap-8 lg:grid-cols-7 xl:gap-10">
                     <div className="relative lg:col-span-2">
                         <div className="sticky top-24">
                             <div className="rounded bg-gradient-to-r from-[#5b8df3] to-[#307de9] p-5 text-white">

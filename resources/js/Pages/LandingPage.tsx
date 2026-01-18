@@ -1,20 +1,24 @@
 import AccordionComponent from '@/Components/Accordion';
+import BodySecondaryText from '@/Components/BodySecondaryText';
 import SimpleBlogCardComponent from '@/Components/Cards/Blog';
 import CourseCardComponent from '@/Components/Cards/CourseCard';
 import ModuleCardComponent from '@/Components/Cards/Module';
 import TestimonialCard, {
     TestimonialCardProps,
 } from '@/Components/Cards/Testimonial';
+import { EmptyStateBox } from '@/Components/EmptyStateBox';
 import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
 import NewPrimaryButton from '@/Components/NewPrimaryButton';
+import { SubText } from '@/Components/SubText';
+import { TitleText } from '@/Components/TitleText';
 import { Blog } from '@/models/Blog';
 import { Course } from '@/models/Course';
 import { Module } from '@/models/Module';
 import { Video } from '@/models/Video';
 import { Head, Link } from '@inertiajs/react';
 import 'glider-js/glider.min.css';
-import { IconBookOpen, IconCircleCheckFill, IconSend3 } from 'justd-icons';
+import { IconArrowRight, IconBookOpen, IconCircleCheckFill, IconSend3 } from 'justd-icons';
 
 export default function LandingPage({
     courses,
@@ -53,31 +57,31 @@ export default function LandingPage({
         },
     ];
     return (
-        <>
+        <div className='bg-white'>
             <Head title="Welcome" />
 
             <NavbarComponent />
 
-            <header className="relative min-h-[800px] overflow-hidden bg-gradient-to-tr from-white to-yellow-50 pt-0 md:pt-16">
-                <div className="container relative z-10 mx-auto flex flex-col items-center justify-between px-4 py-10 md:px-10 lg:flex-row">
-                    <div className="order-2 lg:order-1 lg:w-1/2">
-                        <h1 className="mb-4 text-center text-3xl font-medium leading-snug text-black md:text-4xl lg:text-left xl:text-6xl">
+            <header className="relative min-h-[800px] overflow-hidden bg-gradient-to-tr from-white to-yellow-50 pt-20 md:pt-16">
+                <div className="container relative z-10 mx-auto flex flex-col items-center justify-between px-4 py-10 md:px-20 lg:flex-row lg:text-left text-center">
+                    <div className="flex flex-col gap-10 lg:w-1/2">
+                        <h1 className="leading-tight font-medium text-[40px] md:text-[48px] lg:text-[64px] font-spartan">
                             Tingkatkan Skill Coding dari Nol hingga Mahir!
                         </h1>
 
-                        <p className="mx-auto mb-6 mt-3 w-full text-center text-base text-grey md:mx-0 md:mb-10 md:w-[90%] md:text-base lg:text-left xl:w-[85%]">
-                            Belajar coding dari nol hingga mahir dengan panduan
+                        <BodySecondaryText text='Belajar coding dari nol hingga mahir dengan panduan
                             lengkap, materi terstruktur, dan artikel mendalam
                             yang membantumu meningkatkan skill programming
-                            secara efektif.
-                        </p>
+                            secara efektif.' />
 
-                        <div className="mt-2 flex justify-center gap-5 lg:justify-start xl:mt-14">
-                            <NewPrimaryButton
-                                text="Mulai Belajar Sekarang"
-                                circleIcon
-                                showIcon
-                            />
+                        <div className="flex justify-center lg:justify-start">
+                            <Link href='/courses'>
+                                <NewPrimaryButton
+                                    text="Mulai Belajar Sekarang"
+                                    circleIcon
+                                    showIcon
+                                />
+                            </Link>
                         </div>
                     </div>
                     <div className="relative order-1 mt-10 hidden justify-center lg:order-2 lg:mt-0 lg:flex lg:w-1/2">
@@ -118,10 +122,10 @@ export default function LandingPage({
             </header>
 
             {/* Section belajar coding */}
-            <section className="relative bg-white py-10">
+            <section className="py-10">
                 <div className="container mx-auto flex flex-col items-center gap-12 px-4 py-4 md:flex-row md:items-center md:px-10 xl:px-20">
                     <div className="flex w-full justify-center md:w-1/2">
-                        <div className="relative">
+                        <div className="">
                             <img
                                 src="/images/header.png"
                                 alt="student"
@@ -131,16 +135,12 @@ export default function LandingPage({
                     </div>
 
                     {/* Kontainer teks */}
-                    <div className="flex w-full flex-col items-center text-center md:w-1/2 md:items-start md:text-left">
-                        <p className="mb-5 font-semibold uppercase tracking-widest text-primary">
-                            Why Choose Us
-                        </p>
+                    <div className="flex gap-5 w-full flex-col items-center text-center md:w-1/2 md:items-start md:text-left">
+                        <SubText text='Why Choose Us' />
 
-                        <h2 className="mt-2 text-3xl font-medium text-gray-900 md:text-4xl">
-                            Belajar Coding dengan <br /> Pendekatan yang Tepat
-                        </h2>
+                        <TitleText text='Belajar Coding dengan Pendekatan yang Tepat' />
 
-                        <ul className="mt-6 space-y-3 text-grey">
+                        <ul className="space-y-3 text-grey">
                             {[
                                 'Materi Terarah & Terstruktur',
                                 'Fokus pada Konsep Dasar',
@@ -149,183 +149,169 @@ export default function LandingPage({
                             ].map((item, i) => (
                                 <li key={i} className="flex items-center gap-3">
                                     <IconCircleCheckFill className="size-5 text-green-500" />
-                                    {item}
+                                    <BodySecondaryText text={item} />
                                 </li>
                             ))}
                         </ul>
 
-                        <div className="mt-8">
-                            <NewPrimaryButton
-                                text="Mulai Belajar Sekarang"
-                                circleIcon
-                                showIcon
-                            />
+                        <div className="mt-3">
+                            <Link href='/courses'>
+                                <NewPrimaryButton
+                                    text="Mulai Belajar Sekarang"
+                                    circleIcon
+                                    showIcon
+                                />
+                            </Link>
                         </div>
                     </div>
                 </div>
             </section>
 
             {/* Section semuua module */}
-            <section className="bg-white py-10">
-                <div className="container mx-auto px-8 py-8">
-                    <div className="mb-8">
-                        <p className="mb-5 font-semibold uppercase tracking-widest text-primary">
-                            Choose Your Path
-                        </p>
+            <section className="py-10">
+                <div className="flex gap-5 flex-col container mx-auto px-6 md:px-10 lg:px-20 py-8">
+                    <SubText text='Choose Your Path' />
 
-                        <h2 className="text-2xl font-medium leading-tight text-gray-900 md:text-5xl">
-                            Pilih Jalur Pembelajaran
-                        </h2>
-                        <h2 className="text-2xl font-medium leading-tight text-gray-900 md:text-5xl">
-                            Sesuai Minatmu
-                        </h2>
-                    </div>
-                    <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-                        {courses.slice(0, 3).map((course, index) => (
-                            <CourseCardComponent key={index} course={course} />
-                        ))}
+                    <TitleText text='Pilih Jalur Pembelajaran Sesuai Minatmu' />
+                    <div className="mt-5 w-full">
+                        <div className="grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                            {courses.slice(0, 3).map((course, index) => (
+                                <CourseCardComponent key={index} course={course} />
+                            ))}
+                        </div>
                     </div>
                 </div>
             </section>
 
             {/* Section popular modules */}
-            <section className="bg-white">
-                <div className="container mx-auto px-8 py-8">
-                    <div className="mb-5 flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
-                        <div>
-                            <p className="mb-5 font-semibold uppercase tracking-widest text-primary">
-                                Popular Courses
-                            </p>
+            <section className="py-10">
+                <div className="container mx-auto px-6 md:px-10 lg:px-20 py-8">
+                    <div className="flex flex-col gap-10 md:flex-row md:justify-start md:items-center lg:justify-between">
+                        <div className='flex flex-col gap-5'>
+                            <SubText text='Course Populer' />
 
-                            <div className="mt-1">
-                                <h2 className="text-2xl font-medium leading-tight text-gray-900 md:text-5xl">
-                                    Materi Pembelajaran
-                                </h2>
-                                <h2 className="text-2xl font-medium leading-tight text-gray-900 md:text-5xl">
-                                    Terpopuler Saat Ini
-                                </h2>
-                            </div>
+                            <TitleText text='Materi Pembelajaran Terpopuler Saat Ini' />
                         </div>
 
                         <Link
-                            href="/blogs"
-                            className="text-sm font-medium text-primary hover:underline"
+                            href="/modules"
+                            className="gap-2 text-sm font-medium text-primary hover:underline min-w-fit hidden md:flex"
                         >
                             Lihat Semua
                         </Link>
                     </div>
 
-                    <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-                        {modules.map((module, index) => (
-                            <div
-                                key={index}
-                                className={
-                                    index >= 2 ? 'md:hidden lg:block' : ''
-                                }
-                            >
-                                <ModuleCardComponent props={module} />
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Section Blog */}
-            <section className="bg-white">
-                <div className="container mx-auto px-8 py-8">
-                    <div className="mb-5 flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
-                        <div>
-                            <p className="mb-5 font-semibold uppercase tracking-widest text-primary">
-                                FROM OUR BLOG
-                            </p>
-                            <h2 className="text-2xl font-medium leading-tight text-gray-900 md:text-5xl">
-                                Cerita, Tren, dan Insight <br />
-                                Seputar Dunia Tech
-                            </h2>
-                        </div>
-
-                        <Link
-                            href="/blogs"
-                            className="text-sm font-medium text-primary hover:underline"
-                        >
-                            Lihat Semua
-                        </Link>
-                    </div>
-                    {blogs.length > 0 ? (
-                        <div className="grid grid-cols-1 gap-14 sm:grid-cols-2 lg:grid-cols-3">
-                            {blogs.slice(0, 3).map((blog, index) => (
+                    <div className="mt-5">
+                        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                            {modules.map((module, index) => (
                                 <div
                                     key={index}
                                     className={
                                         index >= 2 ? 'md:hidden lg:block' : ''
                                     }
                                 >
-                                    <SimpleBlogCardComponent props={blog} />
+                                    <ModuleCardComponent props={module} />
                                 </div>
                             ))}
                         </div>
-                    ) : (
-                        <div className="col-span-1 flex w-full flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-gray-300 bg-gray-50 p-3 py-16 text-center text-gray-500 sm:col-span-2 lg:col-span-3">
-                            <p className="text-lg font-semibold text-gray-900">
-                                Belum ada artikel terbaru
-                            </p>
-                            <p className="max-w-md text-sm text-gray-500">
-                                Saat ini belum ada artikel yang tersedia.
-                                Nantikan cerita, tren, dan insight menarik
-                                seputar dunia tech segera!
-                            </p>
-                        </div>
-                    )}
+                    </div>
                 </div>
             </section>
 
-            {/* Sextion What They Say */}
-            <section className="bg-white">
-                <div className="container mx-auto px-8 py-8">
-                    <div className="mb-5 flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
-                        <div>
-                            <p className="mb-5 font-semibold uppercase tracking-widest text-primary">
-                                WHAT THEY SAY
-                            </p>
-                            <h2 className="text-2xl font-medium leading-tight text-gray-900 md:text-5xl">
-                                Apa Kata Mereka yang <br />
-                                Sudah Belajar
-                            </h2>
+            <section className="py-10">
+                <div className="container mx-auto px-6 md:px-10 lg:px-20 py-8">
+                    <div className="flex flex-col gap-5 text-white bg-primary p-10 md:p-20 rounded-2xl ">
+                        <TitleText text='Gabung "Bootcamp Bersama PBK", Perkuat Fundamental Skill Web Programming' />
+                        <Link
+                            href="/blogs"
+                            className="flex gap-2 items-center font-medium hover:underline"
+                        >
+                            Belajar Sekarang
+
+                            <IconArrowRight className='w-5 h-5' />
+                        </Link>
+                    </div>
+                </div>
+            </section>
+
+            {/* Section Blog */}
+            <section className="py-10">
+                <div className="container mx-auto px-6 md:px-10 lg:px-20 py-8">
+                    <div className="flex flex-col gap-10 md:flex-row md:items-center lg:justify-between">
+                        <div className='flex flex-col gap-5'>
+                            <SubText text='From Our Blog' />
+                            <TitleText text='Cerita, Tren & Insight Seputar Dunia Teknologi' />
                         </div>
 
                         <Link
-                            href="/blogs"
-                            className="text-sm font-medium text-primary hover:underline"
+                            href="/modules"
+                            className=" gap-2 text-sm font-medium text-primary hover:underline min-w-fit hidden md:flex"
                         >
                             Lihat Semua
                         </Link>
                     </div>
-                    <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
-                        {data.map((item, i) => (
-                            <div
-                                key={i}
-                                className={i >= 2 ? 'md:hidden lg:block' : ''}
-                            >
-                                <TestimonialCard {...item} />
+                    <div className="mt-5">
+                        {blogs.length > 0 ? (
+                            <div className="grid grid-cols-1 gap-14 sm:grid-cols-2 lg:grid-cols-3">
+                                {blogs.slice(0, 3).map((blog, index) => (
+                                    <div
+                                        key={index}
+                                        className={
+                                            index >= 2 ? 'md:hidden lg:block' : ''
+                                        }
+                                    >
+                                        <SimpleBlogCardComponent props={blog} />
+                                    </div>
+                                ))}
                             </div>
-                        ))}
+                        ) : (
+                            <EmptyStateBox
+                                title='Belum ada artikel terbaru'
+                                description='Saat ini belum ada artikel yang tersedia. Nantikan cerita, tren, dan insight menarik seputar dunia teknologi segera!'
+                            />
+                        )}
+                    </div>
+                </div>
+            </section>
+
+            {/* Sextion What They Say */}
+            <section className="bg-[#F9FAFB] py-10 my-10">
+                <div className="container mx-auto px-6 md:px-10 lg:px-20 py-8">
+                    <div className="flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
+                        <div className='flex flex-col gap-5'>
+                            <SubText text='What They Say' />
+                            <TitleText text='Apa Kata Mereka yang Sudah Belajar' />
+                        </div>
+
+                        {/* <Link
+                            href="/blogs"
+                            className="text-sm font-medium text-primary hover:underline"
+                        >
+                            Lihat Semua
+                        </Link> */}
+                    </div>
+                    <div className="mt-5">
+                        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
+                            {data.map((item, i) => (
+                                <div
+                                    key={i}
+                                    className={i >= 2 ? 'md:hidden lg:block' : ''}
+                                >
+                                    <TestimonialCard {...item} />
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </section>
 
             {/* Section FAQ */}
-            <section className="bg-white">
-                <div className="container mx-auto grid grid-cols-1 gap-10 px-8 py-8 lg:grid-cols-2">
-                    <div>
-                        <p className="mb-5 font-semibold uppercase tracking-widest text-primary">
-                            Frequently Asked Questions
-                        </p>
+            <section className="py-10">
+                <div className="container mx-auto grid grid-cols-1 gap-10 px-6 md:px-10 lg:px-20 py-8 lg:grid-cols-2">
+                    <div className='flex flex-col gap-5'>
+                        <SubText text='Frequently Asked Questions' />
 
-                        <h2 className="text-2xl font-medium leading-tight text-gray-900 md:text-5xl">
-                            Hal-hal yang Sering Kamu
-                            <br />
-                            Tanyakan
-                        </h2>
+                        <TitleText text='Hal-hal yang Sering Kamu Tanyakan' />
                     </div>
 
                     <div className="w-full">
@@ -358,6 +344,6 @@ export default function LandingPage({
             </section>
 
             <FooterComponent />
-        </>
+        </div>
     );
 }

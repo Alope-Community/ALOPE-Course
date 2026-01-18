@@ -9,29 +9,29 @@ import {
 import NewPrimaryButton from '../NewPrimaryButton';
 
 export default function CourseCardComponent({ course }: { course: Course }) {
-    console.log(course.cover);
-
     return (
         <Link
             href={`/courses/${course.slug}`}
-            className="group block w-full overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-lg transition-all hover:shadow-xl"
+            className="group flex h-full w-full max-w-sm flex-col overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-md transition-all hover:shadow-xl"
         >
-            <div className="h-50 w-full rounded-b-3xl bg-blue-500">
+            {/* Cover */}
+            <div className="aspect-[16/9] w-full overflow-hidden bg-blue-500">
                 <img
-                    // src={props.cover}
-                    src={'/images/thumb.png'}
-                    alt="Cover Course"
-                    className="h-full w-full"
+                    src={course.cover}
+                    alt={course.title}
+                    className="h-full w-full object-cover"
                 />
             </div>
 
-            <div className="px-6 py-6">
+            {/* Content */}
+            <div className="flex flex-1 flex-col px-6 py-6">
                 <small className="text-xs italic text-[#2276f0]">
                     #{course.category.slug}
                 </small>
 
+                {/* Title */}
                 <div className="mt-2 flex items-center gap-2">
-                    <p className="text-lg font-semibold text-gray-900">
+                    <p className="line-clamp-2 text-lg font-semibold text-gray-900">
                         {course.title}
                     </p>
 
@@ -45,6 +45,7 @@ export default function CourseCardComponent({ course }: { course: Course }) {
                     )}
                 </div>
 
+                {/* Meta */}
                 <div className="mt-4 flex flex-wrap items-center gap-4 text-sm text-gray-700">
                     <div className="flex items-center gap-1">
                         <IconStarFill className="size-4 text-yellow-500" />
@@ -62,12 +63,14 @@ export default function CourseCardComponent({ course }: { course: Course }) {
                     </div>
                 </div>
 
-                <p className="mt-4 line-clamp-2 text-sm leading-relaxed text-gray-500">
+                {/* Description */}
+                <p className="mt-4 line-clamp-3 text-sm leading-relaxed text-gray-500">
                     {course.description ||
                         'Pelajari materi dengan pendekatan terstruktur dan mudah dipahami.'}
                 </p>
 
-                <div className="mt-6">
+                {/* Button */}
+                <div className="mt-auto pt-6">
                     <NewPrimaryButton
                         text="Belajar sekarang"
                         circleIcon

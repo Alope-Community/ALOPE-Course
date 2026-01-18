@@ -1,4 +1,5 @@
-import { IconMail, IconMap, IconPilone } from 'justd-icons';
+import { Link } from '@inertiajs/react';
+import { IconDevicePhone, IconLocation, IconMail } from 'justd-icons';
 
 export default function FooterComponent() {
     return (
@@ -26,19 +27,19 @@ export default function FooterComponent() {
                         <h4 className="mb-3 text-lg font-semibold">Navigasi</h4>
                         <ul className="space-y-2 text-sm">
                             <li>
-                                <a href="/courses" className="hover:underline">
+                                <Link href="/courses" className="hover:underline">
                                     Kursus
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="#" className="hover:underline">
+                                <Link href="/blogs" className="hover:underline">
                                     Artikel
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="#" className="hover:underline">
+                                <Link href="/videos" className="hover:underline">
                                     Video
-                                </a>
+                                </Link>
                             </li>
                         </ul>
                     </div>
@@ -47,19 +48,19 @@ export default function FooterComponent() {
                         <h4 className="mb-3 text-lg font-semibold">Kursus</h4>
                         <ul className="space-y-2 text-sm">
                             <li>
-                                <a href="#" className="hover:underline">
+                                <Link href="/courses" className="hover:underline">
                                     Kursus
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="#" className="hover:underline">
+                                <Link href="/blogs" className="hover:underline">
                                     Artikel
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="#" className="hover:underline">
+                                <Link href="/videos" className="hover:underline">
                                     Video
-                                </a>
+                                </Link>
                             </li>
                         </ul>
                     </div>
@@ -68,10 +69,10 @@ export default function FooterComponent() {
                         <h4 className="mb-3 text-lg font-semibold">Kontak</h4>
                         <ul className="space-y-3 text-sm">
                             <li className="flex items-center justify-center gap-2 md:justify-start">
-                                <IconPilone className="w-4" /> 089123456789
+                                <IconDevicePhone className="w-4" /> 089123456789
                             </li>
                             <li className="flex items-center justify-center gap-2 md:justify-start">
-                                <IconMap className="w-4" /> Darma, Kuningan,
+                                <IconLocation className="w-4" /> Darma, Kuningan,
                                 Jawa Barat
                             </li>
                             <li className="flex items-center justify-center gap-2 md:justify-start">

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Icon from './Icon';
 import { IconChevronDown } from 'justd-icons';
+import BodySecondaryText from './BodySecondaryText';
 
 interface AccordionProps {
     title: string;
@@ -23,9 +24,9 @@ const AccordionItem: React.FC<AccordionProps> = ({
     const contentRef = useRef<HTMLDivElement>(null);
 
     return (
-        <div className="w-full border-b border-gray-300">
+        <div className={`w-full p-3 ${isOpen ? "bg-[#F9FAFB] rounded-xl" : "border-b border-gray-300"}`}>
             <button
-                className="flex w-full items-center justify-between px-2 py-4 text-left font-semibold hover:bg-white/50"
+                className="flex w-full text-[16px] items-center justify-between ps-2 pe-5 py-4 text-left font-semibold"
                 onClick={onClick}
             >
                 {title}
@@ -43,7 +44,7 @@ const AccordionItem: React.FC<AccordionProps> = ({
                         : undefined,
                 }}
             >
-                <p className="py-2 text-gray-700">{content}</p>
+                <BodySecondaryText text={content} />
             </div>
         </div>
     );
