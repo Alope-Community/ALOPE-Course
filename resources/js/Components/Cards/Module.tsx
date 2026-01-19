@@ -12,17 +12,18 @@ export default function ModuleCardComponent({ props }: { props: Module }) {
             href={`/modules/${props.slug}`}
             className="group flex h-full w-full flex-col overflow-hidden rounded-2xl border-2 border-gray-300 bg-white"
         >
-            <div className="relative h-60 w-full">
+            {/* <div className="relative h-60 w-full">
                 <img
                     // src={props.cover}
                     src={'/images/thumb.png'}
                     alt="cover"
                     className="h-full w-full"
                 />
-            </div>
+            </div> */}
             <div className="flex flex-1 flex-col justify-between p-4">
                 <div>
-                    <div className="mb-2 flex items-center gap-3 text-xs text-black">
+                    <p className="font-semibold text-gray-900">{props.title}</p>
+                    <div className="mb-2 mt-3 flex items-center gap-3 text-xs text-black">
                         <Icon
                             icon={<IconCalendar />}
                             label={formatDate(props.created_at || '')}
@@ -38,8 +39,6 @@ export default function ModuleCardComponent({ props }: { props: Module }) {
                             label={props.reads?.length + ' Views'}
                         />
                     </div>
-
-                    <p className="font-semibold text-gray-900">{props.title}</p>
                     <p className="mt-1 line-clamp-2 text-sm text-gray-600">
                         {strLimit(props.description, 100)}
                     </p>

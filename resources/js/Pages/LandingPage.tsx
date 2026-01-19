@@ -18,12 +18,7 @@ import { Module } from '@/models/Module';
 import { Video } from '@/models/Video';
 import { Head, Link } from '@inertiajs/react';
 import 'glider-js/glider.min.css';
-import {
-    IconArrowRight,
-    IconBookOpen,
-    IconCircleCheckFill,
-    IconSend3,
-} from 'justd-icons';
+import { IconBookOpen, IconCircleCheckFill, IconSend3 } from 'justd-icons';
 
 export default function LandingPage({
     courses,
@@ -179,7 +174,7 @@ export default function LandingPage({
                 <div className="container mx-auto px-6 py-8 md:px-10 lg:px-20">
                     <div className="flex flex-col gap-10 md:flex-row md:items-center md:justify-start lg:justify-between">
                         <div className="flex flex-col gap-5">
-                            <SubText text="Modul Populer" />
+                            <SubText text="POPULAR MODULES" />
 
                             <TitleText text="Materi Pembelajaran Terpopuler Saat Ini" />
                         </div>
@@ -209,7 +204,7 @@ export default function LandingPage({
                 </div>
             </section>
 
-            <section className="py-10">
+            {/* <section className="py-10">
                 <div className="container mx-auto px-6 py-8 md:px-10 lg:px-20">
                     <div className="flex flex-col gap-5 rounded-2xl bg-primary p-10 text-white md:p-20">
                         <TitleText text='Gabung "Bootcamp Bersama PBK", Perkuat Fundamental Skill Web Programming' />
@@ -222,7 +217,7 @@ export default function LandingPage({
                         </Link>
                     </div>
                 </div>
-            </section>
+            </section> */}
 
             {/* Section Blog */}
             <section className="py-10">
@@ -233,12 +228,12 @@ export default function LandingPage({
                             <TitleText text="Cerita, Tren & Insight Seputar Dunia Teknologi" />
                         </div>
 
-                        <Link
+                        {/* <Link
                             href="/modules"
                             className="hidden min-w-fit gap-2 text-sm font-medium text-primary hover:underline md:flex"
                         >
                             Lihat Semua
-                        </Link>
+                        </Link> */}
                     </div>
                     <div className="mt-5">
                         {blogs.length > 0 ? (

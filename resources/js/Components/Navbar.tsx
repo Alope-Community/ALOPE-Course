@@ -15,7 +15,7 @@ export default function NavbarComponent() {
     const navLinks = [
         { name: 'Home', href: '/' },
         { name: 'Kursus', href: '/courses' },
-        { name: 'Modul', href: '/modules' },
+        // { name: 'Modul', href: '/modules' },
         { name: 'Video', href: '/videos/kickstart-ml-persiapan' },
     ];
 

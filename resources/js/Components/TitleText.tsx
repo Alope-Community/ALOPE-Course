@@ -1,11 +1,11 @@
 type TitleTextProps = {
-    text: string
-}
+    text: string;
+};
 
 export const TitleText = ({ text }: TitleTextProps) => {
     return (
-        <h2 className="text-[32px] md:text-[40px] lg:text-[48px] font-medium font-spartan leading-none">
+        <h2 className="font-spartan text-[32px] font-medium leading-none md:text-[40px] lg:text-[48px]">
             {text}
         </h2>
-    )
-}
+    );
+};
