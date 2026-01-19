@@ -35,8 +35,6 @@ export default function LandingPage({
     blogs: Blog[];
     testimonials: TestimonialCardProps[];
 }) {
-    console.log(testimonials);
-
     return (
         <div className="bg-white">
             <Head title="Welcome" />

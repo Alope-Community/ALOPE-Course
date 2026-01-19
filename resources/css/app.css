@@ -5,3 +5,16 @@
 div.glider-contain div.glider-track {
     align-items: flex-start !important;
 }
+
+@keyframes marquee {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.animate-marquee {
+    animation: marquee 15s linear infinite;
+}

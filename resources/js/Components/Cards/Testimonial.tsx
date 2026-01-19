@@ -1,5 +1,5 @@
 // Components/Cards/Testimonial.tsx
-import { IconStarFill } from 'justd-icons';
+import { IconCirclePersonFill, IconStarFill } from 'justd-icons';
 
 export interface TestimonialCardProps {
     user: {
@@ -35,11 +35,12 @@ export default function TestimonialCard({
 
             <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                    <img
+                    {/* <img
                         src={avatar}
                         alt={user.name}
                         className="h-10 w-10 rounded-full object-cover"
-                    />
+                    /> */}
+                    <IconCirclePersonFill className="size-10" />
                     <div>
                         <p className="font-semibold">{user.name}</p>
                         <p className="text-xs text-gray-500">{profession}</p>

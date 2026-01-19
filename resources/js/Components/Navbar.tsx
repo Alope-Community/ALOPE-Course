@@ -143,6 +143,14 @@ export default function NavbarComponent() {
                         <IconHamburger />
                     </button>
                 </div>
+                <div className="overflow-hidden bg-amber-500 py-4 text-white">
+                    <p className="animate-marquee whitespace-nowrap text-center text-sm xl:animate-none xl:whitespace-normal xl:text-center">
+                        Saat ini website sedang dalam tahap maintenance guna
+                        meningkatkan kualitas layanan. Kami mohon maaf apabila
+                        masih terdapat bug atau ketidaknyamanan. Terima kasih
+                        atas pengertian Anda.
+                    </p>
+                </div>
             </nav>
             <div className="h-[76px] bg-gradient-to-tr from-white to-yellow-50 md:h-[80px]" />
 
@@ -159,7 +167,7 @@ export default function NavbarComponent() {
                     ✕
                 </button>
 
-                <ul className="mt-16 flex flex-col gap-4 px-6 font-medium text-gray-600">
+                <ul className="mt-36 flex flex-col gap-4 px-6 font-medium text-gray-600">
                     {navLinks.map((link) => (
                         <li key={link.href}>
                             <Link
