@@ -3,9 +3,7 @@ import BodySecondaryText from '@/Components/BodySecondaryText';
 import SimpleBlogCardComponent from '@/Components/Cards/Blog';
 import CourseCardComponent from '@/Components/Cards/CourseCard';
 import ModuleCardComponent from '@/Components/Cards/Module';
-import TestimonialCard, {
-    TestimonialCardProps,
-} from '@/Components/Cards/Testimonial';
+import TestimonialCardComponent from '@/Components/Cards/Testimonial';
 import { EmptyStateBox } from '@/Components/EmptyStateBox';
 import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
@@ -15,6 +13,7 @@ import { TitleText } from '@/Components/TitleText';
 import { Blog } from '@/models/Blog';
 import { Course } from '@/models/Course';
 import { Module } from '@/models/Module';
+import { Testimonial } from '@/models/Testimonial';
 import { Video } from '@/models/Video';
 import { Head, Link } from '@inertiajs/react';
 import 'glider-js/glider.min.css';
@@ -33,7 +32,7 @@ export default function LandingPage({
     modules: Module[];
     latestModule: Module;
     blogs: Blog[];
-    testimonials: TestimonialCardProps[];
+    testimonials: Testimonial[];
 }) {
     return (
         <div className="bg-white">
@@ -284,10 +283,8 @@ export default function LandingPage({
                                         i >= 2 ? 'md:hidden lg:block' : ''
                                     }
                                 >
-                                    <TestimonialCard
-                                        message={item.message}
-                                        user={item.user}
-                                        rating={item.rating}
+                                    <TestimonialCardComponent
+                                        testimonial={item}
                                     />
                                 </div>
                             ))

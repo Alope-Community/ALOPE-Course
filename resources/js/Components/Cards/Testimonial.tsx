@@ -1,23 +1,12 @@
 // Components/Cards/Testimonial.tsx
+import { Testimonial } from '@/models/Testimonial';
 import { IconCirclePersonFill, IconStarFill } from 'justd-icons';
 
-export interface TestimonialCardProps {
-    user: {
-        name: string;
-    };
-    message: string;
-    profession?: string;
-    avatar?: string;
-    rating: number;
-}
-
-export default function TestimonialCard({
-    user,
-    message,
-    profession = 'Mahasiswa',
-    avatar = '/images/ilham.jpg',
-    rating,
-}: TestimonialCardProps) {
+export default function TestimonialCardComponent({
+    testimonial,
+}: {
+    testimonial: Testimonial;
+}) {
     return (
         <div className="rounded-2xl border border-gray-200 bg-white p-6">
             {/* icon quote (svg) */}
@@ -31,25 +20,31 @@ export default function TestimonialCard({
                 </svg>
             </div>
 
-            <p className="mb-6 leading-relaxed text-gray-700">{message}</p>
+            <p className="mb-6 leading-relaxed text-gray-700">
+                {testimonial.message}
+            </p>
 
             <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                     {/* <img
-                        src={avatar}
-                        alt={user.name}
+                        src={testimonial.avatar}
+                        alt={testimonial.user.name}
                         className="h-10 w-10 rounded-full object-cover"
                     /> */}
                     <IconCirclePersonFill className="size-10" />
                     <div>
-                        <p className="font-semibold">{user.name}</p>
-                        <p className="text-xs text-gray-500">{profession}</p>
+                        <p className="font-semibold">{testimonial.user.name}</p>
+                        <p className="text-xs text-gray-500">
+                            {testimonial.profession}
+                        </p>
                     </div>
                 </div>
 
                 <div className="flex items-center gap-1">
                     <IconStarFill className="h-4 w-4 text-yellow-400" />
-                    <span className="font-semibold">{rating.toFixed(1)}</span>
+                    <span className="font-semibold">
+                        {testimonial.rating.toFixed(1)}
+                    </span>
                 </div>
             </div>
         </div>

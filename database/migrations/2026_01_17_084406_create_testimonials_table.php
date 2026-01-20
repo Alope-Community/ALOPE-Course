@@ -21,8 +21,11 @@ return new class extends Migration
             $table->foreignId('user_id')
                 ->constrained('users')
                 ->cascadeOnDelete();
-            // $table->string('avatar')->nullable();
-            // $table->string('profession')->nullable();
+            $table->enum('profession', [
+                'Mahasiswa',
+                'Pelajar',
+                'Umum',
+            ])->default('Mahasiswa');
             $table->text('message');
             $table->tinyInteger('rating')
                 ->default(5);

@@ -1,9 +1,7 @@
 import BreadcrumbComponent from '@/Components/Breadcrumb';
 import HorizontalQuizCardComponent from '@/Components/Cards/HorizontalQuiz';
 import ModuleCardComponent from '@/Components/Cards/Module';
-import TestimonialCard, {
-    TestimonialCardProps,
-} from '@/Components/Cards/Testimonial';
+import TestimonialCardComponent from '@/Components/Cards/Testimonial';
 import { Container } from '@/Components/Container';
 import FooterComponent from '@/Components/Footer';
 import { HeaderText } from '@/Components/HeaderText';
@@ -11,6 +9,7 @@ import NavbarComponent from '@/Components/Navbar';
 import { SubText } from '@/Components/SubText';
 import Tooltip from '@/Components/Tooltip';
 import { Course } from '@/models/Course';
+import { Testimonial } from '@/models/Testimonial';
 import GlosariumSection from '@/Pages/Glosarium/Show';
 import { Head, Link } from '@inertiajs/react';
 import {
@@ -77,7 +76,7 @@ export default function CourseShowPage({
         body: string;
     }[];
     allGlossary: { title: string; description: string; course_id: string }[];
-    testimonials: TestimonialCardProps[];
+    testimonials: Testimonial[];
 }) {
     const [activeTab, setActiveTab] = useState<'module' | 'quiz' | 'glosarium'>(
         'module',
@@ -294,10 +293,8 @@ export default function CourseShowPage({
                                         i >= 2 ? 'md:hidden lg:block' : ''
                                     }
                                 >
-                                    <TestimonialCard
-                                        message={item.message}
-                                        user={item.user}
-                                        rating={item.rating}
+                                    <TestimonialCardComponent
+                                        testimonial={item}
                                     />
                                 </div>
                             ))
