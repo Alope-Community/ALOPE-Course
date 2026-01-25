@@ -88,7 +88,7 @@ export default function CourseShowPage({
 
             <NavbarComponent />
 
-            <img
+            {/* <img
                 src="/images/shapes/blueBlur2.svg"
                 alt="blueBlur"
                 className="absolute right-0 top-0 hidden xl:block"
@@ -99,7 +99,7 @@ export default function CourseShowPage({
                 alt="purpleBlur"
                 className="absolute -top-52 left-0 hidden xl:block"
                 loading="lazy"
-            />
+            /> */}
 
             <BreadcrumbComponent
                 links={[

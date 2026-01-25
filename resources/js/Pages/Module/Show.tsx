@@ -8,7 +8,6 @@ import SideModulesSection from '@/Sections/SideModules';
 import { formatDateWithTime } from '@/tools/formatDate';
 import strLimit from '@/tools/strLimit';
 import { IconCalendar, IconClock, IconEye } from 'justd-icons';
-import '../../../css/bodyContent.css';
 
 // const codeBlock = `from mlxtend.frequent_patterns import apriori, association_rules
 // import pandas as pd
