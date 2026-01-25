@@ -45,7 +45,7 @@ export default function HistoryPage({
 
             <NavbarComponent />
 
-            <img
+            {/* <img
                 src="/images/shapes/blueBlur2.svg"
                 alt="blueBlur"
                 className="absolute -top-72 right-0 hidden xl:block"
@@ -56,7 +56,7 @@ export default function HistoryPage({
                 alt="purpleBlur"
                 className="absolute -top-52 left-0 hidden xl:block"
                 loading="lazy"
-            />
+            /> */}
 
             <BreadcrumbComponent
                 links={[
@@ -186,7 +186,7 @@ export default function HistoryPage({
                             )}
                         </div>
                     </div>
-                    <div className="rounded-lg bg-white/50 p-5 shadow backdrop-blur">
+                    <div className="mb-20 rounded-lg bg-white/50 p-5 shadow backdrop-blur">
                         <h2 className="text-xl font-semibold md:text-2xl">
                             <span className="text-gray-400">//</span> Riwayat
                             Aktifitas

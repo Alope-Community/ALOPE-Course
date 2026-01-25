@@ -1,16 +1,13 @@
 import AccordionComponent from '@/Components/Accordion';
 import BannerHorizontalComponent from '@/Components/Banners/Horizontal';
-import BreadcrumbComponent from '@/Components/Breadcrumb';
 import ModuleCardComponent from '@/Components/Cards/Module';
 import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
 import { Module } from '@/models/Module';
 import { Video } from '@/models/Video';
-import strLimit from '@/tools/strLimit';
 import { Head, Link } from '@inertiajs/react';
 
 import 'glider-js/glider.min.css';
-import Glider from 'react-glider';
 
 export default function ShowVideoPage({
     video,
@@ -29,7 +26,7 @@ export default function ShowVideoPage({
 
             <NavbarComponent />
 
-            <img
+            {/* <img
                 src="/images/shapes/blueBlur2.svg"
                 alt="blueBlur"
                 className="absolute right-0 top-0 hidden xl:block"
@@ -40,12 +37,10 @@ export default function ShowVideoPage({
                 alt="purpleBlur"
                 className="absolute -top-52 left-0 hidden xl:block"
                 loading="lazy"
-            />
+            /> */}
 
-
-            <main className="container relative z-20 mx-auto mt-10 px-3 md:px-10 xl:px-5 2xl:px-2 pb-20">
-
-                <BreadcrumbComponent
+            <main className="container relative z-20 mx-auto mt-10 px-3 pb-20 pt-20 md:px-10 xl:px-5 2xl:px-2">
+                {/* <BreadcrumbComponent
                     links={[
                         { title: 'Course', url: '/courses' },
                         {
@@ -59,7 +54,7 @@ export default function ShowVideoPage({
                             active: true,
                         },
                     ]}
-                />
+                /> */}
 
                 <section className="relative mt-10 grid gap-8 lg:grid-cols-7 xl:gap-10">
                     <div className="relative lg:col-span-2">
@@ -145,7 +140,10 @@ export default function ShowVideoPage({
                             </h2>
                             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
                                 {modules.map((module, index) => (
-                                    <div key={index} className={index > 0 ? "px-2" : ""}>
+                                    <div
+                                        key={index}
+                                        className={index > 0 ? 'px-2' : ''}
+                                    >
                                         <ModuleCardComponent props={module} />
                                     </div>
                                 ))}
