@@ -156,7 +156,7 @@ export default function NavbarComponent() {
 
             {/* Drawer mobile */}
             <aside
-                className={`fixed left-0 top-28 z-40 h-full w-72 transform bg-white shadow-lg transition-transform md:hidden ${
+                className={`fixed left-0 top-24 z-40 h-full w-72 transform bg-white shadow-lg transition-transform md:hidden ${
                     isOpen ? 'translate-x-0' : '-translate-x-full'
                 }`}
             >

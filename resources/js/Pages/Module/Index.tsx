@@ -1,5 +1,4 @@
 import BannerHorizontalComponent from '@/Components/Banners/Horizontal';
-import BreadcrumbComponent from '@/Components/Breadcrumb';
 import HorizontalModuleCardComponent from '@/Components/Cards/HorizontalModule';
 import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
@@ -57,7 +56,7 @@ export default function ModuleIndexPage({
 
             <NavbarComponent />
 
-            <img
+            {/* <img
                 src="/images/shapes/blueBlur2.svg"
                 alt="blueBlur"
                 className="absolute right-0 top-0 hidden xl:block"
@@ -72,9 +71,9 @@ export default function ModuleIndexPage({
 
             <BreadcrumbComponent
                 links={[{ title: 'Modules', url: '/modules', active: true }]}
-            />
+            /> */}
 
-            <main className="container relative z-20 mx-auto mt-5 mb-20 grid grid-cols-4 gap-8 px-3 md:px-10 xl:gap-10 xl:px-5 2xl:px-2">
+            <main className="container relative z-20 mx-auto mb-20 mt-5 grid grid-cols-4 gap-8 px-3 md:px-10 xl:gap-10 xl:px-5 2xl:px-2">
                 <section className="col-span-4 lg:col-span-3">
                     <BannerHorizontalComponent />
                     <section>
@@ -105,10 +104,11 @@ export default function ModuleIndexPage({
                             <button
                                 key={page}
                                 onClick={() => goToPageNumber(page)}
-                                className={`rounded border px-3 py-1 ${page === modules.current_page
+                                className={`rounded border px-3 py-1 ${
+                                    page === modules.current_page
                                         ? 'bg-[#4a86ef] text-white'
                                         : 'bg-white/50 text-gray-800 backdrop-blur-md'
-                                    }`}
+                                }`}
                             >
                                 {page}
                             </button>

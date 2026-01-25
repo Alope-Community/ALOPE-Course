@@ -1,4 +1,3 @@
-import BreadcrumbComponent from '@/Components/Breadcrumb';
 import HorizontalQuizCardComponent from '@/Components/Cards/HorizontalQuiz';
 import ModuleCardComponent from '@/Components/Cards/Module';
 import TestimonialCardComponent from '@/Components/Cards/Testimonial';
@@ -101,7 +100,7 @@ export default function CourseShowPage({
                 loading="lazy"
             /> */}
 
-            <BreadcrumbComponent
+            {/* <BreadcrumbComponent
                 links={[
                     { title: 'Course', url: '/courses' },
                     {
@@ -110,7 +109,7 @@ export default function CourseShowPage({
                         active: true,
                     },
                 ]}
-            />
+            /> */}
 
             <Container>
                 <main className="relative z-20 w-full">

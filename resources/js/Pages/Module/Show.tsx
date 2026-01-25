@@ -2,11 +2,9 @@ import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
 import { Head } from '@inertiajs/react';
 
-import BreadcrumbComponent from '@/Components/Breadcrumb';
 import { Module } from '@/models/Module';
 import SideModulesSection from '@/Sections/SideModules';
 import { formatDateWithTime } from '@/tools/formatDate';
-import strLimit from '@/tools/strLimit';
 import { IconCalendar, IconClock, IconEye } from 'justd-icons';
 
 // const codeBlock = `from mlxtend.frequent_patterns import apriori, association_rules
@@ -51,7 +49,7 @@ export default function ModuleShowPage({
 
             <NavbarComponent />
 
-            <BreadcrumbComponent
+            {/* <BreadcrumbComponent
                 links={[
                     { title: 'Modules', url: '/modules' },
                     {
@@ -60,7 +58,7 @@ export default function ModuleShowPage({
                         active: true,
                     },
                 ]}
-            />
+            /> */}
 
             <section className="container mx-auto px-3 pb-20 md:px-10 xl:px-5 2xl:px-2">
                 {/* <section id="body" className="mt-20">

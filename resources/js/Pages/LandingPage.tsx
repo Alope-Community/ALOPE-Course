@@ -42,7 +42,7 @@ export default function LandingPage({
 
             <header className="relative min-h-[800px] overflow-hidden bg-gradient-to-tr from-white to-yellow-50 pt-20 md:pt-16">
                 <div className="container relative z-10 mx-auto flex flex-col items-center justify-between px-4 py-10 text-center md:px-10 lg:px-14 lg:text-left xl:flex-row xl:px-0">
-                    <div className="order-2 flex w-3/4 flex-col gap-10 text-center xl:order-1 xl:w-1/2 xl:text-left">
+                    <div className="order-2 flex w-full flex-col gap-10 px-3 text-center sm:w-3/4 sm:px-0 xl:order-1 xl:w-1/2 xl:text-left">
                         <h1 className="font-spartan text-[40px] font-medium leading-tight md:text-5xl xl:text-6xl">
                             Tingkatkan Skill Coding dari Nol hingga Mahir!
                         </h1>
