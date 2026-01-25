@@ -2,6 +2,7 @@ import { Module } from '@/models/Module';
 import { formatDateWithTime } from '@/tools/formatDate';
 import { Link } from '@inertiajs/react';
 import { IconRocketFill } from 'justd-icons';
+import TitleHeadline from '../TitleHeadline';
 
 export default function HorizontalModuleCardComponent({
     props,
@@ -35,7 +36,7 @@ export default function HorizontalModuleCardComponent({
                                     <IconRocketFill className="size-3" />
                                 </span>
                             )}
-                            <p className="text-xs font-semibold text-[#2276f0] md:text-sm">
+                            <p className="text-xs font-semibold text-primary md:text-sm">
                                 {props.course.title}
                             </p>
                         </Link>
@@ -47,9 +48,7 @@ export default function HorizontalModuleCardComponent({
                 ) : (
                     ''
                 )}
-                <p className="font-bold sm:text-xl xl:text-2xl">
-                    {props.title}
-                </p>
+                <TitleHeadline text={props.title}/>
                 {!props.course ? (
                     <p className="mt-2 text-xs text-gray-500 md:text-sm">
                         {formatDateWithTime(props.created_at || '')}

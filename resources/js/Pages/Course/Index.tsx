@@ -4,6 +4,7 @@ import FooterComponent from '@/Components/Footer';
 import { HeaderText } from '@/Components/HeaderText';
 import NavbarComponent from '@/Components/Navbar';
 import { SubText } from '@/Components/SubText';
+import { TitleText } from '@/Components/TitleText';
 import { Course } from '@/models/Course';
 import { Module } from '@/models/Module';
 import { Head } from '@inertiajs/react';
@@ -22,8 +23,11 @@ export default function CourseIndexPage({
             <NavbarComponent />
 
             <Container>
-                <SubText text="CHOOSE YOUR PATH" />
-                <HeaderText text="Pilih jalur belajar sesuai dengan minatmu" />
+                <div className="flex flex-col gap-5">
+                    <SubText text="Choose Your Path" />
+
+                    <TitleText text="Pilih jalur belajar sesuai dengan minatmu" />
+                </div>
 
                 <section className="my-10 min-h-[calc(100vh-600px)]">
                     <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
