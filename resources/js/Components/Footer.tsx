@@ -5,7 +5,7 @@ export default function FooterComponent() {
     return (
         <footer className="overflow-x-hidden bg-primary pb-10 pt-16 text-white">
             <div className="container mx-auto">
-                <div className="grid grid-cols-1 gap-10 px-4 text-center md:grid-cols-12 md:px-10 md:text-left">
+                <div className="grid grid-cols-1 gap-10 px-4 text-center md:grid-cols-12 md:px-10 md:text-left lg:px-14 xl:px-0">
                     <div className="flex flex-col items-center md:col-span-5 md:items-start">
                         <div className="flex items-center justify-center gap-2 md:justify-start">
                             <img
@@ -100,11 +100,11 @@ export default function FooterComponent() {
                     </div>
                 </div>
 
-                <div className="px-4 md:px-10">
+                <div className="px-4 md:px-10 lg:px-14 xl:px-0">
                     <hr className="my-10 border border-white/30" />
                 </div>
 
-                <div className="px-4 text-center md:px-10 md:text-left">
+                <div className="px-4 text-center md:px-10 md:text-left lg:px-14 xl:px-0">
                     <p className="text-sm text-white/90">
                         Copyright 2025 by Alope. All Right Reserved
                     </p>

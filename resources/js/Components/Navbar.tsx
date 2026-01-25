@@ -53,18 +53,18 @@ export default function NavbarComponent() {
     return (
         <>
             <nav className="fixed left-0 right-0 top-0 z-50 bg-white">
-                <div className="container mx-auto flex items-center justify-between px-4 py-3 md:px-10 md:py-5">
+                <div className="container mx-auto flex items-center justify-between px-4 py-3 md:px-10 md:py-5 lg:px-14 xl:px-0">
                     <Link href="/" className="flex items-center gap-3">
                         <img
                             src="/images/logo/alope-blue.png"
                             alt="Alope Course Logo"
-                            className="h-10 w-10 object-contain"
+                            className="size-8 object-contain sm:size-10"
                         />
                         <div className="leading-tight">
-                            <h1 className="text-lg font-semibold text-primary">
+                            <h1 className="font-semibold text-primary sm:text-lg">
                                 Alope Course
                             </h1>
-                            <p className="-mt-1 text-sm text-gray-500">
+                            <p className="-mt-1 text-xs text-gray-500 sm:text-sm">
                                 Upgrade Your Skills
                             </p>
                         </div>
@@ -74,10 +74,11 @@ export default function NavbarComponent() {
                             <li key={link.href}>
                                 <Link
                                     href={link.href}
-                                    className={`transition hover:text-primary ${isActive(link.href)
+                                    className={`transition hover:text-primary ${
+                                        isActive(link.href)
                                             ? 'font-semibold text-primary'
                                             : 'text-gray-600'
-                                        }`}
+                                    }`}
                                 >
                                     {link.name}
                                 </Link>
@@ -91,10 +92,11 @@ export default function NavbarComponent() {
                                     onClick={() =>
                                         setIsDropdownOpen(!isDropdownOpen)
                                     }
-                                    className={`flex items-center gap-2 rounded-lg px-3 py-1.5 text-gray-700 transition ${isDropdownOpen
+                                    className={`flex items-center gap-2 rounded-lg px-3 py-1.5 text-gray-700 transition ${
+                                        isDropdownOpen
                                             ? 'bg-primary text-white'
                                             : 'hover:bg-primary hover:text-white'
-                                        }`}
+                                    }`}
                                 >
                                     <IconCirclePersonFill className="size-5" />
                                     <span>{auth.user.name}</span>
@@ -138,7 +140,7 @@ export default function NavbarComponent() {
                         onClick={() => setIsOpen(!isOpen)}
                         className="text-gray-700 md:hidden"
                     >
-                        <IconHamburger />
+                        <IconHamburger className="size-6" />
                     </button>
                 </div>
                 <div className="overflow-hidden bg-amber-500 py-4 text-white">
@@ -152,13 +154,12 @@ export default function NavbarComponent() {
             </nav>
             <div className="h-[76px] bg-gradient-to-tr from-white to-yellow-50 md:h-[80px]" />
 
-
             {/* Drawer mobile */}
             <aside
-                className={`fixed left-0 top-28 z-40 h-full w-72 transform bg-white shadow-lg transition-transform md:hidden ${isOpen ? 'translate-x-0' : '-translate-x-full'
-                    }`}
+                className={`fixed left-0 top-28 z-40 h-full w-72 transform bg-white shadow-lg transition-transform md:hidden ${
+                    isOpen ? 'translate-x-0' : '-translate-x-full'
+                }`}
             >
-
                 {/* User header */}
                 <div className="flex items-center gap-3 border-b px-6 py-6">
                     <IconCirclePersonFill className="size-10 text-primary" />
@@ -176,10 +177,11 @@ export default function NavbarComponent() {
                         <li key={link.href}>
                             <Link
                                 href={link.href}
-                                className={`block rounded-lg px-4 py-2 transition ${isActive(link.href)
-                                        ? 'bg-primary/10 text-primary font-semibold'
+                                className={`block rounded-lg px-4 py-2 transition ${
+                                    isActive(link.href)
+                                        ? 'bg-primary/10 font-semibold text-primary'
                                         : 'text-gray-600 hover:bg-gray-100'
-                                    }`}
+                                }`}
                                 onClick={() => setIsOpen(false)}
                             >
                                 {link.name}
@@ -226,7 +228,6 @@ export default function NavbarComponent() {
                     )}
                 </div>
             </aside>
-
 
             {isOpen && (
                 <div

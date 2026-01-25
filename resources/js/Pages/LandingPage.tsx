@@ -41,9 +41,9 @@ export default function LandingPage({
             <NavbarComponent />
 
             <header className="relative min-h-[800px] overflow-hidden bg-gradient-to-tr from-white to-yellow-50 pt-20 md:pt-16">
-                <div className="container relative z-10 mx-auto flex flex-col items-center justify-between px-4 py-10 text-center md:px-20 lg:flex-row lg:text-left">
-                    <div className="flex flex-col gap-10 lg:w-1/2">
-                        <h1 className="font-spartan text-[40px] font-medium leading-tight md:text-[48px] lg:text-[64px]">
+                <div className="container relative z-10 mx-auto flex flex-col items-center justify-between px-4 py-10 text-center md:px-10 lg:px-14 lg:text-left xl:flex-row xl:px-0">
+                    <div className="order-2 flex w-3/4 flex-col gap-10 text-center xl:order-1 xl:w-1/2 xl:text-left">
+                        <h1 className="font-spartan text-[40px] font-medium leading-tight md:text-5xl xl:text-6xl">
                             Tingkatkan Skill Coding dari Nol hingga Mahir!
                         </h1>
 
@@ -54,7 +54,7 @@ export default function LandingPage({
                             secara efektif."
                         />
 
-                        <div className="flex justify-center lg:justify-start">
+                        <div className="flex justify-center xl:justify-start">
                             <Link href="/courses">
                                 <NewPrimaryButton
                                     text="Mulai Belajar Sekarang"
@@ -64,16 +64,16 @@ export default function LandingPage({
                             </Link>
                         </div>
                     </div>
-                    <div className="relative order-1 mt-10 hidden justify-center lg:order-2 lg:mt-0 lg:flex lg:w-1/2">
-                        <div className="absolute right-[12%] top-4 h-[380px] w-[340px] rotate-[25deg] rounded-3xl bg-primary blur-[1px] md:h-[460px] md:w-[420px] lg:right-[20%] lg:top-0 lg:h-[380px] lg:w-[290px] xl:right-[16%] xl:top-4 xl:h-[460px] xl:w-[420px]" />
-                        <div className="absolute right-[5%] top-0 h-[400px] w-[360px] rounded-3xl bg-[#51a2ff] md:h-[467px] md:w-[440px] lg:right-[14%] lg:top-0 lg:h-[400px] lg:w-[310px] xl:right-[10%] xl:top-0 xl:h-[467px] xl:w-[440px]" />
+                    <div className="relative order-1 mt-10 hidden w-[70%] justify-center lg:mt-0 lg:flex xl:order-2 xl:w-1/2">
+                        {/* <div className="absolute right-[12%] top-4 h-[380px] w-[340px] rotate-[25deg] rounded-3xl bg-primary blur-[1px] md:h-[460px] md:w-[420px] lg:right-[20%] lg:top-0 lg:h-[380px] lg:w-[290px] xl:right-[16%] xl:top-4 xl:h-[460px] xl:w-[420px]" />
+                        <div className="absolute right-[5%] top-0 h-[400px] w-[360px] rounded-3xl bg-[#51a2ff] md:h-[467px] md:w-[440px] lg:right-[14%] lg:top-0 lg:h-[400px] lg:w-[310px] xl:right-[10%] xl:top-0 xl:h-[467px] xl:w-[440px]" /> */}
                         <img
-                            src="/images/header1.png"
+                            src="/images/header.png"
                             alt="Belajar coding"
-                            className="relative z-10 w-[80%] max-w-[400px] object-cover md:w-[70%] md:object-contain lg:h-[400px] lg:w-[60%] lg:max-w-[300px] lg:object-cover xl:h-auto xl:w-[85%] xl:max-w-[400px] xl:object-contain"
+                            className="relative z-10 object-cover md:w-[70%] md:object-contain lg:object-cover xl:h-auto xl:w-[85%] xl:max-w-[600px] xl:object-contain"
                             loading="lazy"
                         />
-                        <div className="absolute left-[10%] top-10 z-20 flex translate-x-6 items-center gap-2 rounded-xl bg-white px-3 py-1.5 shadow-lg md:left-[12%] md:translate-x-8 lg:left-[8%] lg:top-8 lg:translate-x-6 lg:gap-1 lg:px-2 lg:py-1 xl:left-[14%] xl:top-10 xl:translate-x-10 xl:gap-2 xl:px-3 xl:py-1.5">
+                        <div className="absolute left-[10%] top-10 z-20 flex translate-x-6 items-center gap-2 rounded-xl bg-white px-3 py-1.5 shadow-lg md:left-[12%] md:translate-x-8 lg:left-[10%] lg:top-8 lg:translate-x-6 lg:gap-1 lg:px-2 lg:py-1 xl:left-[4%] xl:top-36 xl:translate-x-10 xl:gap-2 xl:px-3 xl:py-1.5 2xl:left-[14%]">
                             <div className="flex h-5 w-5 items-center justify-center rounded-md bg-yellow-400 text-white lg:h-4 lg:w-4 xl:h-5 xl:w-5">
                                 <IconSend3 className="h-3 w-3 lg:h-2 lg:w-2 xl:h-3 xl:w-3" />
                             </div>
@@ -81,7 +81,7 @@ export default function LandingPage({
                                 Effective Learning
                             </span>
                         </div>
-                        <div className="absolute bottom-20 left-[8%] z-20 flex translate-x-8 items-center gap-2 rounded-xl bg-white px-3 py-1.5 shadow-lg md:left-[10%] md:translate-x-10 lg:bottom-20 lg:left-[5%] lg:translate-x-6 lg:gap-1 lg:px-2 lg:py-1 xl:bottom-20 xl:left-[12%] xl:translate-x-12 xl:gap-2 xl:px-3 xl:py-1.5">
+                        <div className="absolute bottom-20 left-[8%] z-20 flex translate-x-8 items-center gap-2 rounded-xl bg-white px-3 py-1.5 shadow-lg md:left-[10%] md:translate-x-10 lg:bottom-20 lg:left-[5%] lg:translate-x-6 lg:gap-1 lg:px-2 lg:py-1 xl:bottom-28 xl:left-[12%] xl:translate-x-12 xl:gap-2 xl:px-3 xl:py-1.5">
                             <div className="flex h-5 w-5 items-center justify-center rounded-md bg-purple-600 text-white lg:h-4 lg:w-4 xl:h-5 xl:w-5">
                                 <IconSend3 className="h-3 w-3 lg:h-2 lg:w-2 xl:h-3 xl:w-3" />
                             </div>
@@ -89,7 +89,7 @@ export default function LandingPage({
                                 Upgrade Skill
                             </span>
                         </div>
-                        <div className="absolute bottom-8 right-6 z-20 flex items-center gap-2 rounded-xl bg-white px-3 py-1.5 shadow-lg md:right-8 lg:bottom-8 lg:right-6 lg:gap-1 lg:px-2 lg:py-1 xl:bottom-8 xl:right-10 xl:gap-2 xl:px-3 xl:py-1.5">
+                        <div className="absolute bottom-12 right-6 z-20 flex items-center gap-2 rounded-xl bg-white px-3 py-1.5 shadow-lg md:right-8 lg:bottom-8 lg:right-6 lg:gap-1 lg:px-2 lg:py-1 xl:bottom-24 xl:right-10 xl:gap-2 xl:px-3 xl:py-1.5">
                             <div className="flex h-5 w-5 items-center justify-center rounded-md bg-primary text-white lg:h-4 lg:w-4 xl:h-5 xl:w-5">
                                 <IconBookOpen className="h-3 w-3 lg:h-2 lg:w-2 xl:h-3 xl:w-3" />
                             </div>
@@ -103,45 +103,55 @@ export default function LandingPage({
 
             {/* Section belajar coding */}
             <section className="py-10">
-                <div className="container mx-auto flex flex-col items-center gap-12 px-4 py-4 md:flex-row md:items-center md:px-10 xl:px-20">
-                    <div className="flex w-full justify-center md:w-1/2">
-                        <div className="">
-                            <img
-                                src="/images/header.png"
-                                alt="student"
-                                className="w-full max-w-sm object-contain md:max-w-md"
-                            />
-                        </div>
-                    </div>
-
-                    {/* Kontainer teks */}
-                    <div className="flex w-full flex-col items-center gap-5 text-center md:w-1/2 md:items-start md:text-left">
+                <div className="container mx-auto px-4 py-4 md:px-10 xl:px-20">
+                    <div className="hidden w-[90%] sm:block lg:hidden">
                         <SubText text="Why Choose Us" />
-
                         <TitleText text="Belajar Coding dengan Pendekatan yang Tepat" />
-
-                        <ul className="space-y-3 text-grey">
-                            {[
-                                'Materi Terarah & Terstruktur',
-                                'Fokus pada Konsep Dasar',
-                                'Fleksibel & Ramah Pemula',
-                                'Komunitas yang Mendukung',
-                            ].map((item, i) => (
-                                <li key={i} className="flex items-center gap-3">
-                                    <IconCircleCheckFill className="size-5 text-green-500" />
-                                    <BodySecondaryText text={item} />
-                                </li>
-                            ))}
-                        </ul>
-
-                        <div className="mt-3">
-                            <Link href="/courses">
-                                <NewPrimaryButton
-                                    text="Mulai Belajar Sekarang"
-                                    circleIcon
-                                    showIcon
+                    </div>
+                    <div className="flex flex-col items-center gap-12 md:flex-row md:items-center">
+                        <div className="flex w-full justify-center md:w-1/2">
+                            <div className="">
+                                <img
+                                    src="/images/why-choose-us.png"
+                                    alt="student"
+                                    className="w-full max-w-sm object-contain md:max-w-md"
                                 />
-                            </Link>
+                            </div>
+                        </div>
+
+                        {/* Kontainer teks */}
+                        <div className="flex w-full flex-col items-center gap-5 text-center md:w-1/2 md:items-start md:text-left">
+                            <div className="block sm:hidden lg:block">
+                                <SubText text="Why Choose Us" />
+                                <TitleText text="Belajar Coding dengan Pendekatan yang Tepat" />
+                            </div>
+
+                            <ul className="space-y-3 text-grey">
+                                {[
+                                    'Materi Terarah & Terstruktur',
+                                    'Fokus pada Konsep Dasar',
+                                    'Fleksibel & Ramah Pemula',
+                                    'Komunitas yang Mendukung',
+                                ].map((item, i) => (
+                                    <li
+                                        key={i}
+                                        className="flex items-center gap-3"
+                                    >
+                                        <IconCircleCheckFill className="size-5 text-green-500" />
+                                        <BodySecondaryText text={item} />
+                                    </li>
+                                ))}
+                            </ul>
+
+                            <div className="mt-3">
+                                <Link href="/courses">
+                                    <NewPrimaryButton
+                                        text="Mulai Belajar Sekarang"
+                                        circleIcon
+                                        showIcon
+                                    />
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -149,7 +159,7 @@ export default function LandingPage({
 
             {/* Section semuua module */}
             <section className="py-10">
-                <div className="container mx-auto flex flex-col gap-5 px-6 py-8 md:px-10 lg:px-20">
+                <div className="container mx-auto flex flex-col gap-5 px-6 py-8 md:px-10 lg:px-14 xl:px-0">
                     <SubText text="Choose Your Path" />
 
                     <TitleText text="Pilih Jalur Pembelajaran Sesuai Minatmu" />
@@ -168,7 +178,7 @@ export default function LandingPage({
 
             {/* Section popular modules */}
             <section className="py-10">
-                <div className="container mx-auto px-6 py-8 md:px-10 lg:px-20">
+                <div className="container mx-auto px-6 py-8 md:px-10 lg:px-14 xl:px-0">
                     <div className="flex flex-col gap-10 md:flex-row md:items-center md:justify-start lg:justify-between">
                         <div className="flex flex-col gap-5">
                             <SubText text="POPULAR MODULES" />
@@ -202,7 +212,7 @@ export default function LandingPage({
             </section>
 
             {/* <section className="py-10">
-                <div className="container mx-auto px-6 py-8 md:px-10 lg:px-20">
+                <div className="container mx-auto px-6 py-8 md:px-10   lg:px-14 xl:px-0">
                     <div className="flex flex-col gap-5 rounded-2xl bg-primary p-10 text-white md:p-20">
                         <TitleText text='Gabung "Bootcamp Bersama PBK", Perkuat Fundamental Skill Web Programming' />
                         <Link
@@ -218,7 +228,7 @@ export default function LandingPage({
 
             {/* Section Blog */}
             <section className="py-10">
-                <div className="container mx-auto px-6 py-8 md:px-10 lg:px-20">
+                <div className="container mx-auto px-6 py-8 md:px-10 lg:px-14 xl:px-0">
                     <div className="flex flex-col gap-10 md:flex-row md:items-center lg:justify-between">
                         <div className="flex flex-col gap-5">
                             <SubText text="From Our Blog" />
@@ -260,7 +270,7 @@ export default function LandingPage({
 
             {/* Sextion What They Say */}
             <section className="my-10 bg-[#F9FAFB] py-10">
-                <div className="container mx-auto px-6 py-8 md:px-10 lg:px-20">
+                <div className="container mx-auto px-6 py-8 md:px-10 lg:px-14 xl:px-0">
                     <div className="flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
                         <div className="flex flex-col gap-5">
                             <SubText text="What They Say" />
@@ -317,7 +327,7 @@ export default function LandingPage({
 
             {/* Section FAQ */}
             <section className="py-10">
-                <div className="container mx-auto grid grid-cols-1 gap-10 px-6 py-8 md:px-10 lg:grid-cols-2 lg:px-20">
+                <div className="container mx-auto grid grid-cols-1 gap-10 px-6 py-8 md:px-10 lg:grid-cols-2 lg:px-14 xl:px-0">
                     <div className="flex flex-col gap-5">
                         <SubText text="Frequently Asked Questions" />
 
