@@ -1,4 +1,3 @@
-import BreadcrumbComponent from '@/Components/Breadcrumb';
 import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
 import { Course } from '@/models/Course';
@@ -58,7 +57,7 @@ export default function HistoryPage({
                 loading="lazy"
             /> */}
 
-            <BreadcrumbComponent
+            {/* <BreadcrumbComponent
                 links={[
                     {
                         title: 'Profile',
@@ -67,7 +66,7 @@ export default function HistoryPage({
                     },
                     // { title: 'History', url: '/profile/history', active: true },
                 ]}
-            />
+            /> */}
 
             <main className="container relative z-20 mx-auto mt-10 grid gap-5 px-3 md:px-10 lg:grid-cols-3 xl:grid-cols-2 xl:gap-10 xl:px-5 2xl:px-2">
                 <section className="relative">
