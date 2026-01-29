@@ -1,7 +1,14 @@
-import { Link } from '@inertiajs/react';
+import { Course } from '@/models/Course';
+import { PageProps as InertiaPageProps } from '@inertiajs/core';
+import { Link, usePage } from '@inertiajs/react';
 import { IconDevicePhone, IconLocation, IconMail } from 'justd-icons';
 
+type PageProps = InertiaPageProps & {
+    courses?: Course[];
+};
 export default function FooterComponent() {
+    const { courses } = usePage<PageProps>().props;
+
     return (
         <footer className="overflow-x-hidden bg-primary pb-10 pt-16 text-white">
             <div className="container mx-auto">
@@ -56,30 +63,16 @@ export default function FooterComponent() {
                     <div className="flex flex-col items-center md:col-span-2 md:items-start">
                         <h4 className="mb-3 text-lg font-semibold">Kursus</h4>
                         <ul className="space-y-2 text-sm">
-                            <li>
-                                <Link
-                                    href="/courses"
-                                    className="hover:underline"
-                                >
-                                    Kursus
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    href="/modules"
-                                    className="hover:underline"
-                                >
-                                    Modul
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    href="/videos"
-                                    className="hover:underline"
-                                >
-                                    Video
-                                </Link>
-                            </li>
+                            {courses?.map((course) => (
+                                <li key={course.id}>
+                                    <Link
+                                        href={`/courses/${course.slug}`}
+                                        className="hover:underline"
+                                    >
+                                        {course.title}
+                                    </Link>
+                                </li>
+                            ))}
                         </ul>
                     </div>
 
@@ -87,14 +80,14 @@ export default function FooterComponent() {
                         <h4 className="mb-3 text-lg font-semibold">Kontak</h4>
                         <ul className="space-y-3 text-sm">
                             <li className="flex items-center justify-center gap-2 md:justify-start">
-                                <IconDevicePhone className="w-4" /> 089123456789
+                                <IconDevicePhone className="w-4" /> 083816934293
                             </li>
                             <li className="flex items-center justify-center gap-2 md:justify-start">
                                 <IconLocation className="w-4" /> Darma,
                                 Kuningan, Jawa Barat
                             </li>
                             <li className="flex items-center justify-center gap-2 md:justify-start">
-                                <IconMail className="w-4" /> contact@alope.id
+                                <IconMail className="w-4" /> cs@alope.id
                             </li>
                         </ul>
                     </div>
