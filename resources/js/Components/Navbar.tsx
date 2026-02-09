@@ -15,7 +15,7 @@ export default function NavbarComponent() {
     const navLinks = [
         { name: 'Beranda', href: '/' },
         { name: 'Kursus', href: '/courses' },
-        // { name: 'Modul', href: '/modules' },
+        { name: 'Modul', href: '/modules' },
         { name: 'Video', href: '/videos/kickstart-ml-persiapan' },
     ];
 
@@ -48,7 +48,13 @@ export default function NavbarComponent() {
         ));
     };
 
-    const isActive = (path: string) => url === path;
+    const isActive = (path: string) => {
+        if (path === '/' || path === '/beranda') {
+            return url === path;
+        }
+
+        return url === path || url.startsWith(`${path}/`);
+    };
 
     return (
         <>
@@ -121,12 +127,6 @@ export default function NavbarComponent() {
                             </div>
                         ) : (
                             <div className="flex items-center gap-3">
-                                {/* <Link href="/register">
-                                    <NewPrimaryButton
-                                        text="Daftar"
-                                        variant="outline"
-                                    />
-                                </Link> */}
                                 <Link href="/login">
                                     <NewPrimaryButton
                                         text="Masuk"
@@ -143,20 +143,20 @@ export default function NavbarComponent() {
                         <IconHamburger className="size-6" />
                     </button>
                 </div>
-                <div className="overflow-hidden bg-amber-500 py-4 text-white">
+                {/* <div className="overflow-hidden bg-amber-500 py-4 text-white">
                     <p className="animate-marquee whitespace-nowrap text-center text-sm xl:animate-none xl:whitespace-normal xl:text-center">
                         Saat ini website sedang dalam tahap maintenance guna
                         meningkatkan kualitas layanan. Kami mohon maaf apabila
                         masih terdapat bug atau ketidaknyamanan. Terima kasih
                         atas pengertian Anda.
                     </p>
-                </div>
+                </div> */}
             </nav>
             <div className="h-[76px] bg-gradient-to-tr from-white to-yellow-50 md:h-[80px]" />
 
             {/* Drawer mobile */}
             <aside
-                className={`fixed left-0 top-24 z-40 h-full w-72 transform bg-white shadow-lg transition-transform md:hidden ${
+                className={`fixed left-0 top-12 z-40 h-full w-72 transform bg-white shadow-lg transition-transform md:hidden ${
                     isOpen ? 'translate-x-0' : '-translate-x-full'
                 }`}
             >
