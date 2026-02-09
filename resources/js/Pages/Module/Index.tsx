@@ -56,25 +56,8 @@ export default function ModuleIndexPage({
 
             <NavbarComponent />
 
-            {/* <img
-                src="/images/shapes/blueBlur2.svg"
-                alt="blueBlur"
-                className="absolute right-0 top-0 hidden xl:block"
-                loading="lazy"
-            />
-            <img
-                src="/images/shapes/purpleBlur1.svg"
-                alt="purpleBlur"
-                className="absolute -top-52 left-0 hidden xl:block"
-                loading="lazy"
-            />
-
-            <BreadcrumbComponent
-                links={[{ title: 'Modules', url: '/modules', active: true }]}
-            /> */}
-
             <main className="container relative z-20 mx-auto mb-20 mt-5 grid grid-cols-4 gap-8 px-3 md:px-10 xl:gap-10 xl:px-5 2xl:px-2">
-                <section className="col-span-4 lg:col-span-3">
+                <section className="col-span-4 pt-10 lg:col-span-3">
                     <BannerHorizontalComponent />
                     <section>
                         {modules.data.map((module, index) => (

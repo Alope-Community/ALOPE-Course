@@ -46,7 +46,7 @@ class ModuleController extends Controller
     public function show(string $slug)
     {
 
-        $module = Module::with(["writer", "course.users"])->whereSlug($slug)->first();
+        $module = Module::with(["writer", "course.users"])->withCount("reads")->whereSlug($slug)->first();
         $modules = Module::with("course")->wherePublished(true)->where('slug', '!=', $slug)->latest()->get();
 
 

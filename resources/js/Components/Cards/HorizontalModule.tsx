@@ -15,7 +15,7 @@ export default function HorizontalModuleCardComponent({
             className="mb-7 flex flex-col items-center gap-5 sm:mb-5 sm:flex-row"
         >
             <img
-                src={props.cover}
+                src={props.course.cover}
                 alt="module cover"
                 className="w-full rounded object-contain object-left sm:w-[400px] sm:min-w-[400px] sm:max-w-[400px] lg:w-[300px] lg:min-w-[300px] lg:max-w-[300px] xl:w-[400px] xl:min-w-[400px] xl:max-w-[400px]"
                 width={1280}
@@ -48,7 +48,7 @@ export default function HorizontalModuleCardComponent({
                 ) : (
                     ''
                 )}
-                <TitleHeadline text={props.title}/>
+                <TitleHeadline text={props.title} />
                 {!props.course ? (
                     <p className="mt-2 text-xs text-gray-500 md:text-sm">
                         {formatDateWithTime(props.created_at || '')}

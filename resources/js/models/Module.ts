@@ -16,6 +16,8 @@ export type Module = {
 
     writer: Writer;
 
+    reads_count?: number;
+
     created_at?: string;
     deleted_at?: null;
     updated_at?: string;
