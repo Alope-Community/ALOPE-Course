@@ -11,12 +11,7 @@ import { Course } from '@/models/Course';
 import { Testimonial } from '@/models/Testimonial';
 import GlosariumSection from '@/Pages/Glosarium/Show';
 import { Head, Link } from '@inertiajs/react';
-import {
-    IconCartFill,
-    IconCircleInfoFill,
-    IconLayersFill,
-    IconStarFill,
-} from 'justd-icons';
+import { IconCartFill, IconCircleInfoFill, IconLayersFill } from 'justd-icons';
 import { useState } from 'react';
 
 function highlightGlossary(
@@ -137,10 +132,10 @@ export default function CourseShowPage({
                         <HeaderText text={course.title} />
 
                         <div className="flex flex-wrap items-center gap-4 font-medium text-gray-700">
-                            <div className="flex items-center gap-1">
+                            {/* <div className="flex items-center gap-1">
                                 <IconStarFill className="size-4 text-yellow-500" />
                                 <span>4.8 (230)</span>
-                            </div>
+                            </div> */}
 
                             <div className="flex items-center gap-1">
                                 <IconLayersFill className="size-4 text-orange-500" />

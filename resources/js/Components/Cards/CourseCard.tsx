@@ -1,11 +1,6 @@
 import { Course } from '@/models/Course';
 import { Link } from '@inertiajs/react';
-import {
-    IconCartFill,
-    IconLayersFill,
-    IconRocketFill,
-    IconStarFill,
-} from 'justd-icons';
+import { IconCartFill, IconLayersFill, IconRocketFill } from 'justd-icons';
 import NewPrimaryButton from '../NewPrimaryButton';
 
 export default function CourseCardComponent({ course }: { course: Course }) {
@@ -48,10 +43,10 @@ export default function CourseCardComponent({ course }: { course: Course }) {
 
                 {/* Meta */}
                 <div className="mt-4 flex flex-wrap items-center gap-4 text-sm text-gray-700">
-                    <div className="flex items-center gap-1">
+                    {/* <div className="flex items-center gap-1">
                         <IconStarFill className="size-4 text-yellow-500" />
                         <span>4.8 (230)</span>
-                    </div>
+                    </div> */}
 
                     <div className="flex items-center gap-1">
                         <IconLayersFill className="size-4 text-orange-500" />
