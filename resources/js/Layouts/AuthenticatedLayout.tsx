@@ -1,7 +1,7 @@
 import ApplicationLogo from '@/Components/ApplicationLogo';
 import Dropdown from '@/Components/Dropdown';
 import Icon from '@/Components/Icon';
-import NavLink from '@/Components/NavLink';
+// import NavLink from '@/Components/NavLink';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
 import { Link, usePage } from '@inertiajs/react';
 import { IconChevronDown } from 'justd-icons';
@@ -29,12 +29,12 @@ export default function Authenticated({
                             </div>
 
                             <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                                <NavLink
+                                {/* <NavLink
                                     href={route('dashboard')}
                                     active={route().current('dashboard')}
                                 >
                                     Dashboard
-                                </NavLink>
+                                </NavLink> */}
                             </div>
                         </div>
 
@@ -49,7 +49,11 @@ export default function Authenticated({
                                             >
                                                 {user.name}
 
-                                                <Icon icon={<IconChevronDown className="-me-0.5 ms-2 h-4 w-4" />} />
+                                                <Icon
+                                                    icon={
+                                                        <IconChevronDown className="-me-0.5 ms-2 h-4 w-4" />
+                                                    }
+                                                />
                                             </button>
                                         </span>
                                     </Dropdown.Trigger>
