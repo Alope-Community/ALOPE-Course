@@ -7,6 +7,16 @@ import SideModulesSection from '@/Sections/SideModules';
 import { formatDateWithTime } from '@/tools/formatDate';
 import { IconCalendar, IconClock, IconEye } from 'justd-icons';
 
+// const codeBlock = `val sendIntent = Intent(Intent.ACTION_SEND)
+// ...
+
+// val title: String = resources.getString(R.string.chooser_title)
+// val chooser: Intent = Intent.createChooser(sendIntent, title)
+
+// if (sendIntent.resolveActivity(packageManager) != null) {
+//     startActivity(chooser)
+// }`;
+
 export default function ModuleShowPage({
     module,
     modules,
@@ -19,6 +29,38 @@ export default function ModuleShowPage({
             <Head title="Modul" />
 
             <NavbarComponent />
+
+            {/* <section id="body" className="mt-20">
+                <Highlight
+                    theme={themes.vsDark}
+                    code={codeBlock}
+                    language="kotlin"
+                >
+                    {({
+                        // className,
+                        style,
+                        tokens,
+                        getLineProps,
+                        getTokenProps,
+                    }) => (
+                        <pre style={style}>
+                            {tokens.map((line, i) => (
+                                <div key={i} {...getLineProps({ line })}>
+                                    <span>{i + 1}</span>
+                                    {line.map((token, key) => (
+                                        <span
+                                            key={key}
+                                            {...getTokenProps({
+                                                token,
+                                            })}
+                                        />
+                                    ))}
+                                </div>
+                            ))}
+                        </pre>
+                    )}
+                </Highlight>
+            </section> */}
 
             <section className="container mx-auto px-3 pb-20 md:px-10 xl:px-5 2xl:px-2">
                 <div className="mt-10 grid grid-cols-4 gap-8 xl:gap-10">

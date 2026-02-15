@@ -16,7 +16,7 @@ export default function NavbarComponent() {
         { name: 'Beranda', href: '/' },
         { name: 'Kursus', href: '/courses' },
         { name: 'Modul', href: '/modules' },
-        { name: 'Video', href: '/videos/kickstart-ml-persiapan' },
+        { name: 'Video', href: '/videos' },
     ];
 
     const handleLogout = () => {
