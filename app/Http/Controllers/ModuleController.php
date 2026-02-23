@@ -47,7 +47,7 @@ class ModuleController extends Controller
     {
 
         $module = Module::with(["writer", "course.users"])->withCount("reads")->whereSlug($slug)->first();
-        $modules = Module::with("course")->wherePublished(true)->where('slug', '!=', $slug)->latest()->get();
+        $modules = Module::with("course")->withCount("reads")->wherePublished(true)->where('slug', '!=', $slug)->latest()->get();
 
 
         if ($module->course->visibility == 'private') {
