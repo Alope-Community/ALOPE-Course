@@ -3,7 +3,6 @@ import HorizontalModuleCardComponent from '@/Components/Cards/HorizontalModule';
 import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
 import { Module } from '@/models/Module';
-import SideModulesSection from '@/Sections/SideModules';
 import { PaginatedResponse } from '@/types/PaginateResponse';
 import { Inertia, Method } from '@inertiajs/inertia';
 import { Head, router, usePage } from '@inertiajs/react';
@@ -107,7 +106,7 @@ export default function ModuleIndexPage({
                         </button>
                     </div>
                 </section>
-                <SideModulesSection modules={modules.data} />
+                {/* <SideModulesSection modules={modules.data} /> */}
             </main>
 
             <FooterComponent />

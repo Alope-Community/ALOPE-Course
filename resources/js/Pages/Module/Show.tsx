@@ -66,11 +66,11 @@ export default function ModuleShowPage({
                 <div className="mt-10 grid grid-cols-4 gap-8 xl:gap-10">
                     <main className="col-span-4 lg:col-span-3">
                         <header>
-                            <img
+                            {/* <img
                                 src={module.cover}
                                 alt="Cover Module"
                                 className="max-h-[300px] w-full rounded object-contain sm:max-h-[450px] lg:object-cover xl:max-h-[600px]"
-                            />
+                            /> */}
                             <div className="flex gap-5">
                                 <p className="mt-7 flex items-center gap-1 text-xs text-[#2276f0] sm:text-sm md:text-base">
                                     {' '}
