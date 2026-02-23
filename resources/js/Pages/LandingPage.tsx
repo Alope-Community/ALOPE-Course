@@ -65,8 +65,6 @@ export default function LandingPage({
                         </div>
                     </div>
                     <div className="relative order-1 mt-10 hidden w-[70%] justify-center lg:mt-0 lg:flex xl:order-2 xl:w-1/2">
-                        {/* <div className="absolute right-[12%] top-4 h-[380px] w-[340px] rotate-[25deg] rounded-3xl bg-primary blur-[1px] md:h-[460px] md:w-[420px] lg:right-[20%] lg:top-0 lg:h-[380px] lg:w-[290px] xl:right-[16%] xl:top-4 xl:h-[460px] xl:w-[420px]" />
-                        <div className="absolute right-[5%] top-0 h-[400px] w-[360px] rounded-3xl bg-[#51a2ff] md:h-[467px] md:w-[440px] lg:right-[14%] lg:top-0 lg:h-[400px] lg:w-[310px] xl:right-[10%] xl:top-0 xl:h-[467px] xl:w-[440px]" /> */}
                         <img
                             src="/images/header.png"
                             alt="Belajar coding"
@@ -210,22 +208,6 @@ export default function LandingPage({
                     </div>
                 </div>
             </section>
-
-            {/* <section className="py-10">
-                <div className="container mx-auto px-6 py-8 md:px-10   lg:px-14 xl:px-0">
-                    <div className="flex flex-col gap-5 rounded-2xl bg-primary p-10 text-white md:p-20">
-                        <TitleText text='Gabung "Bootcamp Bersama PBK", Perkuat Fundamental Skill Web Programming' />
-                        <Link
-                            href="/blogs"
-                            className="flex items-center gap-2 font-medium hover:underline"
-                        >
-                            Belajar Sekarang
-                            <IconArrowRight className="h-5 w-5" />
-                        </Link>
-                    </div>
-                </div>
-            </section> */}
-
             {/* Section Blog */}
             <section className="py-10">
                 <div className="container mx-auto px-6 py-8 md:px-10 lg:px-14 xl:px-0">
@@ -234,13 +216,6 @@ export default function LandingPage({
                             <SubText text="From Our Blog" />
                             <TitleText text="Cerita, Tren & Insight Seputar Dunia Teknologi" />
                         </div>
-
-                        {/* <Link
-                            href="/modules"
-                            className="hidden min-w-fit gap-2 text-sm font-medium text-primary hover:underline md:flex"
-                        >
-                            Lihat Semua
-                        </Link> */}
                     </div>
                     <div className="mt-5">
                         {blogs.length > 0 ? (
@@ -309,18 +284,6 @@ export default function LandingPage({
                                 </p>
                             </div>
                         )}
-                        {/* <div className="mt-5">
-                        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
-                            {data.map((item, i) => (
-                                <div
-                                    key={i}
-                                    className={i >= 2 ? 'md:hidden lg:block' : ''}
-                                >
-                                    <TestimonialCard {...item} />
-                                </div>
-                            ))}
-                        </div>
-                    </div> */}
                     </div>
                 </div>
             </section>

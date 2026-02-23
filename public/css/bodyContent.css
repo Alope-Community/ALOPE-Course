@@ -49,6 +49,14 @@
     font-size: 1.05rem;
 }
 
+#body ul {
+    list-style: circle;
+}
+
+#body ol {
+    list-style: disc;
+}
+
 #body li {
     margin-bottom: 0.6em;
     line-height: 1.7rem;
