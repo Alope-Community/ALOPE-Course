@@ -1,11 +1,13 @@
+import ConfirmationDialog from '@/Components/ConfirmationDialog';
 import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar';
-import { Head } from '@inertiajs/react';
-
 import { Module } from '@/models/Module';
 import SideModulesSection from '@/Sections/SideModules';
 import { formatDateWithTime } from '@/tools/formatDate';
+import { Head, router, usePage } from '@inertiajs/react';
 import { IconCalendar, IconClock, IconEye } from 'justd-icons';
+import { useState } from 'react';
+import toast from 'react-hot-toast';
 
 // const codeBlock = `from mlxtend.frequent_patterns import apriori, association_rules
 // import pandas as pd
@@ -39,15 +41,63 @@ import { IconCalendar, IconClock, IconEye } from 'justd-icons';
 export default function ModuleShowPage({
     module,
     modules,
+    isJoined = true,
 }: {
     module: Module;
     modules: Module[];
+    isJoined?: boolean;
 }) {
+    const { auth } = usePage().props as any;
+    const [isJoining, setIsJoining] = useState(false);
+    const [showJoinConfirm, setShowJoinConfirm] = useState(false);
+
+    const handleJoinModule = () => {
+        if (!auth.user) {
+            setShowJoinConfirm(false);
+            router.visit('/login');
+            return;
+        }
+
+        setIsJoining(true);
+        router.post(
+            `/modules/${module.slug}/join`,
+            {},
+            {
+                onSuccess: () => {
+                    toast.success('Berhasil bergabung dengan modul!');
+                    setShowJoinConfirm(false);
+                },
+                onError: () => {
+                    toast.error('Gagal bergabung dengan modul');
+                },
+                onFinish: () => {
+                    setIsJoining(false);
+                },
+            },
+        );
+    };
+
     return (
         <>
             <Head title="Modul" />
 
             <NavbarComponent />
+
+            <ConfirmationDialog
+                isOpen={showJoinConfirm}
+                title="Konfirmasi Bergabung"
+                message={
+                    <>
+                        Apakah kamu yakin ingin bergabung ke modul{' '}
+                        <b>{module.title}</b>?
+                    </>
+                }
+                confirmLabel="Ya, Gabung"
+                cancelLabel="Batal"
+                onConfirm={handleJoinModule}
+                onCancel={() => setShowJoinConfirm(false)}
+                isLoading={isJoining}
+            />
 
             {/* <BreadcrumbComponent
                 links={[
@@ -60,7 +110,7 @@ export default function ModuleShowPage({
                 ]}
             /> */}
 
-            <section className="container mx-auto px-3 pb-20 md:px-10 xl:px-5 2xl:px-2">
+            <section className="container mx-auto px-4 pb-20 md:px-10 lg:px-14 xl:px-20">
                 {/* <section id="body" className="mt-20">
                     <Highlight
                         theme={themes.vsDark}
@@ -155,13 +205,28 @@ export default function ModuleShowPage({
                             </div>
                         </header>
 
-                        <section
-                            id="body"
-                            className="mt-5"
-                            dangerouslySetInnerHTML={{
-                                __html: module.body,
-                            }}
-                        ></section>
+                        <section id="body" className="relative mt-5">
+                            {/* Konten */}
+                            <div
+                                className={`${!isJoined ? 'relative max-h-[300px] overflow-hidden' : ''}`}
+                                dangerouslySetInnerHTML={{
+                                    __html: module.body,
+                                }}
+                            />
+                            {!isJoined && (
+                                <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-gray-100 via-gray-100/90 to-transparent p-6 text-center">
+                                    <button
+                                        onClick={() => setShowJoinConfirm(true)}
+                                        disabled={isJoining}
+                                        className="rounded-md bg-[#2276f0] px-4 py-2 text-sm font-medium text-white shadow transition hover:bg-[#1a5ec9] disabled:cursor-not-allowed disabled:opacity-70 md:text-base"
+                                    >
+                                        {isJoining
+                                            ? 'Bergabung...'
+                                            : 'Gabung Modul ini untuk lanjut Membaca'}
+                                    </button>
+                                </div>
+                            )}
+                        </section>
                     </main>
                     <SideModulesSection modules={modules} />
                 </div>

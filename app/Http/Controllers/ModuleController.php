@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class ModuleController extends Controller
 {
@@ -45,27 +46,33 @@ class ModuleController extends Controller
      */
     public function show(string $slug)
     {
+        $module = Module::with(["writer", "course.users"])
+            ->whereSlug($slug)
+            ->firstOrFail();
 
-        $module = Module::with(["writer", "course.users"])->whereSlug($slug)->first();
-        $modules = Module::with("course")->wherePublished(true)->where('slug', '!=', $slug)->latest()->get();
+        $modules = Module::with("course")
+            ->wherePublished(true)
+            ->where('slug', '!=', $slug)
+            ->latest()
+            ->get();
 
+        $user = Auth::user();
 
-        if ($module->course->visibility == 'private') {
-            $user = User::with('courses')->find(Auth::id());
-            if (!$module->course->users->contains($user) || !Auth::check()) {
-                return redirect("/access-blocked");
-            }
+        $isJoined = false;
+
+        if ($user) {
+            $isJoined = $module->course->users->contains($user->id);
         }
 
-        if (Auth::user()) {
-            $existingRead = Read::where('user_id', Auth::user()->id)
+        if ($user) {
+            $existingRead = Read::where('user_id', $user->id)
                 ->where('module_id', $module->id)
                 ->whereDate('created_at', today())
                 ->first();
 
             if (!$existingRead) {
                 Read::create([
-                    "user_id" => Auth::user()->id,
+                    "user_id" => $user->id,
                     "module_id" => $module->id,
                     "created_at" => now()
                 ]);
@@ -79,8 +86,12 @@ class ModuleController extends Controller
         }
 
         return Inertia::render('Module/Show', [
-            "module" => $module,
+            "module" => [
+                ...$module->toArray(),
+                "body_preview" => Str::limit(strip_tags($module->body), 600),
+            ],
             "modules" => $modules,
+            "isJoined" => $isJoined,
         ]);
     }
 
@@ -106,5 +117,32 @@ class ModuleController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    /**
+     * Join a course related to module.
+     */
+    public function join(string $slug)
+    {
+        $user = auth()->user();
+        
+        if (!$user) {
+            return redirect()->route('login');
+        }
+
+        $module = Module::with('course')->whereSlug($slug)->firstOrFail();
+        $course = $module->course;
+
+        if (!$course) {
+            return back()->withErrors(['message' => 'Course not found']);
+        }
+
+        if ($course->users()->where('user_id', $user->id)->exists()) {
+            return back();
+        }
+
+        $course->users()->attach($user->id);
+
+        return back();
     }
 }

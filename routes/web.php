@@ -24,7 +24,9 @@ Route::get('/access-blocked', function () {
 });
 
 Route::resource('/modules', ModuleController::class);
+Route::post('/modules/{slug}/join', [ModuleController::class, 'join'])->name('modules.join')->middleware('auth');
 Route::resource('/courses', CourseController::class);
+Route::post('/courses/{slug}/join', [CourseController::class, 'join'])->name('courses.join')->middleware('auth');
 Route::resource('/videos', VideoController::class);
 Route::get('/glosarium/{slug}', [GlossaryController::class, 'show'])->name('glosarium.show');
 Route::resource('/blogs', BlogController::class);

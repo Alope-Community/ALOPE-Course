@@ -1,3 +1,4 @@
+import ConfirmationDialog from '@/Components/ConfirmationDialog';
 import NewPrimaryButton from '@/Components/NewPrimaryButton';
 import { Link, useForm, usePage } from '@inertiajs/react';
 import { IconCirclePersonFill, IconHamburger } from 'justd-icons';
@@ -11,6 +12,8 @@ export default function NavbarComponent() {
 
     const [isOpen, setIsOpen] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
+    const [isLoggingOut, setIsLoggingOut] = useState(false);
 
     const navLinks = [
         { name: 'Home', href: '/' },
@@ -19,41 +22,42 @@ export default function NavbarComponent() {
         { name: 'Video', href: '/videos/kickstart-ml-persiapan' },
     ];
 
+    const handleLogoutConfirm = () => {
+        setIsLoggingOut(true);
+        post(route('logout'), {
+            onSuccess: () => {
+                toast.success('Berhasil logout');
+                setShowLogoutConfirm(false);
+            },
+            onError: () => {
+                toast.error('Gagal logout');
+                setIsLoggingOut(false);
+            },
+        });
+    };
+
     const handleLogout = () => {
-        toast((t) => (
-            <div className="flex flex-col gap-4">
-                <p>Apakah yakin ingin logout?</p>
-                <div className="flex justify-end gap-2">
-                    <button
-                        className="rounded bg-gray-200 px-3 py-1 text-sm"
-                        onClick={() => toast.dismiss(t.id)}
-                    >
-                        Batal
-                    </button>
-                    <button
-                        className="rounded bg-red-500 px-3 py-1 text-sm text-white"
-                        onClick={() => {
-                            post(route('logout'), {
-                                onSuccess: () =>
-                                    toast.success('Berhasil logout'),
-                                onError: () => toast.error('Gagal logout'),
-                            });
-                            toast.dismiss(t.id);
-                        }}
-                    >
-                        Logout
-                    </button>
-                </div>
-            </div>
-        ));
+        setShowLogoutConfirm(true);
     };
 
     const isActive = (path: string) => url === path;
 
     return (
         <>
+            <ConfirmationDialog
+                isOpen={showLogoutConfirm}
+                title="Konfirmasi Logout"
+                message="Apakah kamu yakin ingin logout?"
+                confirmLabel="Ya, Logout"
+                cancelLabel="Batal"
+                onConfirm={handleLogoutConfirm}
+                onCancel={() => setShowLogoutConfirm(false)}
+                isDangerous={true}
+                isLoading={isLoggingOut}
+            />
+
             <nav className="fixed left-0 right-0 top-0 z-50 bg-white">
-                <div className="container mx-auto flex items-center justify-between px-4 py-3 md:px-10 md:py-5 lg:px-14 xl:px-0">
+                <div className="container mx-auto flex items-center justify-between px-4 py-3 md:px-10 md:py-5 lg:px-14 xl:px-20">
                     <Link href="/" className="flex items-center gap-3">
                         <img
                             src="/images/logo/alope-blue.png"

@@ -1,6 +1,7 @@
 import HorizontalQuizCardComponent from '@/Components/Cards/HorizontalQuiz';
 import ModuleCardComponent from '@/Components/Cards/Module';
 import TestimonialCardComponent from '@/Components/Cards/Testimonial';
+import ConfirmationDialog from '@/Components/ConfirmationDialog';
 import { Container } from '@/Components/Container';
 import FooterComponent from '@/Components/Footer';
 import { HeaderText } from '@/Components/HeaderText';
@@ -10,7 +11,7 @@ import Tooltip from '@/Components/Tooltip';
 import { Course } from '@/models/Course';
 import { Testimonial } from '@/models/Testimonial';
 import GlosariumSection from '@/Pages/Glosarium/Show';
-import { Head, Link } from '@inertiajs/react';
+import { Head, Link, router, usePage } from '@inertiajs/react';
 import {
     IconCartFill,
     IconCircleInfoFill,
@@ -18,6 +19,7 @@ import {
     IconStarFill,
 } from 'justd-icons';
 import { useState } from 'react';
+import toast from 'react-hot-toast';
 
 function highlightGlossary(
     text: string,
@@ -65,6 +67,7 @@ export default function CourseShowPage({
     glossaries,
     allGlossary,
     testimonials,
+    isJoined = false,
 }: {
     course: Course;
     courses: Course[];
@@ -76,40 +79,61 @@ export default function CourseShowPage({
     }[];
     allGlossary: { title: string; description: string; course_id: string }[];
     testimonials: Testimonial[];
+    isJoined?: boolean;
 }) {
     const [activeTab, setActiveTab] = useState<'module' | 'quiz' | 'glosarium'>(
         'module',
     );
+    const { auth } = usePage().props as any;
+    const [isJoining, setIsJoining] = useState(false);
+    const [showJoinConfirm, setShowJoinConfirm] = useState(false);
 
+    const handleJoinCourse = () => {
+        if (!auth.user) {
+            setShowJoinConfirm(false);
+            router.visit('/login');
+            return;
+        }
+
+        setIsJoining(true);
+        router.post(
+            `/courses/${course.slug}/join`,
+            {},
+            {
+                onSuccess: () => {
+                    toast.success('Berhasil bergabung dengan kelas!');
+                    setShowJoinConfirm(false);
+                },
+                onError: () => {
+                    toast.error('Gagal bergabung dengan kelas');
+                },
+                onFinish: () => {
+                    setIsJoining(false);
+                },
+            },
+        );
+    };
     return (
         <>
             <Head title="Courses" />
 
             <NavbarComponent />
 
-            {/* <img
-                src="/images/shapes/blueBlur2.svg"
-                alt="blueBlur"
-                className="absolute right-0 top-0 hidden xl:block"
-                loading="lazy"
+            <ConfirmationDialog
+                isOpen={showJoinConfirm}
+                title="Konfirmasi Bergabung"
+                message={
+                    <>
+                        Apakah kamu yakin ingin bergabung ke kelas{' '}
+                        <b>{course.title}</b>?
+                    </>
+                }
+                confirmLabel="Ya, Gabung"
+                cancelLabel="Batal"
+                onConfirm={handleJoinCourse}
+                onCancel={() => setShowJoinConfirm(false)}
+                isLoading={isJoining}
             />
-            <img
-                src="/images/shapes/purpleBlur1.svg"
-                alt="purpleBlur"
-                className="absolute -top-52 left-0 hidden xl:block"
-                loading="lazy"
-            /> */}
-
-            {/* <BreadcrumbComponent
-                links={[
-                    { title: 'Course', url: '/courses' },
-                    {
-                        title: course.title,
-                        url: `/courses/${course.slug}`,
-                        active: true,
-                    },
-                ]}
-            /> */}
 
             <Container>
                 <main className="relative z-20 w-full">
@@ -122,8 +146,8 @@ export default function CourseShowPage({
                         className="max-h-[500px] w-full rounded-lg object-cover"
                     />
 
-                    {course.visibility === 'private' && (
-                        <div className="mt-6 flex items-center gap-3 rounded-md bg-gradient-to-r from-[#f0c322] to-[#f0c322]/60 px-5 py-4 text-sm text-gray-800 md:text-base">
+                    {course.visibility === 'private' && !isJoined && (
+                        <div className="mt-6 flex items-center gap-3 bg-amber-500 px-5 py-4 text-sm text-white md:text-base">
                             <IconCircleInfoFill className="size-5 shrink-0" />
                             <p>
                                 Kamu harus bergabung kelas untuk mengikuti kelas
@@ -134,8 +158,20 @@ export default function CourseShowPage({
 
                     {/* ================== HEADER ================== */}
                     <div className="mt-8 flex flex-col gap-3">
-                        <HeaderText text={course.title} />
-
+                        <div className="flex items-center justify-between gap-4">
+                            <HeaderText text={course.title} />
+                            {course.visibility === 'private' && !isJoined && (
+                                <button
+                                    onClick={() => setShowJoinConfirm(true)}
+                                    disabled={isJoining}
+                                    className="rounded-md bg-[#2276f0] px-4 py-2 text-sm font-medium text-white shadow transition hover:bg-[#1a5ec9] disabled:cursor-not-allowed disabled:opacity-70 md:text-base"
+                                >
+                                    {isJoining
+                                        ? 'Bergabung...'
+                                        : 'Gabung Kelas'}
+                                </button>
+                            )}
+                        </div>
                         <div className="flex flex-wrap items-center gap-4 font-medium text-gray-700">
                             <div className="flex items-center gap-1">
                                 <IconStarFill className="size-4 text-yellow-500" />
@@ -152,7 +188,6 @@ export default function CourseShowPage({
                                 <span>Pemula</span>
                             </div>
                         </div>
-
                         <p className="mt-4 leading-relaxed text-gray-700">
                             {highlightGlossary(course.description, glossaries)}
                         </p>

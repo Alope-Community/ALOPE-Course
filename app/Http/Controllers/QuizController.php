@@ -39,7 +39,15 @@ class QuizController extends Controller
      */
     public function show(string $slug)
     {
-        $quiz = Quiz::with('questions')->whereSlug($slug)->first();
+        $quiz = Quiz::with('questions', 'course.users')->whereSlug($slug)->first();
+        
+        if ($quiz->course && $quiz->course->visibility === 'private') {
+            $user = Auth::user();
+            if (!$user || !$quiz->course->users->contains($user)) {
+                return redirect('/access-blocked');
+            }
+        }
+
         $answers = Answer::whereHas('question', function ($query) use ($quiz) {
             $query->where('quiz_id', $quiz->id);
         })->where('user_id', Auth::user()->id)->get();

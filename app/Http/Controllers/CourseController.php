@@ -76,6 +76,9 @@ class CourseController extends Controller
             }
         ])->whereSlug($slug)->firstOrFail();
 
+        $user = auth()->user();
+        $isJoined = $user ? $course->users()->where('user_id', $user->id)->exists() : false;
+
         $courses = Course::with([
             'modules' => function ($query) {
                 $query->latest();
@@ -105,6 +108,7 @@ class CourseController extends Controller
             "glossaries" => $glossaries,
             "allGlossary" => $allGlossary,
             "testimonials" => $testimonials,
+            "isJoined" => $isJoined,
         ]);
     }
 
@@ -131,5 +135,30 @@ class CourseController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    /**
+     * Join a course
+     */
+    public function join(string $slug)
+    {
+        $user = auth()->user();
+        
+        if (!$user) {
+            return redirect()->route('login');
+        }
+
+        $course = Course::whereSlug($slug)->firstOrFail();
+        if (!$course) {
+            return back()->withErrors(['message' => 'Course not found']);
+        }
+
+        if ($course->users()->where('user_id', $user->id)->exists()) {
+            return back();
+        }
+
+        $course->users()->attach($user->id);
+
+        return back();
     }
 }
