@@ -1,8 +1,13 @@
 import React from 'react'
 
-const TitleHeadline = ({ text }: { text: string }) => {
+type TitleHeadlineProps = {
+    text: string;
+    textClassName?: string;
+}
+
+const TitleHeadline = ({ text, textClassName }: TitleHeadlineProps) => {
     return (
-        <p className="font-spartan font-bold sm:text-xl xl:text-2xl">
+        <p className={`sm:text-xl xl:text-2xl ${textClassName || 'font-spartan font-bold'}`}>
             {text}
         </p>
     )
