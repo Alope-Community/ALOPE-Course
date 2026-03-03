@@ -1,21 +1,29 @@
 import FooterComponent from '@/Components/Footer';
-import NavbarComponent from '@/Components/Navbar';
+import NavbarComponent from '@/Components/Navbar/Navbar';
 import { Head } from '@inertiajs/react';
 
 import { Module } from '@/models/Module';
 import SideModulesSection from '@/Sections/SideModules';
 import { formatDateWithTime } from '@/tools/formatDate';
 import { IconCalendar, IconClock, IconEye } from 'justd-icons';
+// import { Highlight, themes } from 'prism-react-renderer';
 
-// const codeBlock = `val sendIntent = Intent(Intent.ACTION_SEND)
-// ...
+// const codeBlock = `<?xml version="1.0" encoding="utf-8"?>
+// <LinearLayout
+//     xmlns:android="http://schemas.android.com/apk/res/android"
+//     android:layout_width="match_parent"
+//     android:layout_height="match_parent"
+//     android:orientation="vertical" >
 
-// val title: String = resources.getString(R.string.chooser_title)
-// val chooser: Intent = Intent.createChooser(sendIntent, title)
-
-// if (sendIntent.resolveActivity(packageManager) != null) {
-//     startActivity(chooser)
-// }`;
+//     <TextView android:id="@+id/text"
+//         android:layout_width="wrap_content"
+//         android:layout_height="wrap_content"
+//         android:text="I am a TextView" />
+//     <Button android:id="@+id/button"
+//         android:layout_width="wrap_content"
+//         android:layout_height="wrap_content"
+//         android:text="I am a Button" />
+// </LinearLayout>`;
 
 export default function ModuleShowPage({
     module,

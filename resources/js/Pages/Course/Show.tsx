@@ -4,7 +4,7 @@ import TestimonialCardComponent from '@/Components/Cards/Testimonial';
 import { Container } from '@/Components/Container';
 import FooterComponent from '@/Components/Footer';
 import { HeaderText } from '@/Components/HeaderText';
-import NavbarComponent from '@/Components/Navbar';
+import NavbarComponent from '@/Components/Navbar/Navbar';
 import { SubText } from '@/Components/SubText';
 import Tooltip from '@/Components/Tooltip';
 import { Course } from '@/models/Course';

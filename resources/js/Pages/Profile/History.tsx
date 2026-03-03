@@ -1,5 +1,5 @@
 import FooterComponent from '@/Components/Footer';
-import NavbarComponent from '@/Components/Navbar';
+import NavbarComponent from '@/Components/Navbar/Navbar';
 import { Course } from '@/models/Course';
 import { History } from '@/models/History';
 import { calculateCorrectPercentage } from '@/tools/calculateQuizPoint';

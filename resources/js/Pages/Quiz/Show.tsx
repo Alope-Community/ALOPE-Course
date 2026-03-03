@@ -1,11 +1,11 @@
 import BreadcrumbComponent from '@/Components/Breadcrumb';
 import FooterComponent from '@/Components/Footer';
-import NavbarComponent from '@/Components/Navbar';
+import NavbarComponent from '@/Components/Navbar/Navbar';
 import usePreventLeave from '@/hooks/useBeforeUnload';
 import { Answer, Quiz } from '@/models/Quiz';
 import { Head, Link, useForm } from '@inertiajs/react';
 import { IconCircleCheckFill, IconLoader2 } from 'justd-icons';
-import { FormEvent, useEffect, useState } from 'react';
+import { FormEvent, useState } from 'react';
 import toast from 'react-hot-toast';
 
 export default function QuizShowPage({
@@ -46,15 +46,19 @@ export default function QuizShowPage({
                                 toast.dismiss(t.id);
 
                                 setTimeout(() => {
-                                post(route('answers.store'), {
-                                    onSuccess: () => {
-                                    toast.success('Yeay, kamu berhasil!');
-                                    reset();
-                                    },
-                                    onError: () => {
-                                    toast.error('Sepertinya terjadi kesalahan, silahkan submit ulang!');
-                                    },
-                                });
+                                    post(route('answers.store'), {
+                                        onSuccess: () => {
+                                            toast.success(
+                                                'Yeay, kamu berhasil!',
+                                            );
+                                            reset();
+                                        },
+                                        onError: () => {
+                                            toast.error(
+                                                'Sepertinya terjadi kesalahan, silahkan submit ulang!',
+                                            );
+                                        },
+                                    });
                                 }, 0);
                             }}
                         >
@@ -124,7 +128,7 @@ export default function QuizShowPage({
                                                     id={`${index}A`}
                                                     value={question.option1}
                                                     onChange={(e) => {
-                                                        setIsDirty(true)
+                                                        setIsDirty(true);
 
                                                         const newAnswers = [
                                                             ...data.answers,
@@ -159,7 +163,7 @@ export default function QuizShowPage({
                                                     id={`${index}B`}
                                                     value={question.option2}
                                                     onChange={(e) => {
-                                                        setIsDirty(true)
+                                                        setIsDirty(true);
 
                                                         const newAnswers = [
                                                             ...data.answers,
@@ -194,7 +198,7 @@ export default function QuizShowPage({
                                                     id={`${index}C`}
                                                     value={question.option3}
                                                     onChange={(e) => {
-                                                        setIsDirty(true)
+                                                        setIsDirty(true);
 
                                                         const newAnswers = [
                                                             ...data.answers,
@@ -229,7 +233,7 @@ export default function QuizShowPage({
                                                     id={`${index}D`}
                                                     value={question.option4}
                                                     onChange={(e) => {
-                                                        setIsDirty(true)
+                                                        setIsDirty(true);
 
                                                         const newAnswers = [
                                                             ...data.answers,

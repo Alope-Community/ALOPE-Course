@@ -6,8 +6,9 @@ import ModuleCardComponent from '@/Components/Cards/Module';
 import TestimonialCardComponent from '@/Components/Cards/Testimonial';
 import { EmptyStateBox } from '@/Components/EmptyStateBox';
 import FooterComponent from '@/Components/Footer';
-import NavbarComponent from '@/Components/Navbar';
+import NavbarComponent from '@/Components/Navbar/Navbar';
 import NewPrimaryButton from '@/Components/NewPrimaryButton';
+import LoginPopupComponent from '@/Components/PopUp/LoginPopup';
 import { SubText } from '@/Components/SubText';
 import { TitleText } from '@/Components/TitleText';
 import { Blog } from '@/models/Blog';
@@ -18,6 +19,7 @@ import { Video } from '@/models/Video';
 import { Head, Link } from '@inertiajs/react';
 import 'glider-js/glider.min.css';
 import { IconBookOpen, IconCircleCheckFill, IconSend3 } from 'justd-icons';
+import { useState } from 'react';
 
 export default function LandingPage({
     courses,
@@ -34,11 +36,18 @@ export default function LandingPage({
     blogs: Blog[];
     testimonials: Testimonial[];
 }) {
+    const [isLoginOpen, setIsLoginOpen] = useState(false);
+
     return (
         <div className="bg-white">
             <Head title="Welcome" />
 
-            <NavbarComponent />
+            <NavbarComponent onLoginClick={() => setIsLoginOpen(true)} />
+
+            <LoginPopupComponent
+                isOpen={isLoginOpen}
+                onClose={() => setIsLoginOpen(false)}
+            />
 
             <header className="relative min-h-[800px] overflow-hidden bg-gradient-to-tr from-white to-yellow-50 pt-20 md:pt-16">
                 <div className="container relative z-10 mx-auto flex flex-col items-center justify-between px-4 py-10 text-center md:px-10 lg:px-14 lg:text-left xl:flex-row xl:px-0">

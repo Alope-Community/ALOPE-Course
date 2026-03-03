@@ -4,7 +4,11 @@ import { IconCirclePersonFill, IconHamburger } from 'justd-icons';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 
-export default function NavbarComponent() {
+interface NavbarProps {
+    onLoginClick: () => void;
+}
+
+export default function NavbarComponent({ onLoginClick }: NavbarProps) {
     const { url, props } = usePage();
     const { auth } = props;
     const { post } = useForm();
@@ -127,12 +131,13 @@ export default function NavbarComponent() {
                             </div>
                         ) : (
                             <div className="flex items-center gap-3">
-                                <Link href="/login">
-                                    <NewPrimaryButton
-                                        text="Masuk"
-                                        variant="primary"
-                                    />
-                                </Link>
+                                <NewPrimaryButton
+                                    onClick={onLoginClick}
+                                    variant="primary"
+                                    showIcon={false}
+                                >
+                                    Masuk
+                                </NewPrimaryButton>
                             </div>
                         )}
                     </div>
@@ -143,14 +148,6 @@ export default function NavbarComponent() {
                         <IconHamburger className="size-6" />
                     </button>
                 </div>
-                {/* <div className="overflow-hidden bg-amber-500 py-4 text-white">
-                    <p className="animate-marquee whitespace-nowrap text-center text-sm xl:animate-none xl:whitespace-normal xl:text-center">
-                        Saat ini website sedang dalam tahap maintenance guna
-                        meningkatkan kualitas layanan. Kami mohon maaf apabila
-                        masih terdapat bug atau ketidaknyamanan. Terima kasih
-                        atas pengertian Anda.
-                    </p>
-                </div> */}
             </nav>
             <div className="h-[76px] bg-gradient-to-tr from-white to-yellow-50 md:h-[80px]" />
 

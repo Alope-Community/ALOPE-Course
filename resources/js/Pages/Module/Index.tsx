@@ -1,7 +1,7 @@
 import BannerHorizontalComponent from '@/Components/Banners/Horizontal';
 import HorizontalModuleCardComponent from '@/Components/Cards/HorizontalModule';
 import FooterComponent from '@/Components/Footer';
-import NavbarComponent from '@/Components/Navbar';
+import NavbarComponent from '@/Components/Navbar/Navbar';
 import { Module } from '@/models/Module';
 import { PaginatedResponse } from '@/types/PaginateResponse';
 import { Inertia, Method } from '@inertiajs/inertia';

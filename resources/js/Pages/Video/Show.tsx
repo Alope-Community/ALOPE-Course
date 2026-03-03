@@ -2,7 +2,7 @@ import AccordionComponent from '@/Components/Accordion';
 import BannerHorizontalComponent from '@/Components/Banners/Horizontal';
 import ModuleCardComponent from '@/Components/Cards/Module';
 import FooterComponent from '@/Components/Footer';
-import NavbarComponent from '@/Components/Navbar';
+import NavbarComponent from '@/Components/Navbar/Navbar';
 import { Module } from '@/models/Module';
 import { Video } from '@/models/Video';
 import { Head, Link } from '@inertiajs/react';

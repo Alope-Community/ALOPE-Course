@@ -1,6 +1,6 @@
 import BreadcrumbComponent from '@/Components/Breadcrumb';
 import FooterComponent from '@/Components/Footer';
-import NavbarComponent from '@/Components/Navbar';
+import NavbarComponent from '@/Components/Navbar/Navbar';
 import { Head } from '@inertiajs/react';
 
 interface GlosaryDetailProps {

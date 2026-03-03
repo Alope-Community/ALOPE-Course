@@ -1,7 +1,7 @@
 import CourseCardComponent from '@/Components/Cards/CourseCard';
 import { Container } from '@/Components/Container';
 import FooterComponent from '@/Components/Footer';
-import NavbarComponent from '@/Components/Navbar';
+import NavbarComponent from '@/Components/Navbar/Navbar';
 import { SubText } from '@/Components/SubText';
 import { TitleText } from '@/Components/TitleText';
 import { Course } from '@/models/Course';
