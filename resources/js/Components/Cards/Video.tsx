@@ -1,16 +1,25 @@
+import { Link } from '@inertiajs/react';
+
 export default function VideoCardComponent({
     title,
     video_link,
+    video_duration,
     course_name,
-    total_video_course,
+    category_name,
+    video_slug,
 }: {
     title: string;
     video_link: string;
     course_name: string;
-    total_video_course: number;
+    video_duration: string;
+    category_name: string;
+    video_slug: string;
 }) {
     return (
-        <div className={`mr-5 overflow-hidden rounded-md bg-gray-50 shadow`}>
+        <Link
+            href={`/videos/${video_slug}`}
+            className={`mr-5 w-full overflow-hidden rounded-md border border-t-0 border-[#2276f0] bg-gray-50 shadow`}
+        >
             <div className="relative h-[200px]">
                 <iframe
                     src={video_link}
@@ -36,15 +45,14 @@ export default function VideoCardComponent({
                     </svg>
                 </span> */}
             </div>
-            <div className="rounded-b-md border border-t-0 border-[#2276f0] px-3 pb-3 pt-2">
+            <div className="rounded-b-md px-3 pb-3 pt-2">
                 <small className="text-xs italic text-[#2276f0]">
-                    #web-programming
+                    #{category_name}
                 </small>
                 <p className="mt-2 font-semibold">{title}</p>
                 <p className="mt-1 text-xs text-gray-800">
                     <span className="font-medium">{course_name}</span>
-                    {' - '}
-                    {total_video_course} Total Videos
+                    {' - '}(Durasi {video_duration})
                 </p>
                 {/* <div className="mt-4 flex justify-between text-gray-700">
                     <div>
@@ -99,6 +107,6 @@ export default function VideoCardComponent({
                     </div>
                 </div> */}
             </div>
-        </div>
+        </Link>
     );
 }

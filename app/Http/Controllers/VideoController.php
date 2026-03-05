@@ -15,7 +15,11 @@ class VideoController extends Controller
      */
     public function index()
     {
-        //
+        $videos = Video::with("course.category")->latest()->paginate(9);
+
+        return Inertia::render('Video/Index', [
+            "videos" => $videos
+        ]);
     }
 
     /**
