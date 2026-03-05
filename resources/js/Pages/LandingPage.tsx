@@ -44,7 +44,7 @@ export default function LandingPage({
             <NavbarComponent />
                 
             <header className="relative min-h-[800px] overflow-hidden bg-gradient-to-tr from-white to-yellow-50 pt-20 md:pt-16">
-                <div className="container relative z-10 mx-auto flex flex-col items-center justify-between px-4 py-10 text-center md:px-10 lg:px-14 lg:text-left xl:flex-row xl:px-0">
+                <div className="container relative z-10 mx-auto flex flex-col items-center justify-between px-4 py-10 text-center md:px-10 lg:px-14 lg:text-left xl:flex-row xl:px-20">
                     <div className="order-2 flex w-full flex-col gap-10 px-3 text-center sm:w-3/4 sm:px-0 xl:order-1 xl:w-1/2 xl:text-left">
                         <h1 className="font-spartan text-[40px] font-medium leading-tight md:text-5xl xl:text-6xl">
                             Tingkatkan Skill Coding dari Nol hingga Mahir!
@@ -160,7 +160,7 @@ export default function LandingPage({
 
             {/* Section semuua module */}
             <section className="py-10">
-                <div className="container mx-auto flex flex-col gap-5 px-6 py-8 md:px-10 lg:px-14 xl:px-0">
+                <div className="container mx-auto flex flex-col gap-5 px-6 py-8 md:px-10 lg:px-14 xl:px-20">
                     <SubText text="Choose Your Path" />
 
                     <TitleText text="Pilih Jalur Pembelajaran Sesuai Minatmu" />
@@ -179,7 +179,7 @@ export default function LandingPage({
 
             {/* Section popular modules */}
             <section className="py-10">
-                <div className="container mx-auto px-6 py-8 md:px-10 lg:px-14 xl:px-0">
+                <div className="container mx-auto px-6 py-8 md:px-10 lg:px-14 xl:px-20">
                     <div className="flex flex-col gap-10 md:flex-row md:items-center md:justify-start lg:justify-between">
                         <div className="flex flex-col gap-5">
                             <SubText text="POPULAR MODULES" />
@@ -213,7 +213,7 @@ export default function LandingPage({
             </section>
             {/* Section Blog */}
             <section className="py-10">
-                <div className="container mx-auto px-6 py-8 md:px-10 lg:px-14 xl:px-0">
+                <div className="container mx-auto px-6 py-8 md:px-10 lg:px-14 xl:px-20">
                     <div className="flex flex-col gap-10 md:flex-row md:items-center lg:justify-between">
                         <div className="flex flex-col gap-5">
                             <SubText text="From Our Blog" />
@@ -248,7 +248,7 @@ export default function LandingPage({
 
             {/* Sextion What They Say */}
             <section className="my-10 bg-[#F9FAFB] py-10">
-                <div className="container mx-auto px-6 py-8 md:px-10 lg:px-14 xl:px-0">
+                <div className="container mx-auto px-6 py-8 md:px-10 lg:px-14 xl:px-20">
                     <div className="flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
                         <div className="flex flex-col gap-5">
                             <SubText text="What They Say" />
@@ -293,7 +293,7 @@ export default function LandingPage({
 
             {/* Section FAQ */}
             <section className="py-10">
-                <div className="container mx-auto grid grid-cols-1 gap-10 px-6 py-8 md:px-10 lg:grid-cols-2 lg:px-14 xl:px-0">
+                <div className="container mx-auto grid grid-cols-1 gap-10 px-6 py-8 md:px-10 lg:grid-cols-2 lg:px-14 xl:px-20">
                     <div className="flex flex-col gap-5">
                         <SubText text="Frequently Asked Questions" />
 

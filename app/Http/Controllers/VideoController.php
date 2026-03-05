@@ -44,7 +44,14 @@ class VideoController extends Controller
     public function show(string $slug)
     {
         // Ambil video berdasarkan slug dan relasi course
-        $video = Video::with('course.category')->whereSlug($slug)->firstOrFail();
+        $video = Video::with('course.category', 'course.users')->whereSlug($slug)->firstOrFail();
+
+        if ($video->course->visibility === 'private') {
+            $user = Auth::user();
+            if (!$user || !$video->course->users->contains($user)) {
+                return redirect('/access-blocked');
+            }
+        }
 
         // Ambil semua video lain dalam course yang sama
         $videos = Video::where('course_id', $video->course_id)

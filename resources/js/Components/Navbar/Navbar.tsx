@@ -1,3 +1,4 @@
+import ConfirmationDialog from '@/Components/ConfirmationDialog';
 import NewPrimaryButton from '@/Components/NewPrimaryButton';
 import LoginPopupComponent from '@/Components/PopUp/LoginPopup';
 import { Link, useForm, usePage } from '@inertiajs/react';
@@ -63,8 +64,9 @@ export default function NavbarComponent() {
 
     return (
         <>
+
             <nav className="fixed left-0 right-0 top-0 z-50 bg-white">
-                <div className="container mx-auto flex items-center justify-between px-4 py-3 md:px-10 md:py-5 lg:px-14 xl:px-0">
+                <div className="container mx-auto flex items-center justify-between px-4 py-3 md:px-10 md:py-5 lg:px-14 xl:px-20">
                     <Link href="/" className="flex items-center gap-3">
                         <img
                             src="/images/logo/alope-blue.png"

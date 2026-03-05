@@ -1,42 +1,104 @@
+import ConfirmationDialog from '@/Components/ConfirmationDialog';
 import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar/Navbar';
-import { Head } from '@inertiajs/react';
 
 import { Module } from '@/models/Module';
 import SideModulesSection from '@/Sections/SideModules';
 import { formatDateWithTime } from '@/tools/formatDate';
+import { Head, router, usePage } from '@inertiajs/react';
 import { IconCalendar, IconClock, IconEye } from 'justd-icons';
-// import { Highlight, themes } from 'prism-react-renderer';
+import { useState } from 'react';
+import toast from 'react-hot-toast';
 
-// const codeBlock = `<?xml version="1.0" encoding="utf-8"?>
-// <LinearLayout
-//     xmlns:android="http://schemas.android.com/apk/res/android"
-//     android:layout_width="match_parent"
-//     android:layout_height="match_parent"
-//     android:orientation="vertical" >
+// const codeBlock = `from mlxtend.frequent_patterns import apriori, association_rules
+// import pandas as pd
 
-//     <TextView android:id="@+id/text"
-//         android:layout_width="wrap_content"
-//         android:layout_height="wrap_content"
-//         android:text="I am a TextView" />
-//     <Button android:id="@+id/button"
-//         android:layout_width="wrap_content"
-//         android:layout_height="wrap_content"
-//         android:text="I am a Button" />
-// </LinearLayout>`;
+// # Sample transaction data
+// transactions = [
+//     ['bread', 'milk', 'beer'],
+//     ['bread', 'butter', 'milk'],
+//     ['beer', 'chips', 'milk'],
+//     ['bread', 'butter', 'beer'],
+//     ['milk', 'chips'],
+//     ['bread', 'milk', 'chips', 'butter']
+// ]
+
+// # Convert to one-hot encoding
+// from mlxtend.preprocessing import TransactionEncoder
+// te = TransactionEncoder()
+// te_ary = te.fit(transactions).transform(transactions)
+// df = pd.DataFrame(te_ary, columns=te.columns_)
+
+// # Find frequent itemsets
+// frequent_itemsets = apriori(df, min_support=0.3, use_colnames=True)
+// print("Frequent Itemsets:")
+// print(frequent_itemsets)
+
+// # Generate association rules
+// rules = association_rules(frequent_itemsets, metric="confidence", min_threshold=0.5)
+// print("\nAssociation Rules:")
+// print(rules[['antecedents', 'consequents', 'support', 'confidence', 'lift']])`;
 
 export default function ModuleShowPage({
     module,
     modules,
+    isJoined = true,
 }: {
     module: Module;
     modules: Module[];
+    isJoined?: boolean;
 }) {
+    const { auth } = usePage().props as any;
+    const [isJoining, setIsJoining] = useState(false);
+    const [showJoinConfirm, setShowJoinConfirm] = useState(false);
+
+    const handleJoinModule = () => {
+        if (!auth.user) {
+            setShowJoinConfirm(false);
+            router.visit('/login');
+            return;
+        }
+
+        setIsJoining(true);
+        router.post(
+            `/modules/${module.slug}/join`,
+            {},
+            {
+                onSuccess: () => {
+                    toast.success('Berhasil bergabung dengan modul!');
+                    setShowJoinConfirm(false);
+                },
+                onError: () => {
+                    toast.error('Gagal bergabung dengan modul');
+                },
+                onFinish: () => {
+                    setIsJoining(false);
+                },
+            },
+        );
+    };
+
     return (
         <>
             <Head title="Modul" />
 
             <NavbarComponent />
+
+            <ConfirmationDialog
+                isOpen={showJoinConfirm}
+                title="Konfirmasi Bergabung"
+                message={
+                    <>
+                        Apakah kamu yakin ingin bergabung ke modul{' '}
+                        <b>{module.title}</b>?
+                    </>
+                }
+                confirmLabel="Ya, Gabung"
+                cancelLabel="Batal"
+                onConfirm={handleJoinModule}
+                onCancel={() => setShowJoinConfirm(false)}
+                isLoading={isJoining}
+            />
 
             {/* <section id="body" className="mt-20">
                 <Highlight
@@ -128,13 +190,28 @@ export default function ModuleShowPage({
                             </div>
                         </header>
 
-                        <section
-                            id="body"
-                            className="mt-5"
-                            dangerouslySetInnerHTML={{
-                                __html: module.body,
-                            }}
-                        ></section>
+                        <section id="body" className="relative mt-5">
+                            {/* Konten */}
+                            <div
+                                className={`${!isJoined ? 'relative max-h-[300px] overflow-hidden' : ''}`}
+                                dangerouslySetInnerHTML={{
+                                    __html: module.body,
+                                }}
+                            />
+                            {!isJoined && (
+                                <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-gray-100 via-gray-100/90 to-transparent p-6 text-center">
+                                    <button
+                                        onClick={() => setShowJoinConfirm(true)}
+                                        disabled={isJoining}
+                                        className="rounded-md bg-[#2276f0] px-4 py-2 text-sm font-medium text-white shadow transition hover:bg-[#1a5ec9] disabled:cursor-not-allowed disabled:opacity-70 md:text-base"
+                                    >
+                                        {isJoining
+                                            ? 'Bergabung...'
+                                            : 'Gabung Modul ini untuk lanjut Membaca'}
+                                    </button>
+                                </div>
+                            )}
+                        </section>
                     </main>
                     <SideModulesSection modules={modules} />
                 </div>
