@@ -2,258 +2,122 @@ import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar/Navbar';
 import { Course } from '@/models/Course';
 import { History } from '@/models/History';
-import { calculateCorrectPercentage } from '@/tools/calculateQuizPoint';
-import { formatDateWithTime } from '@/tools/formatDate';
-import { Head, Link, usePage } from '@inertiajs/react';
-import {
-    IconBookOpenFill,
-    IconCirclePersonFill,
-    IconPuzzleFill,
-    IconRocketFill,
-} from 'justd-icons';
-import UpdatePasswordForm from './Partials/UpdatePasswordForm';
+import ProfileActivityHistory from '@/Pages/Profile/Partials/ProfileActivityHistory';
+import ProfileCoursesList from '@/Pages/Profile/Partials/ProfileCoursesList';
+import ProfileSidebar from '@/Pages/Profile/Partials/ProfileSidebar';
+import UpdatePasswordForm from '@/Pages/Profile/Partials/UpdatePasswordForm';
+import UpdateProfileInformationForm from '@/Pages/Profile/Partials/UpdateProfileInformationForm';
+import { Head } from '@inertiajs/react';
+import { IconBrandWhatsapp } from 'justd-icons';
+import { useState } from 'react';
 
 export default function HistoryPage({
     histories,
     courses,
+    mustVerifyEmail,
+    status,
 }: {
     histories: History[];
     courses: Course[];
+    mustVerifyEmail: boolean;
+    status?: string;
 }) {
-    const { props } = usePage();
-    const { auth } = props;
-
-    const countMyHistory = (courseId: string) => {
-        let count = 0;
-        histories.forEach((history) => {
-            if (history.logs[0].module?.course_id == courseId) {
-                count++;
-            }
-        });
-
-        return count;
-    };
-
-    const counter = (a: number, b: number) => {
-        return a + b;
-    };
+    const [activeTab, setActiveTab] = useState<
+        'account' | 'courses' | 'history'
+    >('account');
 
     return (
-        <>
-            <Head title="History" />
-
+        <div className="min-h-screen bg-[#f8fafc]">
+            <Head title="Profile" />
             <NavbarComponent />
 
-            {/* <img
-                src="/images/shapes/blueBlur2.svg"
-                alt="blueBlur"
-                className="absolute -top-72 right-0 hidden xl:block"
-                loading="lazy"
-            />
-            <img
-                src="/images/shapes/purpleBlur1.svg"
-                alt="purpleBlur"
-                className="absolute -top-52 left-0 hidden xl:block"
-                loading="lazy"
-            /> */}
+            <main className="container mx-auto px-4 py-10 md:px-8 lg:px-12">
+                <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-4">
+                    {/* --- SIDEBAR --- */}
+                    <aside className="space-y-6 lg:col-span-1">
+                        <ProfileSidebar
+                            activeTab={activeTab}
+                            onTabChange={setActiveTab}
+                        />
 
-            {/* <BreadcrumbComponent
-                links={[
-                    {
-                        title: 'Profile',
-                        url: '/profile',
-                        active: true,
-                    },
-                    // { title: 'History', url: '/profile/history', active: true },
-                ]}
-            /> */}
+                        {/* WhatsApp Card */}
+                        <div className="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-500 to-green-600 p-6 text-white shadow-xl shadow-green-500/20">
+                            <div className="absolute right-0 top-0 -mr-8 -mt-8 size-32 rounded-full bg-white/10 blur-2xl transition-all duration-500 group-hover:bg-white/20"></div>
 
-            <main className="container relative z-20 mx-auto mt-10 grid gap-5 px-3 md:px-10 lg:grid-cols-3 xl:grid-cols-2 xl:gap-10 xl:px-5 2xl:px-2">
-                <section className="relative">
-                    <div className="sticky top-24">
-                        <div className="mb-5 rounded-lg bg-white/50 p-5 shadow backdrop-blur lg:col-span-2 xl:col-span-1">
-                            <h2 className="text-xl font-semibold md:text-2xl">
-                                <span className="text-gray-400">//</span>{' '}
-                                Profile
-                            </h2>
-                            <div className="mt-5 flex flex-col items-center gap-3 sm:flex-row">
-                                <div>
-                                    <IconCirclePersonFill className="size-16" />
+                            <div className="relative z-10 mb-8 flex flex-col items-start gap-3">
+                                <div className="rounded-xl border border-white/30 bg-white/20 p-3 backdrop-blur-md">
+                                    <IconBrandWhatsapp className="size-6 text-white" />
                                 </div>
 
-                                <div>
-                                    <p className="font-medium md:text-xl">
-                                        {auth.user.name}
-                                    </p>
-                                    <p className="text-xs text-gray-500 md:text-sm">
-                                        {auth.user.email}
-                                    </p>
-                                </div>
+                                <h3 className="text-xl font-bold leading-tight">
+                                    Butuh Bantuan? <br /> Hubungi Kami
+                                </h3>
                             </div>
+
+                            <a
+                                href="https://wa.me/+62838-7135-2030"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="relative z-10 inline-block w-full rounded-full bg-white py-2 text-center text-sm font-bold text-green-600 transition-colors hover:bg-gray-50"
+                            >
+                                Contact Us
+                            </a>
                         </div>
-                        <div className="rounded-lg bg-white/50 p-5 shadow backdrop-blur lg:col-span-2 xl:col-span-1">
-                            <h2 className="text-xl font-semibold">
-                                <span className="text-gray-400">//</span> Update
-                                Password
-                            </h2>
-                            <UpdatePasswordForm />
-                        </div>
-                    </div>
-                </section>
-                <section className="lg:col-span-2 xl:col-span-1">
-                    <div className="mb-5 rounded-lg bg-white/50 p-5 shadow backdrop-blur">
-                        <h2 className="text-xl font-semibold md:text-2xl">
-                            <span className="text-gray-400">//</span> Kursus
-                            yang Diikuti
-                        </h2>
-                        <div className="mt-10">
-                            {courses.length ? (
-                                courses.map((course, index) => (
-                                    <div
-                                        key={index}
-                                        className="mb-7 flex items-center gap-5 md:mb-4"
-                                    >
-                                        <div className="hidden md:block">
-                                            <img
-                                                src={course.cover}
-                                                alt="Cover Course"
-                                                className="rounded shadow md:max-h-[100px] md:max-w-[130px]"
-                                            />
-                                        </div>
-                                        <div className="w-full">
-                                            <div className="mb-2 flex items-end justify-between">
-                                                <div>
-                                                    <div className="inline-flex gap-2">
-                                                        <Link
-                                                            href={`/courses/${course.slug}`}
-                                                            className="font-bold"
-                                                        >
-                                                            {course.title}
-                                                        </Link>
-                                                        {course.visibility ==
-                                                            'private' && (
-                                                            <p>
-                                                                <span
-                                                                    title="Premium"
-                                                                    className="inline-flex rounded bg-[#f0c322] p-0.5"
-                                                                >
-                                                                    <IconRocketFill className="size-3" />
-                                                                </span>
-                                                            </p>
-                                                        )}
-                                                    </div>
-                                                    <div className="flex gap-2 text-xs text-gray-700">
-                                                        <p>
-                                                            {
-                                                                course.modules
-                                                                    .length
-                                                            }{' '}
-                                                            Module
-                                                        </p>
-                                                        <p>
-                                                            {
-                                                                course.quizzes
-                                                                    .length
-                                                            }{' '}
-                                                            Quiz
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <p className="text-xs text-gray-800 md:text-sm">
-                                                    Progress{' '}
-                                                    {`${countMyHistory(course.id)} / ${counter(
-                                                        course.modules.length,
-                                                        course.quizzes.length,
-                                                    )}`}
-                                                </p>
-                                            </div>
-                                            <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-gray-200">
-                                                <div
-                                                    className="h-full bg-[#2276f0]"
-                                                    style={{
-                                                        width: `${(countMyHistory(course.id) / counter(course.modules.length, course.quizzes.length)) * 100}%`,
-                                                    }}
-                                                ></div>
-                                            </div>
-                                        </div>
+                    </aside>
+
+                    {/* --- MAIN CONTENT --- */}
+                    <div className="lg:col-span-3">
+                        {/* TAB: INFORMASI AKUN */}
+                        {activeTab === 'account' && (
+                            <div className="space-y-8">
+                                {/* Edit Profil Section */}
+                                <section className="rounded-3xl border border-gray-100 bg-white p-8 shadow-sm md:p-10">
+                                    <div className="mb-8">
+                                        <h2 className="text-xl font-bold text-gray-800">
+                                            Edit Profil
+                                        </h2>
+                                        <p className="text-xs text-gray-500 text-primary">
+                                            Update informasi dasar akun Anda
+                                        </p>
                                     </div>
-                                ))
-                            ) : (
-                                <p className="italic text-gray-700">
-                                    Belum ada Kursus yang Diikuti
-                                </p>
-                            )}
-                        </div>
-                    </div>
-                    <div className="mb-20 rounded-lg bg-white/50 p-5 shadow backdrop-blur">
-                        <h2 className="text-xl font-semibold md:text-2xl">
-                            <span className="text-gray-400">//</span> Riwayat
-                            Aktifitas
-                        </h2>
-                        <div className="relative mt-10 border-l border-gray-400 md:ml-4">
-                            {histories.length ? (
-                                histories.map((history, index) => (
-                                    <div key={index} className="mb-10 ml-6">
-                                        <div
-                                            className={`absolute -left-0 flex size-7 -translate-x-1/2 items-center justify-center rounded-full border border-white text-white ${history.history.type == 'module' ? 'bg-[#2276f0]' : 'bg-[#673ef0]'}`}
-                                        >
-                                            {history.history.type ==
-                                            'module' ? (
-                                                <IconBookOpenFill className="size-3.5" />
-                                            ) : (
-                                                <IconPuzzleFill className="size-3.5" />
-                                            )}
-                                        </div>
-                                        <div className="flex items-center gap-2">
-                                            <p
-                                                className={`text-xs font-medium capitalize md:text-sm ${history.history.type == 'module' ? 'text-[#2276f0]' : 'text-[#673ef0]'}`}
-                                            >
-                                                {history.history.type}
-                                            </p>
-                                            <span className="text-gray-600">
-                                                &bull;
-                                            </span>
-                                            <time className="text-xs text-gray-500 md:text-sm">
-                                                {formatDateWithTime(
-                                                    history.logs[0].created_at,
-                                                )}
-                                            </time>
-                                        </div>
-                                        <Link
-                                            href={`${history.history.type == 'module' ? `/modules/${history.history.slug}` : `/quizzes/${history.history.slug}`}`}
-                                            className="block font-medium text-gray-900 md:text-lg"
-                                        >
-                                            {history.history.title}
-                                        </Link>
-                                        {history.history.type == 'module' ? (
-                                            <p className="text-xs text-gray-700 md:text-sm">
-                                                Membaca sebanyak{' '}
-                                                {history.logs.length}x
-                                            </p>
-                                        ) : (
-                                            <p className="text-xs text-gray-700 md:text-sm">
-                                                Mendapatkan skor{' '}
-                                                <b>
-                                                    {calculateCorrectPercentage(
-                                                        history.logs,
-                                                    )}
-                                                </b>{' '}
-                                                poin
-                                            </p>
-                                        )}
+                                    <UpdateProfileInformationForm
+                                        mustVerifyEmail={mustVerifyEmail}
+                                        status={status}
+                                    />
+                                </section>
+
+                                {/* Ubah Password Section */}
+                                <section className="rounded-3xl border border-gray-100 bg-white p-8 shadow-sm md:p-10">
+                                    <div className="mb-8">
+                                        <h2 className="text-xl font-bold text-gray-800">
+                                            Ubah Password
+                                        </h2>
+                                        <p className="text-xs text-gray-500 text-primary">
+                                            Pastikan akun Anda tetap aman
+                                        </p>
                                     </div>
-                                ))
-                            ) : (
-                                <p className="italic text-gray-700">
-                                    Belum ada riwayat
-                                </p>
-                            )}
-                        </div>
+                                    <UpdatePasswordForm />
+                                </section>
+                            </div>
+                        )}
+
+                        {/* TAB: KURSUS DIIKUTI */}
+                        {activeTab === 'courses' && (
+                            <ProfileCoursesList
+                                courses={courses}
+                                histories={histories}
+                            />
+                        )}
+
+                        {/* TAB: RIWAYAT AKTIFITAS */}
+                        {activeTab === 'history' && (
+                            <ProfileActivityHistory histories={histories} />
+                        )}
                     </div>
-                </section>
+                </div>
             </main>
 
             <FooterComponent />
-        </>
+        </div>
     );
 }

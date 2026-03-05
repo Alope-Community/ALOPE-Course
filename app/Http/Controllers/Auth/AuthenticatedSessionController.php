@@ -33,6 +33,10 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        if ($request->redirect) {
+            return redirect()->to($request->redirect);
+        }
+
         return redirect()->intended(route('home', absolute: false));
     }
 
@@ -46,6 +50,10 @@ class AuthenticatedSessionController extends Controller
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
+
+        if ($request->redirect) {
+            return redirect()->to($request->redirect);
+        }
 
         return redirect('/');
     }

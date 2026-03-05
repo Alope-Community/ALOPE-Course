@@ -31,6 +31,8 @@ class DatabaseSeeder extends Seeder
             BlogSeeder::class,
             GlossarySeeder::class,
             TestimonialSeeder::class,
+            EventCategorySeeder::class,
+            EventSeeder::class,
         ]);
     }
 }

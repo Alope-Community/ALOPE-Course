@@ -7,6 +7,7 @@ import { TitleText } from '@/Components/TitleText';
 import { Course } from '@/models/Course';
 import { Module } from '@/models/Module';
 import { Head } from '@inertiajs/react';
+import { useState } from 'react';
 
 export default function CourseIndexPage({
     courses,
@@ -15,6 +16,8 @@ export default function CourseIndexPage({
     courses: Course[];
     modules: Module[];
 }) {
+    const [isLoginOpen, setIsLoginOpen] = useState(false)
+
     return (
         <>
             <Head title="Courses" />

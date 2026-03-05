@@ -20,6 +20,7 @@ export default function LoginPopup({ isOpen, onClose }: LoginPopupProps) {
     const { data, setData, post, processing, errors, reset } = useForm({
         email: '',
         password: '',
+        redirect: window.location.pathname,
     });
 
     const [showPassword, setShowPassword] = useState(false);
@@ -34,6 +35,7 @@ export default function LoginPopup({ isOpen, onClose }: LoginPopupProps) {
             replace: true,
             onSuccess: () => {
                 toast.success('Login successful!');
+                onClose()
             },
             onError: (errors) => {
                 if (errors.email || errors.password) {
@@ -56,7 +58,10 @@ export default function LoginPopup({ isOpen, onClose }: LoginPopupProps) {
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4 backdrop-blur-sm"
             onClick={() => onClose()}
         >
-            <div className="flex w-full max-w-md flex-col items-center rounded-2xl bg-white p-10 shadow-2xl">
+            <div
+                className="flex w-full max-w-md flex-col items-center rounded-2xl bg-white p-10 shadow-2xl"
+                onClick={(e) => e.stopPropagation()}
+            >
                 {/* Logo */}
                 <img
                     src="/images/logo/alope-text.png"

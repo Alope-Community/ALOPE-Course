@@ -1,26 +1,27 @@
 import NewPrimaryButton from '@/Components/NewPrimaryButton';
+import LoginPopupComponent from '@/Components/PopUp/LoginPopup';
 import { Link, useForm, usePage } from '@inertiajs/react';
-import { IconCirclePersonFill, IconHamburger } from 'justd-icons';
+import { IconCirclePersonFill, IconHamburger, IconX } from 'justd-icons';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 
-interface NavbarProps {
-    onLoginClick: () => void;
-}
-
-export default function NavbarComponent({ onLoginClick }: NavbarProps) {
+export default function NavbarComponent() {
     const { url, props } = usePage();
     const { auth } = props;
-    const { post } = useForm();
+    const { post } = useForm({
+        redirect: window.location.pathname
+    });
 
     const [isOpen, setIsOpen] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [isLoginOpen, setIsLoginOpen] = useState(false)
 
     const navLinks = [
         { name: 'Beranda', href: '/' },
         { name: 'Kursus', href: '/courses' },
         { name: 'Modul', href: '/modules' },
-        { name: 'Video', href: '/videos' },
+        { name: 'Video', href: '/videos/kickstart-ml-persiapan' },
+        { name: 'Event', href: '/events' },
     ];
 
     const handleLogout = () => {
@@ -79,34 +80,32 @@ export default function NavbarComponent({ onLoginClick }: NavbarProps) {
                             </p>
                         </div>
                     </Link>
-                    <ul className="hidden items-center gap-8 font-medium md:flex">
+                    <ul className="hidden items-center gap-8 font-medium lg:flex">
                         {navLinks.map((link) => (
                             <li key={link.href}>
                                 <Link
                                     href={link.href}
-                                    className={`transition hover:text-primary ${
-                                        isActive(link.href)
-                                            ? 'font-semibold text-primary'
-                                            : 'text-gray-600'
-                                    }`}
+                                    className={`transition hover:text-primary ${isActive(link.href)
+                                        ? 'font-semibold text-primary'
+                                        : 'text-gray-600'
+                                        }`}
                                 >
                                     {link.name}
                                 </Link>
                             </li>
                         ))}
                     </ul>
-                    <div className="hidden items-center gap-4 md:flex">
+                    <div className="hidden items-center gap-4 lg:flex">
                         {auth.user ? (
                             <div className="relative">
                                 <button
                                     onClick={() =>
                                         setIsDropdownOpen(!isDropdownOpen)
                                     }
-                                    className={`flex items-center gap-2 rounded-lg px-3 py-1.5 text-gray-700 transition ${
-                                        isDropdownOpen
-                                            ? 'bg-primary text-white'
-                                            : 'hover:bg-primary hover:text-white'
-                                    }`}
+                                    className={`flex items-center gap-2 rounded-lg px-3 py-1.5 text-gray-700 transition ${isDropdownOpen
+                                        ? 'bg-primary text-white'
+                                        : 'hover:bg-primary hover:text-white'
+                                        }`}
                                 >
                                     <IconCirclePersonFill className="size-5" />
                                     <span>{auth.user.name}</span>
@@ -132,7 +131,7 @@ export default function NavbarComponent({ onLoginClick }: NavbarProps) {
                         ) : (
                             <div className="flex items-center gap-3">
                                 <NewPrimaryButton
-                                    onClick={onLoginClick}
+                                    onClick={() => setIsLoginOpen(prev => !prev)}
                                     variant="primary"
                                     showIcon={false}
                                 >
@@ -143,9 +142,15 @@ export default function NavbarComponent({ onLoginClick }: NavbarProps) {
                     </div>
                     <button
                         onClick={() => setIsOpen(!isOpen)}
-                        className="text-gray-700 md:hidden"
+                        className="text-gray-700 lg:hidden"
                     >
-                        <IconHamburger className="size-6" />
+                        {
+                            isOpen
+                                ?
+                                <IconX className="size-6" />
+                                :
+                                <IconHamburger className="size-6" />
+                        }
                     </button>
                 </div>
             </nav>
@@ -153,9 +158,8 @@ export default function NavbarComponent({ onLoginClick }: NavbarProps) {
 
             {/* Drawer mobile */}
             <aside
-                className={`fixed left-0 top-12 z-40 h-full w-72 transform bg-white shadow-lg transition-transform md:hidden ${
-                    isOpen ? 'translate-x-0' : '-translate-x-full'
-                }`}
+                className={`fixed left-0 top-14 md:top-[84px] z-50 h-full w-72 transform bg-white shadow-lg transition-transform lg:hidden ${isOpen ? 'translate-x-0' : '-translate-x-full'
+                    }`}
             >
                 {/* User header */}
                 <div className="flex items-center gap-3 border-b px-6 py-6">
@@ -174,11 +178,10 @@ export default function NavbarComponent({ onLoginClick }: NavbarProps) {
                         <li key={link.href}>
                             <Link
                                 href={link.href}
-                                className={`block rounded-lg px-4 py-2 transition ${
-                                    isActive(link.href)
-                                        ? 'bg-primary/10 font-semibold text-primary'
-                                        : 'text-gray-600 hover:bg-gray-100'
-                                }`}
+                                className={`block rounded-lg px-4 py-2 transition ${isActive(link.href)
+                                    ? 'bg-primary/10 font-semibold text-primary'
+                                    : 'text-gray-600 hover:bg-gray-100'
+                                    }`}
                                 onClick={() => setIsOpen(false)}
                             >
                                 {link.name}
@@ -228,7 +231,7 @@ export default function NavbarComponent({ onLoginClick }: NavbarProps) {
 
             {isOpen && (
                 <div
-                    className="fixed inset-0 z-30 bg-black/40 backdrop-blur-sm md:hidden"
+                    className="fixed inset-0 z-30 bg-black/40 backdrop-blur-sm lg:hidden"
                     onClick={() => setIsOpen(false)}
                 />
             )}
@@ -238,6 +241,11 @@ export default function NavbarComponent({ onLoginClick }: NavbarProps) {
                     onClick={() => setIsDropdownOpen(false)}
                 />
             )}
+
+            <LoginPopupComponent
+                isOpen={isLoginOpen}
+                onClose={() => setIsLoginOpen(false)}
+            />
         </>
     );
 }
