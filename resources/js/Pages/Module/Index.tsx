@@ -1,5 +1,7 @@
 import BannerHorizontalComponent from '@/Components/Banners/Horizontal';
 import HorizontalModuleCardComponent from '@/Components/Cards/HorizontalModule';
+import { Container } from '@/Components/Container';
+import { EmptyStateBox } from '@/Components/EmptyStateBox';
 import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar/Navbar';
 import Pagination from '@/Components/Pagination';
@@ -9,7 +11,6 @@ import { Inertia, Method } from '@inertiajs/inertia';
 import { Head, router, usePage } from '@inertiajs/react';
 
 import 'glider-js/glider.min.css';
-import { IconChevronLeft, IconChevronRight } from 'justd-icons';
 import { useEffect, useState } from 'react';
 
 export default function ModuleIndexPage({
@@ -56,16 +57,30 @@ export default function ModuleIndexPage({
 
             <NavbarComponent />
 
-            <main className="container relative z-20 mx-auto mb-20 mt-5 grid grid-cols-4 gap-8 px-3 md:px-10 xl:gap-10 xl:px-5 2xl:px-2">
-                <section className="col-span-4 pt-10 lg:col-span-3">
+            <Container>
+
+                <main className="relative z-20 w-full">
+
+                    {/* <section className="col-span-4 pt-10 lg:col-span-3"> */}
+
                     <BannerHorizontalComponent />
-                    <section>
-                        {modules.data.map((module, index) => (
-                            <HorizontalModuleCardComponent
-                                key={index}
-                                props={module}
-                            />
-                        ))}
+
+                    <section className="my-10 min-h-[calc(100vh-600px)]">
+                        {
+                            modules.data.length > 0
+                                ?
+                                modules.data.map((module, index) => (
+                                    <HorizontalModuleCardComponent
+                                        key={index}
+                                        props={module}
+                                    />
+                                ))
+                                :
+                                <EmptyStateBox
+                                    title='Belum ada modul terbaru'
+                                    description='Saat ini belum ada modul yang tersedia. Silahkan kembali lagi lagi nanti untuk melihat modul terbaru yang akan datang.'
+                                />
+                        }
                     </section>
 
                     {/* PAGINATION */}
@@ -77,9 +92,13 @@ export default function ModuleIndexPage({
                         path={modules.path}
                     />
 
-                </section>
-                {/* <SideModulesSection modules={modules.data} /> */}
-            </main>
+                    {/* </section */}
+
+                    {/* <SideModulesSection modules={modules.data} /> */}
+
+                </main>
+
+            </Container>
 
             <FooterComponent />
         </>
