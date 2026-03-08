@@ -2,6 +2,7 @@ import BannerHorizontalComponent from '@/Components/Banners/Horizontal';
 import HorizontalModuleCardComponent from '@/Components/Cards/HorizontalModule';
 import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar/Navbar';
+import Pagination from '@/Components/Pagination';
 import { Module } from '@/models/Module';
 import { PaginatedResponse } from '@/types/PaginateResponse';
 import { Inertia, Method } from '@inertiajs/inertia';
@@ -67,44 +68,15 @@ export default function ModuleIndexPage({
                         ))}
                     </section>
 
-                    {/*  */}
-                    <div className="mt-10 flex items-center justify-center gap-2">
-                        {/* Tombol Previous */}
-                        <button
-                            onClick={() => goToPage(modules.prev_page_url)}
-                            disabled={!modules.prev_page_url}
-                            className="flex items-center rounded border bg-white/50 px-3 py-1 disabled:opacity-50"
-                        >
-                            <IconChevronLeft className="size-5" /> Prev
-                        </button>
+                    {/* PAGINATION */}
+                    <Pagination
+                        currentPage={modules.current_page}
+                        lastPage={modules.last_page}
+                        nextPageUrl={modules.next_page_url}
+                        prevPageUrl={modules.prev_page_url}
+                        path={modules.path}
+                    />
 
-                        {/* Tombol Angka Halaman */}
-                        {Array.from(
-                            { length: modules.last_page },
-                            (_, i) => i + 1,
-                        ).map((page) => (
-                            <button
-                                key={page}
-                                onClick={() => goToPageNumber(page)}
-                                className={`rounded border px-3 py-1 ${
-                                    page === modules.current_page
-                                        ? 'bg-[#4a86ef] text-white'
-                                        : 'bg-white/50 text-gray-800 backdrop-blur-md'
-                                }`}
-                            >
-                                {page}
-                            </button>
-                        ))}
-
-                        {/* Tombol Next */}
-                        <button
-                            onClick={() => goToPage(modules.next_page_url)}
-                            disabled={!modules.next_page_url}
-                            className="flex items-center rounded border bg-white/50 px-3 py-1 disabled:opacity-50"
-                        >
-                            Next <IconChevronRight className="size-5" />
-                        </button>
-                    </div>
                 </section>
                 {/* <SideModulesSection modules={modules.data} /> */}
             </main>
