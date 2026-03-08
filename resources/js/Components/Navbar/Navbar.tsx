@@ -59,7 +59,7 @@ export default function NavbarComponent() {
             return url === path;
         }
 
-        return url === path || url.startsWith(`${path}/`);
+        return url === path || url.startsWith(`${path}/`) || url.startsWith(`${path}?`);
     };
 
     return (
