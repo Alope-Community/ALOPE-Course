@@ -16,6 +16,7 @@ export default function NavbarComponent() {
     const [isOpen, setIsOpen] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [isLoginOpen, setIsLoginOpen] = useState(false)
+    const [isLogoutOpen, setIsLogoutOpen] = useState(false)
 
     const navLinks = [
         { name: 'Beranda', href: '/' },
@@ -24,35 +25,6 @@ export default function NavbarComponent() {
         { name: 'Video', href: '/videos/kickstart-ml-persiapan' },
         { name: 'Event', href: '/events' },
     ];
-
-    const handleLogout = () => {
-        toast((t) => (
-            <div className="flex flex-col gap-4">
-                <p>Apakah yakin ingin logout?</p>
-                <div className="flex justify-end gap-2">
-                    <button
-                        className="rounded bg-gray-200 px-3 py-1 text-sm"
-                        onClick={() => toast.dismiss(t.id)}
-                    >
-                        Batal
-                    </button>
-                    <button
-                        className="rounded bg-red-500 px-3 py-1 text-sm text-white"
-                        onClick={() => {
-                            post(route('logout'), {
-                                onSuccess: () =>
-                                    toast.success('Berhasil logout'),
-                                onError: () => toast.error('Gagal logout'),
-                            });
-                            toast.dismiss(t.id);
-                        }}
-                    >
-                        Logout
-                    </button>
-                </div>
-            </div>
-        ));
-    };
 
     const isActive = (path: string) => {
         if (path === '/' || path === '/beranda') {
@@ -64,6 +36,27 @@ export default function NavbarComponent() {
 
     return (
         <>
+
+            <ConfirmationDialog
+                isDangerous
+                isOpen={isLogoutOpen}
+                title="Keluar"
+                message={'Apakah Anda yakin ingin keluar?'}
+                confirmLabel="Keluar"
+                cancelLabel="Batal"
+                onConfirm={() => {
+                    post(route('logout'), {
+                        onStart: () => {
+                            setIsLogoutOpen(false)
+                            toast.loading('Logout...')
+                        },
+                        onSuccess: () =>
+                            toast.success('Berhasil logout'),
+                        onError: () => toast.error('Gagal logout'),
+                    });
+                }}
+                onCancel={() => setIsLogoutOpen(false)}
+            />
 
             <nav className="fixed left-0 right-0 top-0 z-50 bg-white">
                 <div className="container mx-auto flex items-center justify-between px-4 py-3 md:px-10 md:py-5 lg:px-14 xl:px-20">
@@ -123,7 +116,7 @@ export default function NavbarComponent() {
                                         </Link>
                                         <button
                                             className="block w-full px-4 py-2 text-left text-red-600 hover:bg-gray-100"
-                                            onClick={handleLogout}
+                                            onClick={() => setIsLogoutOpen(true)}
                                         >
                                             Logout
                                         </button>
@@ -210,7 +203,7 @@ export default function NavbarComponent() {
                             <button
                                 onClick={() => {
                                     setIsOpen(false);
-                                    handleLogout();
+                                    setIsLogoutOpen(true)
                                 }}
                                 className="rounded-lg bg-red-50 px-4 py-2 text-left text-red-600 hover:bg-red-100"
                             >
