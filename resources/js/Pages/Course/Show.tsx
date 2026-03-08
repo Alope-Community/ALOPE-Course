@@ -12,12 +12,7 @@ import { Course } from '@/models/Course';
 import { Testimonial } from '@/models/Testimonial';
 import GlosariumSection from '@/Pages/Glosarium/Show';
 import { Head, Link, router, usePage } from '@inertiajs/react';
-import {
-    IconCartFill,
-    IconCircleInfoFill,
-    IconLayersFill,
-    IconStarFill,
-} from 'justd-icons';
+import { IconCartFill, IconCircleInfoFill, IconLayersFill } from 'justd-icons';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 

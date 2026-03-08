@@ -23,8 +23,6 @@ class LandingPageController extends Controller
             ->limit(3)
             ->get();
 
-        $latestModule = Module::with(['course', 'writer', 'reads'])->latest()->first();
-
         $blogs = Blog::select('title', 'slug', 'cover', 'description')
             ->latest()
             ->take(3)
@@ -37,7 +35,6 @@ class LandingPageController extends Controller
             ->get();
 
         return Inertia::render('LandingPage', [
-            "latestModule" => $latestModule,
             "modules" => $modules,
             "courses" => $courses,
             "blogs" => $blogs,
