@@ -18,8 +18,6 @@ const EventIndexPage = ({
     events: PaginatedResponse<Event>
 }) => {
 
-    const [isLoginOpen, setIsLoginOpen] = useState(false)
-
     return (
         <>
 
