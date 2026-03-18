@@ -58,37 +58,28 @@ class ModuleController extends Controller
 
         $user = Auth::user();
 
-        $isJoined = false;
-
+        $isJoined = $user 
+            ? $module->course->users->contains($user->id)
+            : false;
         if ($user) {
-            $isJoined = $module->course->users->contains($user->id);
-        }
-
-        if ($user) {
-            $existingRead = Read::where('user_id', $user->id)
-                ->where('module_id', $module->id)
-                ->whereDate('created_at', today())
-                ->first();
-
-            if (!$existingRead) {
-                Read::create([
+            Read::firstOrCreate(
+                [
                     "user_id" => $user->id,
                     "module_id" => $module->id,
-                    "created_at" => now()
-                ]);
-            }
-        } else {
-            Read::create([
-                "user_id" => 1,
-                "module_id" => $module->id,
-                "created_at" => now()
-            ]);
+                    "created_at" => today(),
+                ],
+                [
+                    "created_at" => now(),
+                ]
+            );
         }
 
         return Inertia::render('Module/Show', [
             "module" => [
-                ...$module->toArray(),
-                "body_preview" => Str::limit(strip_tags($module->body), 600),
+                "id" => $module->id,
+                "title" => $module->title,
+                "body" => $module->body,
+                "body_preview" => Str::limit($module->body, 3000),
             ],
             "modules" => $modules,
             "isJoined" => $isJoined,

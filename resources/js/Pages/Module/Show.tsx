@@ -191,26 +191,36 @@ export default function ModuleShowPage({
                         </header>
 
                         <section id="body" className="relative mt-5">
-                            {/* Konten */}
                             <div
-                                className={`${!isJoined ? 'relative max-h-[300px] overflow-hidden' : ''}`}
-                                dangerouslySetInnerHTML={{
-                                    __html: module.body,
-                                }}
-                            />
-                            {!isJoined && (
-                                <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-gray-100 via-gray-100/90 to-transparent p-6 text-center">
-                                    <button
-                                        onClick={() => setShowJoinConfirm(true)}
-                                        disabled={isJoining}
-                                        className="rounded-md bg-[#2276f0] px-4 py-2 text-sm font-medium text-white shadow transition hover:bg-[#1a5ec9] disabled:cursor-not-allowed disabled:opacity-70 md:text-base"
-                                    >
-                                        {isJoining
-                                            ? 'Bergabung...'
-                                            : 'Gabung Modul ini untuk lanjut Membaca'}
-                                    </button>
-                                </div>
-                            )}
+                                className={`relative ${
+                                    !isJoined ? 'overflow-hidden' : ''
+                                }`}
+                            >
+                                {/* Konten */}
+                                <div
+                                    dangerouslySetInnerHTML={{
+                                        __html: isJoined
+                                            ? module.body
+                                            : module.body_preview,
+                                    }}
+                                />
+
+                                {!isJoined && (
+                                    <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-gray-100 via-gray-100/90 to-transparent p-6 text-center">
+                                        <button
+                                            onClick={() =>
+                                                setShowJoinConfirm(true)
+                                            }
+                                            disabled={isJoining}
+                                            className="rounded-md bg-[#2276f0] px-4 py-2 text-sm font-medium text-white shadow transition hover:bg-[#1a5ec9] disabled:cursor-not-allowed disabled:opacity-70 md:text-base"
+                                        >
+                                            {isJoining
+                                                ? 'Bergabung...'
+                                                : 'Gabung Modul ini untuk lanjut Membaca'}
+                                        </button>
+                                    </div>
+                                )}
+                            </div>
                         </section>
                     </main>
                     <SideModulesSection modules={modules} />
