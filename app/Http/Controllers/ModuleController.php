@@ -44,7 +44,7 @@ class ModuleController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $slug)
+public function show(string $slug)
     {
         $module = Module::with(["writer", "course.users"])
             ->whereSlug($slug)
@@ -58,9 +58,11 @@ class ModuleController extends Controller
 
         $user = Auth::user();
 
-        $isJoined = $user 
+        $isPublicCourse = $module->course && $module->course->visibility === 'public';
+
+        $isJoined = $isPublicCourse || ($user
             ? $module->course->users->contains($user->id)
-            : false;
+            : false);
         if ($user) {
             Read::firstOrCreate(
                 [
