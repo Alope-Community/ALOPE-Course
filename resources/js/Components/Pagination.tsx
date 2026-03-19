@@ -25,7 +25,9 @@ const Pagination = ({
     };
 
     const goToPageNumber = (page: number) => {
-        router.visit(`${path}?page=${page}`);
+        if (currentPage != page) {
+            router.visit(`${path}?page=${page}`);
+        }
     };
 
     const renderPageNumbers = () => {

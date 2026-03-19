@@ -1,14 +1,16 @@
 import BannerHorizontalComponent from '@/Components/Banners/Horizontal';
 import HorizontalModuleCardComponent from '@/Components/Cards/HorizontalModule';
+import { Container } from '@/Components/Container';
+import { EmptyStateBox } from '@/Components/EmptyStateBox';
 import FooterComponent from '@/Components/Footer';
 import NavbarComponent from '@/Components/Navbar/Navbar';
+import Pagination from '@/Components/Pagination';
 import { Module } from '@/models/Module';
 import { PaginatedResponse } from '@/types/PaginateResponse';
 import { Inertia, Method } from '@inertiajs/inertia';
 import { Head, router, usePage } from '@inertiajs/react';
 
 import 'glider-js/glider.min.css';
-import { IconChevronLeft, IconChevronRight } from 'justd-icons';
 import { useEffect, useState } from 'react';
 
 export default function ModuleIndexPage({
@@ -55,59 +57,48 @@ export default function ModuleIndexPage({
 
             <NavbarComponent />
 
-            <main className="container relative z-20 mx-auto mb-20 mt-5 grid grid-cols-4 gap-8 px-3 md:px-10 xl:gap-10 xl:px-5 2xl:px-2">
-                <section className="col-span-4 pt-10 lg:col-span-3">
+            <Container>
+
+                <main className="relative z-20 w-full">
+
+                    {/* <section className="col-span-4 pt-10 lg:col-span-3"> */}
+
                     <BannerHorizontalComponent />
-                    <section>
-                        {modules.data.map((module, index) => (
-                            <HorizontalModuleCardComponent
-                                key={index}
-                                props={module}
-                            />
-                        ))}
+
+                    <section className="my-10 min-h-[calc(100vh-600px)]">
+                        {
+                            modules.data.length > 0
+                                ?
+                                modules.data.map((module, index) => (
+                                    <HorizontalModuleCardComponent
+                                        key={index}
+                                        props={module}
+                                    />
+                                ))
+                                :
+                                <EmptyStateBox
+                                    title='Belum ada modul terbaru'
+                                    description='Saat ini belum ada modul yang tersedia. Silahkan kembali lagi lagi nanti untuk melihat modul terbaru yang akan datang.'
+                                />
+                        }
                     </section>
 
-                    {/*  */}
-                    <div className="mt-10 flex items-center justify-center gap-2">
-                        {/* Tombol Previous */}
-                        <button
-                            onClick={() => goToPage(modules.prev_page_url)}
-                            disabled={!modules.prev_page_url}
-                            className="flex items-center rounded border bg-white/50 px-3 py-1 disabled:opacity-50"
-                        >
-                            <IconChevronLeft className="size-5" /> Prev
-                        </button>
+                    {/* PAGINATION */}
+                    <Pagination
+                        currentPage={modules.current_page}
+                        lastPage={modules.last_page}
+                        nextPageUrl={modules.next_page_url}
+                        prevPageUrl={modules.prev_page_url}
+                        path={modules.path}
+                    />
 
-                        {/* Tombol Angka Halaman */}
-                        {Array.from(
-                            { length: modules.last_page },
-                            (_, i) => i + 1,
-                        ).map((page) => (
-                            <button
-                                key={page}
-                                onClick={() => goToPageNumber(page)}
-                                className={`rounded border px-3 py-1 ${
-                                    page === modules.current_page
-                                        ? 'bg-[#4a86ef] text-white'
-                                        : 'bg-white/50 text-gray-800 backdrop-blur-md'
-                                }`}
-                            >
-                                {page}
-                            </button>
-                        ))}
+                    {/* </section */}
 
-                        {/* Tombol Next */}
-                        <button
-                            onClick={() => goToPage(modules.next_page_url)}
-                            disabled={!modules.next_page_url}
-                            className="flex items-center rounded border bg-white/50 px-3 py-1 disabled:opacity-50"
-                        >
-                            Next <IconChevronRight className="size-5" />
-                        </button>
-                    </div>
-                </section>
-                {/* <SideModulesSection modules={modules.data} /> */}
-            </main>
+                    {/* <SideModulesSection modules={modules.data} /> */}
+
+                </main>
+
+            </Container>
 
             <FooterComponent />
         </>

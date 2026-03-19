@@ -2,6 +2,7 @@ import { Course } from './Course';
 import { Writer } from './Writer';
 
 export type Module = {
+    body_preview: string | TrustedHTML;
     id: string;
     slug: string;
     title: string;
