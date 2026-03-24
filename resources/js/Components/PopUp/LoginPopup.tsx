@@ -36,6 +36,7 @@ export default function LoginPopup({ isOpen, onClose }: LoginPopupProps) {
             onSuccess: () => {
                 toast.success('Login successful!');
                 onClose()
+                reset('email')
             },
             onError: (errors) => {
                 if (errors.email || errors.password) {

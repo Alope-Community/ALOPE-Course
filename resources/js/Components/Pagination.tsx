@@ -115,9 +115,9 @@ const Pagination = ({
     return (
         <div className="my-10 sm:my-20 flex items-center justify-center gap-2 sm:gap-5">
             {/* Tombol Previous */}
-            <button
+            <div
                 onClick={() => goToPage(prevPageUrl)}
-                disabled={!prevPageUrl}
+                className={!prevPageUrl ? 'opacity-50' : 'opacity-100'}
             >
                 <PaginationButton
                     text="Previous"
@@ -126,15 +126,15 @@ const Pagination = ({
                     iconPrefix={<IconChevronLgLeft />}
                     className="w-8 h-8 sm:w-auto"
                 />
-            </button>
+            </div>
 
             {/* Tombol Angka Halaman */}
             {renderPageNumbers()}
 
             {/* Tombol Next */}
-            <button
+            <div
                 onClick={() => goToPage(nextPageUrl)}
-                disabled={!nextPageUrl}
+                className={!nextPageUrl ? 'opacity-50' : 'opacity-100'}
             >
                 <PaginationButton
                     text="Next"
@@ -143,7 +143,7 @@ const Pagination = ({
                     icon={<IconChevronLgRight />}
                     className="w-8 h-8 sm:w-auto"
                 />
-            </button>
+            </div>
 
         </div>
     )
