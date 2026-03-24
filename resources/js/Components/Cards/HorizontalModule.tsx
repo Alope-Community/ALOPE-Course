@@ -1,6 +1,6 @@
 import { Module } from '@/models/Module';
 import { formatDateWithTime } from '@/tools/formatDate';
-import { Link } from '@inertiajs/react';
+import { Link, router } from '@inertiajs/react';
 import { IconRocketFill } from 'justd-icons';
 import TitleHeadline from '../TitleHeadline';
 
@@ -9,13 +9,14 @@ export default function HorizontalModuleCardComponent({
 }: {
     props: Module;
 }) {
+
     return (
-        <Link
-            href={`/modules/${props.slug}`}
+        <div
+            onClick={() => router.visit(`/modules/${props.slug}`)}
             className="mb-7 flex flex-col items-center gap-5 sm:mb-5 sm:flex-row"
         >
             <img
-                src={props.course.cover}
+                src={props.course.cover || 'https://placehold.co/600x400?text=No+Image'}
                 alt="module cover"
                 className="w-full rounded object-contain object-left sm:w-[400px] sm:min-w-[400px] sm:max-w-[400px] lg:w-[300px] lg:min-w-[300px] lg:max-w-[300px] xl:w-[400px] xl:min-w-[400px] xl:max-w-[400px]"
                 width={1280}
@@ -60,6 +61,6 @@ export default function HorizontalModuleCardComponent({
                     {props.description}
                 </p>
             </div>
-        </Link>
+        </div>
     );
 }

@@ -10,6 +10,7 @@ import EventCard from '@/Components/Cards/EventCard';
 import { PaginatedResponse } from '@/types/PaginateResponse';
 import Pagination from '@/Components/Pagination';
 import { useState } from 'react';
+import { EmptyStateBox } from '@/Components/EmptyStateBox';
 
 const EventIndexPage = ({
     events,
@@ -34,14 +35,21 @@ const EventIndexPage = ({
                 </div>
 
                 <section className="my-10 min-h-[calc(100vh-600px)]">
-                    <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
-                        {events.data.map((event) => (
-                            <EventCard
-                                key={event.id}
-                                event={event}
-                            />
-                        ))}
-                    </div>
+                    {events.data.length > 0 ?
+                        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+                            {events.data.map((event) => (
+                                <EventCard
+                                    key={event.id}
+                                    event={event}
+                                />
+                            ))}
+                        </div>
+                        :
+                        <EmptyStateBox
+                            title="Belum ada event terbaru"
+                            description="Saat ini belum ada event yang tersedia. Silakan kembali nanti untuk melihat event terbaru yang akan datang."
+                        />
+                    }
                 </section>
 
                 <Pagination
