@@ -10,34 +10,11 @@ import { IconCalendar, IconClock, IconEye } from 'justd-icons';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 
-// const codeBlock = `from mlxtend.frequent_patterns import apriori, association_rules
-// import pandas as pd
-
-// # Sample transaction data
-// transactions = [
-//     ['bread', 'milk', 'beer'],
-//     ['bread', 'butter', 'milk'],
-//     ['beer', 'chips', 'milk'],
-//     ['bread', 'butter', 'beer'],
-//     ['milk', 'chips'],
-//     ['bread', 'milk', 'chips', 'butter']
-// ]
-
-// # Convert to one-hot encoding
-// from mlxtend.preprocessing import TransactionEncoder
-// te = TransactionEncoder()
-// te_ary = te.fit(transactions).transform(transactions)
-// df = pd.DataFrame(te_ary, columns=te.columns_)
-
-// # Find frequent itemsets
-// frequent_itemsets = apriori(df, min_support=0.3, use_colnames=True)
-// print("Frequent Itemsets:")
-// print(frequent_itemsets)
-
-// # Generate association rules
-// rules = association_rules(frequent_itemsets, metric="confidence", min_threshold=0.5)
-// print("\nAssociation Rules:")
-// print(rules[['antecedents', 'consequents', 'support', 'confidence', 'lift']])`;
+// const codeBlock = `listHeroAdapter.setOnItemClickCallback(object : ListHeroAdapter.OnItemClickCallback {
+//     override fun onItemClicked(data: Hero) {
+//         ...
+//     }
+// })`;
 
 export default function ModuleShowPage({
     module,
@@ -99,8 +76,8 @@ export default function ModuleShowPage({
                 onCancel={() => setShowJoinConfirm(false)}
                 isLoading={isJoining}
             />
-
-            {/* <section id="body" className="mt-20">
+            {/*  
+            <section id="body" className="mt-20">
                 <Highlight
                     theme={themes.vsDark}
                     code={codeBlock}
