@@ -27,11 +27,11 @@ export default function HistoryPage({
     >('account');
 
     return (
-        <div className="min-h-screen bg-[#f8fafc]">
+        <div className="flex min-h-screen flex-col bg-[#f8fafc]">
             <Head title="Profile" />
             <NavbarComponent />
 
-            <main className="container mx-auto px-4 py-10 md:px-8 lg:px-12">
+            <main className="container mx-auto flex-grow px-4 py-10 md:px-8 lg:px-12">
                 <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-4">
                     {/* --- SIDEBAR --- */}
                     <aside className="space-y-6 lg:sticky lg:top-28 lg:col-span-1">
