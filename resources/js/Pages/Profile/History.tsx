@@ -34,7 +34,7 @@ export default function HistoryPage({
             <main className="container mx-auto px-4 py-10 md:px-8 lg:px-12">
                 <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-4">
                     {/* --- SIDEBAR --- */}
-                    <aside className="space-y-6 lg:col-span-1">
+                    <aside className="space-y-6 lg:sticky lg:top-28 lg:col-span-1">
                         <ProfileSidebar
                             activeTab={activeTab}
                             onTabChange={setActiveTab}
