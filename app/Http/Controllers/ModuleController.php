@@ -44,7 +44,7 @@ class ModuleController extends Controller
     /**
      * Display the specified resource.
      */
-public function show(string $slug)
+    public function show(string $slug)
     {
         $module = Module::with(["writer", "course.users"])
             ->whereSlug($slug)
@@ -77,12 +77,7 @@ public function show(string $slug)
         }
 
         return Inertia::render('Module/Show', [
-            "module" => [
-                "id" => $module->id,
-                "title" => $module->title,
-                "body" => $module->body,
-                "body_preview" => Str::limit($module->body, 3000),
-            ],
+            "module" => $module,
             "modules" => $modules,
             "isJoined" => $isJoined,
         ]);
